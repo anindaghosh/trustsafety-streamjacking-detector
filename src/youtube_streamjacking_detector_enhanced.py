@@ -1,0 +1,878 @@
+"""
+Enhanced YouTube Stream-Jacking Detection System
+Incorporates composite rules and additional detection signals
+
+This version adds:
+- Urgency language detection
+- Handle-name mismatch
+- Disabled chat detection
+- Composite risk scoring (Critical/High/Medium)
+- Known scam domain checking
+- Enhanced confidence scoring
+"""
+
+import os
+import re
+import time
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Set, Tuple
+from dataclasses import dataclass, field
+import json
+
+try:
+    from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
+except ImportError:
+    print("Please install: pip install google-api-python-client --break-system-packages")
+    exit(1)
+
+
+@dataclass
+class EnhancedChannelMetadata:
+    """Extended channel metadata with additional fields"""
+    channel_id: str
+    channel_title: str
+    custom_url: Optional[str]
+    handle: Optional[str]
+    description: str
+    subscriber_count: int
+    video_count: int
+    view_count: int
+    published_at: str
+    country: Optional[str]
+    thumbnail_url: str
+    
+    # Additional metadata
+    topic_categories: List[str] = field(default_factory=list)
+    branding_settings: Dict = field(default_factory=dict)
+    hidden_subscriber_count: bool = False
+    default_language: Optional[str] = None
+    
+    # Detection results
+    suspicious_signals: List[str] = field(default_factory=list)
+    risk_score: float = 0.0
+    confidence_score: float = 0.0
+    risk_category: str = "unknown"  # critical, high, medium, low
+
+
+@dataclass
+class EnhancedVideoMetadata:
+    """Extended video metadata"""
+    video_id: str
+    title: str
+    description: str
+    channel_id: str
+    channel_title: str
+    published_at: str
+    is_live: bool
+    live_streaming_details: Optional[Dict]
+    view_count: int
+    like_count: int
+    comment_count: int
+    tags: List[str] = field(default_factory=list)
+    
+    # Additional fields
+    comments_disabled: bool = False
+    live_chat_id: Optional[str] = None
+    default_language: Optional[str] = None
+    
+    # Detection results
+    suspicious_signals: List[str] = field(default_factory=list)
+    risk_score: float = 0.0
+    confidence_score: float = 0.0
+
+
+class EnhancedYouTubeAPIClient:
+    """Enhanced API client with additional metadata fields"""
+    
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.youtube = build('youtube', 'v3', developerKey=api_key)
+        self.quota_used = 0
+        
+    def get_channel_metadata(self, channel_id: str) -> Optional[EnhancedChannelMetadata]:
+        """Retrieve comprehensive channel metadata with enhanced fields"""
+        try:
+            request = self.youtube.channels().list(
+                part="snippet,statistics,contentDetails,topicDetails,brandingSettings,status",
+                id=channel_id
+            )
+            response = request.execute()
+            self.quota_used += 5
+            
+            if not response.get('items'):
+                return None
+                
+            item = response['items'][0]
+            snippet = item.get('snippet', {})
+            statistics = item.get('statistics', {})
+            branding = item.get('brandingSettings', {})
+            topics = item.get('topicDetails', {})
+            
+            return EnhancedChannelMetadata(
+                channel_id=channel_id,
+                channel_title=snippet.get('title', ''),
+                custom_url=snippet.get('customUrl'),
+                handle=branding.get('channel', {}).get('unsubscribedTrailer'),
+                description=snippet.get('description', ''),
+                subscriber_count=int(statistics.get('subscriberCount', 0)),
+                video_count=int(statistics.get('videoCount', 0)),
+                view_count=int(statistics.get('viewCount', 0)),
+                published_at=snippet.get('publishedAt', ''),
+                country=snippet.get('country'),
+                thumbnail_url=snippet.get('thumbnails', {}).get('high', {}).get('url', ''),
+                topic_categories=topics.get('topicCategories', []),
+                branding_settings=branding,
+                hidden_subscriber_count=statistics.get('hiddenSubscriberCount', False),
+                default_language=snippet.get('defaultLanguage')
+            )
+            
+        except HttpError as e:
+            print(f"API Error: {e}")
+            return None
+    
+    def get_video_metadata(self, video_id: str) -> Optional[EnhancedVideoMetadata]:
+        """Retrieve comprehensive video metadata with enhanced fields"""
+        try:
+            request = self.youtube.videos().list(
+                part="snippet,statistics,liveStreamingDetails,contentDetails,status",
+                id=video_id
+            )
+            response = request.execute()
+            self.quota_used += 5
+            
+            if not response.get('items'):
+                return None
+                
+            item = response['items'][0]
+            snippet = item.get('snippet', {})
+            statistics = item.get('statistics', {})
+            live_details = item.get('liveStreamingDetails')
+            status = item.get('status', {})
+            
+            is_live = live_details is not None and live_details.get('actualEndTime') is None
+            
+            return EnhancedVideoMetadata(
+                video_id=video_id,
+                title=snippet.get('title', ''),
+                description=snippet.get('description', ''),
+                channel_id=snippet.get('channelId', ''),
+                channel_title=snippet.get('channelTitle', ''),
+                published_at=snippet.get('publishedAt', ''),
+                is_live=is_live,
+                live_streaming_details=live_details,
+                view_count=int(statistics.get('viewCount', 0)),
+                like_count=int(statistics.get('likeCount', 0)),
+                comment_count=int(statistics.get('commentCount', 0)),
+                tags=snippet.get('tags', []),
+                comments_disabled=not status.get('publicStatsViewable', True),
+                live_chat_id=live_details.get('activeLiveChatId') if live_details else None,
+                default_language=snippet.get('defaultLanguage')
+            )
+            
+        except HttpError as e:
+            print(f"API Error: {e}")
+            return None
+    
+    def search_livestreams(self, query: str, max_results: int = 50) -> List[Dict]:
+        """Search for active livestreams"""
+        try:
+            request = self.youtube.search().list(
+                part="snippet",
+                q=query,
+                type="video",
+                eventType="live",
+                maxResults=min(max_results, 50),
+                relevanceLanguage="en",
+                safeSearch="none"
+            )
+            response = request.execute()
+            self.quota_used += 100
+            
+            return response.get('items', [])
+            
+        except HttpError as e:
+            print(f"API Error: {e}")
+            return []
+
+
+class EnhancedStreamJackingDetector:
+    """
+    Enhanced detector with composite rules and additional signals
+    """
+    
+    # Character substitution patterns
+    CHAR_SUBSTITUTIONS = {
+        'l': ['I', '1', '|', 'ı'],
+        'I': ['l', '1', '|', 'ı'],
+        'O': ['0', 'Ο', 'О'],  # Latin, Greek, Cyrillic
+        '0': ['O', 'Ο', 'О'],
+        'a': ['@', 'α', 'а'],  # Greek alpha, Cyrillic a
+        'e': ['3', 'ε', 'е'],  # Greek epsilon, Cyrillic e
+        'A': ['Α', 'А'],  # Greek, Cyrillic
+        'E': ['Ε', 'Е'],
+    }
+    
+    # Impersonation targets
+    CRYPTO_FIGURES = [
+        'elon musk', 'vitalik buterin', 'michael saylor', 'cz', 'changpeng zhao',
+        'brian armstrong', 'cathie wood', 'vitalik', 'buterin'
+    ]
+    
+    TECH_BRANDS = [
+        'tesla', 'spacex', 'apple', 'microsoft', 'nvidia', 'google', 'meta',
+        'amazon', 'openai'
+    ]
+    
+    CRYPTO_PROJECTS = [
+        'ethereum', 'bitcoin', 'binance', 'coinbase', 'ripple', 'cardano',
+        'solana', 'polygon', 'eth', 'btc'
+    ]
+    
+    # Scam keywords
+    SCAM_KEYWORDS = [
+        'giveaway', 'double', 'send', 'receive', 'btc', 'eth', 'cryptocurrency',
+        'free crypto', 'investment', 'wallet', 'airdrop', 'bonus'
+    ]
+    
+    # NEW: Urgency keywords (from teammate's document)
+    URGENCY_KEYWORDS = [
+        'live now', 'ending soon', 'limited time', 'hurry', 'last chance',
+        'only today', 'expires', 'don\'t miss', 'act now', 'urgent'
+    ]
+    
+    # NEW: High-confidence scam phrases
+    HIGH_CONFIDENCE_SCAM_PHRASES = [
+        r'send\s+\d+.*get\s+\d+.*back',
+        r'double\s+your\s+(btc|eth|crypto)',
+        r'guaranteed\s+returns?',
+        r'limited\s+time\s+crypto\s+giveaway',
+        r'elon\s+musk\s+(live\s+)?giveaway',
+        r'send\s+\d+\s+(btc|eth).*receive\s+\d+',
+    ]
+    
+    # NEW: Known scam domains (expand this list)
+    KNOWN_SCAM_DOMAINS = [
+        # Add known scam domains here
+        'bit.ly', 'tinyurl.com', 'goo.gl', 't.co'  # URL shorteners (suspicious in this context)
+    ]
+    
+    def __init__(self, api_client: EnhancedYouTubeAPIClient):
+        self.api = api_client
+        
+    def detect_character_substitution(self, text: str, target_names: List[str]) -> List[str]:
+        """Enhanced character substitution detection"""
+        detections = []
+        text_lower = text.lower()
+        
+        for target in target_names:
+            target_lower = target.lower()
+            
+            if target_lower in text_lower:
+                detections.append(f"Exact match: {target}")
+                continue
+            
+            variations = self._generate_substitution_variations(target_lower)
+            
+            for variation in variations:
+                if variation in text_lower:
+                    detections.append(f"Substitution impersonation: {target}")
+                    break
+        
+        return detections
+    
+    def _generate_substitution_variations(self, text: str, max_variations: int = 100) -> Set[str]:
+        """Generate character substitution variations"""
+        variations = {text}
+        
+        for char, substitutes in self.CHAR_SUBSTITUTIONS.items():
+            if char in text:
+                new_variations = set()
+                for variation in list(variations):
+                    for substitute in substitutes:
+                        new_var = variation.replace(char, substitute)
+                        new_variations.add(new_var)
+                        if len(variations) + len(new_variations) >= max_variations:
+                            return variations.union(new_variations)
+                variations.update(new_variations)
+        
+        return variations
+    
+    def detect_urgency_language(self, text: str) -> Tuple[bool, List[str]]:
+        """NEW: Detect urgency/pressure language"""
+        text_lower = text.lower()
+        found_keywords = [kw for kw in self.URGENCY_KEYWORDS if kw in text_lower]
+        return len(found_keywords) > 0, found_keywords
+    
+    def detect_high_confidence_scam_phrases(self, text: str) -> Tuple[bool, List[str]]:
+        """NEW: Detect high-confidence scam phrases"""
+        text_lower = text.lower()
+        found_phrases = []
+        
+        for pattern in self.HIGH_CONFIDENCE_SCAM_PHRASES:
+            if re.search(pattern, text_lower):
+                found_phrases.append(pattern)
+        
+        return len(found_phrases) > 0, found_phrases
+    
+    def check_handle_name_mismatch(self, channel_title: str, custom_url: Optional[str]) -> bool:
+        """NEW: Check if handle doesn't match channel name"""
+        if not custom_url:
+            return False
+        
+        # Extract handle from custom URL
+        handle = custom_url.lower().replace('@', '').replace('/', '')
+        title_normalized = channel_title.lower().replace(' ', '').replace('-', '')
+        
+        # Check if they're significantly different
+        # Using simple string similarity
+        if handle not in title_normalized and title_normalized not in handle:
+            # Check if both contain brand names
+            all_brands = self.CRYPTO_FIGURES + self.TECH_BRANDS + self.CRYPTO_PROJECTS
+            handle_has_brand = any(brand.replace(' ', '') in handle for brand in all_brands)
+            title_has_brand = any(brand.replace(' ', '') in title_normalized for brand in all_brands)
+            
+            # Mismatch is suspicious if title has brand but handle doesn't
+            if title_has_brand and not handle_has_brand:
+                return True
+        
+        return False
+    
+    def check_known_scam_domains(self, text: str) -> Tuple[bool, List[str]]:
+        """NEW: Check for known scam domains"""
+        found_domains = []
+        text_lower = text.lower()
+        
+        for domain in self.KNOWN_SCAM_DOMAINS:
+            if domain in text_lower:
+                found_domains.append(domain)
+        
+        return len(found_domains) > 0, found_domains
+    
+    def analyze_channel_enhanced(self, channel: EnhancedChannelMetadata) -> EnhancedChannelMetadata:
+        """Enhanced channel analysis with composite scoring"""
+        signals = []
+        risk_score = 0.0
+        
+        all_targets = self.CRYPTO_FIGURES + self.TECH_BRANDS + self.CRYPTO_PROJECTS
+        
+        # Signal 1: Character substitution (weight: 30)
+        impersonations = self.detect_character_substitution(channel.channel_title, all_targets)
+        if impersonations:
+            signals.append(f"Name impersonation: {', '.join(impersonations)}")
+            risk_score += 30.0
+        
+        # Signal 2: Handle-name mismatch (NEW - weight: 25)
+        if self.check_handle_name_mismatch(channel.channel_title, channel.custom_url):
+            signals.append("Handle-name mismatch (possible hijack)")
+            risk_score += 25.0
+        
+        # Signal 3: Account age vs. activity (weight: 20)
+        account_age_days = self._calculate_account_age(channel.published_at)
+        
+        if account_age_days > 365 and channel.video_count < 10:
+            signals.append(f"Old account ({account_age_days} days) with minimal content")
+            risk_score += 20.0
+        
+        # Signal 4: High subscribers, low content (weight: 20)
+        if channel.subscriber_count > 10000 and channel.video_count < 5:
+            signals.append(f"High subscribers ({channel.subscriber_count:,}) but minimal content")
+            risk_score += 20.0
+        
+        # Signal 5: Subscriber count hiding (NEW - weight: 10)
+        if channel.hidden_subscriber_count:
+            signals.append("Subscriber count hidden")
+            risk_score += 10.0
+        
+        # Signal 6: Crypto-heavy description (weight: 10)
+        desc_lower = channel.description.lower()
+        crypto_keywords = ['crypto', 'bitcoin', 'ethereum', 'wallet', 'giveaway', 'btc', 'eth']
+        crypto_mentions = sum(1 for kw in crypto_keywords if kw in desc_lower)
+        
+        if crypto_mentions >= 3:
+            signals.append(f"Crypto-heavy description ({crypto_mentions} keywords)")
+            risk_score += 10.0
+        
+        # Signal 7: Known scam domains (NEW - weight: 15)
+        has_scam_domain, domains = self.check_known_scam_domains(channel.description)
+        if has_scam_domain:
+            signals.append(f"Known scam domain(s): {', '.join(domains)}")
+            risk_score += 15.0
+        
+        channel.suspicious_signals = signals
+        channel.risk_score = min(risk_score, 100.0)
+        
+        return channel
+    
+    def analyze_video_enhanced(self, video: EnhancedVideoMetadata) -> EnhancedVideoMetadata:
+        """Enhanced video analysis with composite scoring"""
+        signals = []
+        risk_score = 0.0
+        
+        all_targets = self.CRYPTO_FIGURES + self.TECH_BRANDS + self.CRYPTO_PROJECTS
+        
+        # Signal 1: Title impersonation (weight: 25)
+        title_impersonations = self.detect_character_substitution(video.title, all_targets)
+        if title_impersonations:
+            signals.append(f"Title impersonation: {', '.join(title_impersonations)}")
+            risk_score += 25.0
+        
+        # Signal 2: High-confidence scam phrases (NEW - weight: 35)
+        has_scam_phrase, phrases = self.detect_high_confidence_scam_phrases(video.title + ' ' + video.description)
+        if has_scam_phrase:
+            signals.append(f"High-confidence scam phrase detected")
+            risk_score += 35.0
+        
+        # Signal 3: Scam keywords (weight: 15)
+        title_lower = video.title.lower()
+        desc_lower = video.description.lower()
+        combined = title_lower + ' ' + desc_lower
+        
+        scam_matches = [kw for kw in self.SCAM_KEYWORDS if kw in combined]
+        if len(scam_matches) >= 2:
+            signals.append(f"Multiple scam keywords: {', '.join(scam_matches[:3])}")
+            risk_score += 15.0
+        
+        # Signal 4: Urgency language (NEW - weight: 10)
+        has_urgency, urgency_words = self.detect_urgency_language(combined)
+        if has_urgency and len(urgency_words) >= 2:
+            signals.append(f"Urgency language: {', '.join(urgency_words[:2])}")
+            risk_score += 10.0
+        
+        # Signal 5: Crypto addresses/URLs (weight: 25)
+        if self._contains_crypto_address(video.description) or self._contains_suspicious_url(video.description):
+            signals.append("Contains crypto address or suspicious URL")
+            risk_score += 25.0
+        
+        # Signal 6: Disabled comments (NEW - weight: 20)
+        if video.comments_disabled:
+            signals.append("Comments disabled or restricted")
+            risk_score += 20.0
+        
+        # Signal 7: Live stream status (weight: 5)
+        if video.is_live:
+            signals.append("Currently live streaming")
+            risk_score += 5.0
+        
+        # Signal 8: Engagement anomalies (weight: 15)
+        if video.view_count > 1000 and video.comment_count < 10:
+            signals.append(f"High views ({video.view_count:,}) but very low engagement")
+            risk_score += 15.0
+        
+        # Signal 9: Known scam domains (NEW - weight: 15)
+        has_scam_domain, domains = self.check_known_scam_domains(video.description)
+        if has_scam_domain:
+            signals.append(f"Suspicious domain(s): {', '.join(domains)}")
+            risk_score += 15.0
+        
+        video.suspicious_signals = signals
+        video.risk_score = min(risk_score, 100.0)
+        
+        return video
+    
+    def apply_composite_rules(
+        self,
+        video: EnhancedVideoMetadata,
+        channel: Optional[EnhancedChannelMetadata]
+    ) -> Dict[str, any]:
+        """
+        NEW: Apply composite detection rules for categorization
+        Based on teammate's document section 6
+        """
+        # Calculate combined risk
+        total_risk = video.risk_score
+        if channel:
+            total_risk += (channel.risk_score * 0.5)
+        
+        total_risk = min(total_risk, 100.0)
+        
+        # Check critical risk criteria (all must be true)
+        critical_checks = [
+            video.is_live,  # Currently live
+            self._contains_crypto_address(video.description),  # Wallet address
+            len(self.detect_character_substitution(
+                channel.channel_title if channel else '', 
+                self.CRYPTO_FIGURES + self.TECH_BRANDS + self.CRYPTO_PROJECTS
+            )) > 0,  # Channel impersonation
+            video.comments_disabled,  # Comments disabled
+            any(kw in video.title.lower() + video.description.lower() 
+                for kw in ['crypto', 'giveaway', 'double', 'send'])  # Scam keywords
+        ]
+        
+        # Determine risk category
+        if all(critical_checks):
+            risk_category = "CRITICAL"
+            confidence = 0.95
+        elif total_risk >= 70:
+            risk_category = "HIGH"
+            confidence = 0.75 + (total_risk - 70) / 100  # 0.75-0.90
+        elif total_risk >= 40:
+            risk_category = "MEDIUM"
+            confidence = 0.50 + (total_risk - 40) / 100  # 0.50-0.75
+        else:
+            risk_category = "LOW"
+            confidence = total_risk / 100  # 0.00-0.40
+        
+        return {
+            'risk_category': risk_category,
+            'confidence_score': round(confidence, 2),
+            'total_risk_score': round(total_risk, 1),
+            'critical_checks_passed': sum(critical_checks),
+            'meets_critical_criteria': all(critical_checks)
+        }
+    
+    def _calculate_account_age(self, published_at: str) -> int:
+        """Calculate account age in days"""
+        try:
+            pub_date = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
+            age = datetime.now(pub_date.tzinfo) - pub_date
+            return age.days
+        except:
+            return 0
+    
+    def _contains_crypto_address(self, text: str) -> bool:
+        """Check for cryptocurrency addresses"""
+        # BTC, ETH, and other common patterns
+        patterns = [
+            r'[13][a-km-zA-HJ-NP-Z1-9]{25,34}',  # BTC
+            r'0x[a-fA-F0-9]{40}',  # ETH
+            r'bc1[a-z0-9]{39,59}',  # BTC Bech32
+        ]
+        
+        for pattern in patterns:
+            if re.search(pattern, text):
+                return True
+        return False
+    
+    def _contains_suspicious_url(self, text: str) -> bool:
+        """Check for suspicious URLs"""
+        suspicious_patterns = [
+            r'bit\.ly',
+            r'tinyurl',
+            r'goo\.gl',
+            r't\.co',
+            r'ow\.ly',
+        ]
+        
+        for pattern in suspicious_patterns:
+            if re.search(pattern, text, re.IGNORECASE):
+                return True
+        
+        # Check for multiple URLs
+        url_pattern = r'https?://[^\s]+'
+        urls = re.findall(url_pattern, text)
+        return len(urls) >= 2
+
+
+def main():
+    """Run the enhanced detector"""
+    print("="*70)
+    print("ENHANCED STREAM-JACKING DETECTION SYSTEM")
+    print("With Composite Rules & Additional Signals")
+    print("="*70)
+    
+    api_key = os.environ.get('YOUTUBE_API_KEY')
+    if not api_key:
+        print("\n❌ Error: YOUTUBE_API_KEY environment variable not set")
+        print("Please set your API key: export YOUTUBE_API_KEY='your-key-here'")
+        print("\nGet your key from: https://console.cloud.google.com")
+        return
+    
+    # Initialize enhanced system
+    api_client = EnhancedYouTubeAPIClient(api_key)
+    detector = EnhancedStreamJackingDetector(api_client)
+    
+    print("\n✅ Enhanced detector initialized (16 signals)")
+    print("\nNew features vs original:")
+    print("  • Urgency language detection")
+    print("  • High-confidence scam phrase matching")
+    print("  • Handle-name mismatch detection")
+    print("  • Disabled comments checking")
+    print("  • Known scam domain database")
+    print("  • Composite risk scoring (Critical/High/Medium/Low)")
+    
+    # Define search queries targeting common scam patterns
+    search_queries = [
+        # Elon Musk (6 queries)
+        "Elon Musk crypto live",
+        "Elon Musk Bitcoin giveaway",
+        "Elon Musk Bitcoin live",
+        "Elon Musk ETH giveaway",
+        "Elon Musk Dogecoin",
+        "Elon Musk cryptocurrency",
+        
+        # Tesla/SpaceX (5 queries)
+        "Tesla crypto live",
+        "Tesla Bitcoin giveaway",
+        "Tesla crypto event",
+        "SpaceX Bitcoin live",
+        "SpaceX crypto event",
+        
+        # Generic giveaways (7 queries)
+        "crypto giveaway live",
+        "Bitcoin giveaway live",
+        "Ethereum giveaway live",
+        "cryptocurrency giveaway",
+        "BTC giveaway live",
+        "ETH giveaway live",
+        "crypto live giveaway",
+        
+        # Bitcoin specific (6 queries)
+        "Bitcoin live",
+        "Bitcoin doubling",
+        "Bitcoin investment live",
+        "send BTC receive double",
+        "BTC live event",
+        "double your Bitcoin",
+        
+        # Ethereum (6 queries)
+        "Ethereum live",
+        "Ethereum giveaway",
+        "ETH doubling event",
+        "Vitalik Buterin ethereum",
+        "Vitalik ethereum giveaway",
+        "Vitalik Buterin live",
+        
+        # Other crypto figures (5 queries)
+        "Michael Saylor Bitcoin",
+        "CZ Binance live",
+        "Changpeng Zhao crypto",
+        "Brad Garlinghouse XRP",
+        "Charles Hoskinson Cardano",
+        
+        # Other cryptos (5 queries)
+        "Dogecoin live",
+        "Ripple XRP giveaway",
+        "Cardano ADA live",
+        "Solana SOL giveaway",
+        "Shiba Inu giveaway",
+        "Binance BNB live"
+    ]
+    
+    print(f"\n📊 Monitoring {len(search_queries)} search queries...")
+    print(f"⚠️  This will use approximately {len(search_queries) * 100 + 500} API quota units")
+    print("⏱️  Estimated time: 15-30 minutes\n")
+    
+    # Collect all results
+    all_results = []
+    failed_queries = []
+    processed_videos = 0
+    failed_videos = 0
+
+    for query_idx, query in enumerate(search_queries, 1):
+        try:
+            print(f"\n🔍 [{query_idx}/{len(search_queries)}] Searching for: '{query}'")
+
+            # Search for live streams
+            try:
+                livestreams = api_client.search_livestreams(query, max_results=10)
+                print(f"   Found {len(livestreams)} live streams")
+            except Exception as e:
+                print(f"   ⚠️  Search failed: {str(e)}")
+                failed_queries.append({'query': query, 'error': str(e)})
+                continue
+
+            if not livestreams:
+                continue
+
+            for stream_idx, stream in enumerate(livestreams, 1):
+                try:
+                    # Extract video ID safely
+                    if 'id' not in stream or 'videoId' not in stream['id']:
+                        print(f"   ⚠️  Stream {stream_idx}: Missing video ID, skipping")
+                        failed_videos += 1
+                        continue
+
+                    video_id = stream['id']['videoId']
+
+                    # Get detailed metadata
+                    try:
+                        video_meta = api_client.get_video_metadata(video_id)
+                        if not video_meta:
+                            print(f"   ⚠️  Stream {stream_idx}: Could not fetch video metadata for {video_id}")
+                            failed_videos += 1
+                            continue
+                    except Exception as e:
+                        print(f"   ⚠️  Stream {stream_idx}: Error fetching video metadata: {str(e)}")
+                        failed_videos += 1
+                        continue
+
+                    # Get channel metadata
+                    channel_meta = None
+                    try:
+                        channel_meta = api_client.get_channel_metadata(video_meta.channel_id)
+                        if not channel_meta:
+                            print(f"   ⚠️  Stream {stream_idx}: Could not fetch channel metadata, continuing without it")
+                    except Exception as e:
+                        print(f"   ⚠️  Stream {stream_idx}: Error fetching channel metadata: {str(e)}, continuing without it")
+
+                    # Analyze video
+                    try:
+                        analyzed_video = detector.analyze_video_enhanced(video_meta)
+                    except Exception as e:
+                        print(f"   ⚠️  Stream {stream_idx}: Error analyzing video: {str(e)}")
+                        failed_videos += 1
+                        continue
+
+                    # Analyze channel
+                    analyzed_channel = None
+                    if channel_meta:
+                        try:
+                            analyzed_channel = detector.analyze_channel_enhanced(channel_meta)
+                        except Exception as e:
+                            print(f"   ⚠️  Stream {stream_idx}: Error analyzing channel: {str(e)}, continuing without channel analysis")
+
+                    # Apply composite rules
+                    try:
+                        composite = detector.apply_composite_rules(analyzed_video, analyzed_channel)
+                    except Exception as e:
+                        print(f"   ⚠️  Stream {stream_idx}: Error applying composite rules: {str(e)}")
+                        failed_videos += 1
+                        continue
+
+                    processed_videos += 1
+
+                    # Store results if suspicious (risk >= 30)
+                    if composite['total_risk_score'] >= 30:
+                        result = {
+                            'video_id': video_id,
+                            'video_title': analyzed_video.title,
+                            'channel_id': video_meta.channel_id,
+                            'channel_title': video_meta.channel_title,
+                            'is_live': analyzed_video.is_live,
+                            'video_risk_score': analyzed_video.risk_score,
+                            'channel_risk_score': analyzed_channel.risk_score if analyzed_channel else 0,
+                            'total_risk_score': composite['total_risk_score'],
+                            'risk_category': composite['risk_category'],
+                            'confidence_score': composite['confidence_score'],
+                            'video_signals': analyzed_video.suspicious_signals,
+                            'channel_signals': analyzed_channel.suspicious_signals if analyzed_channel else [],
+                            'detected_at': datetime.now().isoformat(),
+                            'search_query': query,
+                            'video_url': f"https://youtube.com/watch?v={video_id}",
+                            'channel_url': f"https://youtube.com/channel/{video_meta.channel_id}"
+                        }
+
+                        all_results.append(result)
+
+                        # Show in terminal
+                        risk_emoji = "🔴" if composite['risk_category'] in ['CRITICAL', 'HIGH'] else "🟡" if composite['risk_category'] == 'MEDIUM' else "🟢"
+                        print(f"\n   {risk_emoji} {composite['risk_category']}: {video_meta.title[:60]}...")
+                        print(f"       Risk Score: {composite['total_risk_score']:.1f} (Confidence: {composite['confidence_score']:.2f})")
+                        print(f"       Channel: {video_meta.channel_title}")
+                        print(f"       Signals: {len(analyzed_video.suspicious_signals) + (len(analyzed_channel.suspicious_signals) if analyzed_channel else 0)}")
+
+                    # Rate limiting
+                    time.sleep(0.5)
+
+                except Exception as e:
+                    print(f"   ⚠️  Stream {stream_idx}: Unexpected error: {str(e)}")
+                    failed_videos += 1
+                    continue
+
+        except Exception as e:
+            print(f"   ❌ Query failed with unexpected error: {str(e)}")
+            failed_queries.append({'query': query, 'error': str(e)})
+            continue
+    
+    # Save results - ensure directory exists
+    output_file = 'data/results/streamjacking_detection_results.json'
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
+    try:
+        with open(output_file, 'w') as f:
+            json.dump({
+                'results': all_results,
+                'metadata': {
+                    'total_queries': len(search_queries),
+                    'failed_queries': len(failed_queries),
+                    'processed_videos': processed_videos,
+                    'failed_videos': failed_videos,
+                    'total_detections': len(all_results),
+                    'api_quota_used': api_client.quota_used,
+                    'scan_completed_at': datetime.now().isoformat()
+                },
+                'failed_queries': failed_queries
+            }, f, indent=2)
+        print(f"\n💾 Results saved to {output_file}")
+    except Exception as e:
+        print(f"\n❌ Error saving results to {output_file}: {str(e)}")
+        # Try to save to backup location
+        backup_file = 'streamjacking_results_backup.json'
+        try:
+            with open(backup_file, 'w') as f:
+                json.dump({
+                    'results': all_results,
+                    'metadata': {
+                        'total_queries': len(search_queries),
+                        'failed_queries': len(failed_queries),
+                        'processed_videos': processed_videos,
+                        'failed_videos': failed_videos,
+                        'total_detections': len(all_results),
+                        'api_quota_used': api_client.quota_used,
+                        'scan_completed_at': datetime.now().isoformat()
+                    },
+                    'failed_queries': failed_queries
+                }, f, indent=2)
+            print(f"💾 Results saved to backup location: {backup_file}")
+        except Exception as e2:
+            print(f"❌ Could not save to backup location either: {str(e2)}")
+            print(f"\nResults summary: {len(all_results)} detections found")
+    
+    # Print summary
+    print("\n" + "="*70)
+    print("DETECTION SUMMARY")
+    print("="*70)
+    print(f"Total queries attempted: {len(search_queries)}")
+    print(f"Failed queries: {len(failed_queries)}")
+    print(f"Videos processed successfully: {processed_videos}")
+    print(f"Videos failed to process: {failed_videos}")
+    print(f"Total suspicious detections: {len(all_results)}")
+    print(f"API quota used: {api_client.quota_used} units")
+    
+    if all_results:
+        # Risk distribution
+        critical = sum(1 for r in all_results if r['risk_category'] == 'CRITICAL')
+        high = sum(1 for r in all_results if r['risk_category'] == 'HIGH')
+        medium = sum(1 for r in all_results if r['risk_category'] == 'MEDIUM')
+        low = sum(1 for r in all_results if r['risk_category'] == 'LOW')
+        
+        print(f"\nRisk Distribution:")
+        print(f"  🔴 CRITICAL: {critical}")
+        print(f"  🔴 HIGH:     {high}")
+        print(f"  🟡 MEDIUM:   {medium}")
+        print(f"  🟢 LOW:      {low}")
+        
+        # Most common signals
+        all_signals = []
+        for result in all_results:
+            all_signals.extend(result['video_signals'])
+            all_signals.extend(result['channel_signals'])
+        
+        if all_signals:
+            from collections import Counter
+            signal_counts = Counter(all_signals)
+            print(f"\nMost Common Signals:")
+            for signal, count in signal_counts.most_common(5):
+                print(f"  • {signal}: {count}")
+        
+        # Save high-risk channels separately
+        high_risk = [r for r in all_results if r['risk_category'] in ['CRITICAL', 'HIGH']]
+        if high_risk:
+            high_risk_file = 'data/results/high_risk_channels.json'
+            try:
+                os.makedirs(os.path.dirname(high_risk_file), exist_ok=True)
+                with open(high_risk_file, 'w') as f:
+                    json.dump(high_risk, f, indent=2)
+                print(f"\n💾 High-risk channels saved to {high_risk_file}")
+            except Exception as e:
+                print(f"\n⚠️  Could not save high-risk channels: {str(e)}")
+    
+    print("\n✅ Detection complete!")
+    print("\nNext step: Run analysis")
+    print(f"  python analysis.py {output_file}")
+    print("="*70)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,32 @@
+# API Keys
+.env
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Data files (don't commit large datasets)
+data/results/*.json
+data/analysis/*.json
+!data/analysis/analysis_report.json
+!data/analysis/high_risk_channels.json
+
+# Logs
+logs/*.log
+*.log
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
