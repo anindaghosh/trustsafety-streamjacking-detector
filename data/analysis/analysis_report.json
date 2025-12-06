@@ -1,0 +1,118 @@
+{
+  "analysis_date": "2025-12-02T16:00:08.534749",
+  "dataset_size": 149,
+  "metrics": {
+    "total_detections": 149,
+    "unique_channels": 49,
+    "live_streams": 149,
+    "recorded_videos": 0,
+    "risk_distribution": {
+      "high": 73,
+      "medium": 75,
+      "low": 1
+    },
+    "risk_score_stats": {
+      "mean": 69.54697986577182,
+      "median": 65.0,
+      "stdev": 18.921632682850785,
+      "min": 30.0,
+      "max": 100.0
+    },
+    "video_score_stats": {
+      "mean": 67.75167785234899,
+      "median": 60.0
+    },
+    "channel_score_stats": {
+      "mean": 3.5906040268456376,
+      "median": 0.0
+    }
+  },
+  "signal_analysis": {
+    "video_signals": {
+      "Currently live streaming": 149,
+      "Contains crypto address or suspicious URL": 119,
+      "Suspicious domain(s): t.co": 32,
+      "Suspicious domain(s): bit.ly": 15,
+      "Title impersonation: Exact match: bitcoin": 14,
+      "Multiple scam keywords: eth, investment": 13,
+      "Multiple scam keywords: btc, cryptocurrency": 13,
+      "Title impersonation: Exact match: bitcoin, Exact match: btc": 12,
+      "Title impersonation: Exact match: ethereum, Exact match: eth": 12,
+      "Multiple scam keywords: btc, eth, investment": 11
+    },
+    "channel_signals": {
+      "Crypto-heavy description (5 keywords)": 7,
+      "Name impersonation: Exact match: bitcoin": 5,
+      "Name impersonation: Exact match: btc": 3,
+      "Crypto-heavy description (3 keywords)": 3,
+      "Name impersonation: Exact match: eth": 2,
+      "Handle-name mismatch (possible hijack)": 2,
+      "Old account (6480 days) with minimal content": 2,
+      "Known scam domain(s): t.co": 1,
+      "Name impersonation: Exact match: meta": 1
+    },
+    "signal_categories": {
+      "impersonation": 111,
+      "live_streaming": 149,
+      "malicious_links": 121,
+      "scam_keywords": 80,
+      "restricted_comments": 2,
+      "crypto_indicators": 10,
+      "account_hijacking": 2
+    },
+    "total_video_signals": 626,
+    "total_channel_signals": 26
+  },
+  "patterns": {
+    "by_query": {
+      "Elon Musk crypto live": 4,
+      "Elon Musk Bitcoin live": 4,
+      "Elon Musk Dogecoin": 1,
+      "Elon Musk cryptocurrency": 4,
+      "Tesla crypto live": 10,
+      "Tesla crypto event": 4,
+      "SpaceX Bitcoin live": 10,
+      "SpaceX crypto event": 1,
+      "crypto giveaway live": 5,
+      "Bitcoin giveaway live": 2,
+      "Ethereum giveaway live": 3,
+      "cryptocurrency giveaway": 3,
+      "BTC giveaway live": 3,
+      "ETH giveaway live": 3,
+      "crypto live giveaway": 5,
+      "Bitcoin live": 10,
+      "Bitcoin doubling": 1,
+      "Bitcoin investment live": 10,
+      "send BTC receive double": 3,
+      "BTC live event": 10,
+      "double your Bitcoin": 1,
+      "Ethereum live": 10,
+      "Ethereum giveaway": 2,
+      "Vitalik Buterin ethereum": 1,
+      "Vitalik Buterin live": 1,
+      "Michael Saylor Bitcoin": 8,
+      "CZ Binance live": 1,
+      "Brad Garlinghouse XRP": 1,
+      "Dogecoin live": 8,
+      "Cardano ADA live": 10,
+      "Solana SOL giveaway": 1,
+      "Binance BNB live": 9
+    },
+    "by_risk_level": {
+      "high": 73,
+      "medium": 75,
+      "low": 1
+    },
+    "impersonation_targets": {
+      "cathie wood": 6,
+      "btc": 46,
+      "spacex": 10,
+      "bitcoin": 19,
+      "eth": 19,
+      "ripple": 1,
+      "cardano": 5,
+      "binance": 4,
+      "meta": 1
+    }
+  }
+}

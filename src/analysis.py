@@ -304,10 +304,12 @@ def main():
     analyzer.print_report()
     
     # Generate JSON report
-    analyzer.generate_report('/data/outputs/analysis_report.json')
+    import os
+    os.makedirs('data/analysis', exist_ok=True)
+    analyzer.generate_report('data/analysis/analysis_report.json')
     
     # Export high-risk channels
-    analyzer.export_high_risk_channels('/data/outputs/high_risk_channels.json')
+    analyzer.export_high_risk_channels('data/analysis/high_risk_channels.json')
     
     print("\n✅ Analysis complete!")
 

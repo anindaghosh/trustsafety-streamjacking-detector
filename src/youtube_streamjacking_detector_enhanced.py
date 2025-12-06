@@ -18,6 +18,9 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Set, Tuple
 from dataclasses import dataclass, field
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     from googleapiclient.discovery import build
@@ -252,10 +255,56 @@ class EnhancedStreamJackingDetector:
     ]
     
     # NEW: Known scam domains (expand this list)
+    # Removed common shorteners (bit.ly, t.co) to reduce false positives
     KNOWN_SCAM_DOMAINS = [
-        # Add known scam domains here
-        'bit.ly', 'tinyurl.com', 'goo.gl', 't.co'  # URL shorteners (suspicious in this context)
+        'telegra.ph', 'tiny.cc', 'is.gd', # Less common shorteners often used by scammers
+        'gift', 'bonus', 'promo' # Keywords in domains
     ]
+
+    # NEW: Trusted channels (whitelist) to prevent false positives
+    TRUSTED_CHANNELS = [
+        'UCUMZ7gohGI9pU35BDk8lfVA', # Bloomberg Markets and Finance
+        'UCEAZeUIeJs0IjQiqTCdVSIg', # Yahoo Finance
+        'UC4R8DWoMoI7CAwX8_LjQHig', # LiveNOW from FOX
+        'UCW39zufHfsuGgpLviKh297Q', # DW News
+        'UCvJJ_dzjViJCoLf5uKUTwoA', # CNBC
+        'UCBi2mrWuNuyYy4gbM6fU18Q', # ABC News
+        'UCXIJgqnII2ZOINSWNOGFThg', # Fox News
+        'UC16niRr50-MSBwiO3YDb3RA', # BBC News
+        'UChOcfkM4395an2d_i539-HQ', # CoinDesk
+        'UCFwMITSkc1Fms6PoJoh1OUQ', # LabPadre Space
+        'UCWCEYVwSqr7Epo6sSCfUgiw', # MIRROR NOW
+        'UC9-uZt8l6LaZUKuuEz6VF6w', # Day Trading with Matt
+    ]
+
+    # NEW: Educational/News intent keywords (reduces risk)
+    EDUCATIONAL_KEYWORDS = [
+        'analysis', 'market update', 'trading strategy', 'technical analysis',
+        'chart', 'forecast', 'prediction', 'news', 'interview', 'documentary',
+        'review', 'tutorial', 'explained', 'breakdown', 'discussion', 'panel',
+        'conference', 'summit', 'podcast'
+    ]
+    
+    # NEW: Topic categories mapping (Wikipedia URL suffix -> Category)
+    TOPIC_MAPPING = {
+        'Video_game_culture': 'Gaming',
+        'Action_game': 'Gaming',
+        'Role-playing_video_game': 'Gaming',
+        'Strategy_video_game': 'Gaming',
+        'Music': 'Music',
+        'Pop_music': 'Music',
+        'Rock_music': 'Music',
+        'Hip_hop_music': 'Music',
+        'Film': 'Entertainment',
+        'Entertainment': 'Entertainment',
+        'Lifestyle_(sociology)': 'Lifestyle',
+        'Fashion': 'Lifestyle',
+        'Beauty': 'Lifestyle',
+        'Food': 'Lifestyle',
+        'Technology': 'Tech',
+        'Society': 'Society',
+        'Knowledge': 'Education'
+    }
     
     def __init__(self, api_client: EnhancedYouTubeAPIClient):
         self.api = api_client
@@ -349,10 +398,26 @@ class EnhancedStreamJackingDetector:
         
         return len(found_domains) > 0, found_domains
     
+    def _map_topic_url(self, url: str) -> str:
+        """Map Wikipedia topic URL to simple category"""
+        if not url:
+            return 'Unknown'
+        
+        # Extract the last part of the URL
+        topic = url.split('/')[-1]
+        return self.TOPIC_MAPPING.get(topic, topic)
+
     def analyze_channel_enhanced(self, channel: EnhancedChannelMetadata) -> EnhancedChannelMetadata:
         """Enhanced channel analysis with composite scoring"""
         signals = []
         risk_score = 0.0
+        
+        # NEW: Whitelist check
+        if channel.channel_id in self.TRUSTED_CHANNELS:
+            channel.suspicious_signals = ["Trusted Channel (Whitelisted)"]
+            channel.risk_score = 0.0
+            channel.risk_category = "LOW"
+            return channel
         
         all_targets = self.CRYPTO_FIGURES + self.TECH_BRANDS + self.CRYPTO_PROJECTS
         
@@ -398,6 +463,17 @@ class EnhancedStreamJackingDetector:
         if has_scam_domain:
             signals.append(f"Known scam domain(s): {', '.join(domains)}")
             risk_score += 15.0
+            
+        # Signal 8: Topic Consistency / Hijack Detection (NEW - weight: 40)
+        # Check if a non-tech/finance channel is posting crypto content
+        channel_topics = [self._map_topic_url(t) for t in channel.topic_categories]
+        safe_topics = {'Gaming', 'Music', 'Entertainment', 'Lifestyle'}
+        
+        # If channel has ONLY safe topics (no Tech/Society/Knowledge)
+        if channel_topics and any(t in safe_topics for t in channel_topics) and \
+           not any(t in {'Tech', 'Society', 'Knowledge'} for t in channel_topics):
+            signals.append(f"Topic Mismatch (Possible Hijack): {', '.join(channel_topics)} channel streaming crypto")
+            risk_score += 40.0
         
         channel.suspicious_signals = signals
         channel.risk_score = min(risk_score, 100.0)
@@ -411,11 +487,31 @@ class EnhancedStreamJackingDetector:
         
         all_targets = self.CRYPTO_FIGURES + self.TECH_BRANDS + self.CRYPTO_PROJECTS
         
+        # NEW: Intent Classification
+        title_lower = video.title.lower()
+        desc_lower = video.description.lower()
+        combined = title_lower + ' ' + desc_lower
+        
+        educational_score = sum(1 for kw in self.EDUCATIONAL_KEYWORDS if kw in combined)
+        scam_score = sum(1 for kw in self.SCAM_KEYWORDS if kw in combined)
+        
+        is_educational = educational_score > scam_score
         # Signal 1: Title impersonation (weight: 25)
+        # REFINED: Only flag if exact match is NOT just a subject mention
+        # e.g. "SpaceX Launch" is fine, but "SpaceX Official" is suspicious
         title_impersonations = self.detect_character_substitution(video.title, all_targets)
         if title_impersonations:
-            signals.append(f"Title impersonation: {', '.join(title_impersonations)}")
-            risk_score += 25.0
+            # Check if it's likely just a subject mention
+            is_subject_mention = False
+            for imp in title_impersonations:
+                if "Exact match" in imp:
+                    # If it's an exact match, check for "Official" or "Live" claims to confirm impersonation
+                    if not any(kw in video.title.lower() for kw in ['official', 'giveaway', 'gift']):
+                        is_subject_mention = True
+            
+            if not is_subject_mention:
+                signals.append(f"Title impersonation: {', '.join(title_impersonations)}")
+                risk_score += 25.0
         
         # Signal 2: High-confidence scam phrases (NEW - weight: 35)
         has_scam_phrase, phrases = self.detect_high_confidence_scam_phrases(video.title + ' ' + video.description)
@@ -424,10 +520,6 @@ class EnhancedStreamJackingDetector:
             risk_score += 35.0
         
         # Signal 3: Scam keywords (weight: 15)
-        title_lower = video.title.lower()
-        desc_lower = video.description.lower()
-        combined = title_lower + ' ' + desc_lower
-        
         scam_matches = [kw for kw in self.SCAM_KEYWORDS if kw in combined]
         if len(scam_matches) >= 2:
             signals.append(f"Multiple scam keywords: {', '.join(scam_matches[:3])}")
@@ -436,8 +528,10 @@ class EnhancedStreamJackingDetector:
         # Signal 4: Urgency language (NEW - weight: 10)
         has_urgency, urgency_words = self.detect_urgency_language(combined)
         if has_urgency and len(urgency_words) >= 2:
-            signals.append(f"Urgency language: {', '.join(urgency_words[:2])}")
-            risk_score += 10.0
+            # Only penalize urgency if not educational
+            if not is_educational:
+                signals.append(f"Urgency language: {', '.join(urgency_words[:2])}")
+                risk_score += 10.0
         
         # Signal 5: Crypto addresses/URLs (weight: 25)
         if self._contains_crypto_address(video.description) or self._contains_suspicious_url(video.description):
@@ -455,7 +549,9 @@ class EnhancedStreamJackingDetector:
             risk_score += 5.0
         
         # Signal 8: Engagement anomalies (weight: 15)
-        if video.view_count > 1000 and video.comment_count < 10:
+        # REFINED: Exception for 24/7 cams
+        is_247_cam = any(kw in video.title.lower() for kw in ['cam', '24/7', 'sentinel', 'rover', 'live view'])
+        if video.view_count > 1000 and video.comment_count < 10 and not is_247_cam:
             signals.append(f"High views ({video.view_count:,}) but very low engagement")
             risk_score += 15.0
         
@@ -464,12 +560,16 @@ class EnhancedStreamJackingDetector:
         if has_scam_domain:
             signals.append(f"Suspicious domain(s): {', '.join(domains)}")
             risk_score += 15.0
+            
+        # NEW: Educational Intent Bonus
+        if is_educational:
+            signals.append(f"Educational/News intent detected (Risk reduced)")
+            risk_score = max(0.0, risk_score - 30.0)
         
         video.suspicious_signals = signals
         video.risk_score = min(risk_score, 100.0)
         
         return video
-    
     def apply_composite_rules(
         self,
         video: EnhancedVideoMetadata,
@@ -479,6 +579,16 @@ class EnhancedStreamJackingDetector:
         NEW: Apply composite detection rules for categorization
         Based on teammate's document section 6
         """
+        # NEW: Whitelist check
+        if channel and channel.channel_id in self.TRUSTED_CHANNELS:
+             return {
+                'risk_category': "LOW",
+                'confidence_score': 1.0,
+                'total_risk_score': 0.0,
+                'critical_checks_passed': 0,
+                'meets_critical_criteria': False
+            }
+
         # Calculate combined risk
         total_risk = video.risk_score
         if channel:
@@ -543,9 +653,9 @@ class EnhancedStreamJackingDetector:
             if re.search(pattern, text):
                 return True
         return False
-    
     def _contains_suspicious_url(self, text: str) -> bool:
         """Check for suspicious URLs"""
+        # Only flag if combined with scam keywords in the same text block
         suspicious_patterns = [
             r'bit\.ly',
             r'tinyurl',
@@ -554,14 +664,15 @@ class EnhancedStreamJackingDetector:
             r'ow\.ly',
         ]
         
-        for pattern in suspicious_patterns:
-            if re.search(pattern, text, re.IGNORECASE):
-                return True
+        text_lower = text.lower()
+        has_shortener = any(re.search(p, text, re.IGNORECASE) for p in suspicious_patterns)
         
-        # Check for multiple URLs
-        url_pattern = r'https?://[^\s]+'
-        urls = re.findall(url_pattern, text)
-        return len(urls) >= 2
+        if not has_shortener:
+            return False
+            
+        # Only return True if shortener is present AND scam keywords are nearby
+        scam_context = any(kw in text_lower for kw in ['giveaway', 'double', 'free', 'bonus', 'elon', 'tesla'])
+        return scam_context
 
 
 def main():

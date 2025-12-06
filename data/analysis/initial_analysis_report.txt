@@ -1,0 +1,75 @@
+Loading results from src/data/results/streamjacking_detection_results.json...
+
+================================================================================
+STREAM-JACKING DETECTION ANALYSIS REPORT
+================================================================================
+
+📊 DATASET OVERVIEW
+────────────────────────────────────────────────────────────────────────────────
+Total Detections:     149
+Unique Channels:      49
+Live Streams:         149
+Recorded Videos:      0
+
+⚠️  RISK DISTRIBUTION
+────────────────────────────────────────────────────────────────────────────────
+🔴 High Risk (≥70):    73 (49.0%)
+🟡 Medium Risk (40-69):  75 (50.3%)
+🟢 Low Risk (30-39):    1 (0.7%)
+
+📈 RISK SCORE STATISTICS
+────────────────────────────────────────────────────────────────────────────────
+Mean Risk Score:      69.55
+Median Risk Score:    65.00
+Std Deviation:        18.92
+Range:                30.0 - 100.0
+
+🔍 TOP DETECTION SIGNALS
+────────────────────────────────────────────────────────────────────────────────
+
+Video Signals:
+  • Currently live streaming: 149
+  • Contains crypto address or suspicious URL: 119
+  • Suspicious domain(s): t.co: 32
+  • Suspicious domain(s): bit.ly: 15
+  • Title impersonation: Exact match: bitcoin: 14
+
+Channel Signals:
+  • Crypto-heavy description (5 keywords): 7
+  • Name impersonation: Exact match: bitcoin: 5
+  • Name impersonation: Exact match: btc: 3
+  • Crypto-heavy description (3 keywords): 3
+  • Name impersonation: Exact match: eth: 2
+
+Signal Categories:
+  • Impersonation: 111
+  • Live Streaming: 149
+  • Malicious Links: 121
+  • Scam Keywords: 80
+  • Restricted Comments: 2
+  • Crypto Indicators: 10
+  • Account Hijacking: 2
+
+🎯 ATTACK PATTERNS
+────────────────────────────────────────────────────────────────────────────────
+
+Most Impersonated Targets:
+  • btc: 46
+  • bitcoin: 19
+  • eth: 19
+  • spacex: 10
+  • cathie wood: 6
+
+Detections by Search Query:
+  • Tesla crypto live: 10
+  • SpaceX Bitcoin live: 10
+  • Bitcoin live: 10
+  • Bitcoin investment live: 10
+  • BTC live event: 10
+
+================================================================================
+Analysis report saved to data/analysis/analysis_report.json
+
+Exported 73 high-risk channels to data/analysis/high_risk_channels.json
+
+✅ Analysis complete!
