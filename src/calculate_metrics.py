@@ -4,8 +4,15 @@ Calculate precision, recall, F1 score from ground truth validation
 
 import json
 import csv
+import sys
 from typing import Dict, List, Tuple
 from collections import defaultdict
+
+
+def load_validated_results(filepath: str) -> List[Dict]:
+    """Load validated results from interactive validator JSON output"""
+    with open(filepath, 'r') as f:
+        return json.load(f)
 
 
 def load_ground_truth_from_csv(filepath: str) -> List[Dict]:
@@ -217,55 +224,129 @@ def print_metrics_report(ground_truth: List[Dict]):
     print("\n" + "="*80)
 
 
+def calculate_metrics_from_validator(validated_data: List[Dict]) -> Dict:
+    """Calculate metrics from interactive validator output"""
+    tp = fp = uncertain = skipped = 0
+    scam_types = defaultdict(int)
+    by_risk = defaultdict(lambda: {'tp': 0, 'fp': 0, 'uncertain': 0})
+    
+    for item in validated_data:
+        val = item.get('validation', {})
+        label = val.get('label')
+        risk_cat = item.get('risk_category', 'UNKNOWN')
+        
+        if label == 'true_positive':
+            tp += 1
+            by_risk[risk_cat]['tp'] += 1
+            scam_type = val.get('scam_type', 'unknown')
+            scam_types[scam_type] += 1
+        elif label == 'false_positive':
+            fp += 1
+            by_risk[risk_cat]['fp'] += 1
+        elif label == 'uncertain':
+            uncertain += 1
+            by_risk[risk_cat]['uncertain'] += 1
+        elif label == 'skipped':
+            skipped += 1
+    
+    total_labeled = tp + fp + uncertain
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0
+    
+    return {
+        'overall': {
+            'true_positives': tp,
+            'false_positives': fp,
+            'uncertain': uncertain,
+            'skipped': skipped,
+            'total_labeled': total_labeled,
+            'precision': precision
+        },
+        'by_risk_category': dict(by_risk),
+        'scam_types': dict(scam_types)
+    }
+
+
 def main():
     """Calculate validation metrics"""
-    import sys
     import os
     
     if len(sys.argv) < 2:
         print("Usage: python calculate_metrics.py <validation_file.csv or .json>")
+        print("\nSupported formats:")
+        print("  1. Interactive validator output: *_validated.json")
+        print("  2. Manual CSV: validation_sample.csv")
+        print("  3. Manual JSON: validation_sample.json")
         return
     
     validation_file = sys.argv[1]
     
-    print(f"Loading ground truth from {validation_file}...")
+    if not os.path.exists(validation_file):
+        print(f"Error: File not found: {validation_file}")
+        return
     
-    # Load based on file extension
-    if validation_file.endswith('.csv'):
+    print(f"Loading validation data from {validation_file}...")
+    
+    # Determine file type and load
+    if '_validated.json' in validation_file:
+        # Interactive validator output
+        validated_data = load_validated_results(validation_file)
+        print(f"Loaded {len(validated_data)} validated detections (interactive validator format)")
+        
+        metrics = calculate_metrics_from_validator(validated_data)
+        
+        print("\n" + "="*80)
+        print("📊 VALIDATION METRICS")
+        print("="*80)
+        
+        overall = metrics['overall']
+        print(f"\n🎯 OVERALL PERFORMANCE:")
+        print(f"   Total Labeled: {overall['total_labeled']}")
+        print(f"   ✅ True Positives:  {overall['true_positives']}")
+        print(f"   ❌ False Positives: {overall['false_positives']}")
+        print(f"   ❓ Uncertain:       {overall['uncertain']}")
+        print(f"   ⏭️  Skipped:         {overall['skipped']}")
+        print(f"\n📈 PRECISION: {overall['precision']:.2%}")
+        
+        if metrics['by_risk_category']:
+            print(f"\n📊 BY RISK CATEGORY:")
+            for risk_cat, counts in metrics['by_risk_category'].items():
+                total = counts['tp'] + counts['fp'] + counts['uncertain']
+                if total > 0:
+                    prec = counts['tp'] / (counts['tp'] + counts['fp']) if (counts['tp'] + counts['fp']) > 0 else 0
+                    print(f"   {risk_cat}: Precision={prec:.2%} (TP:{counts['tp']}, FP:{counts['fp']})")
+        
+        if metrics['scam_types']:
+            print(f"\n🎯 SCAM TYPES:")
+            for scam_type, count in sorted(metrics['scam_types'].items(), key=lambda x: x[1], reverse=True):
+                print(f"   • {scam_type}: {count}")
+        
+        print("="*80)
+        
+        # Save metrics
+        output_file = validation_file.replace('_validated.json', '_metrics.json')
+        with open(output_file, 'w') as f:
+            json.dump(metrics, f, indent=2)
+        print(f"\n💾 Metrics saved to: {output_file}")
+        
+    elif validation_file.endswith('.csv'):
         ground_truth = load_ground_truth_from_csv(validation_file)
+        if not ground_truth:
+            print("Error: No labeled data found.")
+            return
+        print(f"Loaded {len(ground_truth)} labeled samples")
+        print_metrics_report(ground_truth)
+        
     elif validation_file.endswith('.json'):
         ground_truth = load_ground_truth_from_json(validation_file)
+        if not ground_truth:
+            print("Error: No labeled data found.")
+            return
+        print(f"Loaded {len(ground_truth)} labeled samples")
+        print_metrics_report(ground_truth)
+    
     else:
         print("Error: File must be .csv or .json")
         return
-    
-    if not ground_truth:
-        print("Error: No labeled data found. Make sure you've filled in the 'Ground Truth Label' column.")
-        return
-    
-    print(f"Loaded {len(ground_truth)} labeled samples")
-    
-    # Print metrics report
-    print_metrics_report(ground_truth)
-    
-    # Save metrics to JSON
-    output_file = 'data/analysis/validation_metrics.json'
-    os.makedirs(os.path.dirname(output_file), exist_ok=True)
-    
-    metrics_data = {
-        'total_samples': len(ground_truth),
-        'metrics_at_thresholds': [
-            calculate_metrics_at_threshold(ground_truth, t) 
-            for t in [50, 60, 70, 80, 90]
-        ],
-        'false_positive_analysis': analyze_false_positives(ground_truth),
-        'false_negative_analysis': analyze_false_negatives(ground_truth)
-    }
-    
-    with open(output_file, 'w') as f:
-        json.dump(metrics_data, f, indent=2)
-    
-    print(f"\n✅ Metrics saved to {output_file}")
 
 
 if __name__ == "__main__":

@@ -29,6 +29,15 @@ except ImportError:
     print("Please install: pip install google-api-python-client --break-system-packages")
     exit(1)
 
+try:
+    from pymongo import MongoClient
+    from pymongo.errors import ConnectionFailure, OperationFailure
+    MONGODB_AVAILABLE = True
+except ImportError:
+    MONGODB_AVAILABLE = False
+    print("⚠️  Warning: pymongo not installed. MongoDB storage disabled.")
+    print("   Install with: pip install pymongo")
+
 
 @dataclass
 class EnhancedChannelMetadata:
@@ -83,6 +92,131 @@ class EnhancedVideoMetadata:
     suspicious_signals: List[str] = field(default_factory=list)
     risk_score: float = 0.0
     confidence_score: float = 0.0
+
+
+class MongoDBManager:
+    """Manages MongoDB connection and upsert operations for detection results"""
+    
+    def __init__(self, connection_string: Optional[str] = None, database_name: str = 'streamjacking_detector'):
+        """
+        Initialize MongoDB connection
+        
+        Args:
+            connection_string: MongoDB connection URI (defaults to env var MONGODB_URI or localhost)
+            database_name: Name of database to use
+        """
+        if not MONGODB_AVAILABLE:
+            self.client = None
+            self.db = None
+            self.collection = None
+            return
+            
+        try:
+            # Get connection string from parameter, env var, or default to localhost
+            conn_str = connection_string or os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/')
+            
+            self.client = MongoClient(conn_str, serverSelectionTimeoutMS=5000)
+            # Test connection
+            self.client.admin.command('ping')
+            
+            self.db = self.client[database_name]
+            self.collection = self.db['detection_results_v2']
+            
+            # Create indexes for efficient querying
+            self.collection.create_index('video_id', unique=True)
+            self.collection.create_index('channel_id')
+            self.collection.create_index('detected_at')
+            self.collection.create_index('risk_category')
+            self.collection.create_index([('video_id', 1), ('detected_at', -1)])
+            
+            print("✅ MongoDB connected successfully")
+            
+        except (ConnectionFailure, OperationFailure) as e:
+            print(f"⚠️  MongoDB connection failed: {e}")
+            print("   Detections will only be saved to JSON file")
+            self.client = None
+            self.db = None
+            self.collection = None
+    
+    def upsert_detection(self, detection: Dict) -> bool:
+        """
+        Upsert a detection record (insert or update if video_id exists)
+        
+        Args:
+            detection: Detection dictionary with video_id as unique identifier
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        if self.collection is None:
+            return False
+            
+        try:
+            # Add first_detected timestamp if new record
+            detection_copy = detection.copy()
+            
+            # Use video_id as unique identifier
+            result = self.collection.update_one(
+                {'video_id': detection['video_id']},
+                {
+                    '$set': detection_copy,
+                    '$setOnInsert': {'first_detected': detection['detected_at']},
+                    '$inc': {'detection_count': 1}
+                },
+                upsert=True
+            )
+            
+            return True
+            
+        except Exception as e:
+            print(f"   ⚠️  MongoDB upsert failed: {e}")
+            return False
+    
+    def bulk_upsert_detections(self, detections: List[Dict]) -> int:
+        """
+        Bulk upsert multiple detections
+        
+        Args:
+            detections: List of detection dictionaries
+            
+        Returns:
+            Number of successfully upserted records
+        """
+        if not self.collection or not detections:
+            return 0
+            
+        success_count = 0
+        for detection in detections:
+            if self.upsert_detection(detection):
+                success_count += 1
+        
+        return success_count
+    
+    def get_detection_stats(self) -> Dict:
+        """Get statistics about stored detections"""
+        if self.collection is None:
+            return {}
+            
+        try:
+            total = self.collection.count_documents({})
+            critical = self.collection.count_documents({'risk_category': 'CRITICAL'})
+            high = self.collection.count_documents({'risk_category': 'HIGH'})
+            medium = self.collection.count_documents({'risk_category': 'MEDIUM'})
+            
+            return {
+                'total_detections': total,
+                'critical': critical,
+                'high': high,
+                'medium': medium
+            }
+        except Exception as e:
+            print(f"   ⚠️  Error fetching stats: {e}")
+            return {}
+    
+    def close(self):
+        """Close MongoDB connection"""
+        if self.client:
+            self.client.close()
 
 
 class EnhancedYouTubeAPIClient:
@@ -229,8 +363,11 @@ class EnhancedStreamJackingDetector:
     
     CRYPTO_PROJECTS = [
         'ethereum', 'bitcoin', 'binance', 'coinbase', 'ripple', 'cardano',
-        'solana', 'polygon', 'eth', 'btc'
+        'solana', 'polygon'
     ]
+    
+    # Short crypto terms that need whole-word matching to avoid false positives
+    SHORT_CRYPTO_TERMS = ['eth', 'btc', 'bnb', 'ada', 'sol', 'xrp']
     
     # Scam keywords
     SCAM_KEYWORDS = [
@@ -255,11 +392,13 @@ class EnhancedStreamJackingDetector:
     ]
     
     # NEW: Known scam domains (expand this list)
-    # Removed common shorteners (bit.ly, t.co) to reduce false positives
+    # Only flag if combined with other signals - these are too generic alone
     KNOWN_SCAM_DOMAINS = [
-        'telegra.ph', 'tiny.cc', 'is.gd', # Less common shorteners often used by scammers
-        'gift', 'bonus', 'promo' # Keywords in domains
+        'telegra.ph', 'tiny.cc', 'is.gd' # Less common shorteners often used by scammers
     ]
+    
+    # Generic promotional domains - only flag if combined with impersonation
+    PROMO_DOMAINS = ['gift', 'bonus', 'promo']
 
     # NEW: Trusted channels (whitelist) to prevent false positives
     TRUSTED_CHANNELS = [
@@ -282,7 +421,14 @@ class EnhancedStreamJackingDetector:
         'analysis', 'market update', 'trading strategy', 'technical analysis',
         'chart', 'forecast', 'prediction', 'news', 'interview', 'documentary',
         'review', 'tutorial', 'explained', 'breakdown', 'discussion', 'panel',
-        'conference', 'summit', 'podcast'
+        'conference', 'summit', 'podcast', 'signals', 'liquidation', 'watchlist',
+        'trader', 'trading', 'ta ', 'swing', 'day trading', 'price action'
+    ]
+    
+    # Crypto-native channel indicators (channels naturally focused on crypto)
+    CRYPTO_NATIVE_INDICATORS = [
+        'crypto', 'bitcoin', 'ethereum', 'blockchain', 'trading', 'trader',
+        'defi', 'nft', 'altcoin', 'hodl'
     ]
     
     # NEW: Topic categories mapping (Wikipedia URL suffix -> Category)
@@ -310,7 +456,7 @@ class EnhancedStreamJackingDetector:
         self.api = api_client
         
     def detect_character_substitution(self, text: str, target_names: List[str]) -> List[str]:
-        """Enhanced character substitution detection"""
+        """Enhanced character substitution detection with whole-word matching for short terms"""
         detections = []
         text_lower = text.lower()
         
@@ -327,6 +473,14 @@ class EnhancedStreamJackingDetector:
                 if variation in text_lower:
                     detections.append(f"Substitution impersonation: {target}")
                     break
+        
+        # Check short crypto terms with whole-word boundary
+        import re
+        for term in self.SHORT_CRYPTO_TERMS:
+            # Match only as complete word (surrounded by non-alphanumeric)
+            pattern = r'\b' + re.escape(term) + r'\b'
+            if re.search(pattern, text_lower, re.IGNORECASE):
+                detections.append(f"Exact match: {term}")
         
         return detections
     
@@ -459,19 +613,26 @@ class EnhancedStreamJackingDetector:
             risk_score += 10.0
         
         # Signal 7: Known scam domains (NEW - weight: 15)
+        # Only flag generic promo domains if there's also impersonation
         has_scam_domain, domains = self.check_known_scam_domains(channel.description)
+        has_promo_domain = any(d in channel.description.lower() for d in self.PROMO_DOMAINS)
+        
         if has_scam_domain:
             signals.append(f"Known scam domain(s): {', '.join(domains)}")
             risk_score += 15.0
+        elif has_promo_domain and impersonations:  # Only flag promo if also impersonating
+            signals.append(f"Promotional domain with impersonation")
+            risk_score += 10.0
             
         # Signal 8: Topic Consistency / Hijack Detection (NEW - weight: 40)
-        # Check if a non-tech/finance channel is posting crypto content
+        # Check if a non-tech/finance channel is posting crypto content WITH impersonation
         channel_topics = [self._map_topic_url(t) for t in channel.topic_categories]
         safe_topics = {'Gaming', 'Music', 'Entertainment', 'Lifestyle'}
         
-        # If channel has ONLY safe topics (no Tech/Society/Knowledge)
+        # Only flag topic mismatch if there's ALSO impersonation (indicates hijack vs natural giveaway)
         if channel_topics and any(t in safe_topics for t in channel_topics) and \
-           not any(t in {'Tech', 'Society', 'Knowledge'} for t in channel_topics):
+           not any(t in {'Tech', 'Society', 'Knowledge'} for t in channel_topics) and \
+           impersonations:  # CRITICAL: Require impersonation to confirm hijack
             signals.append(f"Topic Mismatch (Possible Hijack): {', '.join(channel_topics)} channel streaming crypto")
             risk_score += 40.0
         
@@ -491,11 +652,15 @@ class EnhancedStreamJackingDetector:
         title_lower = video.title.lower()
         desc_lower = video.description.lower()
         combined = title_lower + ' ' + desc_lower
+        channel_lower = video.channel_title.lower()
         
         educational_score = sum(1 for kw in self.EDUCATIONAL_KEYWORDS if kw in combined)
         scam_score = sum(1 for kw in self.SCAM_KEYWORDS if kw in combined)
         
-        is_educational = educational_score > scam_score
+        # Check if channel is crypto-native (naturally uses crypto terms)
+        is_crypto_native = any(indicator in channel_lower for indicator in self.CRYPTO_NATIVE_INDICATORS)
+        
+        is_educational = educational_score > scam_score or is_crypto_native
         # Signal 1: Title impersonation (weight: 25)
         # REFINED: Only flag if exact match is NOT just a subject mention
         # e.g. "SpaceX Launch" is fine, but "SpaceX Official" is suspicious
@@ -520,7 +685,12 @@ class EnhancedStreamJackingDetector:
             risk_score += 35.0
         
         # Signal 3: Scam keywords (weight: 15)
+        # Filter out 'btc'/'eth' if channel is crypto-native
         scam_matches = [kw for kw in self.SCAM_KEYWORDS if kw in combined]
+        if is_crypto_native:
+            # Remove generic crypto terms for crypto-native channels
+            scam_matches = [kw for kw in scam_matches if kw not in ['btc', 'eth', 'cryptocurrency']]
+        
         if len(scam_matches) >= 2:
             signals.append(f"Multiple scam keywords: {', '.join(scam_matches[:3])}")
             risk_score += 15.0
@@ -557,9 +727,14 @@ class EnhancedStreamJackingDetector:
         
         # Signal 9: Known scam domains (NEW - weight: 15)
         has_scam_domain, domains = self.check_known_scam_domains(video.description)
+        has_promo_domain = any(d in video.description.lower() for d in self.PROMO_DOMAINS)
+        
         if has_scam_domain:
             signals.append(f"Suspicious domain(s): {', '.join(domains)}")
             risk_score += 15.0
+        elif has_promo_domain and not is_crypto_native:  # Only flag promo for non-crypto channels
+            signals.append(f"Promotional domain (unusual for channel type)")
+            risk_score += 10.0
             
         # NEW: Educational Intent Bonus
         if is_educational:
@@ -693,6 +868,9 @@ def main():
     api_client = EnhancedYouTubeAPIClient(api_key)
     detector = EnhancedStreamJackingDetector(api_client)
     
+    # Initialize MongoDB (optional - will gracefully degrade if unavailable)
+    mongo_manager = MongoDBManager(database_name='streamjacking') if MONGODB_AVAILABLE else None
+    
     print("\n✅ Enhanced detector initialized (16 signals)")
     print("\nNew features vs original:")
     print("  • Urgency language detection")
@@ -777,6 +955,7 @@ def main():
             # Search for live streams
             try:
                 livestreams = api_client.search_livestreams(query, max_results=10)
+                
                 print(f"   Found {len(livestreams)} live streams")
             except Exception as e:
                 print(f"   ⚠️  Search failed: {str(e)}")
@@ -865,6 +1044,10 @@ def main():
                         }
 
                         all_results.append(result)
+                        
+                        # Upsert to MongoDB
+                        if mongo_manager:
+                            mongo_manager.upsert_detection(result)
 
                         # Show in terminal
                         risk_emoji = "🔴" if composite['risk_category'] in ['CRITICAL', 'HIGH'] else "🟡" if composite['risk_category'] == 'MEDIUM' else "🟢"
@@ -978,6 +1161,19 @@ def main():
                 print(f"\n💾 High-risk channels saved to {high_risk_file}")
             except Exception as e:
                 print(f"\n⚠️  Could not save high-risk channels: {str(e)}")
+    
+    # Print MongoDB stats if available
+    if mongo_manager:
+        print("\n" + "="*70)
+        print("MONGODB STORAGE")
+        print("="*70)
+        stats = mongo_manager.get_detection_stats()
+        if stats:
+            print(f"Total detections in database: {stats.get('total_detections', 0)}")
+            print(f"  🔴 CRITICAL: {stats.get('critical', 0)}")
+            print(f"  🔴 HIGH:     {stats.get('high', 0)}")
+            print(f"  🟡 MEDIUM:   {stats.get('medium', 0)}")
+        mongo_manager.close()
     
     print("\n✅ Detection complete!")
     print("\nNext step: Run analysis")
