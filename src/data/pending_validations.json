@@ -1,0 +1,976 @@
+[{
+  "_id": {
+    "$oid": "6934c7e1274f411ced1eacfe"
+  },
+  "video_id": "b4EIXN-t9Vk",
+  "channel_id": "UCniTDXBx66cJjONU7OHYtHQ",
+  "channel_risk_score": 20,
+  "channel_signals": [
+    "Old account (6509 days) with minimal content"
+  ],
+  "channel_title": "KeysiFightingMethod",
+  "channel_url": "https://youtube.com/channel/UCniTDXBx66cJjONU7OHYtHQ",
+  "confidence_score": 0.3,
+  "detected_at": "2025-12-07T16:58:58.089630",
+  "detection_count": 10,
+  "first_detected": "2025-12-06T19:18:41.492442",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "crypto giveaway live",
+  "total_risk_score": 30,
+  "video_risk_score": 20,
+  "video_signals": [
+    "Currently live streaming",
+    "High views (671,831) but very low engagement"
+  ],
+  "video_title": "🔴 Giving 150,000 Robux to Every Viewer LIVE! (Roblox Robux Live) Free Robux Giveaway",
+  "video_url": "https://youtube.com/watch?v=b4EIXN-t9Vk"
+},
+{
+  "_id": {
+    "$oid": "6934c7e2274f411ced1eacff"
+  },
+  "video_id": "4UmqWMJ-s7c",
+  "channel_id": "UCUP4kKVNv5suybK23LvUbCw",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "NanoCommunity",
+  "channel_url": "https://youtube.com/channel/UCUP4kKVNv5suybK23LvUbCw",
+  "confidence_score": 0.55,
+  "detected_at": "2025-12-07T17:00:33.368222",
+  "detection_count": 13,
+  "first_detected": "2025-12-06T19:18:42.126088",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Crypto.com giveaway",
+  "total_risk_score": 45,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, send, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "Nano Crypto Giveaway (every 90 seconds) - 10 year anniversary",
+  "video_url": "https://youtube.com/watch?v=4UmqWMJ-s7c"
+},
+{
+  "_id": {
+    "$oid": "6934c7e4274f411ced1ead00"
+  },
+  "video_id": "ZgPE4FJzXSE",
+  "channel_id": "UCZBRF0mGPq9IwwKlI39teYQ",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "GalaxyGod",
+  "channel_url": "https://youtube.com/channel/UCZBRF0mGPq9IwwKlI39teYQ",
+  "confidence_score": 0.3,
+  "detected_at": "2025-12-07T17:00:35.999357",
+  "detection_count": 13,
+  "first_detected": "2025-12-06T19:18:44.655192",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Crypto.com giveaway",
+  "total_risk_score": 30,
+  "video_risk_score": 30,
+  "video_signals": [
+    "Currently live streaming",
+    "High views (940,294) but very low engagement",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "🔴 STEAL A BRAINROT GIVEAWAY LIVE! | LOS COMBINASIONAS GIVEAWAY TO VIEWERS! (Roblox)",
+  "video_url": "https://youtube.com/watch?v=ZgPE4FJzXSE"
+},
+{
+  "_id": {
+    "$oid": "6934c7e6274f411ced1ead01"
+  },
+  "video_id": "9e4Voxa4ekw",
+  "channel_id": "UCJDTm3vlkx4ttoufWj0QGnQ",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "OPIE THE ANIMAL THE GUTTER PUNK KING OTAC",
+  "channel_url": "https://youtube.com/channel/UCJDTm3vlkx4ttoufWj0QGnQ",
+  "confidence_score": 0.65,
+  "detected_at": "2025-12-07T16:59:18.673260",
+  "detection_count": 13,
+  "first_detected": "2025-12-06T19:18:46.872092",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "BTC giveaway live",
+  "total_risk_score": 55,
+  "video_risk_score": 55,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "OTAC #115  (348K YT Subs) 24/7 Live Chat & IRL Stream  #giveaway  #music",
+  "video_url": "https://youtube.com/watch?v=9e4Voxa4ekw"
+},
+{
+  "_id": {
+    "$oid": "6934c7e8274f411ced1ead02"
+  },
+  "video_id": "zdcO4WPmJ0E",
+  "channel_id": "UCAR6uQrYhN8_aUrP65g0H5A",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "theZimvideo",
+  "channel_url": "https://youtube.com/channel/UCAR6uQrYhN8_aUrP65g0H5A",
+  "confidence_score": 0.55,
+  "detected_at": "2025-12-06T22:49:30.171610",
+  "detection_count": 6,
+  "first_detected": "2025-12-06T19:18:48.438957",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Ethereum giveaway",
+  "total_risk_score": 45,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "It's Super Chat December ($358 To Go) - Switch 2 Giveaway in 26 Days - Splatoon 3",
+  "video_url": "https://youtube.com/watch?v=zdcO4WPmJ0E"
+},
+{
+  "_id": {
+    "$oid": "6934c7e9274f411ced1ead03"
+  },
+  "video_id": "6iAN2R5KEIw",
+  "channel_id": "UCAR6uQrYhN8_aUrP65g0H5A",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "theZimvideo",
+  "channel_url": "https://youtube.com/channel/UCAR6uQrYhN8_aUrP65g0H5A",
+  "confidence_score": 0.55,
+  "detected_at": "2025-12-06T22:49:29.512157",
+  "detection_count": 6,
+  "first_detected": "2025-12-06T19:18:49.077528",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Ethereum giveaway",
+  "total_risk_score": 45,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "It's Super Chat December ($358 To Go) - Switch 2 Giveaway in 26 Days - Splatoon 3 (Portrait)",
+  "video_url": "https://youtube.com/watch?v=6iAN2R5KEIw"
+},
+{
+  "_id": {
+    "$oid": "6934c7ec274f411ced1ead04"
+  },
+  "video_id": "7PsVZVWr2Ic",
+  "channel_id": "UC3N08qSCz35Uw1RqQ6CPI3g",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Neonate ",
+  "channel_url": "https://youtube.com/channel/UC3N08qSCz35Uw1RqQ6CPI3g",
+  "confidence_score": 0.7,
+  "detected_at": "2025-12-07T16:59:16.990915",
+  "detection_count": 11,
+  "first_detected": "2025-12-06T19:18:52.259345",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "BTC giveaway live",
+  "total_risk_score": 60,
+  "video_risk_score": 60,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "High views (156,948) but very low engagement"
+  ],
+  "video_title": "🔴Live🔴Blooket with the viewers I Live Streaming Game for Everyone Play/Listen to Music/Chat",
+  "video_url": "https://youtube.com/watch?v=7PsVZVWr2Ic"
+},
+{
+  "_id": {
+    "$oid": "6934c7f0274f411ced1ead05"
+  },
+  "video_id": "9AnZHGlhb6E",
+  "channel_id": "UCyIUwArlWvO0e2-dT4mL19w",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Swoons",
+  "channel_url": "https://youtube.com/channel/UCyIUwArlWvO0e2-dT4mL19w",
+  "confidence_score": 0.3,
+  "detected_at": "2025-12-07T17:00:34.693243",
+  "detection_count": 12,
+  "first_detected": "2025-12-06T19:18:56.671920",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Crypto.com giveaway",
+  "total_risk_score": 30,
+  "video_risk_score": 30,
+  "video_signals": [
+    "Currently live streaming",
+    "High views (487,749) but very low engagement",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "Free Robux Live 🔴 0 Views Everyone Live! (FREE ROBUX GIVEAWAY)",
+  "video_url": "https://youtube.com/watch?v=9AnZHGlhb6E"
+},
+{
+  "_id": {
+    "$oid": "6934c7f3274f411ced1ead06"
+  },
+  "video_id": "pYFD2SoFD88",
+  "channel_id": "UC3N08qSCz35Uw1RqQ6CPI3g",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Neonate ",
+  "channel_url": "https://youtube.com/channel/UC3N08qSCz35Uw1RqQ6CPI3g",
+  "confidence_score": 0.7,
+  "detected_at": "2025-12-07T11:30:11.965740",
+  "detection_count": 3,
+  "first_detected": "2025-12-06T19:18:59.831987",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "crypto live giveaway",
+  "total_risk_score": 60,
+  "video_risk_score": 60,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "High views (114,299) but very low engagement"
+  ],
+  "video_title": "🔴Live🔴Blooket  Live Streaming Game for Everyone Play/Listen to Music/Chat",
+  "video_url": "https://youtube.com/watch?v=pYFD2SoFD88"
+},
+{
+  "_id": {
+    "$oid": "6934c7f6274f411ced1ead07"
+  },
+  "video_id": "SpsoOVC56xc",
+  "channel_id": "UCObE3J0qQ0DzcouV1w4DlGg",
+  "channel_risk_score": 30,
+  "channel_signals": [
+    "Name impersonation: Exact match: bitcoin"
+  ],
+  "channel_title": "Bitcoin LIVE",
+  "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+  "confidence_score": 0.3,
+  "detected_at": "2025-12-07T17:01:01.983517",
+  "detection_count": 31,
+  "first_detected": "2025-12-06T19:19:02.785686",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Binance BNB live",
+  "total_risk_score": 30,
+  "video_risk_score": 15,
+  "video_signals": [
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "High views (4,328,817) but very low engagement",
+    "Educational/News intent detected (Risk reduced)"
+  ],
+  "video_title": "🔴 Bitcoin LIVE Chart & Liquidation Watch",
+  "video_url": "https://youtube.com/watch?v=SpsoOVC56xc"
+},
+{
+  "_id": {
+    "$oid": "6934c7fc274f411ced1ead08"
+  },
+  "video_id": "Zne4e9WH6cg",
+  "channel_id": "UCVlfL3YXPGvfZq9DR21kwIg",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Jakanosuke",
+  "channel_url": "https://youtube.com/channel/UCVlfL3YXPGvfZq9DR21kwIg",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-07T14:29:24.377147",
+  "detection_count": 6,
+  "first_detected": "2025-12-06T19:19:08.566322",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "BTC live event",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: eth, cryptocurrency",
+    "Currently live streaming",
+    "High views (6,125) but very low engagement"
+  ],
+  "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+  "video_url": "https://youtube.com/watch?v=Zne4e9WH6cg"
+},
+{
+  "_id": {
+    "$oid": "6934c814274f411ced1ead10"
+  },
+  "video_id": "0cJCZHh2ifE",
+  "channel_id": "UCoQFNWXDxHqW6hoTOsjBP4w",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Trade With Rakhi",
+  "channel_url": "https://youtube.com/channel/UCoQFNWXDxHqW6hoTOsjBP4w",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-06T19:19:32.164753",
+  "detection_count": 1,
+  "first_detected": "2025-12-06T19:19:32.164753",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Ethereum live",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: btc, eth, investment",
+    "Currently live streaming",
+    "High views (2,273) but very low engagement"
+  ],
+  "video_title": "CRYPTO AND FOREX TRADING 6 DEC #livetrading#live#bitcoin#ethereum#gold #cryptotrading@Tradewithrakhi",
+  "video_url": "https://youtube.com/watch?v=0cJCZHh2ifE"
+},
+{
+  "_id": {
+    "$oid": "6934c823274f411ced1ead13"
+  },
+  "video_id": "oPQD6qDYAYY",
+  "channel_id": "UCnf_4MBIr--PcLdQyKuGzPQ",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Michael Whitman",
+  "channel_url": "https://youtube.com/channel/UCnf_4MBIr--PcLdQyKuGzPQ",
+  "confidence_score": 0.5,
+  "detected_at": "2025-12-07T17:00:42.730230",
+  "detection_count": 7,
+  "first_detected": "2025-12-06T19:19:47.323196",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Dogecoin live",
+  "total_risk_score": 40,
+  "video_risk_score": 40,
+  "video_signals": [
+    "Multiple scam keywords: investment, airdrop, bonus",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "High views (146,919) but very low engagement",
+    "Promotional domain (unusual for channel type)",
+    "Educational/News intent detected (Risk reduced)"
+  ],
+  "video_title": "🔴[LIVE] Bitcoin & Dogecoin Stream | Live Crypto Trading Signals",
+  "video_url": "https://youtube.com/watch?v=oPQD6qDYAYY"
+},
+{
+  "_id": {
+    "$oid": "6934f50a274f411ced1eb06e"
+  },
+  "video_id": "tS2PHJmvJzo",
+  "channel_id": "UCFwMITSkc1Fms6PoJoh1OUQ",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "LabPadre Space",
+  "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+  "confidence_score": 0.5,
+  "detected_at": "2025-12-06T22:31:22.663631",
+  "detection_count": 1,
+  "first_detected": "2025-12-06T22:31:22.663631",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "SpaceX Bitcoin live",
+  "total_risk_score": 40,
+  "video_risk_score": 40,
+  "video_signals": [
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "Starbase Live Rover 2.0 Cam SpaceX Starship Launch Complex",
+  "video_url": "https://youtube.com/watch?v=tS2PHJmvJzo"
+},
+{
+  "_id": {
+    "$oid": "6934f930274f411ced1eb0be"
+  },
+  "video_id": "73Oj20FJbj4",
+  "channel_id": "UC9_c1b4IfWHYfyA7JYJlhkw",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "PVFFootballAcademy",
+  "channel_url": "https://youtube.com/channel/UC9_c1b4IfWHYfyA7JYJlhkw",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-06T22:49:04.491197",
+  "detection_count": 1,
+  "first_detected": "2025-12-06T22:49:04.491197",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "BTC live event",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: eth, cryptocurrency",
+    "Currently live streaming",
+    "High views (2,036) but very low engagement"
+  ],
+  "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+  "video_url": "https://youtube.com/watch?v=73Oj20FJbj4"
+},
+{
+  "_id": {
+    "$oid": "6934f943274f411ced1eb0c2"
+  },
+  "video_id": "mewVepvZy0c",
+  "channel_id": "UCsOZinhaO0DaxpU5YRDhtFA",
+  "channel_risk_score": 40,
+  "channel_signals": [
+    "Name impersonation: Exact match: meta",
+    "Crypto-heavy description (5 keywords)"
+  ],
+  "channel_title": "MetaDuro",
+  "channel_url": "https://youtube.com/channel/UCsOZinhaO0DaxpU5YRDhtFA",
+  "confidence_score": 0.5,
+  "detected_at": "2025-12-06T22:49:23.375222",
+  "detection_count": 1,
+  "first_detected": "2025-12-06T22:49:23.375222",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Ethereum live",
+  "total_risk_score": 40,
+  "video_risk_score": 20,
+  "video_signals": [
+    "Multiple scam keywords: btc, eth, cryptocurrency",
+    "Currently live streaming"
+  ],
+  "video_title": "LIVE: Daily Crypto Race 🚀 | Bitcoin, Ethereum, Solana, BNB, XRP Price Tracker (24/7)",
+  "video_url": "https://youtube.com/watch?v=mewVepvZy0c"
+},
+{
+  "_id": {
+    "$oid": "6934f944274f411ced1eb0c3"
+  },
+  "video_id": "fFrLWCCUY68",
+  "channel_id": "UC53vvfdlTgtACVRbusR1u7Q",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "ForexLia",
+  "channel_url": "https://youtube.com/channel/UC53vvfdlTgtACVRbusR1u7Q",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-06T23:44:00.393776",
+  "detection_count": 2,
+  "first_detected": "2025-12-06T22:49:23.993765",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Dogecoin live",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: btc, eth, investment",
+    "Currently live streaming",
+    "High views (3,638,102) but very low engagement"
+  ],
+  "video_title": "Bitcoin & Ethereum Scalping Strategy | M5 Chart Indicator Setup for BTC/ETH",
+  "video_url": "https://youtube.com/watch?v=fFrLWCCUY68"
+},
+{
+  "_id": {
+    "$oid": "6934f944274f411ced1eb0c4"
+  },
+  "video_id": "olHNjCfHnz8",
+  "channel_id": "UCFvTLSsrH2f8u3nVcUn9dqA",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Easy Forex Pips",
+  "channel_url": "https://youtube.com/channel/UCFvTLSsrH2f8u3nVcUn9dqA",
+  "confidence_score": 0.3,
+  "detected_at": "2025-12-06T22:49:24.690056",
+  "detection_count": 1,
+  "first_detected": "2025-12-06T22:49:24.690056",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Ethereum live",
+  "total_risk_score": 30,
+  "video_risk_score": 30,
+  "video_signals": [
+    "Multiple scam keywords: btc, eth, cryptocurrency",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "High views (31,597) but very low engagement",
+    "Educational/News intent detected (Risk reduced)"
+  ],
+  "video_title": "Live Crypto Trading Bitcoin & Ethereum - Live BTC ETH Scalping 18/09/2025",
+  "video_url": "https://youtube.com/watch?v=olHNjCfHnz8"
+},
+{
+  "_id": {
+    "$oid": "6935ab84274f411ced1ebe6f"
+  },
+  "video_id": "8lS4xrdX8yI",
+  "channel_id": "UCAR6uQrYhN8_aUrP65g0H5A",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "theZimvideo",
+  "channel_url": "https://youtube.com/channel/UCAR6uQrYhN8_aUrP65g0H5A",
+  "confidence_score": 0.55,
+  "detected_at": "2025-12-07T11:30:48.247302",
+  "detection_count": 3,
+  "first_detected": "2025-12-07T11:29:56.710124",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Ethereum giveaway",
+  "total_risk_score": 45,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "It's Super Chat December ($358 To Go) - Switch 2 Giveaway in 25 Days - Splatoon 3 (Portrait)",
+  "video_url": "https://youtube.com/watch?v=8lS4xrdX8yI"
+},
+{
+  "_id": {
+    "$oid": "6935ab85274f411ced1ebe70"
+  },
+  "video_id": "k5gWpwLUkQI",
+  "channel_id": "UCAR6uQrYhN8_aUrP65g0H5A",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "theZimvideo",
+  "channel_url": "https://youtube.com/channel/UCAR6uQrYhN8_aUrP65g0H5A",
+  "confidence_score": 0.55,
+  "detected_at": "2025-12-07T11:30:47.591115",
+  "detection_count": 3,
+  "first_detected": "2025-12-07T11:29:57.337110",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Ethereum giveaway",
+  "total_risk_score": 45,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "It's Super Chat December ($358 To Go) - Switch 2 Giveaway in 25 Days - Splatoon 3",
+  "video_url": "https://youtube.com/watch?v=k5gWpwLUkQI"
+},
+{
+  "_id": {
+    "$oid": "6935ab99274f411ced1ebe72"
+  },
+  "video_id": "d2g6Xgspq0M",
+  "channel_id": "UCdu4OziElIdkr8rq1Sfo6rg",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "The finance fox",
+  "channel_url": "https://youtube.com/channel/UCdu4OziElIdkr8rq1Sfo6rg",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-07T14:29:15.879834",
+  "detection_count": 4,
+  "first_detected": "2025-12-07T11:30:17.503269",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Bitcoin investment live",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: receive, btc, eth",
+    "Currently live streaming",
+    "High views (8,665) but very low engagement"
+  ],
+  "video_title": "Live Crypto  Analysis & Trading || 07/ Dec || #btc #bitcoin  #forex #livetrading #live",
+  "video_url": "https://youtube.com/watch?v=d2g6Xgspq0M"
+},
+{
+  "_id": {
+    "$oid": "6935ab9c274f411ced1ebe73"
+  },
+  "video_id": "9mGUd5EqKY8",
+  "channel_id": "UCJsIlba0RSbBo7_zBC8b6Ig",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Bullish Bull Master",
+  "channel_url": "https://youtube.com/channel/UCJsIlba0RSbBo7_zBC8b6Ig",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-07T11:30:42.190090",
+  "detection_count": 3,
+  "first_detected": "2025-12-07T11:30:20.176490",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Ethereum live",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: eth, investment",
+    "Currently live streaming",
+    "High views (1,461) but very low engagement"
+  ],
+  "video_title": "7 December Today Crypto Live Trading | @bullishbullmaster #bitcoin #ethereum #cryptotrading #gold",
+  "video_url": "https://youtube.com/watch?v=9mGUd5EqKY8"
+},
+{
+  "_id": {
+    "$oid": "6935aba6274f411ced1ebe74"
+  },
+  "video_id": "Uhg-ExSSUOc",
+  "channel_id": "UCB93SrdhQArEO7kavwHQLtA",
+  "channel_risk_score": 10,
+  "channel_signals": [
+    "Crypto-heavy description (4 keywords)"
+  ],
+  "channel_title": "PotatoPlaysPiano",
+  "channel_url": "https://youtube.com/channel/UCB93SrdhQArEO7kavwHQLtA",
+  "confidence_score": 0.6,
+  "detected_at": "2025-12-07T11:30:30.982018",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T11:30:30.982018",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "send BTC receive double",
+  "total_risk_score": 50,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: send, eth, wallet",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "🥔🎹 Video Game Music Piano Cover Improv Live Tutorial 🥔🎹 Potato Plays Piano 🥔🎹 Love Spuddy x",
+  "video_url": "https://youtube.com/watch?v=Uhg-ExSSUOc"
+},
+{
+  "_id": {
+    "$oid": "6935d570274f411ced1ec1b7"
+  },
+  "video_id": "dzb9TkfAMSo",
+  "channel_id": "UC3NHFa64ok8yL_9QDZpGI_w",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Datuber101",
+  "channel_url": "https://youtube.com/channel/UC3NHFa64ok8yL_9QDZpGI_w",
+  "confidence_score": 0.3,
+  "detected_at": "2025-12-07T16:59:23.001319",
+  "detection_count": 4,
+  "first_detected": "2025-12-07T14:28:48.356052",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "ETH giveaway live",
+  "total_risk_score": 30,
+  "video_risk_score": 30,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, eth",
+    "Currently live streaming",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "pet simulator 99 pet giveaway and huge hatching part 4",
+  "video_url": "https://youtube.com/watch?v=dzb9TkfAMSo"
+},
+{
+  "_id": {
+    "$oid": "6935d573274f411ced1ec1b8"
+  },
+  "video_id": "iI2EiYxZ0v0",
+  "channel_id": "UCXUi6QWqJUMSWnToW8RUH8Q",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Ents",
+  "channel_url": "https://youtube.com/channel/UCXUi6QWqJUMSWnToW8RUH8Q",
+  "confidence_score": 0.55,
+  "detected_at": "2025-12-07T14:28:51.765913",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T14:28:51.765913",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "BTC giveaway live",
+  "total_risk_score": 45,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, btc",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "🔴LIVE: The Biggest Private Server of 2025?! | 1000+ Players Online on FEROX",
+  "video_url": "https://youtube.com/watch?v=iI2EiYxZ0v0"
+},
+{
+  "_id": {
+    "$oid": "6935d58d274f411ced1ec1bf"
+  },
+  "video_id": "VEwnsSBE6-0",
+  "channel_id": "UC4x-hPeNK61k61xgChcVGNA",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "New Pallapa Official",
+  "channel_url": "https://youtube.com/channel/UC4x-hPeNK61k61xgChcVGNA",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-07T14:29:17.147424",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T14:29:17.147424",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Bitcoin investment live",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: eth, cryptocurrency, investment",
+    "Currently live streaming",
+    "High views (1,868) but very low engagement"
+  ],
+  "video_title": "LIVE: BlackRock CEO Announces Huge Crypto Move! This Speech Will Reshape the Crypto Industry!",
+  "video_url": "https://youtube.com/watch?v=VEwnsSBE6-0"
+},
+{
+  "_id": {
+    "$oid": "6935f7be274f411ced1ec45f"
+  },
+  "video_id": "6r6vHMtOcpg",
+  "channel_id": "UCSDGBDceM3LgywhR_tbF95g",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Mia Makes Music",
+  "channel_url": "https://youtube.com/channel/UCSDGBDceM3LgywhR_tbF95g",
+  "confidence_score": 0.55,
+  "detected_at": "2025-12-07T16:59:25.993095",
+  "detection_count": 6,
+  "first_detected": "2025-12-07T16:55:10.634119",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "crypto live giveaway",
+  "total_risk_score": 45,
+  "video_risk_score": 45,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, send, btc",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming"
+  ],
+  "video_title": "Community Appreciation Concert & Giveaways - Dec 7th, 2025",
+  "video_url": "https://youtube.com/watch?v=6r6vHMtOcpg"
+},
+{
+  "_id": {
+    "$oid": "6935f8d5274f411ced1ec475"
+  },
+  "video_id": "U8prG-55vIo",
+  "channel_id": "UCVlfL3YXPGvfZq9DR21kwIg",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Jakanosuke",
+  "channel_url": "https://youtube.com/channel/UCVlfL3YXPGvfZq9DR21kwIg",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-07T16:59:49.193771",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T16:59:49.193771",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "BTC live event",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: eth, cryptocurrency",
+    "Currently live streaming",
+    "High views (2,063) but very low engagement"
+  ],
+  "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+  "video_url": "https://youtube.com/watch?v=U8prG-55vIo"
+},
+{
+  "_id": {
+    "$oid": "6935f8ea274f411ced1ec47d"
+  },
+  "video_id": "OFilFHI4UmQ",
+  "channel_id": "UCt_UMlZLS25-mDHCGUasnCA",
+  "channel_risk_score": 95,
+  "channel_signals": [
+    "Name impersonation: Exact match: bitcoin",
+    "Handle-name mismatch (possible hijack)",
+    "Topic Mismatch (Possible Hijack): Music_of_Asia, Performing_arts, Entertainment, Lifestyle channel streaming crypto"
+  ],
+  "channel_title": "Bitcoin Mena",
+  "channel_url": "https://youtube.com/channel/UCt_UMlZLS25-mDHCGUasnCA",
+  "confidence_score": 0.57,
+  "detected_at": "2025-12-07T17:00:17.623627",
+  "detection_count": 2,
+  "first_detected": "2025-12-07T17:00:10.681176",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "Michael Saylor crypto live",
+  "total_risk_score": 47.5,
+  "video_risk_score": 0,
+  "video_signals": [
+    "Currently live streaming",
+    "High views (1,735) but very low engagement",
+    "Educational/News intent detected (Risk reduced)"
+  ],
+  "video_title": "Bitcoin MENA 2025 | Day 1 Livestream",
+  "video_url": "https://youtube.com/watch?v=OFilFHI4UmQ"
+},
+{
+  "_id": {
+    "$oid": "6935f921274f411ced1ec47f"
+  },
+  "video_id": "IF34s0pFgt4",
+  "channel_id": "UCRakxPae5n81bPD5DMDZDQg",
+  "channel_risk_score": 55,
+  "channel_signals": [
+    "Name impersonation: Exact match: solana",
+    "Handle-name mismatch (possible hijack)"
+  ],
+  "channel_title": "SUPER Solana | Guirak",
+  "channel_url": "https://youtube.com/channel/UCRakxPae5n81bPD5DMDZDQg",
+  "confidence_score": 0.68,
+  "detected_at": "2025-12-07T17:01:05.077945",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T17:01:05.077945",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "crypto airdrop live",
+  "total_risk_score": 57.5,
+  "video_risk_score": 30,
+  "video_signals": [
+    "Multiple scam keywords: wallet, airdrop, bonus",
+    "Currently live streaming",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "Live Solana Chill｜Point Airdrop, DeFi, et Préparation BREAKPOINT",
+  "video_url": "https://youtube.com/watch?v=IF34s0pFgt4"
+},
+{
+  "_id": {
+    "$oid": "6935f922274f411ced1ec480"
+  },
+  "video_id": "xw_Ye-wN2yc",
+  "channel_id": "UCbsQcdWqc3eFQItMzHlvKnQ",
+  "channel_risk_score": 20,
+  "channel_signals": [
+    "Old account (510 days) with minimal content"
+  ],
+  "channel_title": "Lisa",
+  "channel_url": "https://youtube.com/channel/UCbsQcdWqc3eFQItMzHlvKnQ",
+  "confidence_score": 0.5,
+  "detected_at": "2025-12-07T17:01:06.102523",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T17:01:06.102523",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "NFT giveaway live",
+  "total_risk_score": 40,
+  "video_risk_score": 30,
+  "video_signals": [
+    "Multiple scam keywords: giveaway, wallet",
+    "Currently live streaming",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "СТРИМ ROBLOX РАЗДАЧА КЛАССОВ И ГЕМОВ | РАЗДАЧА ПОДАРКОВ ТЕЛЕГРАМ NFT | НФТ ПОДАРКИ ТЕЛЕГРАМ",
+  "video_url": "https://youtube.com/watch?v=xw_Ye-wN2yc"
+},
+{
+  "_id": {
+    "$oid": "6935f927274f411ced1ec484"
+  },
+  "video_id": "1_Ih0JYmkjI",
+  "channel_id": "UCmRbHAgG2k2vDUvb3xsEunQ",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "CNBC-TV18",
+  "channel_url": "https://youtube.com/channel/UCmRbHAgG2k2vDUvb3xsEunQ",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-07T17:01:11.558897",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T17:01:11.558897",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "Bloomberg crypto live",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Contains crypto address or suspicious URL",
+    "Comments disabled or restricted",
+    "Currently live streaming",
+    "High views (12,773,943) but very low engagement",
+    "Educational/News intent detected (Risk reduced)"
+  ],
+  "video_title": "CNBC TV18 24x7 LIVE: Stock Markets | Share Markets Updates  | Nifty & Sensex | Business News LIVE",
+  "video_url": "https://youtube.com/watch?v=1_Ih0JYmkjI"
+},
+{
+  "_id": {
+    "$oid": "6935f92e274f411ced1ec486"
+  },
+  "video_id": "ziYwt0jF1p4",
+  "channel_id": "UCaO-M1dXacMwtyg0Pvovk4w",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "CNBC-e",
+  "channel_url": "https://youtube.com/channel/UCaO-M1dXacMwtyg0Pvovk4w",
+  "confidence_score": 0.35,
+  "detected_at": "2025-12-07T17:01:18.191482",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T17:01:18.191482",
+  "is_live": true,
+  "risk_category": "LOW",
+  "search_query": "CNBC Bitcoin live",
+  "total_risk_score": 35,
+  "video_risk_score": 35,
+  "video_signals": [
+    "Multiple scam keywords: btc, eth",
+    "Currently live streaming",
+    "High views (297,852) but very low engagement"
+  ],
+  "video_title": "CNBC-e Canlı Yayını 📺 Canlı Borsa, Ekonomi, Hisse Analizleri, Altın Fiyatları 💵",
+  "video_url": "https://youtube.com/watch?v=ziYwt0jF1p4"
+},
+{
+  "_id": {
+    "$oid": "6935f93a274f411ced1ec488"
+  },
+  "video_id": "49cJSuL-bYs",
+  "channel_id": "UC_i68tipo4IpVBsS_x6eDMQ",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "Miki",
+  "channel_url": "https://youtube.com/channel/UC_i68tipo4IpVBsS_x6eDMQ",
+  "confidence_score": 0.65,
+  "detected_at": "2025-12-07T17:01:30.037491",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T17:01:30.037491",
+  "is_live": true,
+  "risk_category": "MEDIUM",
+  "search_query": "crypto ending soon",
+  "total_risk_score": 55,
+  "video_risk_score": 55,
+  "video_signals": [
+    "Multiple scam keywords: btc, eth, bonus",
+    "Contains crypto address or suspicious URL",
+    "Currently live streaming",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "Bitcoin Livestream - Buy/Sell Signals - Market Cipher - 24/7",
+  "video_url": "https://youtube.com/watch?v=49cJSuL-bYs"
+},
+{
+  "_id": {
+    "$oid": "6935f941274f411ced1ec489"
+  },
+  "video_id": "NT8sps9jiH0",
+  "channel_id": "UCIOHzEDwgUuLBZwPKEUt1AQ",
+  "channel_risk_score": 0,
+  "channel_signals": [],
+  "channel_title": "자두두 Jadoodoo",
+  "channel_url": "https://youtube.com/channel/UCIOHzEDwgUuLBZwPKEUt1AQ",
+  "confidence_score": 0.95,
+  "detected_at": "2025-12-07T17:01:37.021001",
+  "detection_count": 1,
+  "first_detected": "2025-12-07T17:01:37.021001",
+  "is_live": true,
+  "risk_category": "HIGH",
+  "search_query": "exclusive crypto event",
+  "total_risk_score": 90,
+  "video_risk_score": 90,
+  "video_signals": [
+    "Multiple scam keywords: receive, btc, wallet",
+    "Contains crypto address or suspicious URL",
+    "Comments disabled or restricted",
+    "Currently live streaming",
+    "High views (35,567) but very low engagement",
+    "Promotional domain (unusual for channel type)"
+  ],
+  "video_title": "비트코인 저점 풀매수 완료 800시작 (12월 총상금 6천만원 수익률 대회시작) Crypto Queen Bitcoin Live",
+  "video_url": "https://youtube.com/watch?v=NT8sps9jiH0"
+}]

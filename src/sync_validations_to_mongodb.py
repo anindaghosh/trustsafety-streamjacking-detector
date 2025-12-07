@@ -6,6 +6,9 @@ Useful for syncing previously validated detections to the database
 import json
 import os
 import sys
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     from pymongo import MongoClient

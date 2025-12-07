@@ -922,20 +922,58 @@ def main():
         "Vitalik ethereum giveaway",
         "Vitalik Buterin live",
         
-        # Other crypto figures (5 queries)
+        # Crypto figures (10 queries)
         "Michael Saylor Bitcoin",
+        "Michael Saylor crypto live",
+        "Cathie Wood Bitcoin",
+        "Cathie Wood crypto live",
         "CZ Binance live",
         "Changpeng Zhao crypto",
         "Brad Garlinghouse XRP",
         "Charles Hoskinson Cardano",
+        "Jack Dorsey Bitcoin",
+        "Do Kwon Terra",
         
-        # Other cryptos (5 queries)
+        # Crypto exchanges (6 queries)
+        "Coinbase giveaway live",
+        "Binance live event",
+        "Kraken crypto giveaway",
+        "Crypto.com giveaway",
+        "Bybit giveaway live",
+        "Gemini crypto live",
+        
+        # Other cryptos (10 queries)
         "Dogecoin live",
         "Ripple XRP giveaway",
         "Cardano ADA live",
         "Solana SOL giveaway",
         "Shiba Inu giveaway",
-        "Binance BNB live"
+        "Binance BNB live",
+        "Polygon MATIC giveaway",
+        "Avalanche AVAX giveaway",
+        "Chainlink LINK giveaway",
+        "Polkadot DOT giveaway",
+        
+        # DeFi/NFT/Web3 (5 queries)
+        "crypto airdrop live",
+        "NFT giveaway live",
+        "DeFi giveaway live",
+        "token airdrop live",
+        "Web3 giveaway",
+        
+        # News channels for FP testing (5 queries)
+        "Bloomberg crypto live",
+        "CNBC Bitcoin live",
+        "CoinDesk live",
+        "Cointelegraph live",
+        "Fox Business crypto",
+        
+        # Urgency patterns (5 queries)
+        "crypto ending soon",
+        "limited time crypto",
+        "exclusive crypto event",
+        "last chance Bitcoin",
+        "crypto presale live"
     ]
     
     print(f"\n📊 Monitoring {len(search_queries)} search queries...")
