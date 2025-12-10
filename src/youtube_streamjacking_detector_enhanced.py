@@ -120,7 +120,7 @@ class MongoDBManager:
             self.client.admin.command('ping')
             
             self.db = self.client[database_name]
-            self.collection = self.db['detection_results_v2']
+            self.collection = self.db['detection_results_v3']
             
             # Create indexes for efficient querying
             self.collection.create_index('video_id', unique=True)
@@ -311,6 +311,49 @@ class EnhancedYouTubeAPIClient:
             print(f"API Error: {e}")
             return None
     
+    def get_live_chat_messages(self, live_chat_id: str, max_messages: int = 20) -> List[Dict]:
+        """Sample recent live chat messages (checks for pinned Super Chats and bot spam)"""
+        try:
+            request = self.youtube.liveChatMessages().list(
+                liveChatId=live_chat_id,
+                part="snippet,authorDetails",
+                maxResults=min(max_messages, 100)
+            )
+            response = request.execute()
+            self.quota_used += 5  # liveChatMessages.list costs 5 units
+            
+            messages = []
+            for item in response.get('items', []):
+                snippet = item.get('snippet', {})
+                author = item.get('authorDetails', {})
+                
+                msg = {
+                    'id': item.get('id'),
+                    'type': snippet.get('type'),
+                    'text': '',
+                    'author': author.get('displayName', ''),
+                    'author_channel_id': author.get('channelId', ''),
+                    'is_super_chat': False,
+                    'published_at': snippet.get('publishedAt')
+                }
+                
+                # Extract text based on message type
+                if snippet.get('type') == 'textMessageEvent':
+                    msg['text'] = snippet.get('textMessageDetails', {}).get('messageText', '')
+                elif snippet.get('type') == 'superChatEvent':
+                    msg['text'] = snippet.get('superChatDetails', {}).get('userComment', '')
+                    msg['is_super_chat'] = True  # Super Chats are pinned to top
+                elif snippet.get('type') == 'superStickerEvent':
+                    msg['is_super_chat'] = True
+                
+                messages.append(msg)
+            
+            return messages
+            
+        except HttpError as e:
+            # Chat may be disabled or ended
+            return []
+    
     def search_livestreams(self, query: str, max_results: int = 50) -> List[Dict]:
         """Search for active livestreams"""
         try:
@@ -381,6 +424,25 @@ class EnhancedStreamJackingDetector:
         'only today', 'expires', 'don\'t miss', 'act now', 'urgent'
     ]
     
+    # NEW: QR Code indicators
+    QR_CODE_KEYWORDS = [
+        'qr code', 'qr-code', 'scan code', 'scan qr', 'scan the code',
+        'use qr', 'qrcode', 'barcode', 'scan to', 'code to scan'
+    ]
+    
+    # NEW: Political figures for tag combination detection
+    POLITICAL_FIGURES = [
+        'trump', 'donald trump', 'biden', 'joe biden', 'kamala harris',
+        'harris', 'desantis', 'pence'
+    ]
+    
+    # NEW: Crypto celebrities (expand existing list)
+    CRYPTO_CELEBRITIES = [
+        'elon musk', 'michael saylor', 'cathie wood', 'gary gensler',
+        'brian armstrong', 'changpeng zhao', 'cz', 'vitalik buterin',
+        'blackrock', 'larry fink', 'jack dorsey'
+    ]
+    
     # NEW: High-confidence scam phrases
     HIGH_CONFIDENCE_SCAM_PHRASES = [
         r'send\s+\d+.*get\s+\d+.*back',
@@ -395,6 +457,18 @@ class EnhancedStreamJackingDetector:
     # Only flag if combined with other signals - these are too generic alone
     KNOWN_SCAM_DOMAINS = [
         'telegra.ph', 'tiny.cc', 'is.gd' # Less common shorteners often used by scammers
+    ]
+    
+    # NEW: Scam domain pattern keywords
+    SCAM_DOMAIN_KEYWORDS = [
+        'gift', 'bonus', 'promo', 'event', 'giveaway', 'airdrop',
+        'claim', 'reward', 'prize', 'offer'
+    ]
+    
+    # NEW: Suspicious TLDs commonly used in scams
+    SUSPICIOUS_TLDS = [
+        '.today', '.live', '.site', '.xyz', '.online', '.top', '.click',
+        '.link', '.win', '.bid', '.stream', '.trade', '.vip'
     ]
     
     # Generic promotional domains - only flag if combined with impersonation
@@ -518,6 +592,11 @@ class EnhancedStreamJackingDetector:
         
         return len(found_phrases) > 0, found_phrases
     
+    def detect_qr_code_mention(self, text: str) -> bool:
+        """NEW: Detect QR code mentions in video description/title"""
+        text_lower = text.lower()
+        return any(keyword in text_lower for keyword in self.QR_CODE_KEYWORDS)
+    
     def check_handle_name_mismatch(self, channel_title: str, custom_url: Optional[str]) -> bool:
         """NEW: Check if handle doesn't match channel name"""
         if not custom_url:
@@ -542,15 +621,127 @@ class EnhancedStreamJackingDetector:
         return False
     
     def check_known_scam_domains(self, text: str) -> Tuple[bool, List[str]]:
-        """NEW: Check for known scam domains"""
+        """NEW: Check for known scam domains including pattern-based detection"""
         found_domains = []
         text_lower = text.lower()
         
+        # Check exact matches (shorteners)
         for domain in self.KNOWN_SCAM_DOMAINS:
             if domain in text_lower:
                 found_domains.append(domain)
         
+        # Pattern-based detection: gift-trump.com, bitcoin-mena.today, etc.
+        url_pattern = r'https?://([a-z0-9-]+\.[a-z]+)'
+        urls = re.findall(url_pattern, text_lower)
+        
+        for domain in urls:
+            domain_parts = domain.split('.')
+            if len(domain_parts) >= 2:
+                domain_name = domain_parts[0]
+                tld = '.' + domain_parts[-1]
+                
+                # Check for [keyword]-[anything] or [anything]-[keyword] pattern
+                has_scam_keyword_pattern = any(
+                    f'{kw}-' in domain_name or f'-{kw}' in domain_name
+                    for kw in self.SCAM_DOMAIN_KEYWORDS
+                )
+                
+                # Check for crypto + hyphen with suspicious TLD
+                crypto_keywords = ['bitcoin', 'btc', 'ethereum', 'eth', 'crypto', 'coin']
+                has_crypto_pattern = any(kw in domain_name for kw in crypto_keywords)
+                has_suspicious_tld = tld in self.SUSPICIOUS_TLDS
+                
+                if has_scam_keyword_pattern or (has_crypto_pattern and has_suspicious_tld):
+                    found_domains.append(domain)
+        
         return len(found_domains) > 0, found_domains
+    
+    def analyze_chat_messages(self, messages: List[Dict]) -> Tuple[bool, str, bool]:
+        """Analyze chat messages for scam patterns
+        
+        Returns:
+            (has_scam_content, description, has_pinned_scam)
+        """
+        if not messages:
+            return False, "", False
+        
+        scam_indicators = []
+        has_pinned_scam = False
+        
+        # Analyze all messages
+        for msg in messages:
+            text = msg.get('text', '')
+            is_super_chat = msg.get('is_super_chat', False)
+            
+            if not text:
+                continue
+            
+            # Check for scam domains in message
+            has_domain, domains = self.check_known_scam_domains(text)
+            if has_domain:
+                scam_indicators.append(f"Scam link: {domains[0]}")
+                if is_super_chat:
+                    has_pinned_scam = True  # Super Chat = pinned
+            
+            # Check for urgency language
+            text_lower = text.lower()
+            if any(kw in text_lower for kw in self.URGENCY_KEYWORDS[:5]):  # Check top 5 urgency words
+                if is_super_chat:
+                    scam_indicators.append("Pinned Super Chat with urgency language")
+                    has_pinned_scam = True
+        
+        # Check for bot spam pattern: multiple messages with identical/similar text
+        text_counts = {}
+        for msg in messages:
+            text = msg.get('text', '').lower().strip()
+            if len(text) > 20:  # Ignore short messages
+                text_counts[text] = text_counts.get(text, 0) + 1
+        
+        # If same message posted 3+ times, likely bot
+        for text, count in text_counts.items():
+            if count >= 3:
+                has_domain, _ = self.check_known_scam_domains(text)
+                if has_domain:
+                    scam_indicators.append(f"Bot spam detected ({count} identical messages)")
+                    break
+        
+        has_scam = len(scam_indicators) > 0
+        description = "; ".join(scam_indicators[:2])  # Limit to 2 indicators
+        
+        return has_scam, description, has_pinned_scam
+    
+    def detect_suspicious_tag_combinations(self, tags: List[str], title: str, description: str) -> Tuple[bool, str]:
+        """NEW: Detect political/celebrity + crypto tag combinations (hijacked channels)
+        
+        Returns:
+            (has_suspicious_combo, description)
+        """
+        if not tags:
+            return False, ""
+        
+        tags_lower = [tag.lower() for tag in tags]
+        combined_text = (title + ' ' + description).lower()
+        
+        # Check for political figures or crypto celebrities
+        political_match = any(fig in ' '.join(tags_lower) or fig in combined_text 
+                             for fig in self.POLITICAL_FIGURES)
+        celebrity_match = any(celeb in ' '.join(tags_lower) or celeb in combined_text 
+                             for celeb in self.CRYPTO_CELEBRITIES)
+        
+        # Check for crypto keywords
+        crypto_keywords = ['bitcoin', 'btc', 'ethereum', 'eth', 'crypto', 'cryptocurrency', 
+                          'blockchain', 'trading', 'investment']
+        crypto_match = any(kw in ' '.join(tags_lower) or kw in combined_text 
+                          for kw in crypto_keywords)
+        
+        # Flag if both political/celebrity AND crypto present
+        if (political_match or celebrity_match) and crypto_match:
+            if political_match:
+                return True, "Political figure + crypto tags (likely hijacked channel)"
+            else:
+                return True, "Celebrity + crypto tags (likely hijacked channel)"
+        
+        return False, ""
     
     def _map_topic_url(self, url: str) -> str:
         """Map Wikipedia topic URL to simple category"""
@@ -708,10 +899,19 @@ class EnhancedStreamJackingDetector:
             signals.append("Contains crypto address or suspicious URL")
             risk_score += 25.0
         
-        # Signal 6: Disabled comments (NEW - weight: 20)
+        # Signal 5b: QR Code mention (NEW - weight: 30)
+        # High indicator of scam - legitimate streams rarely ask viewers to scan QR codes
+        if self.detect_qr_code_mention(video.title + ' ' + video.description):
+            signals.append("QR code mentioned (common scam tactic)")
+            risk_score += 30.0
+        
+        # Signal 6: Disabled comments (NEW - weight: 30 for crypto content, 20 otherwise)
         if video.comments_disabled:
+            # Higher weight if also crypto-related (common in scams to prevent warnings)
+            has_crypto_content = any(kw in combined for kw in ['crypto', 'bitcoin', 'ethereum', 'giveaway'])
+            weight = 30.0 if has_crypto_content else 20.0
             signals.append("Comments disabled or restricted")
-            risk_score += 20.0
+            risk_score += weight
         
         # Signal 7: Live stream status (weight: 5)
         if video.is_live:
@@ -725,16 +925,41 @@ class EnhancedStreamJackingDetector:
             signals.append(f"High views ({video.view_count:,}) but very low engagement")
             risk_score += 15.0
         
-        # Signal 9: Known scam domains (NEW - weight: 15)
+        # Signal 9: Known scam domains (NEW - weight: 40 for patterns, 15 for shorteners)
         has_scam_domain, domains = self.check_known_scam_domains(video.description)
         has_promo_domain = any(d in video.description.lower() for d in self.PROMO_DOMAINS)
         
         if has_scam_domain:
-            signals.append(f"Suspicious domain(s): {', '.join(domains)}")
-            risk_score += 15.0
+            # Higher weight for pattern-based domains (gift-trump.com, bitcoin-mena.today)
+            is_pattern_domain = any('-' in d for d in domains)
+            weight = 40.0 if is_pattern_domain else 15.0
+            signals.append(f"Scam domain pattern: {', '.join(domains[:2])}")
+            risk_score += weight
         elif has_promo_domain and not is_crypto_native:  # Only flag promo for non-crypto channels
             signals.append(f"Promotional domain (unusual for channel type)")
             risk_score += 10.0
+        
+        # Signal 10: Suspicious tag combinations (NEW - weight: 35)
+        # Political figure/celebrity + crypto tags = likely hijacked channel
+        has_suspicious_tags, tag_description = self.detect_suspicious_tag_combinations(
+            video.tags, video.title, video.description
+        )
+        if has_suspicious_tags:
+            signals.append(tag_description)
+            risk_score += 35.0
+        
+        # Signal 11: Live chat scam content (NEW - checks pinned messages & bot spam)
+        if video.live_chat_id and video.is_live:
+            chat_messages = self.api.get_live_chat_messages(video.live_chat_id, max_messages=20)
+            has_scam_chat, chat_description, has_pinned = self.analyze_chat_messages(chat_messages)
+            
+            if has_scam_chat:
+                if has_pinned:
+                    signals.append(f"Pinned scam content in chat: {chat_description}")
+                    risk_score += 45.0  # Higher weight for pinned scams (Super Chats)
+                else:
+                    signals.append(f"Scam content in chat: {chat_description}")
+                    risk_score += 35.0
             
         # NEW: Educational Intent Bonus
         if is_educational:

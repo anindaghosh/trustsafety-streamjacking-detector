@@ -1,0 +1,292 @@
+[
+  {
+    "video_id": "b4EIXN-t9Vk",
+    "validation": {
+      "label": "false_negative",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "Bot in the chat shares the scam link."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "4UmqWMJ-s7c",
+    "validation": {
+      "label": "false_negative",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "Bot in the chat shares the scam link."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ZgPE4FJzXSE",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "9e4Voxa4ekw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "zdcO4WPmJ0E",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "6iAN2R5KEIw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "7PsVZVWr2Ic",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "9AnZHGlhb6E",
+    "validation": {
+      "label": "false_negative",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "Bot in the chat shares the scam link."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "pYFD2SoFD88",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "SpsoOVC56xc",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Zne4e9WH6cg",
+    "validation": {
+      "label": "false_negative",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video.",
+        "Chat disabled.",
+        "Channel terminated."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "0cJCZHh2ifE",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "oPQD6qDYAYY",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "tS2PHJmvJzo",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "73Oj20FJbj4",
+    "validation": {
+      "label": "false_negative",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video.",
+        "Chat disabled.",
+        "Channel terminated."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "mewVepvZy0c",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "fFrLWCCUY68",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "olHNjCfHnz8",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "8lS4xrdX8yI",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "k5gWpwLUkQI",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "d2g6Xgspq0M",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "9mGUd5EqKY8",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Uhg-ExSSUOc",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "dzb9TkfAMSo",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "iI2EiYxZ0v0",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "6r6vHMtOcpg",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "IF34s0pFgt4",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "xw_Ye-wN2yc",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "1_Ih0JYmkjI",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ziYwt0jF1p4",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "49cJSuL-bYs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "NT8sps9jiH0",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-07T10:30:00",
+      "reviewer": "ag10293"
+    }
+  }
+]

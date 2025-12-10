@@ -1,0 +1,389 @@
+[
+  {
+    "video_id": "QShV15D-khc",
+    "channel_id": "UCUP4kKVNv5suybK23LvUbCw",
+    "channel_title": "NanoCommunity",
+    "channel_url": "https://youtube.com/channel/UCUP4kKVNv5suybK23LvUbCw",
+    "confidence_score": 0.55,
+    "risk_category": "MEDIUM",
+    "video_title": "Nano Crypto Giveaway (every 90 seconds) - 10 year anniversary",
+    "video_url": "https://youtube.com/watch?v=QShV15D-khc",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "9AnZHGlhb6E",
+    "channel_id": "UCyIUwArlWvO0e2-dT4mL19w",
+    "channel_title": "Swoons",
+    "channel_url": "https://youtube.com/channel/UCyIUwArlWvO0e2-dT4mL19w",
+    "confidence_score": 0.3,
+    "risk_category": "LOW",
+    "video_title": "Free Robux Live 🔴 0 Views Everyone Live! (FREE ROBUX GIVEAWAY)",
+    "video_url": "https://youtube.com/watch?v=9AnZHGlhb6E",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "b4EIXN-t9Vk",
+    "channel_id": "UCniTDXBx66cJjONU7OHYtHQ",
+    "channel_title": "KeysiFightingMethod",
+    "channel_url": "https://youtube.com/channel/UCniTDXBx66cJjONU7OHYtHQ",
+    "confidence_score": 0.3,
+    "risk_category": "LOW",
+    "video_title": "🔴 Giving 150,000 Robux to Every Viewer LIVE! (Roblox Robux Live) Free Robux Giveaway",
+    "video_url": "https://youtube.com/watch?v=b4EIXN-t9Vk",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "pYFD2SoFD88",
+    "channel_id": "UC3N08qSCz35Uw1RqQ6CPI3g",
+    "channel_title": "Neonate ",
+    "channel_url": "https://youtube.com/channel/UC3N08qSCz35Uw1RqQ6CPI3g",
+    "confidence_score": 0.7,
+    "risk_category": "MEDIUM",
+    "video_title": "🔴Live🔴Blooket  Live Streaming Game for Everyone Play/Listen to Music/Chat",
+    "video_url": "https://youtube.com/watch?v=pYFD2SoFD88",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "7PsVZVWr2Ic",
+    "channel_id": "UC3N08qSCz35Uw1RqQ6CPI3g",
+    "channel_title": "Neonate ",
+    "channel_url": "https://youtube.com/channel/UC3N08qSCz35Uw1RqQ6CPI3g",
+    "confidence_score": 0.7,
+    "risk_category": "MEDIUM",
+    "video_title": "🔴Live🔴Blooket with the viewers I Live Streaming Game for Everyone Play/Listen to Music/Chat",
+    "video_url": "https://youtube.com/watch?v=7PsVZVWr2Ic",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "9e4Voxa4ekw",
+    "channel_id": "UCJDTm3vlkx4ttoufWj0QGnQ",
+    "channel_title": "OPIE THE ANIMAL THE GUTTER PUNK KING OTAC",
+    "channel_url": "https://youtube.com/channel/UCJDTm3vlkx4ttoufWj0QGnQ",
+    "confidence_score": 0.65,
+    "risk_category": "MEDIUM",
+    "video_title": "OTAC #115  (348K YT Subs) 24/7 Live Chat & IRL Stream  #giveaway  #music",
+    "video_url": "https://youtube.com/watch?v=9e4Voxa4ekw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "njVWY_yf0ws",
+    "channel_id": "UCA9dyWXyUZUfUQsi-w3o1_Q",
+    "channel_title": "ETHEREUM EVENT",
+    "channel_url": "https://youtube.com/channel/UCA9dyWXyUZUfUQsi-w3o1_Q",
+    "confidence_score": 0.3,
+    "risk_category": "LOW",
+    "video_title": "LIVE Ethereum Airdrop Event — Claim Your Share in Real Time",
+    "video_url": "https://youtube.com/watch?v=njVWY_yf0ws",
+    "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "x_qUpVtUlxA",
+    "channel_id": "UCXUi6QWqJUMSWnToW8RUH8Q",
+    "channel_title": "Ents",
+    "channel_url": "https://youtube.com/channel/UCXUi6QWqJUMSWnToW8RUH8Q",
+    "confidence_score": 0.55,
+    "risk_category": "MEDIUM",
+    "video_title": "🔴LIVE: The Biggest Private Server of 2025?! | 1000+ Players Online on FEROX",
+    "video_url": "https://youtube.com/watch?v=x_qUpVtUlxA",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ZgPE4FJzXSE",
+    "channel_id": "UCZBRF0mGPq9IwwKlI39teYQ",
+    "channel_title": "GalaxyGod",
+    "channel_url": "https://youtube.com/channel/UCZBRF0mGPq9IwwKlI39teYQ",
+    "confidence_score": 0.3,
+    "risk_category": "LOW",
+    "video_title": "🔴 STEAL A BRAINROT GIVEAWAY LIVE! | LOS COMBINASIONAS GIVEAWAY TO VIEWERS! (Roblox)",
+    "video_url": "https://youtube.com/watch?v=ZgPE4FJzXSE",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "SpsoOVC56xc",
+    "channel_id": "UCObE3J0qQ0DzcouV1w4DlGg",
+    "channel_title": "Bitcoin LIVE",
+    "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+    "confidence_score": 0.55,
+    "risk_category": "MEDIUM",
+    "video_title": "🔴 Bitcoin LIVE Chart & Liquidation Watch",
+    "video_url": "https://youtube.com/watch?v=SpsoOVC56xc",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "7Jwv65Oh5k4",
+    "channel_id": "UCdu4OziElIdkr8rq1Sfo6rg",
+    "channel_title": "The finance fox",
+    "channel_url": "https://youtube.com/channel/UCdu4OziElIdkr8rq1Sfo6rg",
+    "confidence_score": 0.35,
+    "risk_category": "LOW",
+    "video_title": "Live Bitcoin & Gold Analysis & Trading | 09/ Dec | #bitcoin #gold #forex #livetrading #cryptotrading",
+    "video_url": "https://youtube.com/watch?v=7Jwv65Oh5k4",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "cLDeMv8t7Bo",
+    "channel_id": "UCQemzRWOMazoaSuULUuSCpg",
+    "channel_title": "Trade For Profit",
+    "channel_url": "https://youtube.com/channel/UCQemzRWOMazoaSuULUuSCpg",
+    "confidence_score": 0.55,
+    "risk_category": "MEDIUM",
+    "video_title": "Crypto Trading LIVE: BTC Live Trading Bitcoin Analysis | 09 DEC #crypto #bitcoin #btc",
+    "video_url": "https://youtube.com/watch?v=cLDeMv8t7Bo",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "D93daHcucfs",
+    "channel_id": "UC4xN2fR45tG0M2Fm1w4PPTg",
+    "channel_title": "RV Odd Couple",
+    "channel_url": "https://youtube.com/channel/UC4xN2fR45tG0M2Fm1w4PPTg",
+    "confidence_score": 1.05,
+    "risk_category": "HIGH",
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=D93daHcucfs",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "gdRaHk24FDo",
+    "channel_id": "UCoMc0zniPatlGpR6OQiM-Qg",
+    "channel_title": "Didi Random",
+    "channel_url": "https://youtube.com/channel/UCoMc0zniPatlGpR6OQiM-Qg",
+    "confidence_score": 0.8,
+    "risk_category": "HIGH",
+    "video_title": "🚨BITCOIN LIVE! Diese News kamen genau Richtig! Bitcoin steigt EXTREM!",
+    "video_url": "https://youtube.com/watch?v=gdRaHk24FDo",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "wn48Y6PjqtE",
+    "channel_id": "UCKC19UXnO3WDltJ6AF7R99g",
+    "channel_title": "Guitar Repair@StringTech",
+    "channel_url": "https://youtube.com/channel/UCKC19UXnO3WDltJ6AF7R99g",
+    "confidence_score": 1.05,
+    "risk_category": "HIGH",
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=wn48Y6PjqtE",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video.",
+        "Chat disabled."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "l4njqhAIfFY",
+    "channel_id": "UCVDTKYExRDyv4k449OAkHqQ",
+    "channel_title": "Live Football Streams",
+    "channel_url": "https://youtube.com/channel/UCVDTKYExRDyv4k449OAkHqQ",
+    "confidence_score": 0.75,
+    "risk_category": "HIGH",
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=l4njqhAIfFY",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video.",
+        "Chat disabled."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "PhcFluAocO8",
+    "channel_id": "UC6o_9n7Yoq6hx2FBlW9Z6Zg",
+    "channel_title": "Instituto Nacional de Enfermedades Neoplásicas",
+    "channel_url": "https://youtube.com/channel/UC6o_9n7Yoq6hx2FBlW9Z6Zg",
+    "confidence_score": 0.75,
+    "risk_category": "HIGH",
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=PhcFluAocO8",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video.",
+        "Chat disabled."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "1b2ybphkg_E",
+    "channel_id": "UCDNAfpPeoseM2vMGUnMhOfg",
+    "channel_title": "Serapodcast",
+    "channel_url": "https://youtube.com/channel/UCDNAfpPeoseM2vMGUnMhOfg",
+    "confidence_score": 0.5,
+    "risk_category": "MEDIUM",
+    "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+    "video_url": "https://youtube.com/watch?v=1b2ybphkg_E",
+    "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "qxquJgqISV0",
+    "channel_id": "UCYQOFOaYwynDXKGpjCGEUvQ",
+    "channel_title": "HopeLyrics",
+    "channel_url": "https://youtube.com/channel/UCYQOFOaYwynDXKGpjCGEUvQ",
+    "confidence_score": 0.5,
+    "risk_category": "MEDIUM",
+    "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+    "video_url": "https://youtube.com/watch?v=qxquJgqISV0",
+    "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "oPQD6qDYAYY",
+    "channel_id": "UCnf_4MBIr--PcLdQyKuGzPQ",
+    "channel_title": "Michael Whitman",
+    "channel_url": "https://youtube.com/channel/UCnf_4MBIr--PcLdQyKuGzPQ",
+    "confidence_score": 0.5,
+    "risk_category": "MEDIUM",
+    "video_title": "🔴[LIVE] Bitcoin & Dogecoin Stream | Live Crypto Trading Signals",
+    "video_url": "https://youtube.com/watch?v=oPQD6qDYAYY",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "xw_Ye-wN2yc",
+    "channel_id": "UCbsQcdWqc3eFQItMzHlvKnQ",
+    "channel_title": "Lisa",
+    "channel_url": "https://youtube.com/channel/UCbsQcdWqc3eFQItMzHlvKnQ",
+    "confidence_score": 0.5,
+    "risk_category": "MEDIUM",
+    "video_title": "СТРИМ ROBLOX РАЗДАЧА КЛАССОВ И ГЕМОВ | РАЗДАЧА ПОДАРКОВ ТЕЛЕГРАМ NFT | НФТ ПОДАРКИ ТЕЛЕГРАМ",
+    "video_url": "https://youtube.com/watch?v=xw_Ye-wN2yc",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "uvt75PT0I2Y",
+    "channel_id": "UCODqFxcWL-HA4eYhb7F3QGQ",
+    "channel_title": "tonaluachefe",
+    "channel_url": "https://youtube.com/channel/UCODqFxcWL-HA4eYhb7F3QGQ",
+    "confidence_score": 0.65,
+    "risk_category": "MEDIUM",
+    "video_title": "A Live para Quem Está Perdido na Web3: Modular Resolve #ModularCrypto #URChallenge",
+    "video_url": "https://youtube.com/watch?v=uvt75PT0I2Y",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "sET2vD-_wRs",
+    "channel_id": "UCODqFxcWL-HA4eYhb7F3QGQ",
+    "channel_title": "tonaluachefe",
+    "channel_url": "https://youtube.com/channel/UCODqFxcWL-HA4eYhb7F3QGQ",
+    "confidence_score": 0.65,
+    "risk_category": "MEDIUM",
+    "video_title": "A Live para Quem Está Perdido na Web3: Modular Resolve #ModularCrypto #URChallenge",
+    "video_url": "https://youtube.com/watch?v=sET2vD-_wRs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "1_Ih0JYmkjI",
+    "channel_id": "UCmRbHAgG2k2vDUvb3xsEunQ",
+    "channel_title": "CNBC-TV18",
+    "channel_url": "https://youtube.com/channel/UCmRbHAgG2k2vDUvb3xsEunQ",
+    "confidence_score": 0.75,
+    "risk_category": "HIGH",
+    "video_title": "CNBC TV18 24x7 LIVE: Stock Markets | Share Markets Updates  | Nifty & Sensex | Business News LIVE",
+    "video_url": "https://youtube.com/watch?v=1_Ih0JYmkjI",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-09T13:30:00",
+      "reviewer": "ag10293"
+    }
+  }
+]

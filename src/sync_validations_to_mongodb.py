@@ -125,7 +125,7 @@ def main():
     
     # Optional: custom database/collection
     database = sys.argv[2] if len(sys.argv) > 2 else 'streamjacking'
-    collection = sys.argv[3] if len(sys.argv) > 3 else 'detection_results_v2'
+    collection = sys.argv[3] if len(sys.argv) > 3 else 'detection_results_v3'
     
     sync_validations_to_mongodb(validated_file, database, collection)
     

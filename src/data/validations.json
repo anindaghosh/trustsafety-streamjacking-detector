@@ -1,6 +1,6 @@
 [
     {
-        "video_id": "wn48Y6PjqtE",
+        "video_id": "U8prG-55vIo",
         "validation": {
             "label": "true_positive",
             "reasoning": [
@@ -8,207 +8,43 @@
                 "Pre-recorded video footage.",
                 "QR Code in video.",
                 "Chat disabled.",
-                "Stream started December 6th."
+                "Channel terminated."
             ],
             "scam_type": "impersonation",
             "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
+            "reviewer": "ag10293"
         }
     },
     {
-        "video_id": "dCPiEWlAbHo",
+        "video_id": "OFilFHI4UmQ",
         "validation": {
             "label": "true_positive",
             "reasoning": [
                 "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "dk0VkmJUFS4",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "aBoOIWGOMEc",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "EH9NZsP6Zog",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "FgZ08YbKccQ",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "AFNg-X9tZ4U",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "D93daHcucfs",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "VEQPjalTyd4",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "pQdKqUufihc",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "AYWxMdmSyyY",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "njVWY_yf0ws",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
                 "Pre-recorded video footage.",
                 "QR Code in video.",
-                "Bot in the chat shares the scam link."
+                "Chat disabled.",
+                "Channel terminated."
             ],
             "scam_type": "impersonation",
             "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
+            "reviewer": "ag10293"
         }
     },
     {
-        "video_id": "X31E8LuLzow",
+        "video_id": "VEwnsSBE6-0",
         "validation": {
             "label": "true_positive",
             "reasoning": [
                 "Hacked channel/Unrelated content.",
                 "Pre-recorded video footage.",
-                "QR Code in video."
+                "QR Code in video.",
+                "Chat disabled.",
+                "Channel terminated."
             ],
             "scam_type": "impersonation",
             "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "qMN8xFdOq1I",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
-        }
-    },
-    {
-        "video_id": "pLl_Lbf74ps",
-        "validation": {
-            "label": "true_positive",
-            "reasoning": [
-                "Hacked channel/Unrelated content.",
-                "Pre-recorded video footage.",
-                "QR Code in video."
-            ],
-            "scam_type": "impersonation",
-            "reviewed_at": "2025-12-07T10:30:00",
-            "reviewer": "da3974"
+            "reviewer": "ag10293"
         }
     }
 ]
