@@ -24,7 +24,7 @@ def load_validated_results_from_mongodb() -> List[Dict]:
         client.admin.command('ping')
         
         db = client['streamjacking']
-        collection = db['detection_results_v3']
+        collection = db['detection_results_latest']
         
         # Query only documents with validation labels
         validated_docs = list(collection.find({
@@ -595,7 +595,7 @@ def main():
     if use_mongodb:
         print("📊 Loading validation data from MongoDB...")
         print("   Database: streamjacking")
-        print("   Collection: detection_results_v3")
+        print("   Collection: detection_results_latest")
         
         try:
             validated_docs = load_validated_results_from_mongodb()

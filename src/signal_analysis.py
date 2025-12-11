@@ -555,8 +555,8 @@ def main():
     parser = argparse.ArgumentParser(
         description='Comprehensive signal-specific analysis for streamjacking detector'
     )
-    parser.add_argument('--collection', default='detection_results_v3',
-                       help='MongoDB collection name (default: detection_results_v3)')
+    parser.add_argument('--collection', default='detection_results_latest',
+                       help='MongoDB collection name (default: detection_results_latest)')
     parser.add_argument('--output-dir', default='../data/analysis',
                        help='Output directory for results (default: ../data/analysis)')
     

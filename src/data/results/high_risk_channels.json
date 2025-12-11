@@ -1,25 +1,28 @@
 [
   {
-    "video_id": "2zAD_zfF3Ik",
-    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
-    "channel_id": "UC8X0pyMdqTB_iJdHA_lJxww",
-    "channel_title": "Bishop Michael Wanderi",
+    "video_id": "ZAMz3XdeeN4",
+    "video_title": "Rate Cut Fed Meeting\ud83d\udcc8Jerome Powell LIVE\ud83d\udd34",
+    "channel_id": "UC4VPa7EOvObpyCRI4YKRQRw",
+    "channel_title": "Paul Barron Network",
     "is_live": true,
-    "video_risk_score": 70.0,
-    "channel_risk_score": 0,
-    "total_risk_score": 70.0,
+    "video_risk_score": 100.0,
+    "channel_risk_score": 0.0,
+    "total_risk_score": 100.0,
     "risk_category": "HIGH",
-    "confidence_score": 0.75,
+    "confidence_score": 1.05,
     "video_signals": [
-      "Multiple scam keywords: eth, cryptocurrency",
+      "Multiple scam keywords: eth, wallet",
+      "Contains crypto address or suspicious URL",
+      "Comments disabled or restricted",
       "Currently live streaming",
-      "High views (5,310) but very low engagement",
+      "High views (8,398) but very low engagement",
+      "Promotional domain (unusual for channel type)",
       "Political figure + crypto tags (likely hijacked channel)"
     ],
     "channel_signals": [],
-    "detected_at": "2025-12-10T02:34:33.823106",
-    "search_query": "BTC live event",
-    "video_url": "https://youtube.com/watch?v=2zAD_zfF3Ik",
-    "channel_url": "https://youtube.com/channel/UC8X0pyMdqTB_iJdHA_lJxww"
+    "detected_at": "2025-12-10T14:25:41.380790",
+    "search_query": "crypto promotion live",
+    "video_url": "https://youtube.com/watch?v=ZAMz3XdeeN4",
+    "channel_url": "https://youtube.com/channel/UC4VPa7EOvObpyCRI4YKRQRw"
   }
 ]

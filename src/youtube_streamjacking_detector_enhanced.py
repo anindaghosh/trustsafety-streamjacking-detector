@@ -14,6 +14,8 @@ This version adds:
 import os
 import re
 import time
+import argparse
+import random
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Set, Tuple
 from dataclasses import dataclass, field
@@ -120,7 +122,7 @@ class MongoDBManager:
             self.client.admin.command('ping')
             
             self.db = self.client[database_name]
-            self.collection = self.db['detection_results_v3']
+            self.collection = self.db['detection_results_latest']
             
             # Create indexes for efficient querying
             self.collection.create_index('video_id', unique=True)
@@ -191,6 +193,47 @@ class MongoDBManager:
                 success_count += 1
         
         return success_count
+    
+    def video_exists(self, video_id: str) -> bool:
+        """Check if video already exists in collection
+        
+        Args:
+            video_id: YouTube video ID to check
+            
+        Returns:
+            True if video exists, False otherwise
+        """
+        if self.collection is None:
+            return False
+            
+        try:
+            return self.collection.count_documents({'video_id': video_id}, limit=1) > 0
+        except Exception as e:
+            print(f"   ⚠️  Error checking video existence: {e}")
+            return False
+    
+    def get_existing_video_ids(self, video_ids: List[str]) -> Set[str]:
+        """Batch check which videos already exist in collection
+        
+        Args:
+            video_ids: List of YouTube video IDs to check
+            
+        Returns:
+            Set of video IDs that already exist in database
+        """
+        if self.collection is None or not video_ids:
+            return set()
+            
+        try:
+            # Query for all matching video_ids and return just the video_id field
+            cursor = self.collection.find(
+                {'video_id': {'$in': video_ids}},
+                {'video_id': 1, '_id': 0}
+            )
+            return {doc['video_id'] for doc in cursor}
+        except Exception as e:
+            print(f"   ⚠️  Error batch checking videos: {e}")
+            return set()
     
     def get_detection_stats(self) -> Dict:
         """Get statistics about stored detections"""
@@ -1105,7 +1148,21 @@ def main():
     print("  • Known scam domain database")
     print("  • Composite risk scoring (Critical/High/Medium/Low)")
     
-    # Define search queries targeting common scam patterns
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description='Enhanced YouTube Streamjacking Detector')
+    parser.add_argument('--risk-threshold', type=int, default=10, 
+                       help='Minimum risk score to store (default: 10, original: 30)')
+    parser.add_argument('--max-results', type=int, default=30,
+                       help='Max results per search query (default: 30, max: 50)')
+    parser.add_argument('--max-quota', type=int, default=None,
+                       help='Maximum API quota to use (default: unlimited)')
+    args = parser.parse_args()
+    
+    risk_threshold = args.risk_threshold
+    max_results_per_query = min(args.max_results, 50)  # YouTube API limit
+    max_quota = args.max_quota
+    
+    # Define search queries targeting diverse crypto content (150+ queries)
     search_queries = [
         # Elon Musk (6 queries)
         "Elon Musk crypto live",
@@ -1198,26 +1255,143 @@ def main():
         "limited time crypto",
         "exclusive crypto event",
         "last chance Bitcoin",
-        "crypto presale live"
+        "crypto presale live",
+        
+        # === NEW QUERIES FOR DATASET EXPANSION (75+ queries) ===
+        
+        # Legitimate crypto news/trading (15 queries)
+        "crypto news live",
+        "Bitcoin price analysis live",
+        "cryptocurrency market update",
+        "crypto trading live",
+        "Bitcoin technical analysis",
+        "altcoin discussion live",
+        "crypto portfolio review",
+        "blockchain news live",
+        "DeFi news live",
+        "NFT market update",
+        "crypto regulation news",
+        "Bitcoin ETF news",
+        "crypto market analysis",
+        "cryptocurrency trading signals",
+        "Bitcoin futures live",
+        
+        # More altcoins and Layer 2s (15 queries)
+        "Arbitrum ARB live",
+        "Optimism OP giveaway",
+        "Cosmos ATOM live",
+        "Algorand ALGO event",
+        "VeChain VET live",
+        "Tezos XTZ giveaway",
+        "NEAR Protocol live",
+        "Fantom FTM event",
+        "Hedera HBAR live",
+        "Aptos APT giveaway",
+        "Sui SUI live",
+        "Immutable IMX event",
+        "Sandbox SAND live",
+        "Decentraland MANA giveaway",
+        "Axie Infinity AXS live",
+        
+        # DeFi protocols (10 queries)
+        "Uniswap live",
+        "Aave protocol event",
+        "Compound Finance live",
+        "MakerDAO live",
+        "Curve Finance event",
+        "Yearn Finance live",
+        "SushiSwap event",
+        "PancakeSwap live",
+        "1inch Network live",
+        "dYdX trading live",
+        
+        # NFT projects (10 queries)
+        "Bored Ape live",
+        "CryptoPunks event",
+        "Azuki NFT live",
+        "Pudgy Penguins event",
+        "Moonbirds live",
+        "Doodles NFT event",
+        "Clone X live",
+        "Art Blocks live",
+        "NBA Top Shot event",
+        "OpenSea live",
+        
+        # Exchanges and platforms (10 queries)
+        "FTX live",  # Historical - may show old scams
+        "Bitfinex event",
+        "KuCoin live",
+        "Gate.io giveaway",
+        "Huobi live",
+        "OKX event",
+        "Bitget live",
+        "MEXC giveaway",
+        "Phemex live",
+        "BitMEX event",
+        
+        # Subtle scam patterns (10 queries)
+        "crypto promotion live",
+        "Bitcoin opportunity",
+        "crypto millionaire live",
+        "get rich crypto",
+        "crypto wealth live",
+        "Bitcoin success story",
+        "crypto passive income",
+        "Bitcoin mining live",
+        "crypto staking rewards",
+        "Bitcoin lending live",
+        
+        # Generic high-volume terms (15 queries)
+        "cryptocurrency live",
+        "Bitcoin live stream",
+        "Ethereum live stream",
+        "crypto live stream",
+        "Bitcoin today",
+        "crypto today",
+        "Bitcoin price live",
+        "Ethereum price live",
+        "crypto price live",
+        "Bitcoin news today",
+        "crypto news today",
+        "cryptocurrency today",
+        "Bitcoin update",
+        "crypto update",
+        "blockchain live"
     ]
     
-    print(f"\n📊 Monitoring {len(search_queries)} search queries...")
-    print(f"⚠️  This will use approximately {len(search_queries) * 100 + 500} API quota units")
-    print("⏱️  Estimated time: 15-30 minutes\n")
+    # Randomize query order for temporal diversity
+    random.shuffle(search_queries)
+    
+    print(f"\n📊 Monitoring {len(search_queries)} search queries (randomized order)...")
+    print(f"   Risk threshold: {risk_threshold} (storing videos with risk >= {risk_threshold})")
+    print(f"   Max results per query: {max_results_per_query}")
+    if max_quota:
+        print(f"   Max API quota: {max_quota} units")
+    estimated_quota = len(search_queries) * 100 + (max_results_per_query * len(search_queries) * 10)
+    print(f"⚠️  Estimated API quota usage: ~{estimated_quota:,} units")
+    print("⏱️  Estimated time: 30-60 minutes\n")
     
     # Collect all results
     all_results = []
     failed_queries = []
     processed_videos = 0
     failed_videos = 0
+    skipped_existing = 0
 
     for query_idx, query in enumerate(search_queries, 1):
         try:
+            # Check quota limit before searching
+            if max_quota and api_client.quota_used >= max_quota:
+                print(f"\n⚠️  Reached max quota limit ({max_quota} units). Stopping search.")
+                print(f"   Processed {query_idx - 1}/{len(search_queries)} queries")
+                break
+            
             print(f"\n🔍 [{query_idx}/{len(search_queries)}] Searching for: '{query}'")
+            print(f"   API quota used so far: {api_client.quota_used} units")
 
             # Search for live streams
             try:
-                livestreams = api_client.search_livestreams(query, max_results=10)
+                livestreams = api_client.search_livestreams(query, max_results=max_results_per_query)
                 
                 print(f"   Found {len(livestreams)} live streams")
             except Exception as e:
@@ -1228,6 +1402,19 @@ def main():
             if not livestreams:
                 continue
 
+            # Extract all video IDs from search results
+            video_ids = []
+            for stream in livestreams:
+                if 'id' in stream and 'videoId' in stream['id']:
+                    video_ids.append(stream['id']['videoId'])
+            
+            # Check which videos already exist in MongoDB (batch operation)
+            existing_video_ids = set()
+            if mongo_manager:
+                existing_video_ids = mongo_manager.get_existing_video_ids(video_ids)
+                if existing_video_ids:
+                    print(f"   ℹ️  Skipping {len(existing_video_ids)} already-processed videos")
+
             for stream_idx, stream in enumerate(livestreams, 1):
                 try:
                     # Extract video ID safely
@@ -1237,6 +1424,11 @@ def main():
                         continue
 
                     video_id = stream['id']['videoId']
+                    
+                    # Skip if video already exists in MongoDB
+                    if video_id in existing_video_ids:
+                        skipped_existing += 1
+                        continue
 
                     # Get detailed metadata
                     try:
@@ -1285,8 +1477,8 @@ def main():
 
                     processed_videos += 1
 
-                    # Store results if suspicious (risk >= 30)
-                    if composite['total_risk_score'] >= 30:
+                    # Store results if above threshold (configurable, default: 10)
+                    if composite['total_risk_score'] >= risk_threshold:
                         result = {
                             'video_id': video_id,
                             'video_title': analyzed_video.title,
@@ -1382,10 +1574,14 @@ def main():
     print("="*70)
     print(f"Total queries attempted: {len(search_queries)}")
     print(f"Failed queries: {len(failed_queries)}")
+    print(f"Videos skipped (already in DB): {skipped_existing}")
     print(f"Videos processed successfully: {processed_videos}")
     print(f"Videos failed to process: {failed_videos}")
     print(f"Total suspicious detections: {len(all_results)}")
     print(f"API quota used: {api_client.quota_used} units")
+    if skipped_existing > 0:
+        estimated_saved = skipped_existing * 10  # ~10 units per video (5 for video + 5 for channel)
+        print(f"API quota saved by skipping: ~{estimated_saved} units")
     
     if all_results:
         # Risk distribution

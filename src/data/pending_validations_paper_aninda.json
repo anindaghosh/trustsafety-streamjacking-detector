@@ -1,0 +1,4167 @@
+[
+  {
+    "video_id": "Cidl9JoRtGk",
+    "channel_id": "UCBVkoTHzszNtJsG7fWaHbsg",
+    "channel_risk_score": 20,
+    "channel_signals": [
+      "Old account (2774 days) with minimal content"
+    ],
+    "channel_title": "國會頻道",
+    "channel_url": "https://youtube.com/channel/UCBVkoTHzszNtJsG7fWaHbsg",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "FTX live",
+    "total_risk_score": 30,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (143,930) but very low engagement"
+    ],
+    "video_title": "財政委員會 | 國會頻道-立法院議事轉播",
+    "video_url": "https://youtube.com/watch?v=Cidl9JoRtGk",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "H6N2doE04mY",
+    "channel_id": "UCLL-8-ReMDLCCUJthNWZstw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Jeferson Sena ",
+    "channel_url": "https://youtube.com/channel/UCLL-8-ReMDLCCUJthNWZstw",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (1,665) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=H6N2doE04mY",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Y0Xls_bK3MM",
+    "channel_id": "UC80gPkw3wzkVgpUlU1q-gkQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Crypto Trading DE",
+    "channel_url": "https://youtube.com/channel/UC80gPkw3wzkVgpUlU1q-gkQ",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "BTC live event",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: investment, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (1,471) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴 LIVE Bitcoin Trading! US Zinsentscheid JETZT! PUMP oder DUMP?",
+    "video_url": "https://youtube.com/watch?v=Y0Xls_bK3MM",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "_5Kf0qjRUQk",
+    "channel_id": "UClxj3GlGphZVgd1SLYhZKmg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Kanna Yanagi ch. 柳かんな",
+    "channel_url": "https://youtube.com/channel/UClxj3GlGphZVgd1SLYhZKmg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Art Blocks live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (1,547) but very low engagement"
+    ],
+    "video_title": "Let Me Clean!✨Totally Wholesome Cleaning ...totally!!【Crime Scene Cleaner】",
+    "video_url": "https://youtube.com/watch?v=_5Kf0qjRUQk",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "kFH0CsTZUyg",
+    "channel_id": "UCpbpfcZfo-hoDAx2m1blFhg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Blocks Universe",
+    "channel_url": "https://youtube.com/channel/UCpbpfcZfo-hoDAx2m1blFhg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Art Blocks live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (45,590) but very low engagement"
+    ],
+    "video_title": "🔴 Christmas Craft Fair! | Numberblocks, Alphablocks, Colourblocks, Wonderblocks | Blocks Universe",
+    "video_url": "https://youtube.com/watch?v=kFH0CsTZUyg",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "veu6VLtD6rI",
+    "channel_id": "UCc8u6bYkdpWBgJJr0O7USZw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Cosmic Consciousness with Kassia",
+    "channel_url": "https://youtube.com/channel/UCc8u6bYkdpWBgJJr0O7USZw",
+    "confidence_score": 0.55,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Cardano ADA live",
+    "total_risk_score": 45,
+    "video_risk_score": 45,
+    "video_signals": [
+      "Multiple scam keywords: send, eth",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming"
+    ],
+    "video_title": "Navigating the December 2025 TIMELINE SPLIT",
+    "video_url": "https://youtube.com/watch?v=veu6VLtD6rI",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ScKt6EiuY2k",
+    "channel_id": "UCzY2hffpxsGeLDafjBY7BHA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Live Alex Twb",
+    "channel_url": "https://youtube.com/channel/UCzY2hffpxsGeLDafjBY7BHA",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 10,
+    "video_risk_score": 10,
+    "video_signals": [
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "High views (1,243) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Live #NQ #Futures Real-Time Trade Setups with Alex TWB",
+    "video_url": "https://youtube.com/watch?v=ScKt6EiuY2k",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Lqo1qwHm95k",
+    "channel_id": "UC1RYqPmUw6HO3BzsdYO2S-g",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Renz",
+    "channel_url": "https://youtube.com/channel/UC1RYqPmUw6HO3BzsdYO2S-g",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "Crypto LIVE: Zündet Jerome Powell jetzt die Bombe? (+150 USDT Gewinnspiel)",
+    "video_url": "https://youtube.com/watch?v=Lqo1qwHm95k",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "aW3Vas8Kt_g",
+    "channel_id": "UCbiaJdAGN9XeUrNhKng9Wyg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Evan Aldo",
+    "channel_url": "https://youtube.com/channel/UCbiaJdAGN9XeUrNhKng9Wyg",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin futures live",
+    "total_risk_score": 55,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: eth, free crypto, investment",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "LIVE TRADING - FOMC Meeting + 14k in Profit on Bitcoin and Eth Longs.",
+    "video_url": "https://youtube.com/watch?v=aW3Vas8Kt_g",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "KXitAgbfSVo",
+    "channel_id": "UCoQFNWXDxHqW6hoTOsjBP4w",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Trade With Rakhi",
+    "channel_url": "https://youtube.com/channel/UCoQFNWXDxHqW6hoTOsjBP4w",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin futures live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "CRYPTO AND FOREX TRADING 10DEC #livetrading#live#bitcoin#ethereum#gold #cryptotrading@Tradewithrakhi",
+    "video_url": "https://youtube.com/watch?v=KXitAgbfSVo",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "f4ChoYX0lCQ",
+    "channel_id": "UCAVnInkwhFi0ustx3GjxemQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Qadri Attari Digital Sound",
+    "channel_url": "https://youtube.com/channel/UCAVnInkwhFi0ustx3GjxemQ",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "blockchain news live",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (4,393) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=f4ChoYX0lCQ",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "qf9zj0hCVqQ",
+    "channel_id": "UCkNVMbAAnbW4VPgncYInpMA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Tamanna Garden",
+    "channel_url": "https://youtube.com/channel/UCkNVMbAAnbW4VPgncYInpMA",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "cryptocurrency live",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (3,052) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=qf9zj0hCVqQ",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "sx-Q80NqLTY",
+    "channel_id": "UCVIOA9XqMtMUk8U-IF-dSYA",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (5 keywords)"
+    ],
+    "channel_title": "Forflies",
+    "channel_url": "https://youtube.com/channel/UCVIOA9XqMtMUk8U-IF-dSYA",
+    "confidence_score": 0.7,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "cryptocurrency live",
+    "total_risk_score": 60,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "[LIVE] BITCOIN BREAKOUT OUT RIGHT NOW!?!? THIS WILL HAPPEN NEXT!?",
+    "video_url": "https://youtube.com/watch?v=sx-Q80NqLTY",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "KQp-e_XQnDE",
+    "channel_id": "UCEAZeUIeJs0IjQiqTCdVSIg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Yahoo Finance",
+    "channel_url": "https://youtube.com/channel/UCEAZeUIeJs0IjQiqTCdVSIg",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bloomberg crypto live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (5,466,934) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Stock market today: Live coverage from Yahoo Finance",
+    "video_url": "https://youtube.com/watch?v=KQp-e_XQnDE",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "1cIDZSzwAvU",
+    "channel_id": "UC_yMEw85qUnz8H74DGCPZFA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Emily's Playhouse - Learning Videos for Kids",
+    "channel_url": "https://youtube.com/channel/UC_yMEw85qUnz8H74DGCPZFA",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (32,225) but very low engagement"
+    ],
+    "video_title": "🧑‍🏫 LIVE: Learn Jobs, Occupations & Transport 🚒👩‍🚀 Colorful Clay Fun for Kids",
+    "video_url": "https://youtube.com/watch?v=1cIDZSzwAvU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "JKaZ-Yg6BQs",
+    "channel_id": "UCjemQfjaXAzA-95RKoy9n_g",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "Discover Crypto",
+    "channel_url": "https://youtube.com/channel/UCjemQfjaXAzA-95RKoy9n_g",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto today",
+    "total_risk_score": 10,
+    "video_risk_score": 5,
+    "video_signals": [
+      "Multiple scam keywords: send, wallet, bonus",
+      "Currently live streaming",
+      "High views (3,353) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "LIVE FOMC 🚨  Jerome Powell Announcement To Shock All Of Crypto!",
+    "video_url": "https://youtube.com/watch?v=JKaZ-Yg6BQs",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "6AiKzbpgs20",
+    "channel_id": "UCcVZ4ogdleGInSvgfXFjUTg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "Diego Trades - Dieguito Charts",
+    "channel_url": "https://youtube.com/channel/UCcVZ4ogdleGInSvgfXFjUTg",
+    "confidence_score": 0.35,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Crypto.com giveaway",
+    "total_risk_score": 35,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, bonus",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Livetrading Crypto - 10k to 100k Challenge - 100$ Giveaway!🚀",
+    "video_url": "https://youtube.com/watch?v=6AiKzbpgs20",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "9A98uWQYVGk",
+    "channel_id": "UC44-3UHIilNh1iqc-upShuw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Zorozblox",
+    "channel_url": "https://youtube.com/channel/UC44-3UHIilNh1iqc-upShuw",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin mining live",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency",
+      "Currently live streaming",
+      "High views (4,994) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+    "video_url": "https://youtube.com/watch?v=9A98uWQYVGk",
+       "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "wGevSKgxN0E",
+    "channel_id": "UCciRxngTTvf0iezg7pPH1cA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Dj Dalim Official",
+    "channel_url": "https://youtube.com/channel/UCciRxngTTvf0iezg7pPH1cA",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin mining live",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency",
+      "Currently live streaming",
+      "High views (2,814) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+    "video_url": "https://youtube.com/watch?v=wGevSKgxN0E",
+       "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ORqEXSK0CVw",
+    "channel_id": "UC4CIdT66HOn4ekJVtNO4Qdg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Anime Lofi",
+    "channel_url": "https://youtube.com/channel/UC4CIdT66HOn4ekJVtNO4Qdg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "OpenSea live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (14,907) but very low engagement"
+    ],
+    "video_title": "Rainy Day Lofi 🌧️ Anime hip hop mix - Calm Anime Beats to Relax, Study & Feel at Peace",
+    "video_url": "https://youtube.com/watch?v=ORqEXSK0CVw",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "fVa6-zCBR7A",
+    "channel_id": "UCnM5iMGiKsZg-iOlIO2ZkdQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Monterey Bay Aquarium",
+    "channel_url": "https://youtube.com/channel/UCnM5iMGiKsZg-iOlIO2ZkdQ",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "OpenSea live",
+    "total_risk_score": 25,
+    "video_risk_score": 25,
+    "video_signals": [
+      "Comments disabled or restricted",
+      "Currently live streaming"
+    ],
+    "video_title": "Live Monterey Bay Cam - Monterey Bay Aquarium",
+    "video_url": "https://youtube.com/watch?v=fVa6-zCBR7A",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "G7XVBrXVXik",
+    "channel_id": "UCN_HmIZz6WBy8sq8X40sJXg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Masked Investor",
+    "channel_url": "https://youtube.com/channel/UCN_HmIZz6WBy8sq8X40sJXg",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: eth, investment, bonus",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "🚀 LIVE JEROME POWELL SPEECH!! 🚀",
+    "video_url": "https://youtube.com/watch?v=G7XVBrXVXik",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "KY2JICFh5XY",
+    "channel_id": "UCLG0pfFkbYGbb1wZjCaCtgQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "GH0STEE",
+    "channel_url": "https://youtube.com/channel/UCLG0pfFkbYGbb1wZjCaCtgQ",
+    "confidence_score": 0.55,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto passive income",
+    "total_risk_score": 45,
+    "video_risk_score": 45,
+    "video_signals": [
+      "Multiple scam keywords: cryptocurrency, wallet",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming"
+    ],
+    "video_title": "We are BACK",
+    "video_url": "https://youtube.com/watch?v=KY2JICFh5XY",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "8Tl4XjbY0ds",
+    "channel_id": "UCWHAHGGmvk9CJoVkAijRHPQ",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "Daniel Nita ",
+    "channel_url": "https://youtube.com/channel/UCWHAHGGmvk9CJoVkAijRHPQ",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Elon Musk crypto live",
+    "total_risk_score": 40,
+    "video_risk_score": 35,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (3,553) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴LIVE: FOMC jerome powell: ultima ședință FED din 2025 SUPER CICLU sau final de bull market",
+    "video_url": "https://youtube.com/watch?v=8Tl4XjbY0ds",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "KCbEsZc6aRk",
+    "channel_id": "UC31omHTdJDcFCb_bl6tWArA",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "Crypto Wall Street",
+    "channel_url": "https://youtube.com/channel/UC31omHTdJDcFCb_bl6tWArA",
+    "confidence_score": 0.55,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto live stream",
+    "total_risk_score": 45,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: send, wallet, bonus",
+      "Currently live streaming",
+      "High views (5,001) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴 FED Zinsentscheid Live: Gleich Knallt's! 💥 Bitcoin & Krypto Explosion oder Blutbad? 🚨",
+    "video_url": "https://youtube.com/watch?v=KCbEsZc6aRk",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "_dGR3_Rgl4I",
+    "channel_id": "UCOlbjeTPbKD5eRNA6ZUAIrA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Smooth Trader ",
+    "channel_url": "https://youtube.com/channel/UCOlbjeTPbKD5eRNA6ZUAIrA",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (2,192) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "LIVE MOBILE NQ Futures Trading - STC Indicator Signals - Dec 10th",
+    "video_url": "https://youtube.com/watch?v=_dGR3_Rgl4I",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "haA9ZN5LzJY",
+    "channel_id": "UCl7KjCYrzmR6Zag7NYjN4RA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Bhanu 4U",
+    "channel_url": "https://youtube.com/channel/UCl7KjCYrzmR6Zag7NYjN4RA",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth",
+      "QR code mentioned (common scam tactic)",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Live bitcoin trading 11 DEC | crypto live | gold  live | #livetrading #cryptolive #btclive",
+    "video_url": "https://youtube.com/watch?v=haA9ZN5LzJY",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "t_6AmkV3MIY",
+    "channel_id": "UCnmzMOxYwAcZQXDklcR0o6Q",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Dewald",
+    "channel_url": "https://youtube.com/channel/UCnmzMOxYwAcZQXDklcR0o6Q",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency, investment",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "FOMC Press Conference Live",
+    "video_url": "https://youtube.com/watch?v=t_6AmkV3MIY",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ZAMz3XdeeN4",
+    "channel_id": "UC4VPa7EOvObpyCRI4YKRQRw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Paul Barron Network",
+    "channel_url": "https://youtube.com/channel/UC4VPa7EOvObpyCRI4YKRQRw",
+    "confidence_score": 1.05,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 100,
+    "video_risk_score": 100,
+    "video_signals": [
+      "Multiple scam keywords: eth, wallet",
+      "Contains crypto address or suspicious URL",
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "High views (8,398) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "Rate Cut Fed Meeting📈Jerome Powell LIVE🔴",
+    "video_url": "https://youtube.com/watch?v=ZAMz3XdeeN4",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "NksckHzSprs",
+    "channel_id": "UCVIOA9XqMtMUk8U-IF-dSYA",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (5 keywords)"
+    ],
+    "channel_title": "Forflies",
+    "channel_url": "https://youtube.com/channel/UCVIOA9XqMtMUk8U-IF-dSYA",
+    "confidence_score": 0.7,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 60,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "[LIVE] BITCOIN LOOKING INCREDIBLE! | FED RATE CUT | THIS WILL HAPPEN NEXT!?",
+    "video_url": "https://youtube.com/watch?v=NksckHzSprs",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "B7I1dyRjp4g",
+    "channel_id": "UC4c5FPpwCpb6q8J--i8QHtA",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "Crypto Lifer",
+    "channel_url": "https://youtube.com/channel/UC4c5FPpwCpb6q8J--i8QHtA",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 20,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: investment, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Bitcoin Live Trading: Will Powell’s Move Spark Crypto Surge? EP1850",
+    "video_url": "https://youtube.com/watch?v=B7I1dyRjp4g",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Bf-P0JZLGcQ",
+    "channel_id": "UCJuvMjmY4-KFrBJXx-5aRKQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "100XClub",
+    "channel_url": "https://youtube.com/channel/UCJuvMjmY4-KFrBJXx-5aRKQ",
+    "confidence_score": 0.35,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto ending soon",
+    "total_risk_score": 35,
+    "video_risk_score": 35,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency, investment",
+      "Currently live streaming",
+      "High views (1,099) but very low engagement"
+    ],
+    "video_title": "FOMC: Powell Speaks Live",
+    "video_url": "https://youtube.com/watch?v=Bf-P0JZLGcQ",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "YeJePFJTPBI",
+    "channel_id": "UCOObGICwI8TW52sIzzqk4MQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "YaBoySkey",
+    "channel_url": "https://youtube.com/channel/UCOObGICwI8TW52sIzzqk4MQ",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto ending soon",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "FOMC LIVE BTC 92k What Is Next",
+    "video_url": "https://youtube.com/watch?v=YeJePFJTPBI",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "EvvSUs16-2M",
+    "channel_id": "UC5BoZbF0nLYiDWl4vF2V2EQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "ADEEL CRYPTO ADVISOR",
+    "channel_url": "https://youtube.com/channel/UC5BoZbF0nLYiDWl4vF2V2EQ",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "ETH giveaway live",
+    "total_risk_score": 25,
+    "video_risk_score": 25,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, free crypto, airdrop",
+      "Currently live streaming",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Live Free Crypto Red Packet Code Free Apni Marzi Ke Reward red packet code today | Red packet code",
+    "video_url": "https://youtube.com/watch?v=EvvSUs16-2M",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "MWDOR1cAp-U",
+    "channel_id": "UC8Vz2IndbhPtleQmvrlQChg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "The Crypto Report",
+    "channel_url": "https://youtube.com/channel/UC8Vz2IndbhPtleQmvrlQChg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin update",
+    "total_risk_score": 20,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: receive, wallet, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "JUST IN: FED Chair Cuts Rates! (Bitcoin Back To $100K?) FOMC MEETING LIVE STREAM!",
+    "video_url": "https://youtube.com/watch?v=MWDOR1cAp-U",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "2Yt8eWEeCOI",
+    "channel_id": "UCj2ynw2GxQ3g7loePYYE4Ew",
+    "channel_risk_score": 30,
+    "channel_signals": [
+      "Name impersonation: Exact match: btc"
+    ],
+    "channel_title": "BTC Market Update",
+    "channel_url": "https://youtube.com/channel/UCj2ynw2GxQ3g7loePYYE4Ew",
+    "confidence_score": 0.55,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin update",
+    "total_risk_score": 45,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming"
+    ],
+    "video_title": "FOMC, Federal Reserve Reaction - 10 Dec 25",
+    "video_url": "https://youtube.com/watch?v=2Yt8eWEeCOI",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "wCD8FY7N-pE",
+    "channel_id": "UChftTVI0QJmyXkajQYt2tiQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "moneycontrol",
+    "channel_url": "https://youtube.com/channel/UChftTVI0QJmyXkajQYt2tiQ",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin update",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth",
+      "Currently live streaming",
+      "High views (3,707) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴LIVE:Powell speaks after Federal Reserve interest rate decision | Jerome Powell LIVE | FOMC Meeting",
+    "video_url": "https://youtube.com/watch?v=wCD8FY7N-pE",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "rlpFJBAmUpo",
+    "channel_id": "UCLn9ZBGrCZH_A80RLWptcTQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "RaShaun Gaming",
+    "channel_url": "https://youtube.com/channel/UCLn9ZBGrCZH_A80RLWptcTQ",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin price live",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency",
+      "Currently live streaming",
+      "High views (2,535) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+    "video_url": "https://youtube.com/watch?v=rlpFJBAmUpo",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "J20oXGXjgoA",
+    "channel_id": "UCLMx5Kt0pL3P3KWZbEqwoJg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "Ashutosh Kumar",
+    "channel_url": "https://youtube.com/channel/UCLMx5Kt0pL3P3KWZbEqwoJg",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin price live",
+    "total_risk_score": 10,
+    "video_risk_score": 5,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, investment",
+      "Currently live streaming",
+      "High views (1,434) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Crypto Live Trading | Bitcoin Live Trading | Bitcoin Analysis | 11 DEC 2025 #live #btc #crypto",
+    "video_url": "https://youtube.com/watch?v=J20oXGXjgoA",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "oiPgcE5LXa0",
+    "channel_id": "UCBZS6oDQiXRduEPLZWZyv5Q",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "Krypto Philip",
+    "channel_url": "https://youtube.com/channel/UCBZS6oDQiXRduEPLZWZyv5Q",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Cointelegraph live",
+    "total_risk_score": 25,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, wallet",
+      "Currently live streaming"
+    ],
+    "video_title": "LIVE: FED FOMC Analyse für Bitcoin & Altcoin Käufe?!",
+    "video_url": "https://youtube.com/watch?v=oiPgcE5LXa0",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "SjqpwDU8mNg",
+    "channel_id": "UCAHpSB_-MTcl9tLKw_-tutQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Cointelegraph Germany",
+    "channel_url": "https://youtube.com/channel/UCAHpSB_-MTcl9tLKw_-tutQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Cointelegraph live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, wallet",
+      "Currently live streaming"
+    ],
+    "video_title": "LIVE: FED FOMC Analyse für Bitcoin & Altcoin Käufe?!",
+    "video_url": "https://youtube.com/watch?v=SjqpwDU8mNg",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "axM3eA3itR0",
+    "channel_id": "UCfCMwYqt_OEBvOT4cKq42LQ",
+    "channel_risk_score": 55,
+    "channel_signals": [
+      "Name impersonation: Exact match: bitcoin",
+      "Handle-name mismatch (possible hijack)"
+    ],
+    "channel_title": "Foufi : analyses et actualités Bitcoin & Crypto !",
+    "channel_url": "https://youtube.com/channel/UCfCMwYqt_OEBvOT4cKq42LQ",
+    "confidence_score": 0.28,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "blockchain news live",
+    "total_risk_score": 27.5,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴DIRECT LIVE CRYPTO spécial FED : discours de Jerome Powell, baisses des taux & perspectives 2026 !",
+    "video_url": "https://youtube.com/watch?v=axM3eA3itR0",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "8tTBp1mtax4",
+    "channel_id": "UCWM1uBxzGpNb4RyxtFc3A8g",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "JayWave",
+    "channel_url": "https://youtube.com/channel/UCWM1uBxzGpNb4RyxtFc3A8g",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitget live",
+    "total_risk_score": 55,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: send, btc, eth",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Krypto: Zinsentscheid wie nun weiter! LIVE!",
+    "video_url": "https://youtube.com/watch?v=8tTBp1mtax4",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "yYdbTnPbM9U",
+    "channel_id": "UCLEHjQNKNwREMX-si8Q1d5A",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "ZCoinTV",
+    "channel_url": "https://youtube.com/channel/UCLEHjQNKNwREMX-si8Q1d5A",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "Bitget live",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth",
+      "Currently live streaming",
+      "High views (2,296) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "🔴 DIRECTO ESPECIAL: Jerome Powell en Español TRADUCIDO ➤ ¿Qué hará el Precio de Bitcoin?",
+    "video_url": "https://youtube.com/watch?v=yYdbTnPbM9U",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "-J7BCvnrQUI",
+    "channel_id": "UC9M0AlqCwycSsL0XfDgaz-g",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Max Steinauer",
+    "channel_url": "https://youtube.com/channel/UC9M0AlqCwycSsL0XfDgaz-g",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitget live",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: eth, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (1,399) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Bitcoin: Zinsentscheid entscheidet über den nächsten MEGA-MOVE! + Live Trading --- 🔴",
+    "video_url": "https://youtube.com/watch?v=-J7BCvnrQUI",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "2dzSQdRNl3c",
+    "channel_id": "UCoMc0zniPatlGpR6OQiM-Qg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "Didi Random",
+    "channel_url": "https://youtube.com/channel/UCoMc0zniPatlGpR6OQiM-Qg",
+    "confidence_score": 0.8,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "Bitget live",
+    "total_risk_score": 75,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, wallet",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (2,657) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "🚨LIVE! FED ZINSENTSCHEID! BITCOIN UND ALTCOINS ZITTERN VOR DIESEM EVENT!",
+    "video_url": "https://youtube.com/watch?v=2dzSQdRNl3c",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "HMTVUuIUL88",
+    "channel_id": "UCc4Rz_T9Sb1w5rqqo9pL1Og",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "The Moon Show",
+    "channel_url": "https://youtube.com/channel/UCc4Rz_T9Sb1w5rqqo9pL1Og",
+    "confidence_score": 0.85,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto market analysis",
+    "total_risk_score": 80,
+    "video_risk_score": 75,
+    "video_signals": [
+      "Multiple scam keywords: receive, investment, bonus",
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "High views (1,369) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "🔴 FINAL FOMC OF THE YEAR! (POWELL LIVE)",
+    "video_url": "https://youtube.com/watch?v=HMTVUuIUL88",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "vBVY07eLmfo",
+    "channel_id": "UCjjHNnPGzyE4lu2JneP4WHg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "ProVoiceActor1 Dubs",
+    "channel_url": "https://youtube.com/channel/UCjjHNnPGzyE4lu2JneP4WHg",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto market analysis",
+    "total_risk_score": 65,
+    "video_risk_score": 65,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth",
+      "Urgency language: don't miss, urgent",
+      "Currently live streaming",
+      "Celebrity + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "Michael Saylor: BITCOIN CRASH EXPLAINED! MASSIVE BTC DUMP & What's Next for Crypto?",
+    "video_url": "https://youtube.com/watch?v=vBVY07eLmfo",
+       "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "UNKiXCLCzlQ",
+    "channel_id": "UC6or4vpoIk-rPtcRgkHXPqw",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "Planfomo",
+    "channel_url": "https://youtube.com/channel/UC6or4vpoIk-rPtcRgkHXPqw",
+    "confidence_score": 0.7,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto market analysis",
+    "total_risk_score": 60,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, investment",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Crypto Market Before FOMC (2025/12/10)",
+    "video_url": "https://youtube.com/watch?v=UNKiXCLCzlQ",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "mAzn6il76c0",
+    "channel_id": "UCDQqqESBd5L62l-z2DjqvJQ",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "Vibra Finance",
+    "channel_url": "https://youtube.com/channel/UCDQqqESBd5L62l-z2DjqvJQ",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Gemini crypto live",
+    "total_risk_score": 25,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming"
+    ],
+    "video_title": "FED Rate cuts will CRASH the market again. Jerome says Higher for Longer",
+    "video_url": "https://youtube.com/watch?v=mAzn6il76c0",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Bt_WTynFVIY",
+    "channel_id": "UCylw1op1xq5NfVRXI3JxDsA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Martyn Lucas Investor",
+    "channel_url": "https://youtube.com/channel/UCylw1op1xq5NfVRXI3JxDsA",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto news live",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, double, receive",
+      "Currently live streaming",
+      "High views (1,214) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "Fed FOMC LIVE: Is the Pivot Dead? Bitcoin & XRP Brace for Impact | Martyn Lucas Investor",
+    "video_url": "https://youtube.com/watch?v=Bt_WTynFVIY",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "m8zcXLU6HFU",
+    "channel_id": "UC4BBRJCqaqeMwJtU_n7SuCg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Verified YT",
+    "channel_url": "https://youtube.com/channel/UC4BBRJCqaqeMwJtU_n7SuCg",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Gate.io giveaway",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (1,350,389) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Live YouTube Channel Promotion | 1000 SUBSCRIBERS 2मिनट में ले जाओ#live  @techbaniyaji @technopiston",
+    "video_url": "https://youtube.com/watch?v=m8zcXLU6HFU",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Kpg5lhC2EC4",
+    "channel_id": "UCjm4ju6cRMcGuX0NPAVB0zg",
+    "channel_risk_score": 55,
+    "channel_signals": [
+      "Name impersonation: Exact match: bitcoin",
+      "Handle-name mismatch (possible hijack)"
+    ],
+    "channel_title": "BITCOIN AO VIVO",
+    "channel_url": "https://youtube.com/channel/UCjm4ju6cRMcGuX0NPAVB0zg",
+    "confidence_score": 0.28,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Binance BNB live",
+    "total_risk_score": 27.5,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "FOMC AO VIVO! TAPE READING BITCOIN E MERCADOS INTERNACIONAIS",
+    "video_url": "https://youtube.com/watch?v=Kpg5lhC2EC4",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "qwOiteH4VZA",
+    "channel_id": "UCW0en28QcFGUh0rLKx_hQCA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Digital paydays tutorial ",
+    "channel_url": "https://youtube.com/channel/UCW0en28QcFGUh0rLKx_hQCA",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Binance BNB live",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: cryptocurrency, free crypto, airdrop",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Binance Red Packet Code Today | Red Packet Code In Binance Today  is live",
+    "video_url": "https://youtube.com/watch?v=qwOiteH4VZA",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "3vCvC_xrVg8",
+    "channel_id": "UCB6Q0S1gUHXMe5-Jjx0_laQ",
+    "channel_risk_score": 30,
+    "channel_signals": [
+      "Name impersonation: Exact match: bitcoin"
+    ],
+    "channel_title": "Simply Bitcoin",
+    "channel_url": "https://youtube.com/channel/UCB6Q0S1gUHXMe5-Jjx0_laQ",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin today",
+    "total_risk_score": 55,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Title impersonation: Exact match: bitcoin",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (2,817) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "BREAKING: $25T Can Now OFFICIALLY HIT Bitcoin! | EP 1395",
+    "video_url": "https://youtube.com/watch?v=3vCvC_xrVg8",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "WJJI_8qQ55o",
+    "channel_id": "UCbzFwm1EGPAZ6cDKQXlFRJA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Affiliate Marketing 3.0 BTCC",
+    "channel_url": "https://youtube.com/channel/UCbzFwm1EGPAZ6cDKQXlFRJA",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto staking rewards",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, wallet",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "UK | 10th December, Wednesday - Weekly Updates with Shavez",
+    "video_url": "https://youtube.com/watch?v=WJJI_8qQ55o",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "nR9fiVwvFSI",
+    "channel_id": "UCILkdq3pCkrab38ehzzyXTA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "MSB FX",
+    "channel_url": "https://youtube.com/channel/UCILkdq3pCkrab38ehzzyXTA",
+    "confidence_score": 0.55,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto trading live",
+    "total_risk_score": 45,
+    "video_risk_score": 45,
+    "video_signals": [
+      "Multiple scam keywords: eth, investment, bonus",
+      "Currently live streaming",
+      "High views (52,808) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "GOLD Live Trading Session #259 | XAUUSD Trading Live Stream | MSB FX",
+    "video_url": "https://youtube.com/watch?v=nR9fiVwvFSI",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "t6o3klB5AVY",
+    "channel_id": "UCQemzRWOMazoaSuULUuSCpg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Trade For Profit",
+    "channel_url": "https://youtube.com/channel/UCQemzRWOMazoaSuULUuSCpg",
+    "confidence_score": 0.55,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto trading live",
+    "total_risk_score": 45,
+    "video_risk_score": 45,
+    "video_signals": [
+      "Multiple scam keywords: btc, investment, bonus",
+      "Currently live streaming",
+      "High views (3,637) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "FOMC NEWS TRADE LIVE: BTC Live Trading Bitcoin Analysis | 10 DEC #crypto #bitcoin #btc",
+    "video_url": "https://youtube.com/watch?v=t6o3klB5AVY",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "miKqY5Mbhe4",
+    "channel_id": "UCN9Nj4tjXbVTLYWN0EKly_Q",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Crypto Banter",
+    "channel_url": "https://youtube.com/channel/UCN9Nj4tjXbVTLYWN0EKly_Q",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin live stream",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (1,173) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "FOMC LIVE Crypto TRADING Competition: Banter Royale [Episode 7]",
+    "video_url": "https://youtube.com/watch?v=miKqY5Mbhe4",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "FvMqh9fu6mw",
+    "channel_id": "UCI8hkLeh1hXGwi4YKk9X3AA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Oscar Ramos",
+    "channel_url": "https://youtube.com/channel/UCI8hkLeh1hXGwi4YKk9X3AA",
+    "confidence_score": 0.85,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "Bitcoin price live",
+    "total_risk_score": 80,
+    "video_risk_score": 80,
+    "video_signals": [
+      "Multiple scam keywords: send, receive, btc",
+      "Currently live streaming",
+      "High views (4,826) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "XRP FED FOMC CUT LIVE NOW!🔴XRP TRUMP NEWS",
+    "video_url": "https://youtube.com/watch?v=FvMqh9fu6mw",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Vw8wpcIWEY4",
+    "channel_id": "UCylw1op1xq5NfVRXI3JxDsA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Martyn Lucas Investor",
+    "channel_url": "https://youtube.com/channel/UCylw1op1xq5NfVRXI3JxDsA",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto giveaway live",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, receive, btc",
+      "Currently live streaming",
+      "High views (1,079) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴 LIVE FOMC: 3 Powell Rates Cuts? ⚠️ XRP, Silver & Bitcoin EXPLODE! (Trade Setup & Reaction)",
+    "video_url": "https://youtube.com/watch?v=Vw8wpcIWEY4",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "GZvFRdygRmI",
+    "channel_id": "UCsxHUQed-EENE9xVHMndAzw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "CRYPTO X",
+    "channel_url": "https://youtube.com/channel/UCsxHUQed-EENE9xVHMndAzw",
+    "confidence_score": 0.6,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Elon Musk cryptocurrency",
+    "total_risk_score": 50,
+    "video_risk_score": 50,
+    "video_signals": [
+      "Multiple scam keywords: send, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "LIVE : CUTRATE !! PUMP OR DUMP ??",
+    "video_url": "https://youtube.com/watch?v=GZvFRdygRmI",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "uW7D-Q9oqLQ",
+    "channel_id": "UCTse9ZRp0LkeBTPrKiwtbKg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Market Mantra",
+    "channel_url": "https://youtube.com/channel/UCTse9ZRp0LkeBTPrKiwtbKg",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Elon Musk cryptocurrency",
+    "total_risk_score": 25,
+    "video_risk_score": 25,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, free crypto",
+      "Currently live streaming",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "10 Dec | LIVE Crypto Trading Today | Bitcoin | Real-Time Profit & Scalping on Delta | Hindi",
+    "video_url": "https://youtube.com/watch?v=uW7D-Q9oqLQ",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "iqpXMhVbU5c",
+    "channel_id": "UCwZK7V9EnvMCFsL-mwape7Q",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "Milkshakematty",
+    "channel_url": "https://youtube.com/channel/UCwZK7V9EnvMCFsL-mwape7Q",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "get rich crypto",
+    "total_risk_score": 25,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, free crypto",
+      "Currently live streaming"
+    ],
+    "video_title": "FED CUTS RATES! LIVE Reaction With MilkshakeMatty & Paula Talks Crypto #crypto #FED #live",
+    "video_url": "https://youtube.com/watch?v=iqpXMhVbU5c",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "8D4g8J76yo8",
+    "channel_id": "UCgmo2WDA9ohzQMZReLgmuQQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Dhruv Tradess",
+    "channel_url": "https://youtube.com/channel/UCgmo2WDA9ohzQMZReLgmuQQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "get rich crypto",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "High views (1,155) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "verticle LIVE GOLD & CRYPTO TRADING | 10  december @Dhruvtradess",
+    "video_url": "https://youtube.com/watch?v=8D4g8J76yo8",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "qseqYbQfFVA",
+    "channel_id": "UCV33QbsHWtgAFGfby-K6WCQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Tim Warren",
+    "channel_url": "https://youtube.com/channel/UCV33QbsHWtgAFGfby-K6WCQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "get rich crypto",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, send, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "🚨 LIVE: FOMC Meeting Decision! (Will Crypto PUMP or DUMP?)",
+    "video_url": "https://youtube.com/watch?v=qseqYbQfFVA",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "1l92SC9wkpA",
+    "channel_id": "UCJxiyziwbma-0t5dCW-1OGw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "DustyBC Crypto News",
+    "channel_url": "https://youtube.com/channel/UCJxiyziwbma-0t5dCW-1OGw",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "get rich crypto",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: airdrop, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🚨JEROME POWELL LIVE FOMC SPEECH! XRP, BTC & CRYPTO?!?",
+    "video_url": "https://youtube.com/watch?v=1l92SC9wkpA",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "XuozPYYy2rk",
+    "channel_id": "UCNvJ5QckHYb3CeRBbbZry-A",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "AMCrypto",
+    "channel_url": "https://youtube.com/channel/UCNvJ5QckHYb3CeRBbbZry-A",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "get rich crypto",
+    "total_risk_score": 20,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: send, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Trading Live The FOMC Meeting: Bitcoin's Volatility On The Horizon!",
+    "video_url": "https://youtube.com/watch?v=XuozPYYy2rk",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "SUa2pIH7ZHE",
+    "channel_id": "UCOb8ZvB7CK7-IEf-8RmhULg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "CRYPTO with KLAUS",
+    "channel_url": "https://youtube.com/channel/UCOb8ZvB7CK7-IEf-8RmhULg",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin technical analysis",
+    "total_risk_score": 10,
+    "video_risk_score": 10,
+    "video_signals": [
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔥FOMC FED RATE DECISION🔥CRYPTO MARKET REACTION🔥",
+    "video_url": "https://youtube.com/watch?v=SUa2pIH7ZHE",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "A2rFIdINSH8",
+    "channel_id": "UCNHz224-6zLSFgMUju__wwQ",
+    "channel_risk_score": 30,
+    "channel_signals": [
+      "Name impersonation: Exact match: bitcoin"
+    ],
+    "channel_title": "Andy Bitcoinsensus",
+    "channel_url": "https://youtube.com/channel/UCNHz224-6zLSFgMUju__wwQ",
+    "confidence_score": 0.8,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "Bitcoin futures live",
+    "total_risk_score": 75,
+    "video_risk_score": 60,
+    "video_signals": [
+      "Multiple scam keywords: investment, bonus",
+      "Contains crypto address or suspicious URL",
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "High views (2,600) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "BITCOIN LIVE ANALYSIS AND SETUPS! (PRE-FOMC)",
+    "video_url": "https://youtube.com/watch?v=A2rFIdINSH8",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "sQ8x5IJhCRU",
+    "channel_id": "UCsUTIOWt25_9bXBV7A9aepQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Closed on Sunday",
+    "channel_url": "https://youtube.com/channel/UCsUTIOWt25_9bXBV7A9aepQ",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Clone X live",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (6,366) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "✨ star wars lofi",
+    "video_url": "https://youtube.com/watch?v=sQ8x5IJhCRU",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "XQa4B-YPzmc",
+    "channel_id": "UClaYZgJP5nejVZzObGH1LtA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Brian Knight",
+    "channel_url": "https://youtube.com/channel/UClaYZgJP5nejVZzObGH1LtA",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Compound Finance live",
+    "total_risk_score": 55,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: send, investment, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Join us for a LIVE FOREX Analysis Session focusing on the Relaxed Strategy    😎  11122025",
+    "video_url": "https://youtube.com/watch?v=XQa4B-YPzmc",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "pMn14F3Utw0",
+    "channel_id": "UCebQfKQzeM0ChCVaFrk_kVg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "ERKAN & STEFAN",
+    "channel_url": "https://youtube.com/channel/UCebQfKQzeM0ChCVaFrk_kVg",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "PancakeSwap live",
+    "total_risk_score": 65,
+    "video_risk_score": 65,
+    "video_signals": [
+      "Multiple scam keywords: send, wallet",
+      "Contains crypto address or suspicious URL",
+      "Comments disabled or restricted",
+      "Currently live streaming"
+    ],
+    "video_title": "Erkan & Stefan Gamen auf YouTube und auf Twitch.tv/erkanundstefan | Erkan & Stefan | TV Brontal",
+    "video_url": "https://youtube.com/watch?v=pMn14F3Utw0",
+       "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "6878iCNiBbA",
+    "channel_id": "UC5qPDQ-Q3ZMaQ9GuskCAsNg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (5 keywords)"
+    ],
+    "channel_title": "Sniper DEX - Real Sniper Bot",
+    "channel_url": "https://youtube.com/channel/UC5qPDQ-Q3ZMaQ9GuskCAsNg",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "PancakeSwap live",
+    "total_risk_score": 25,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming"
+    ],
+    "video_title": "🚨 LIVE 24/7 • Earn +3 BNB Per Day Best Sniper Bot • Crypto Trading Strategies • Live Trading 2025",
+    "video_url": "https://youtube.com/watch?v=6878iCNiBbA",
+     "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "_Et2Gtm-Tt8",
+    "channel_id": "UCtkR4WJvaqH1ZvRDzx8PwDg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Comedian Sheel",
+    "channel_url": "https://youtube.com/channel/UCtkR4WJvaqH1ZvRDzx8PwDg",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 55,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=_Et2Gtm-Tt8",
+     "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "oSUdbJX6f8s",
+    "channel_id": "UCKT-3QEgM9Ku7UQUdReeYgg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "ONG ZEDAGA",
+    "channel_url": "https://youtube.com/channel/UCKT-3QEgM9Ku7UQUdReeYgg",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 55,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=oSUdbJX6f8s",
+     "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "yoYCyZ1N4vA",
+    "channel_id": "UCe2eFdYuhB70UdgIcjm2jxg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "NG Tv Orange City",
+    "channel_url": "https://youtube.com/channel/UCe2eFdYuhB70UdgIcjm2jxg",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 55,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=yoYCyZ1N4vA",
+     "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "7KrwHqi4Hg8",
+    "channel_id": "UCqxuHyHHE0U8DNIOMOJJhjQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "DJ YORMIX - URABÁ",
+    "channel_url": "https://youtube.com/channel/UCqxuHyHHE0U8DNIOMOJJhjQ",
+    "confidence_score": 0.65,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 55,
+    "video_risk_score": 55,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=7KrwHqi4Hg8",
+     "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "mmQ1o-r0gbY",
+    "channel_id": "UCla2jS8BrfLJj7kbKyy5_ew",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "CryptoWendyO",
+    "channel_url": "https://youtube.com/channel/UCla2jS8BrfLJj7kbKyy5_ew",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 65,
+    "video_risk_score": 65,
+    "video_signals": [
+      "Multiple scam keywords: investment, airdrop, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (1,014) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "XRP ARMY ARE YOU READY? U.S. Government Has Been Holding For 8 Years?!",
+    "video_url": "https://youtube.com/watch?v=mmQ1o-r0gbY",
+     "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "DMrvMAgyFrQ",
+    "channel_id": "UCasNJBA9mDjpkPSEP3QDcLg",
+    "channel_risk_score": 40,
+    "channel_signals": [
+      "Old account (4274 days) with minimal content",
+      "High subscribers (27,800) but minimal content"
+    ],
+    "channel_title": "Di Francesco Antony",
+    "channel_url": "https://youtube.com/channel/UCasNJBA9mDjpkPSEP3QDcLg",
+    "confidence_score": 0.95,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 90,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (4,417) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech is Gamechanger for Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=DMrvMAgyFrQ",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "cX0gbHjkBA8",
+    "channel_id": "UCz0LJP5P3mDXM75UBzwnH2g",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Javier Sandoval",
+    "channel_url": "https://youtube.com/channel/UCz0LJP5P3mDXM75UBzwnH2g",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto price live",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (4,010) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "LIVE : Michael Saylor Bitcoin Bull Market Is Ready — Explosive BTC Price Forecast!",
+    "video_url": "https://youtube.com/watch?v=cX0gbHjkBA8",
+     "validation": {
+      "label": "false_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "nj0KwQKi-Ow",
+    "channel_id": "UCJZueESL1ne6OFpU-5dx3Tw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Trade Swings",
+    "channel_url": "https://youtube.com/channel/UCJZueESL1ne6OFpU-5dx3Tw",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto price live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: receive, btc, eth",
+      "Currently live streaming",
+      "High views (1,532) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "LIVE Crypto Trading | Gold & Bitcoin & Altcoins | (BTC ETH) | live btc trading | crypto trading live",
+    "video_url": "https://youtube.com/watch?v=nj0KwQKi-Ow",
+     "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "cR0blNQYyZc",
+    "channel_id": "UC9iYfiKcg3fGDNMpNF9C73g",
+    "channel_risk_score": 30,
+    "channel_signals": [
+      "Old account (872 days) with minimal content",
+      "Crypto-heavy description (4 keywords)"
+    ],
+    "channel_title": "LiveMarketPulse HQ",
+    "channel_url": "https://youtube.com/channel/UC9iYfiKcg3fGDNMpNF9C73g",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Ethereum price live",
+    "total_risk_score": 15,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🚨 Ethereum Price LIVE: 30-Minute Prediction & Trading Signals (Next Move Revealed!) 🔥",
+    "video_url": "https://youtube.com/watch?v=cR0blNQYyZc",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "-wDDSJJLl9Q",
+    "channel_id": "UCn3H_XpdE1WEInYTj1u4o-w",
+    "channel_risk_score": 20,
+    "channel_signals": [
+      "Old account (1579 days) with minimal content"
+    ],
+    "channel_title": "Finance Untold Files",
+    "channel_url": "https://youtube.com/channel/UCn3H_XpdE1WEInYTj1u4o-w",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto update",
+    "total_risk_score": 10,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency, investment",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "US FED Rate Cut LIVE 🔴 | Powell Speech | Stock Market Crash or Rally? | Stocks, Bonds, Crypto",
+    "video_url": "https://youtube.com/watch?v=-wDDSJJLl9Q",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "FNiyqOHievU",
+    "channel_id": "UCMsNbBn0XJKySH2sXnj53RA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Average Joe Crypto",
+    "channel_url": "https://youtube.com/channel/UCMsNbBn0XJKySH2sXnj53RA",
+    "confidence_score": 0.6,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Bitcoin ETF news",
+    "total_risk_score": 50,
+    "video_risk_score": 50,
+    "video_signals": [
+      "Multiple scam keywords: investment, bonus",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🚨 LIVE FOMC Meeting: Rate Cuts CONFIRMED | Market CRASH? Powell’s LAST WARNING! | Bitcoin $100k",
+    "video_url": "https://youtube.com/watch?v=FNiyqOHievU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "qDHciBOWnnQ",
+    "channel_id": "UCW0en28QcFGUh0rLKx_hQCA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Digital paydays tutorial ",
+    "channel_url": "https://youtube.com/channel/UCW0en28QcFGUh0rLKx_hQCA",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Binance BNB live",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: cryptocurrency, free crypto, airdrop",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Binance Red Packet Code Today | Red Packet Code In Binance Today  is live",
+    "video_url": "https://youtube.com/watch?v=qDHciBOWnnQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "APKgJNq6I_k",
+    "channel_id": "UCpk-H9G8HPq6DAJiwuhCugw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Waters of Heaven",
+    "channel_url": "https://youtube.com/channel/UCpk-H9G8HPq6DAJiwuhCugw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sui SUI live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (1,529,654) but very low engagement"
+    ],
+    "video_title": "Relaxing Music for Stress Relief 🌿 Healing of the Mind • Relieve Anxiety",
+    "video_url": "https://youtube.com/watch?v=APKgJNq6I_k",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "3m2g0O5dPAQ",
+    "channel_id": "UCpk-H9G8HPq6DAJiwuhCugw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Waters of Heaven",
+    "channel_url": "https://youtube.com/channel/UCpk-H9G8HPq6DAJiwuhCugw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sui SUI live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (3,114,032) but very low engagement"
+    ],
+    "video_title": "Relaxing Music for Stress Relief 🌿 Healing of the Mind • Relieve Anxiety",
+    "video_url": "https://youtube.com/watch?v=3m2g0O5dPAQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "fMLZLrJ8e2Q",
+    "channel_id": "UCnmocGJPcZKRY8xLc5Sb0Qw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Inner Healing Music",
+    "channel_url": "https://youtube.com/channel/UCnmocGJPcZKRY8xLc5Sb0Qw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sui SUI live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (1,126,599) but very low engagement"
+    ],
+    "video_title": "If This Video Appears, All Pain Will Be Removed - Tibetan Healing Flute, Eliminate Stress And Calm",
+    "video_url": "https://youtube.com/watch?v=fMLZLrJ8e2Q",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "fosqs6eYLMs",
+    "channel_id": "UCzCU5y8MsI7tgXEmV2ZpUBw",
+    "channel_risk_score": 40,
+    "channel_signals": [
+      "Old account (2988 days) with minimal content",
+      "High subscribers (11,600) but minimal content"
+    ],
+    "channel_title": "CCTV PENGAWAS LALU LINTAS DISHUB KOTA PONTIANAK",
+    "channel_url": "https://youtube.com/channel/UCzCU5y8MsI7tgXEmV2ZpUBw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sui SUI live",
+    "total_risk_score": 20,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (5,380) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴 LIVE GRT 1 SUI. JAWI DISHUB KOTA PONTIANAK",
+    "video_url": "https://youtube.com/watch?v=fosqs6eYLMs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "B3sOZOZVccQ",
+    "channel_id": "UCQPzVxdgmiNeYjzMFQpPhdQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "DJ Grossman",
+    "channel_url": "https://youtube.com/channel/UCQPzVxdgmiNeYjzMFQpPhdQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Art Blocks live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: receive, eth",
+      "Currently live streaming"
+    ],
+    "video_title": "🔴 Box Fan - Low Speed, Black Screen 💨⬛ • Live 24/7 • No mid-roll ads",
+    "video_url": "https://youtube.com/watch?v=B3sOZOZVccQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ggfWVFqlMTQ",
+    "channel_id": "UCpDHJbeyWBab2qr6y2d6_yQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Memes and Markets",
+    "channel_url": "https://youtube.com/channel/UCpDHJbeyWBab2qr6y2d6_yQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "get rich crypto",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: receive, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "How to Get VC Money for Your Startup in 2026",
+    "video_url": "https://youtube.com/watch?v=ggfWVFqlMTQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "v6vJ4gVaPoU",
+    "channel_id": "UCi3dauN21RFzqaTSH-zL5yQ",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (3 keywords)"
+    ],
+    "channel_title": "RoxomTVOriginals",
+    "channel_url": "https://youtube.com/channel/UCi3dauN21RFzqaTSH-zL5yQ",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "blockchain news live",
+    "total_risk_score": 15,
+    "video_risk_score": 10,
+    "video_signals": [
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Netflix Just Bought Warner Bros — A New Global Media Monopoly Is Born | RoxomTV",
+    "video_url": "https://youtube.com/watch?v=v6vJ4gVaPoU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "3CjyXfyfOFg",
+    "channel_id": "UCIOHzEDwgUuLBZwPKEUt1AQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Jadoodoo",
+    "channel_url": "https://youtube.com/channel/UCIOHzEDwgUuLBZwPKEUt1AQ",
+    "confidence_score": 1.05,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "exclusive crypto event",
+    "total_risk_score": 100,
+    "video_risk_score": 100,
+    "video_signals": [
+      "Multiple scam keywords: receive, btc, wallet",
+      "Contains crypto address or suspicious URL",
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "High views (17,758) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "비트코인 금리발표 떡상 기원방 (12월 총상금 6천만원 수익률 대회시작) Crypto Queen Bitcoin Live",
+    "video_url": "https://youtube.com/watch?v=3CjyXfyfOFg",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "SQvHOojLmUw",
+    "channel_id": "UCNWooiYTvNiroCBa09Wxptw",
+    "channel_risk_score": 30,
+    "channel_signals": [
+      "Name impersonation: Exact match: bitcoin"
+    ],
+    "channel_title": "HOLLY BITCOIN",
+    "channel_url": "https://youtube.com/channel/UCNWooiYTvNiroCBa09Wxptw",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin futures live",
+    "total_risk_score": 15,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "BTC LIVE CHART : 5 MINUTE TIME FRAME #bitcoin SCALPING",
+    "video_url": "https://youtube.com/watch?v=SQvHOojLmUw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "l0dfJZkJmHQ",
+    "channel_id": "UCpil8OUbcrAIH2QYnh5Tj8Q",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Karol is Live",
+    "channel_url": "https://youtube.com/channel/UCpil8OUbcrAIH2QYnh5Tj8Q",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto live giveaway",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, btc, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "Live Crypto & Gold Analysis and trading || #btc #crypto #gold #forex",
+    "video_url": "https://youtube.com/watch?v=l0dfJZkJmHQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "RmwBmXXWe2Y",
+    "channel_id": "UCxeFqQa4hm_4ZapjH910nJw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "DayTradingZones Think Wealth Differently",
+    "channel_url": "https://youtube.com/channel/UCxeFqQa4hm_4ZapjH910nJw",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "get rich crypto",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "(17k/ 80 POINTS) Trade Live NQ Trading & Analysis 12-10-2025",
+    "video_url": "https://youtube.com/watch?v=RmwBmXXWe2Y",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "grRg8U6CwlY",
+    "channel_id": "UCqCk1_pDdWe50bPMyZpAPew",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Siddhant Ke Siddhant",
+    "channel_url": "https://youtube.com/channel/UCqCk1_pDdWe50bPMyZpAPew",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto wealth live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: send, eth",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🛑 Crypto Trading Live | Bitcoin, Eth & Solana | 10th Dec | Delta Exchange #cryptotradingindialive",
+    "video_url": "https://youtube.com/watch?v=grRg8U6CwlY",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "JsxzIi31YGY",
+    "channel_id": "UCdvuYT--R9DlEGDImbzXu-w",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "DOUBLETOP",
+    "channel_url": "https://youtube.com/channel/UCdvuYT--R9DlEGDImbzXu-w",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin doubling",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Multiple scam keywords: double, btc, eth",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "Live!!! Важнейшая неделя для крипты! Сценарии для рынка на зиму",
+    "video_url": "https://youtube.com/watch?v=JsxzIi31YGY",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "mH0XVFzUx6s",
+    "channel_id": "UCSet3uysvzK5E2OKnNnE4mg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "다무스(1채널)",
+    "channel_url": "https://youtube.com/channel/UCSet3uysvzK5E2OKnNnE4mg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitget live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (4,668) but very low engagement"
+    ],
+    "video_title": "12/10(수)_2부👉코인시장(초가을)👉BTC 180K 진격하라!!🚀#다무스 #Bitcoin #비트코인 #코인실시간방송 #이석우대표",
+    "video_url": "https://youtube.com/watch?v=mH0XVFzUx6s",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "84LI4aIndhE",
+    "channel_id": "UCYR3Z8-mdAJaazfArFtz-6w",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "ScottFDX ",
+    "channel_url": "https://youtube.com/channel/UCYR3Z8-mdAJaazfArFtz-6w",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "Bitget live",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth",
+      "Currently live streaming",
+      "High views (1,083) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "🔴 ESPECIAL: HABLA JEROME POWELL (Traducido) 👉 ¿SUBIRÁ BITCOIN HOY?",
+    "video_url": "https://youtube.com/watch?v=84LI4aIndhE",
+    "validation": {
+      "label": "false_positive",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "2reVaqUIbnY",
+    "channel_id": "UCmVkw2umRjWxU_ZLEmDdnug",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Nenu Mee Shruthi",
+    "channel_url": "https://youtube.com/channel/UCmVkw2umRjWxU_ZLEmDdnug",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitget live",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming"
+    ],
+    "video_title": "Nenu Mee Shruthi is live!",
+    "video_url": "https://youtube.com/watch?v=2reVaqUIbnY",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "E6wtQRPsQqs",
+    "channel_id": "UCYEVF4rlF_LB991b7FkOFPQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Stock Tambay",
+    "channel_url": "https://youtube.com/channel/UCYEVF4rlF_LB991b7FkOFPQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitget live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, cryptocurrency, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "FOMC NEWYORK SESSION CHUPITAN PORTION LIVE TRADE TAGALOG NO CUT",
+    "video_url": "https://youtube.com/watch?v=E6wtQRPsQqs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "NLhxcyzXQxM",
+    "channel_id": "UCgPDwePWls1uuZx0109bWzg",
+    "channel_risk_score": 40,
+    "channel_signals": [
+      "Old account (1768 days) with minimal content",
+      "High subscribers (28,600) but minimal content"
+    ],
+    "channel_title": "SIESTA BEACH LIVE",
+    "channel_url": "https://youtube.com/channel/UCgPDwePWls1uuZx0109bWzg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 20,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (8,091,239) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "SIESTA KEY BEACH - LIVE",
+    "video_url": "https://youtube.com/watch?v=NLhxcyzXQxM",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "vABGZOCzfEs",
+    "channel_id": "UCwqkxgpJ1ofOviOVPvhJVjA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Psalm Prayers",
+    "channel_url": "https://youtube.com/channel/UCwqkxgpJ1ofOviOVPvhJVjA",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (1,527,031) but very low engagement"
+    ],
+    "video_title": "Powerful Back to Sender Prayer to Return Evil Attacks | Covered by the Blood of Jesus'",
+    "video_url": "https://youtube.com/watch?v=vABGZOCzfEs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "xPEUZ18CuPA",
+    "channel_id": "UCngtDi1zQal7UQAaHox_7eg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "SigBang  (crypto currency & Forex signals) Ai.",
+    "channel_url": "https://youtube.com/channel/UCngtDi1zQal7UQAaHox_7eg",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto ending soon",
+    "total_risk_score": 25,
+    "video_risk_score": 25,
+    "video_signals": [
+      "Multiple scam keywords: investment, wallet",
+      "Currently live streaming",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "LIVE: 86% AI 💥15-Min💥 Futures – Tagged BlackRock & Elon – Real-Time Proof",
+    "video_url": "https://youtube.com/watch?v=xPEUZ18CuPA",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "BpOIrVLM2Xs",
+    "channel_id": "UCKptJ-XQRf_4X4ZY9Cr_75Q",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Relaxing Time for you",
+    "channel_url": "https://youtube.com/channel/UCKptJ-XQRf_4X4ZY9Cr_75Q",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sui SUI live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (3,060,728) but very low engagement"
+    ],
+    "video_title": "🔴 5분만에 잠들기 - 잠 잘 오는 부드러운 빗소리 / 블랙스크린 24H / 수면에 최적화된 부드러운 빗소리 ASMR",
+    "video_url": "https://youtube.com/watch?v=BpOIrVLM2Xs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "j7tRTKBoFgg",
+    "channel_id": "UChftTVI0QJmyXkajQYt2tiQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "moneycontrol",
+    "channel_url": "https://youtube.com/channel/UChftTVI0QJmyXkajQYt2tiQ",
+    "confidence_score": 0.5,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto news today",
+    "total_risk_score": 40,
+    "video_risk_score": 40,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth",
+      "Currently live streaming",
+      "High views (3,880) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "🔴Jerome Powell LIVE | Fed Chair Announces New Interest Rate Decision | FOMC Meeting | U.S Market",
+    "video_url": "https://youtube.com/watch?v=j7tRTKBoFgg",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "AXwKCE3lwJo",
+    "channel_id": "UCALiD7DH46Br_3EslWIor_A",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Iraqi Dinar News Updates 4U",
+    "channel_url": "https://youtube.com/channel/UCALiD7DH46Br_3EslWIor_A",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 10,
+    "video_risk_score": 10,
+    "video_signals": [
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Frank26 Shocks the Dinar World Trump Is Forcing a Global Reset Global Changes Are Coming #iraqidinar",
+    "video_url": "https://youtube.com/watch?v=AXwKCE3lwJo",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "dxLkex_btIA",
+    "channel_id": "UCALiD7DH46Br_3EslWIor_A",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Iraqi Dinar News Updates 4U",
+    "channel_url": "https://youtube.com/channel/UCALiD7DH46Br_3EslWIor_A",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 25,
+    "video_risk_score": 25,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (1,445) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "TRUMP JUST GAVE THE FINAL GREEN LIGHT IRAQ RV HAPPENING IN HOURS NOT DAYS #iraqidinarnews #iqdupdate",
+    "video_url": "https://youtube.com/watch?v=dxLkex_btIA",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Oxi4AS2rjls",
+    "channel_id": "UCALiD7DH46Br_3EslWIor_A",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Iraqi Dinar News Updates 4U",
+    "channel_url": "https://youtube.com/channel/UCALiD7DH46Br_3EslWIor_A",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 10,
+    "video_risk_score": 10,
+    "video_signals": [
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Trump & the Iraqi Dinar Did US Pressure Trigger a 40% RV  2025 Currency Update  #iraqidinarnews",
+    "video_url": "https://youtube.com/watch?v=Oxi4AS2rjls",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "GRMbs1v4eB8",
+    "channel_id": "UCALiD7DH46Br_3EslWIor_A",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Iraqi Dinar News Updates 4U",
+    "channel_url": "https://youtube.com/channel/UCALiD7DH46Br_3EslWIor_A",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 10,
+    "video_risk_score": 10,
+    "video_signals": [
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "TRUMP SPEAKS OUT New Iraqi Dinar & Dong Updates Exchange Centers Open What’s REALLY Going On",
+    "video_url": "https://youtube.com/watch?v=GRMbs1v4eB8",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "Btj-APL4ZJA",
+    "channel_id": "UCALiD7DH46Br_3EslWIor_A",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Iraqi Dinar News Updates 4U",
+    "channel_url": "https://youtube.com/channel/UCALiD7DH46Br_3EslWIor_A",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 10,
+    "video_risk_score": 10,
+    "video_signals": [
+      "Currently live streaming",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Trump Is Secretly Running Iraq’s Monetary Reform  Proof You Can’t Ignore #iraqidinarnews",
+    "video_url": "https://youtube.com/watch?v=Btj-APL4ZJA",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "u2P4paln9Sg",
+    "channel_id": "UCrN68CkXC2VuBJTswNSpW6g",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Ninjascalp",
+    "channel_url": "https://youtube.com/channel/UCrN68CkXC2VuBJTswNSpW6g",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: btc, investment",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Dec-10-25🔴Day Trading Live-NASDAQ, GOLD, CRUDE OIL and S&P 500 - ALGOBOX - Algorithmic Day Trading",
+    "video_url": "https://youtube.com/watch?v=u2P4paln9Sg",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "QzKWUhC6uYU",
+    "channel_id": "UCoeg1pzFZxBL-dloLbTOyXw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Roast BADMASH",
+    "channel_url": "https://youtube.com/channel/UCoeg1pzFZxBL-dloLbTOyXw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "Live Trading on Bitcoin Banknifty Nifty | Gold |Scalp with BSP Concept | #Live #btc #Gold",
+    "video_url": "https://youtube.com/watch?v=QzKWUhC6uYU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "HHpYQ-4p1rQ",
+    "channel_id": "UCoeg1pzFZxBL-dloLbTOyXw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Roast BADMASH",
+    "channel_url": "https://youtube.com/channel/UCoeg1pzFZxBL-dloLbTOyXw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto passive income",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: btc, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "Live Trading on Bitcoin Banknifty Nifty | Gold |Scalp with BSP Concept | #Live #btc #Gold",
+    "video_url": "https://youtube.com/watch?v=HHpYQ-4p1rQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "aziF_orl9hQ",
+    "channel_id": "UC04-HvUvHG4hpMnQx07ObYQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Trade with Pat",
+    "channel_url": "https://youtube.com/channel/UC04-HvUvHG4hpMnQx07ObYQ",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto trading live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (4,945) but very low engagement",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Live Trading Forex, Gold & NQ (BEST SCALPER ON EARTH?)",
+    "video_url": "https://youtube.com/watch?v=aziF_orl9hQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "MLU7cbT7yXo",
+    "channel_id": "UCdu4OziElIdkr8rq1Sfo6rg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The finance fox",
+    "channel_url": "https://youtube.com/channel/UCdu4OziElIdkr8rq1Sfo6rg",
+    "confidence_score": 0.35,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto trading live",
+    "total_risk_score": 35,
+    "video_risk_score": 35,
+    "video_signals": [
+      "Multiple scam keywords: receive, btc, eth",
+      "Currently live streaming",
+      "High views (2,766) but very low engagement"
+    ],
+    "video_title": "Live Bitcoin & Gold Analysis & Trading | 10/ Dec | #bitcoin #gold #forex #livetrading #cryptotrading",
+    "video_url": "https://youtube.com/watch?v=MLU7cbT7yXo",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "WROt1hMvNBw",
+    "channel_id": "UCg3LNMpW2sgZc3nthsbsfzQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Stock Learners",
+    "channel_url": "https://youtube.com/channel/UCg3LNMpW2sgZc3nthsbsfzQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto trading live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (4,583) but very low engagement"
+    ],
+    "video_title": "Crypto Gold Live Trading 10 Dec - stock_learners",
+    "video_url": "https://youtube.com/watch?v=WROt1hMvNBw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "CSG1Ch--RYQ",
+    "channel_id": "UCxOO14dH0Lv-DiO6zw2mbLA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Trade Zone",
+    "channel_url": "https://youtube.com/channel/UCxOO14dH0Lv-DiO6zw2mbLA",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: cryptocurrency, investment",
+      "Currently live streaming",
+      "High views (3,311) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Live Crypto Trading | 10 DEC | Bitcoin Live Trading | CRYPTO Trading | #BITCOIN #live #shorts",
+    "video_url": "https://youtube.com/watch?v=CSG1Ch--RYQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "fFFm0ys9pE0",
+    "channel_id": "UCUvvj5lwue7PspotMDjk5UA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Meet Kevin",
+    "channel_url": "https://youtube.com/channel/UCUvvj5lwue7PspotMDjk5UA",
+    "confidence_score": 0.35,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 35,
+    "video_risk_score": 35,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (12,250) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Political figure + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Federal Reserve Rate Decision & FOMC Meeting [Jerome Powell Speaks]",
+    "video_url": "https://youtube.com/watch?v=fFFm0ys9pE0",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "bDBUJbvUTSw",
+    "channel_id": "UCpiV7xfPK9RKZTUGp-fUOfQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Hot Trades",
+    "channel_url": "https://youtube.com/channel/UCpiV7xfPK9RKZTUGp-fUOfQ",
+    "confidence_score": 0.35,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 35,
+    "video_risk_score": 35,
+    "video_signals": [
+      "Multiple scam keywords: cryptocurrency, investment",
+      "Currently live streaming",
+      "High views (1,693) but very low engagement"
+    ],
+    "video_title": "Hot Trades Live - Fed Rate Cut - BBGI Stock - ASPC Stock - BEAT Stock - MNTS - ENVB - ADVB - IRBT",
+    "video_url": "https://youtube.com/watch?v=bDBUJbvUTSw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "pfdg14V43KU",
+    "channel_id": "UCqu5395g0YML70trJTcZkVA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Trade Se Sikho",
+    "channel_url": "https://youtube.com/channel/UCqu5395g0YML70trJTcZkVA",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 65,
+    "video_risk_score": 65,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, investment",
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)",
+      "Celebrity + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "Crypto Live Trading | Bitcoin Scalping Today | Bitcoin Live | 10 DEC 2025 #live #btc #crypto",
+    "video_url": "https://youtube.com/watch?v=pfdg14V43KU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "TDisD_GdDJE",
+    "channel_id": "UC6DkKXrHSEf5zTNGhEZdOJA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Krypto King",
+    "channel_url": "https://youtube.com/channel/UC6DkKXrHSEf5zTNGhEZdOJA",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto promotion live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Currently live streaming",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "American Hours Trading Meme Coins Live",
+    "video_url": "https://youtube.com/watch?v=TDisD_GdDJE",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "I4Apnutcrd0",
+    "channel_id": "UC9E9FAgFI9sOCSpzpWkf3Sw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Verhulst",
+    "channel_url": "https://youtube.com/channel/UC9E9FAgFI9sOCSpzpWkf3Sw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "FTX live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (1,062) but very low engagement"
+    ],
+    "video_title": "LIVE - 🚨 CHAMPS INTERNATIONAL SCRIMS🚨",
+    "video_url": "https://youtube.com/watch?v=I4Apnutcrd0",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "74wIj12WGCQ",
+    "channel_id": "UC5qPDQ-Q3ZMaQ9GuskCAsNg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (5 keywords)"
+    ],
+    "channel_title": "Sniper DEX - Real Sniper Bot",
+    "channel_url": "https://youtube.com/channel/UC5qPDQ-Q3ZMaQ9GuskCAsNg",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Uniswap live",
+    "total_risk_score": 25,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming"
+    ],
+    "video_title": "🚨 LIVE 24/7 • Profit +3 BNB Per Day Best Sniper Bot • Crypto Trading Strategies • Live Trading 2025",
+    "video_url": "https://youtube.com/watch?v=74wIj12WGCQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "-eMSg1bHPdw",
+    "channel_id": "UCVVvq9MQXMPm1yKm7oQT0xA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Andhrapradesh American Association",
+    "channel_url": "https://youtube.com/channel/UCVVvq9MQXMPm1yKm7oQT0xA",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (5,558) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=-eMSg1bHPdw",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "0NYAyYv8rF0",
+    "channel_id": "UCZxAng9NTJEpY5bI9Ff1PpA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Sreenidhi spaces",
+    "channel_url": "https://youtube.com/channel/UCZxAng9NTJEpY5bI9Ff1PpA",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (5,131) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=0NYAyYv8rF0",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "CxTcZkMh_hY",
+    "channel_id": "UC58eE6zAs4KDzBSR4YjRB8Q",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Wali darman official ",
+    "channel_url": "https://youtube.com/channel/UC58eE6zAs4KDzBSR4YjRB8Q",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (1,060) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=CxTcZkMh_hY",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ntDZlLBd8ig",
+    "channel_id": "UCYij_bOJOqoz4TUGudYhdrg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Lion Dr. Y Kiron",
+    "channel_url": "https://youtube.com/channel/UCYij_bOJOqoz4TUGudYhdrg",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "crypto regulation news",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming",
+      "High views (5,459) but very low engagement",
+      "Political figure + crypto tags (likely hijacked channel)"
+    ],
+    "video_title": "LIVE: Trump Announces Important News About Crypto! This Speech Will Change the Crypto Industry",
+    "video_url": "https://youtube.com/watch?v=ntDZlLBd8ig",
+    "validation": {
+      "label": "true_positive",
+      "reasoning": [
+        "Hacked channel/Unrelated content.",
+        "Pre-recorded video footage.",
+        "QR Code in video."
+      ],
+      "scam_type": "impersonation",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "0Sho4XewGEs",
+    "channel_id": "UCh8EqZyAUunyl1ryHeZAaSw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Bitbull",
+    "channel_url": "https://youtube.com/channel/UCh8EqZyAUunyl1ryHeZAaSw",
+    "confidence_score": 0.75,
+    "is_live": true,
+    "risk_category": "HIGH",
+    "search_query": "Phemex live",
+    "total_risk_score": 70,
+    "video_risk_score": 70,
+    "video_signals": [
+      "Multiple scam keywords: btc, wallet, airdrop",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (6,053) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "🔥Krypto: Pump oder Dump?! ZINSENTSCHEID LIVE! Bitcoin und Altcoin TRADING!🔥",
+    "video_url": "https://youtube.com/watch?v=0Sho4XewGEs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "gTEyxl3r_ME",
+    "channel_id": "UCYJn--imsJpuznd8c-gyNSg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (5 keywords)"
+    ],
+    "channel_title": "Stellar Smartography",
+    "channel_url": "https://youtube.com/channel/UCYJn--imsJpuznd8c-gyNSg",
+    "confidence_score": 0.6,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Phemex live",
+    "total_risk_score": 50,
+    "video_risk_score": 45,
+    "video_signals": [
+      "Multiple scam keywords: send, btc",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming"
+    ],
+    "video_title": "LIVE Bitcoin BTC Chart Graph w/ Indicator Signals 5 min Candles Crypto Market PM Dec 10 2025",
+    "video_url": "https://youtube.com/watch?v=gTEyxl3r_ME",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "DE8xt325vTs",
+    "channel_id": "UCLLxwaNAtwsqSNy83LM6N9Q",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Smart & easy trade",
+    "channel_url": "https://youtube.com/channel/UCLLxwaNAtwsqSNy83LM6N9Q",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin opportunity",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: btc, investment",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Candlestick Analysis Bitcoin and Gold | 30 Nov Price Action #livetrading",
+    "video_url": "https://youtube.com/watch?v=DE8xt325vTs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "bb2aSB26-M0",
+    "channel_id": "UCLLxwaNAtwsqSNy83LM6N9Q",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Smart & easy trade",
+    "channel_url": "https://youtube.com/channel/UCLLxwaNAtwsqSNy83LM6N9Q",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin opportunity",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: btc, investment",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Candlestick Analysis Bitcoin and Gold | Price Action",
+    "video_url": "https://youtube.com/watch?v=bb2aSB26-M0",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "EqpqeMM_kmU",
+    "channel_id": "UClMEBFJ9_8A3JNUMXmKtFRA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "ORIGIN",
+    "channel_url": "https://youtube.com/channel/UClMEBFJ9_8A3JNUMXmKtFRA",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "FTX live",
+    "total_risk_score": 30,
+    "video_risk_score": 30,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (2,857) but very low engagement",
+      "Promotional domain (unusual for channel type)"
+    ],
+    "video_title": "【実機配信】  サミー  CRモンスターハンター4  「絶対的摂理～剥ぎ取れ～！！」  2025/12/10  【パチンコ実機ライブ配信】",
+    "video_url": "https://youtube.com/watch?v=EqpqeMM_kmU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "DBc0nKqWgb4",
+    "channel_id": "UCbDeYWkAAVH371dWHyXM4BA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Crypto Chimp",
+    "channel_url": "https://youtube.com/channel/UCbDeYWkAAVH371dWHyXM4BA",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "FTX live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: receive, investment",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "$SHIB Live Stream 24/7 | SHIBA INU COIN | SHIB USDT | RSI Divergence Trading Signals and Chat",
+    "video_url": "https://youtube.com/watch?v=DBc0nKqWgb4",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "WvaAUeZ7jaY",
+    "channel_id": "UC5qPDQ-Q3ZMaQ9GuskCAsNg",
+    "channel_risk_score": 10,
+    "channel_signals": [
+      "Crypto-heavy description (5 keywords)"
+    ],
+    "channel_title": "Sniper DEX - Real Sniper Bot",
+    "channel_url": "https://youtube.com/channel/UC5qPDQ-Q3ZMaQ9GuskCAsNg",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Binance BNB live",
+    "total_risk_score": 25,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency",
+      "Currently live streaming"
+    ],
+    "video_title": "🚨 LIVE 24/7 • Earn +3 BNB Per Day Best Sniper Bot • Crypto Trading Strategies • Live Trading 2025",
+    "video_url": "https://youtube.com/watch?v=WvaAUeZ7jaY",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "MhgIldBtLCo",
+    "channel_id": "UC-C0giuhk9GBUoMPpfkhrAQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "AB krypto",
+    "channel_url": "https://youtube.com/channel/UC-C0giuhk9GBUoMPpfkhrAQ",
+    "confidence_score": 0.15,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin futures live",
+    "total_risk_score": 15,
+    "video_risk_score": 15,
+    "video_signals": [
+      "Multiple scam keywords: btc, eth, wallet",
+      "Currently live streaming",
+      "High views (1,075) but very low engagement",
+      "Promotional domain (unusual for channel type)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Crypto Live Trading In Hindi | 10 Dec Live Trading | BTC price Prediction | #crypto #btc",
+    "video_url": "https://youtube.com/watch?v=MhgIldBtLCo",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "7j6fR0T7X5E",
+    "channel_id": "UCld8DiayRuVh-7ZG_UMx1fg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "OTL Signals",
+    "channel_url": "https://youtube.com/channel/UCld8DiayRuVh-7ZG_UMx1fg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin futures live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (33,174) but very low engagement"
+    ],
+    "video_title": "Bitcoin BTC Futures | Bookmap | Binance | Liquidity & Volume Profiles",
+    "video_url": "https://youtube.com/watch?v=7j6fR0T7X5E",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "I1mkOjrQwbw",
+    "channel_id": "UCMi3c3NIVcpfPK8_a-cxnTg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "D X  G A M E R ",
+    "channel_url": "https://youtube.com/channel/UCMi3c3NIVcpfPK8_a-cxnTg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto millionaire live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, investment",
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "1vs2 guild test live #freefire",
+    "video_url": "https://youtube.com/watch?v=I1mkOjrQwbw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "d8k8PEMwaNU",
+    "channel_id": "UC61OBBbqIrMVGHjPUek7TGQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Cash Money Dinero Millionaire",
+    "channel_url": "https://youtube.com/channel/UC61OBBbqIrMVGHjPUek7TGQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "crypto millionaire live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: cryptocurrency, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "Cash Money Dinero Millionaire is live!",
+    "video_url": "https://youtube.com/watch?v=d8k8PEMwaNU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "ArTVnpZ_OU8",
+    "channel_id": "UCT5ne0yh1l8HEfFJn_LpaZg",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "STOCKUPWORLD ACADEMY",
+    "channel_url": "https://youtube.com/channel/UCT5ne0yh1l8HEfFJn_LpaZg",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "altcoin discussion live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: eth, cryptocurrency, investment",
+      "Comments disabled or restricted",
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "Live Trading Bitcoin & Gold || 10 Dec | #stockupworld #pankajgupta #bitcointrading #forextrading",
+    "video_url": "https://youtube.com/watch?v=ArTVnpZ_OU8",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "1BJNX8K7cGs",
+    "channel_id": "UCglhWv3ZJIk6bRgiwZpJ1ZQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "OnChain Revolution Media",
+    "channel_url": "https://youtube.com/channel/UCglhWv3ZJIk6bRgiwZpJ1ZQ",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "altcoin discussion live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: send, btc, eth",
+      "Currently live streaming"
+    ],
+    "video_title": "🚨Bitcoin’s Fate in JPOW’s Hands!🔥 Altcoins Quietly Warming Up — Year-End Rally Loading?!🤯🚀",
+    "video_url": "https://youtube.com/watch?v=1BJNX8K7cGs",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "JwaIyw6RPOk",
+    "channel_id": "UCR3kwOHluEaDDRAeO6S20ig",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Futures Floor",
+    "channel_url": "https://youtube.com/channel/UCR3kwOHluEaDDRAeO6S20ig",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin doubling",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: giveaway, double, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "Live Day Trading - Futures  💰 Great GIVEAWAY Game 🎰 Road to $1,000,000 in FREE Accounts 📈 Wed Dec 10",
+    "video_url": "https://youtube.com/watch?v=JwaIyw6RPOk",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "6shWfvCAxNM",
+    "channel_id": "UCdqwKlwZFAPYVc8-wsuRuuw",
+    "channel_risk_score": 20,
+    "channel_signals": [
+      "Old account (2158 days) with minimal content"
+    ],
+    "channel_title": "FaceX Live Trading",
+    "channel_url": "https://youtube.com/channel/UCdqwKlwZFAPYVc8-wsuRuuw",
+    "confidence_score": 0.1,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Binance live event",
+    "total_risk_score": 10,
+    "video_risk_score": 0,
+    "video_signals": [
+      "Currently live streaming",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "24/7 LIVE Crypto Trading & Chill — Charts, Signals, Music & Market Action",
+    "video_url": "https://youtube.com/watch?v=6shWfvCAxNM",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "B4bwCCcv0Uw",
+    "channel_id": "UCOBNx5Pdw7FZkh2oQR3i9SQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Jesse Lee Peterson",
+    "channel_url": "https://youtube.com/channel/UCOBNx5Pdw7FZkh2oQR3i9SQ",
+    "confidence_score": 0.7,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "send BTC receive double",
+    "total_risk_score": 60,
+    "video_risk_score": 60,
+    "video_signals": [
+      "Multiple scam keywords: send, btc, eth",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (3,489) but very low engagement"
+    ],
+    "video_title": "✌🏾 Two Hours of Black Excellence 💪 THEN Manhood Hour 👨🏾‍🦲 JLP 🇺🇸",
+    "video_url": "https://youtube.com/watch?v=B4bwCCcv0Uw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "XGFz0FqwA6s",
+    "channel_id": "UCJsIlba0RSbBo7_zBC8b6Ig",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Bullish Bull Master",
+    "channel_url": "https://youtube.com/channel/UCJsIlba0RSbBo7_zBC8b6Ig",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin today",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Multiple scam keywords: eth, investment",
+      "Currently live streaming"
+    ],
+    "video_title": "10 December Today Crypto Live Trading | @bullishbullmaster #bitcoin #ethereum #cryptotrading #gold",
+    "video_url": "https://youtube.com/watch?v=XGFz0FqwA6s",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "6GTAGQg-RmU",
+    "channel_id": "UCj7cny5FsrDD2AdLntePeiQ",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Balraj Trading Tech",
+    "channel_url": "https://youtube.com/channel/UCj7cny5FsrDD2AdLntePeiQ",
+    "confidence_score": 0.25,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Bitcoin today",
+    "total_risk_score": 25,
+    "video_risk_score": 25,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (4,478) but very low engagement",
+      "Celebrity + crypto tags (likely hijacked channel)",
+      "Educational/News intent detected (Risk reduced)"
+    ],
+    "video_title": "CRYPTO LIVE TRADING || 10 December || BITCOIN / ETHEREUM #cryptotrading #bitcoin #cryptolive",
+    "video_url": "https://youtube.com/watch?v=6GTAGQg-RmU",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "gxN1q0oTXZ0",
+    "channel_id": "UCMXwxEcOmMtwNp2DIVz05Nw",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Vlad and Niki TV",
+    "channel_url": "https://youtube.com/channel/UCMXwxEcOmMtwNp2DIVz05Nw",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (307,842) but very low engagement"
+    ],
+    "video_title": "Vlad and Niki had a Fun Day on the Beach! Plying with Mom and Sand",
+    "video_url": "https://youtube.com/watch?v=gxN1q0oTXZ0",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "tgMHjf1Gynw",
+    "channel_id": "UCrsjewI5DmAckzZwuDedNpQ",
+    "channel_risk_score": 20,
+    "channel_signals": [
+      "Old account (1769 days) with minimal content"
+    ],
+    "channel_title": "Embassy Suites Resort Virginia Beach Oceanfront",
+    "channel_url": "https://youtube.com/channel/UCrsjewI5DmAckzZwuDedNpQ",
+    "confidence_score": 0.3,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 30,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (55,281) but very low engagement"
+    ],
+    "video_title": "VA Beach Embassy Construction",
+    "video_url": "https://youtube.com/watch?v=tgMHjf1Gynw",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "gf6SK0NObfI",
+    "channel_id": "UCvGwWJ_bcMkHRBuTNCL08cA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "321 Relaxing - Meditation Relax Clips",
+    "channel_url": "https://youtube.com/channel/UCvGwWJ_bcMkHRBuTNCL08cA",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (2,032,877) but very low engagement"
+    ],
+    "video_title": "Ocean Meditation – Calm Sea and Soothing Ocean Waves Scene and Sounds - Sunny Tropical Beach",
+    "video_url": "https://youtube.com/watch?v=gf6SK0NObfI",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "xKCK4cCst8Q",
+    "channel_id": "UC_oYrNMZ081r-ZgxY-883_w",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "The Sleep Bible",
+    "channel_url": "https://youtube.com/channel/UC_oYrNMZ081r-ZgxY-883_w",
+    "confidence_score": 0.7,
+    "is_live": true,
+    "risk_category": "MEDIUM",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 60,
+    "video_risk_score": 60,
+    "video_signals": [
+      "Multiple scam keywords: receive, eth",
+      "Contains crypto address or suspicious URL",
+      "Currently live streaming",
+      "High views (30,203) but very low engagement"
+    ],
+    "video_title": "Fall Asleep to 99 Bible Stories With Deeper Meanings (that will change your life!)",
+    "video_url": "https://youtube.com/watch?v=xKCK4cCst8Q",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  },
+  {
+    "video_id": "OphaJHDWcVQ",
+    "channel_id": "UCh3OH_R3MyvN1z51bp5BgGA",
+    "channel_risk_score": 0,
+    "channel_signals": [],
+    "channel_title": "Sweet Morning Cafe",
+    "channel_url": "https://youtube.com/channel/UCh3OH_R3MyvN1z51bp5BgGA",
+    "confidence_score": 0.2,
+    "is_live": true,
+    "risk_category": "LOW",
+    "search_query": "Sandbox SAND live",
+    "total_risk_score": 20,
+    "video_risk_score": 20,
+    "video_signals": [
+      "Currently live streaming",
+      "High views (79,656) but very low engagement"
+    ],
+    "video_title": "Christmas Jazz 2026 ☕ Smooth Jazz Instrumental Music & Christmas Bossa Nova Piano for Happy Holiday",
+    "video_url": "https://youtube.com/watch?v=OphaJHDWcVQ",
+    "validation": {
+      "label": "true_negative",
+      "reviewed_at": "2025-12-10 21:44:18",
+      "reviewer": "ag10293"
+    }
+  }
+]

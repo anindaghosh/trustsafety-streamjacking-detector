@@ -55,7 +55,7 @@ def load_validation_data_from_mongodb() -> List[Dict]:
         client.admin.command('ping')
         
         db = client['streamjacking']
-        collection = db['detection_results_v3']
+        collection = db['detection_results_latest']
         
         validated_docs = list(collection.find({
             'validation.label': {'$exists': True, '$ne': None}
