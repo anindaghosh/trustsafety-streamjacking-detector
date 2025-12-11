@@ -1,0 +1,1270 @@
+[
+  {
+    "id": 1,
+    "video_id": "N7QGH-Bpp54",
+    "channel_id": "UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "video_title": "\ud83d\udd34Live Ethereum (ETH) 5 Minute Live Signals -Trading Signals- Scalping Strategy-Diamond Algo-",
+    "channel_title": "Forex & Crypto Live",
+    "video_url": "https://youtube.com/watch?v=N7QGH-Bpp54",
+    "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: eth",
+        "Multiple scam keywords: eth, investment",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (130,515) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 2,
+    "video_id": "fFrLWCCUY68",
+    "channel_id": "UC53vvfdlTgtACVRbusR1u7Q",
+    "video_title": "Live Bitcoin, Ethereum 24/7 Signals - 5 Minute Candles | ETH | BTC | Live Price Scalping Strategy",
+    "channel_title": "ForexLia",
+    "video_url": "https://youtube.com/watch?v=fFrLWCCUY68",
+    "channel_url": "https://youtube.com/channel/UC53vvfdlTgtACVRbusR1u7Q",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: bitcoin, Exact match: eth, Exact match: btc",
+        "Multiple scam keywords: btc, eth, investment",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (3,558,280) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 3,
+    "video_id": "4hVds371gdA",
+    "channel_id": "UCh7vfw6YpOtSJYW5c5EG8dQ",
+    "video_title": "\ud83d\udd34 Live 24/7 Binance (BNB) | 5-Min Signals & Real-Time Trading",
+    "channel_title": "Forex & Crypto Live Signals",
+    "video_url": "https://youtube.com/watch?v=4hVds371gdA",
+    "channel_url": "https://youtube.com/channel/UCh7vfw6YpOtSJYW5c5EG8dQ",
+    "risk_score": 50.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: binance",
+        "Currently live streaming",
+        "High views (12,052) but very low engagement"
+      ],
+      "channel": [
+        "Crypto-heavy description (5 keywords)"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 4,
+    "video_id": "t0gnKpWdG_c",
+    "channel_id": "UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "video_title": "\ud83d\udd34Live Bitcoin (BTC) 5 Minute Live Signals -Trading Signals-Scalping-Strategy-Diamond Algo-",
+    "channel_title": "Forex & Crypto Live",
+    "video_url": "https://youtube.com/watch?v=t0gnKpWdG_c",
+    "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin, Exact match: btc",
+        "Multiple scam keywords: btc, eth, investment",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (575,099) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 5,
+    "video_id": "96zuSghIQEI",
+    "channel_id": "UC5ycCx8wLCM21YfSgNuuAFA",
+    "video_title": "Stock Market Live - AI Trading Alerts and Scanners",
+    "channel_title": "Bulldog Trading",
+    "video_url": "https://youtube.com/watch?v=96zuSghIQEI",
+    "channel_url": "https://youtube.com/channel/UC5ycCx8wLCM21YfSgNuuAFA",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Multiple scam keywords: btc, cryptocurrency, investment",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (64,598) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 6,
+    "video_id": "ObHQdbCgpD0",
+    "channel_id": "UCAgCTCW3pSWwsYjYtwvybaA",
+    "video_title": "Bitcoin Live",
+    "channel_title": "AIC Cryptos",
+    "video_url": "https://youtube.com/watch?v=ObHQdbCgpD0",
+    "channel_url": "https://youtube.com/channel/UCAgCTCW3pSWwsYjYtwvybaA",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin",
+        "Multiple scam keywords: receive, btc, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (14,126) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 7,
+    "video_id": "6ErUKqUchxI",
+    "channel_id": "UCy-juNP3n5QrnbVCopqwmxg",
+    "video_title": "Elon Musk and Cathie Wood Live | ARK Invest Discussion 2025",
+    "channel_title": "FF GAMERZ",
+    "video_url": "https://youtube.com/watch?v=6ErUKqUchxI",
+    "channel_url": "https://youtube.com/channel/UCy-juNP3n5QrnbVCopqwmxg",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: elon musk, Exact match: cathie wood",
+        "Currently live streaming",
+        "High views (4,339) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 8,
+    "video_id": "SpsoOVC56xc",
+    "channel_id": "UCObE3J0qQ0DzcouV1w4DlGg",
+    "video_title": "\ud83d\udd34 Bitcoin LIVE Chart & Liquidation Watch",
+    "channel_title": "Bitcoin LIVE",
+    "video_url": "https://youtube.com/watch?v=SpsoOVC56xc",
+    "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+    "risk_score": 100.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin",
+        "Multiple scam keywords: btc, eth",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (3,386,029) but very low engagement"
+      ],
+      "channel": [
+        "Name impersonation: Exact match: bitcoin"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 9,
+    "video_id": "6ErUKqUchxI",
+    "channel_id": "UCy-juNP3n5QrnbVCopqwmxg",
+    "video_title": "Elon Musk and Cathie Wood Live | ARK Invest Discussion 2025",
+    "channel_title": "FF GAMERZ",
+    "video_url": "https://youtube.com/watch?v=6ErUKqUchxI",
+    "channel_url": "https://youtube.com/channel/UCy-juNP3n5QrnbVCopqwmxg",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: elon musk, Exact match: cathie wood",
+        "Currently live streaming",
+        "High views (4,339) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 10,
+    "video_id": "xSvoSShWJGQ",
+    "channel_id": "UCWaWnLS46PQv1gYQUv9uYjQ",
+    "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+    "channel_title": "SaiGon Life TV",
+    "video_url": "https://youtube.com/watch?v=xSvoSShWJGQ",
+    "channel_url": "https://youtube.com/channel/UCWaWnLS46PQv1gYQUv9uYjQ",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: michael saylor, Exact match: bitcoin, Exact match: btc",
+        "Multiple scam keywords: btc, cryptocurrency",
+        "Currently live streaming",
+        "High views (5,104) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 11,
+    "video_id": "6hCpOKc-tGI",
+    "channel_id": "UCBQca3L5bEITRRWvuVAS0Cw",
+    "video_title": "XRP Dips to $2.16, Rebounds to Break $2.20? Watch Live Chart & Earn Sana Coin!",
+    "channel_title": "What Its Like Adventures",
+    "video_url": "https://youtube.com/watch?v=6hCpOKc-tGI",
+    "channel_url": "https://youtube.com/channel/UCBQca3L5bEITRRWvuVAS0Cw",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Multiple scam keywords: giveaway, btc, eth",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 12,
+    "video_id": "SpsoOVC56xc",
+    "channel_id": "UCObE3J0qQ0DzcouV1w4DlGg",
+    "video_title": "\ud83d\udd34 Bitcoin LIVE Chart & Liquidation Watch",
+    "channel_title": "Bitcoin LIVE",
+    "video_url": "https://youtube.com/watch?v=SpsoOVC56xc",
+    "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+    "risk_score": 100.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin",
+        "Multiple scam keywords: btc, eth",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (3,386,029) but very low engagement"
+      ],
+      "channel": [
+        "Name impersonation: Exact match: bitcoin"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 13,
+    "video_id": "jkP1Sw7M2iU",
+    "channel_id": "UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "video_title": "\ud83d\udfe2 BITCOIN LIVE EDUCATIONAL TRADING CHART WITH SIGNALS , ZONES AND ORDER BOOK",
+    "channel_title": "Forex Education Live",
+    "video_url": "https://youtube.com/watch?v=jkP1Sw7M2iU",
+    "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (4,996,011) but very low engagement",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 14,
+    "video_id": "yHOvjzS5a8s",
+    "channel_id": "UC2KGf4oWao2NMOnIA88ZwJQ",
+    "video_title": "HD Bitcoin Live BookMap + Liquidation HeatMap + KingFisher #bookmap #hyblock #liquidations #bitcoin",
+    "channel_title": "K1m6a",
+    "video_url": "https://youtube.com/watch?v=yHOvjzS5a8s",
+    "channel_url": "https://youtube.com/channel/UC2KGf4oWao2NMOnIA88ZwJQ",
+    "risk_score": 70.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (790,593) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 15,
+    "video_id": "bK-ToXIW7Uw",
+    "channel_id": "UCFwMITSkc1Fms6PoJoh1OUQ",
+    "video_title": "Starbase Live 24/7 Multi Plex  - SpaceX  Starship Super Heavy Launch & Production Facility",
+    "channel_title": "LabPadre Space",
+    "video_url": "https://youtube.com/watch?v=bK-ToXIW7Uw",
+    "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+    "risk_score": 70.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: spacex",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (68,283) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 16,
+    "video_id": "YbfKF9Fyhcw",
+    "channel_id": "UCLMx5Kt0pL3P3KWZbEqwoJg",
+    "video_title": "Crypto Live Trading | Bitcoin Live Trading | Bitcoin Analysis | 09 NOV 2025 #live #btc #crypto",
+    "channel_title": "Ashutosh Kumar",
+    "video_url": "https://youtube.com/watch?v=YbfKF9Fyhcw",
+    "channel_url": "https://youtube.com/channel/UCLMx5Kt0pL3P3KWZbEqwoJg",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin, Exact match: btc",
+        "Multiple scam keywords: btc, eth, investment",
+        "Currently live streaming",
+        "High views (8,168) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 17,
+    "video_id": "mXAX8KBUEOc",
+    "channel_id": "UC9nNa4GCN4PikX13z1dKUWg",
+    "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+    "channel_title": "Dmax ad",
+    "video_url": "https://youtube.com/watch?v=mXAX8KBUEOc",
+    "channel_url": "https://youtube.com/channel/UC9nNa4GCN4PikX13z1dKUWg",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: michael saylor, Exact match: bitcoin, Exact match: btc",
+        "Multiple scam keywords: btc, cryptocurrency",
+        "Currently live streaming"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 18,
+    "video_id": "N7QGH-Bpp54",
+    "channel_id": "UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "video_title": "\ud83d\udd34Live Ethereum (ETH) 5 Minute Live Signals -Trading Signals- Scalping Strategy-Diamond Algo-",
+    "channel_title": "Forex & Crypto Live",
+    "video_url": "https://youtube.com/watch?v=N7QGH-Bpp54",
+    "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: eth",
+        "Multiple scam keywords: eth, investment",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (130,515) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 19,
+    "video_id": "f8rkT4Bih5U",
+    "channel_id": "UC1q5zTEdpeSQS8ksq4hdJcw",
+    "video_title": "\ud83d\udd34 LIVE Bitcoin (BTC) & Ethereum (ETH) Trading Signals | 5-min Crypto Chart (24/7)",
+    "channel_title": "Infinity Algo",
+    "video_url": "https://youtube.com/watch?v=f8rkT4Bih5U",
+    "channel_url": "https://youtube.com/channel/UC1q5zTEdpeSQS8ksq4hdJcw",
+    "risk_score": 90.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: bitcoin, Exact match: eth, Exact match: btc",
+        "Multiple scam keywords: btc, eth, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (23,566) but very low engagement"
+      ],
+      "channel": [
+        "Crypto-heavy description (5 keywords)"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 20,
+    "video_id": "9M93_6S9TaQ",
+    "channel_id": "UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "video_title": "\ud83d\udfe2 ETH USDT Live Trading Educational Chart with Signals & Order Book",
+    "channel_title": "Forex Education Live",
+    "video_url": "https://youtube.com/watch?v=9M93_6S9TaQ",
+    "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "risk_score": 100.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: eth",
+        "Multiple scam keywords: eth, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (907,624) but very low engagement",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 21,
+    "video_id": "9yNLGttwTLo",
+    "channel_id": "UCh7vfw6YpOtSJYW5c5EG8dQ",
+    "video_title": "\ud83d\udd34 Live 24/7 Cardano | 5-Min Signals & Real-Time Trading",
+    "channel_title": "Forex & Crypto Live Signals",
+    "video_url": "https://youtube.com/watch?v=9yNLGttwTLo",
+    "channel_url": "https://youtube.com/channel/UCh7vfw6YpOtSJYW5c5EG8dQ",
+    "risk_score": 50.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: cardano",
+        "Currently live streaming",
+        "High views (3,839) but very low engagement"
+      ],
+      "channel": [
+        "Crypto-heavy description (5 keywords)"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 22,
+    "video_id": "inCQ49QGmqQ",
+    "channel_id": "UCFwMITSkc1Fms6PoJoh1OUQ",
+    "video_title": "Starbase Live Rover Cam - SpaceX Starship Launch Facility",
+    "channel_title": "LabPadre Space",
+    "video_url": "https://youtube.com/watch?v=inCQ49QGmqQ",
+    "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+    "risk_score": 70.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: spacex",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (166,768) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 23,
+    "video_id": "TPaaes94bUY",
+    "channel_id": "UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "video_title": "BITCOIN BTC LIVE CHART & MAP",
+    "channel_title": "Forex Education Live",
+    "video_url": "https://youtube.com/watch?v=TPaaes94bUY",
+    "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "risk_score": 100.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin, Exact match: btc",
+        "Multiple scam keywords: btc, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (363,312) but very low engagement",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 24,
+    "video_id": "-kdZ1EjvO9c",
+    "channel_id": "UCDk253D74MzdlBbCH1a-CLw",
+    "video_title": "Live Signals & Trading Dow Jones Index | US30 | SP500 | Buy Sell Trading Strategy @LiveTrading",
+    "channel_title": "Stock Accurate",
+    "video_url": "https://youtube.com/watch?v=-kdZ1EjvO9c",
+    "channel_url": "https://youtube.com/channel/UCDk253D74MzdlBbCH1a-CLw",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (31,355) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 25,
+    "video_id": "7upYQ2EOk3o",
+    "channel_id": "UCRubuti81pj-bPZSyxV3nhA",
+    "video_title": "Michael Saylor: BITCOIN CRASH EXPLAINED! MASSIVE BTC DUMP & What's Next for Crypto?",
+    "channel_title": "Chinese Drama Picks",
+    "video_url": "https://youtube.com/watch?v=7upYQ2EOk3o",
+    "channel_url": "https://youtube.com/channel/UCRubuti81pj-bPZSyxV3nhA",
+    "risk_score": 70.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: michael saylor, Exact match: bitcoin, Exact match: btc",
+        "Multiple scam keywords: btc, eth",
+        "Urgency language: don't miss, urgent",
+        "Currently live streaming",
+        "High views (4,587) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 26,
+    "video_id": "KQp-e_XQnDE",
+    "channel_id": "UCEAZeUIeJs0IjQiqTCdVSIg",
+    "video_title": "Stock market today: Live coverage from Yahoo Finance",
+    "channel_title": "Yahoo Finance",
+    "video_url": "https://youtube.com/watch?v=KQp-e_XQnDE",
+    "channel_url": "https://youtube.com/channel/UCEAZeUIeJs0IjQiqTCdVSIg",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (5,099,890) but very low engagement",
+        "Suspicious domain(s): bit.ly"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 27,
+    "video_id": "f8rkT4Bih5U",
+    "channel_id": "UC1q5zTEdpeSQS8ksq4hdJcw",
+    "video_title": "\ud83d\udd34 LIVE Bitcoin (BTC) & Ethereum (ETH) Trading Signals | 5-min Crypto Chart (24/7)",
+    "channel_title": "Infinity Algo",
+    "video_url": "https://youtube.com/watch?v=f8rkT4Bih5U",
+    "channel_url": "https://youtube.com/channel/UC1q5zTEdpeSQS8ksq4hdJcw",
+    "risk_score": 90.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: bitcoin, Exact match: eth, Exact match: btc",
+        "Multiple scam keywords: btc, eth, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (23,566) but very low engagement"
+      ],
+      "channel": [
+        "Crypto-heavy description (5 keywords)"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 28,
+    "video_id": "-ps7V40GrA4",
+    "channel_id": "UCLL4DXAVM8xxqxKN_YTnr5A",
+    "video_title": "\ud83d\udd34 LIVE Gold (XAUUSD) 1-Minute \u2014 Million Moves Algo V5 Indicator | Study Stream",
+    "channel_title": "Million Moves",
+    "video_url": "https://youtube.com/watch?v=-ps7V40GrA4",
+    "channel_url": "https://youtube.com/channel/UCLL4DXAVM8xxqxKN_YTnr5A",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (18,696,777) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 29,
+    "video_id": "bWIiI-CRwIQ",
+    "channel_id": "UCUP4kKVNv5suybK23LvUbCw",
+    "video_title": "Nano Crypto Giveaway (every 90 seconds) - 10 year anniversary",
+    "channel_title": "NanoCommunity",
+    "video_url": "https://youtube.com/watch?v=bWIiI-CRwIQ",
+    "channel_url": "https://youtube.com/channel/UCUP4kKVNv5suybK23LvUbCw",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Multiple scam keywords: giveaway, send, eth",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 30,
+    "video_id": "6ErUKqUchxI",
+    "channel_id": "UCy-juNP3n5QrnbVCopqwmxg",
+    "video_title": "Elon Musk and Cathie Wood Live | ARK Invest Discussion 2025",
+    "channel_title": "FF GAMERZ",
+    "video_url": "https://youtube.com/watch?v=6ErUKqUchxI",
+    "channel_url": "https://youtube.com/channel/UCy-juNP3n5QrnbVCopqwmxg",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: elon musk, Exact match: cathie wood",
+        "Currently live streaming",
+        "High views (4,339) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 31,
+    "video_id": "IZYPKD4dg1o",
+    "channel_id": "UCGCw1dDY-ECdIe34yc_qDTQ",
+    "video_title": "Blooket Live Stream 24/7 | Viewers Can Join | Compete Against Others | Study Music And More!",
+    "channel_title": "Logan DeRosa",
+    "video_url": "https://youtube.com/watch?v=IZYPKD4dg1o",
+    "channel_url": "https://youtube.com/channel/UCGCw1dDY-ECdIe34yc_qDTQ",
+    "risk_score": 45.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (889,977) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 32,
+    "video_id": "c96YQdC9ByY",
+    "channel_id": "UCWYkedyz69vKICKChTT22Pw",
+    "video_title": "Btc Live Charts 24/7",
+    "channel_title": "Btc Xrp Live Charts",
+    "video_url": "https://youtube.com/watch?v=c96YQdC9ByY",
+    "channel_url": "https://youtube.com/channel/UCWYkedyz69vKICKChTT22Pw",
+    "risk_score": 50.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: btc",
+        "Currently live streaming"
+      ],
+      "channel": [
+        "Name impersonation: Exact match: btc",
+        "Crypto-heavy description (3 keywords)"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 33,
+    "video_id": "k6L3z81iVI8",
+    "channel_id": "UCyG2T5QGRzJjQVVAr1o4qmw",
+    "video_title": "Live Bitcoin & Ethereum 15 Min Signals And Technical Analysis  ChartPrime",
+    "channel_title": "ChartPrime",
+    "video_url": "https://youtube.com/watch?v=k6L3z81iVI8",
+    "channel_url": "https://youtube.com/channel/UCyG2T5QGRzJjQVVAr1o4qmw",
+    "risk_score": 70.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: bitcoin, Exact match: eth",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (4,601,937) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 34,
+    "video_id": "AiC7PhbRT3g",
+    "channel_id": "UCM5oQBEF59122yTblKUzCHQ",
+    "video_title": "\ud83d\udea8 LIVE Bitcoin 24/7 | BTC Price, Chart & Signals Powered by X1 Algo",
+    "channel_title": "Austin Hilton",
+    "video_url": "https://youtube.com/watch?v=AiC7PhbRT3g",
+    "channel_url": "https://youtube.com/channel/UCM5oQBEF59122yTblKUzCHQ",
+    "risk_score": 30.0,
+    "risk_category": "LOW",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin, Exact match: btc",
+        "Currently live streaming"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 35,
+    "video_id": "jkP1Sw7M2iU",
+    "channel_id": "UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "video_title": "\ud83d\udfe2 BITCOIN LIVE EDUCATIONAL TRADING CHART WITH SIGNALS , ZONES AND ORDER BOOK",
+    "channel_title": "Forex Education Live",
+    "video_url": "https://youtube.com/watch?v=jkP1Sw7M2iU",
+    "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (4,996,011) but very low engagement",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 36,
+    "video_id": "Y3LWrtgT4Tc",
+    "channel_id": "UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "video_title": "\ud83d\udd34 BNB Live Trading Educational Chart Binance Coin",
+    "channel_title": "Forex Education Live",
+    "video_url": "https://youtube.com/watch?v=Y3LWrtgT4Tc",
+    "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: binance",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (236,531) but very low engagement",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 37,
+    "video_id": "h2kdq6AeaKQ",
+    "channel_id": "UCAgCTCW3pSWwsYjYtwvybaA",
+    "video_title": "Shiba Inu Live",
+    "channel_title": "AIC Cryptos",
+    "video_url": "https://youtube.com/watch?v=h2kdq6AeaKQ",
+    "channel_url": "https://youtube.com/channel/UCAgCTCW3pSWwsYjYtwvybaA",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Multiple scam keywords: eth, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (65,903) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 38,
+    "video_id": "SpsoOVC56xc",
+    "channel_id": "UCObE3J0qQ0DzcouV1w4DlGg",
+    "video_title": "\ud83d\udd34 Bitcoin LIVE Chart & Liquidation Watch",
+    "channel_title": "Bitcoin LIVE",
+    "video_url": "https://youtube.com/watch?v=SpsoOVC56xc",
+    "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+    "risk_score": 100.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: bitcoin",
+        "Multiple scam keywords: btc, eth",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (3,386,029) but very low engagement"
+      ],
+      "channel": [
+        "Name impersonation: Exact match: bitcoin"
+      ]
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 39,
+    "video_id": "oOj_x6H74mA",
+    "channel_id": "UCFwMITSkc1Fms6PoJoh1OUQ",
+    "video_title": "Starbase Live Nerdle Cam - SpaceX Starship Launch Facility",
+    "channel_title": "LabPadre Space",
+    "video_url": "https://youtube.com/watch?v=oOj_x6H74mA",
+    "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+    "risk_score": 70.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: spacex",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (272,331) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 40,
+    "video_id": "f39oHo6vFLg",
+    "channel_id": "UChF5O40UBqAc82I7-i5ig6A",
+    "video_title": "Bloomberg Live: Business, Finance, Earnings & Investment News | Watch 7AM - 6PM ET Weekdays",
+    "channel_title": "Bloomberg Podcasts",
+    "video_url": "https://youtube.com/watch?v=f39oHo6vFLg",
+    "channel_url": "https://youtube.com/channel/UChF5O40UBqAc82I7-i5ig6A",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (8,134,344) but very low engagement",
+        "Suspicious domain(s): bit.ly"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 41,
+    "video_id": "N7QGH-Bpp54",
+    "channel_id": "UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "video_title": "\ud83d\udd34Live Ethereum (ETH) 5 Minute Live Signals -Trading Signals- Scalping Strategy-Diamond Algo-",
+    "channel_title": "Forex & Crypto Live",
+    "video_url": "https://youtube.com/watch?v=N7QGH-Bpp54",
+    "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+    "risk_score": 85.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: eth",
+        "Multiple scam keywords: eth, investment",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (130,515) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 42,
+    "video_id": "LwV1Hv0wP8k",
+    "channel_id": "UC36ns71aK7mh3s0hmRHSqFQ",
+    "video_title": "\ud83d\udd34  #Cardano Live Chart #ADA \ud83d\udcc8 15min",
+    "channel_title": "Cryptology",
+    "video_url": "https://youtube.com/watch?v=LwV1Hv0wP8k",
+    "channel_url": "https://youtube.com/channel/UC36ns71aK7mh3s0hmRHSqFQ",
+    "risk_score": 100.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: cardano",
+        "Multiple scam keywords: cryptocurrency, investment, wallet",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (7,230) but very low engagement",
+        "Suspicious domain(s): bit.ly, t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 43,
+    "video_id": "Dr3g-1r9BbI",
+    "channel_id": "UCFwMITSkc1Fms6PoJoh1OUQ",
+    "video_title": "Starbase Live Sapphire Cam - SpaceX Starship Launch Facility",
+    "channel_title": "LabPadre Space",
+    "video_url": "https://youtube.com/watch?v=Dr3g-1r9BbI",
+    "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+    "risk_score": 70.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: spacex",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (96,169) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 44,
+    "video_id": "fjgDFwW23v0",
+    "channel_id": "UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "video_title": "XRP Live Trading Signals XRPUSDT Best Trading Crypto Strategy ( Supply and Demand zones )",
+    "channel_title": "Forex Education Live",
+    "video_url": "https://youtube.com/watch?v=fjgDFwW23v0",
+    "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (5,075,294) but very low engagement",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 45,
+    "video_id": "h2kdq6AeaKQ",
+    "channel_id": "UCAgCTCW3pSWwsYjYtwvybaA",
+    "video_title": "Shiba Inu Live",
+    "channel_title": "AIC Cryptos",
+    "video_url": "https://youtube.com/watch?v=h2kdq6AeaKQ",
+    "channel_url": "https://youtube.com/channel/UCAgCTCW3pSWwsYjYtwvybaA",
+    "risk_score": 60.0,
+    "risk_category": "MEDIUM",
+    "signals": {
+      "video": [
+        "Multiple scam keywords: eth, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (65,903) but very low engagement"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  },
+  {
+    "id": 46,
+    "video_id": "HB2Bd1zGND8",
+    "channel_id": "UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "video_title": "LIVE \ud83d\udfe0 BITCOIN BTC ( M1 ) & \ud83d\udd35 ETHEREUM ETH ( M1 ) Educational Chart",
+    "channel_title": "Forex Education Live",
+    "video_url": "https://youtube.com/watch?v=HB2Bd1zGND8",
+    "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+    "risk_score": 100.0,
+    "risk_category": "HIGH",
+    "signals": {
+      "video": [
+        "Title impersonation: Exact match: ethereum, Exact match: bitcoin, Exact match: eth, Exact match: btc",
+        "Multiple scam keywords: btc, eth, cryptocurrency",
+        "Contains crypto address or suspicious URL",
+        "Currently live streaming",
+        "High views (3,117,590) but very low engagement",
+        "Suspicious domain(s): t.co"
+      ],
+      "channel": []
+    },
+    "ground_truth": {
+      "label": null,
+      "reasoning": "",
+      "actual_scam_type": null,
+      "reviewed_by": "",
+      "review_date": null
+    }
+  }
+]

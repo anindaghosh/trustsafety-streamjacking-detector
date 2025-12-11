@@ -1,0 +1,649 @@
+{
+  "likely_false_positives": [
+    {
+      "id": 15,
+      "channel_title": "LabPadre Space",
+      "video_title": "Starbase Live 24/7 Multi Plex  - SpaceX  Starship Super Heavy Launch & Production Facility",
+      "risk_score": 70.0,
+      "video_url": "https://youtube.com/watch?v=bK-ToXIW7Uw",
+      "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+      "reasoning": [
+        "Known legitimate: labpadre space"
+      ],
+      "suggested_label": "false_positive"
+    },
+    {
+      "id": 22,
+      "channel_title": "LabPadre Space",
+      "video_title": "Starbase Live Rover Cam - SpaceX Starship Launch Facility",
+      "risk_score": 70.0,
+      "video_url": "https://youtube.com/watch?v=inCQ49QGmqQ",
+      "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+      "reasoning": [
+        "Known legitimate: labpadre space"
+      ],
+      "suggested_label": "false_positive"
+    },
+    {
+      "id": 26,
+      "channel_title": "Yahoo Finance",
+      "video_title": "Stock market today: Live coverage from Yahoo Finance",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=KQp-e_XQnDE",
+      "channel_url": "https://youtube.com/channel/UCEAZeUIeJs0IjQiqTCdVSIg",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs",
+        "Appears to be news/educational content"
+      ],
+      "confidence": "low",
+      "suggested_label": "false_positive"
+    },
+    {
+      "id": 39,
+      "channel_title": "LabPadre Space",
+      "video_title": "Starbase Live Nerdle Cam - SpaceX Starship Launch Facility",
+      "risk_score": 70.0,
+      "video_url": "https://youtube.com/watch?v=oOj_x6H74mA",
+      "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+      "reasoning": [
+        "Known legitimate: labpadre space"
+      ],
+      "suggested_label": "false_positive"
+    },
+    {
+      "id": 40,
+      "channel_title": "Bloomberg Podcasts",
+      "video_title": "Bloomberg Live: Business, Finance, Earnings & Investment News | Watch 7AM - 6PM ET Weekdays",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=f39oHo6vFLg",
+      "channel_url": "https://youtube.com/channel/UChF5O40UBqAc82I7-i5ig6A",
+      "reasoning": [
+        "Known legitimate: bloomberg podcasts"
+      ],
+      "suggested_label": "false_positive"
+    },
+    {
+      "id": 43,
+      "channel_title": "LabPadre Space",
+      "video_title": "Starbase Live Sapphire Cam - SpaceX Starship Launch Facility",
+      "risk_score": 70.0,
+      "video_url": "https://youtube.com/watch?v=Dr3g-1r9BbI",
+      "channel_url": "https://youtube.com/channel/UCFwMITSkc1Fms6PoJoh1OUQ",
+      "reasoning": [
+        "Known legitimate: labpadre space"
+      ],
+      "suggested_label": "false_positive"
+    }
+  ],
+  "high_confidence_scams": [
+    {
+      "id": 1,
+      "channel_title": "Forex & Crypto Live",
+      "video_title": "\ud83d\udd34Live Ethereum (ETH) 5 Minute Live Signals -Trading Signals- Scalping Strategy-Diamond Algo-",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=N7QGH-Bpp54",
+      "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 2,
+      "channel_title": "ForexLia",
+      "video_title": "Live Bitcoin, Ethereum 24/7 Signals - 5 Minute Candles | ETH | BTC | Live Price Scalping Strategy",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=fFrLWCCUY68",
+      "channel_url": "https://youtube.com/channel/UC53vvfdlTgtACVRbusR1u7Q",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 4,
+      "channel_title": "Forex & Crypto Live",
+      "video_title": "\ud83d\udd34Live Bitcoin (BTC) 5 Minute Live Signals -Trading Signals-Scalping-Strategy-Diamond Algo-",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=t0gnKpWdG_c",
+      "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 6,
+      "channel_title": "AIC Cryptos",
+      "video_title": "Bitcoin Live",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=ObHQdbCgpD0",
+      "channel_url": "https://youtube.com/channel/UCAgCTCW3pSWwsYjYtwvybaA",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 8,
+      "channel_title": "Bitcoin LIVE",
+      "video_title": "\ud83d\udd34 Bitcoin LIVE Chart & Liquidation Watch",
+      "risk_score": 100.0,
+      "video_url": "https://youtube.com/watch?v=SpsoOVC56xc",
+      "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 12,
+      "channel_title": "Bitcoin LIVE",
+      "video_title": "\ud83d\udd34 Bitcoin LIVE Chart & Liquidation Watch",
+      "risk_score": 100.0,
+      "video_url": "https://youtube.com/watch?v=SpsoOVC56xc",
+      "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 18,
+      "channel_title": "Forex & Crypto Live",
+      "video_title": "\ud83d\udd34Live Ethereum (ETH) 5 Minute Live Signals -Trading Signals- Scalping Strategy-Diamond Algo-",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=N7QGH-Bpp54",
+      "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 19,
+      "channel_title": "Infinity Algo",
+      "video_title": "\ud83d\udd34 LIVE Bitcoin (BTC) & Ethereum (ETH) Trading Signals | 5-min Crypto Chart (24/7)",
+      "risk_score": 90.0,
+      "video_url": "https://youtube.com/watch?v=f8rkT4Bih5U",
+      "channel_url": "https://youtube.com/channel/UC1q5zTEdpeSQS8ksq4hdJcw",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 20,
+      "channel_title": "Forex Education Live",
+      "video_title": "\ud83d\udfe2 ETH USDT Live Trading Educational Chart with Signals & Order Book",
+      "risk_score": 100.0,
+      "video_url": "https://youtube.com/watch?v=9M93_6S9TaQ",
+      "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 23,
+      "channel_title": "Forex Education Live",
+      "video_title": "BITCOIN BTC LIVE CHART & MAP",
+      "risk_score": 100.0,
+      "video_url": "https://youtube.com/watch?v=TPaaes94bUY",
+      "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 27,
+      "channel_title": "Infinity Algo",
+      "video_title": "\ud83d\udd34 LIVE Bitcoin (BTC) & Ethereum (ETH) Trading Signals | 5-min Crypto Chart (24/7)",
+      "risk_score": 90.0,
+      "video_url": "https://youtube.com/watch?v=f8rkT4Bih5U",
+      "channel_url": "https://youtube.com/channel/UC1q5zTEdpeSQS8ksq4hdJcw",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 36,
+      "channel_title": "Forex Education Live",
+      "video_title": "\ud83d\udd34 BNB Live Trading Educational Chart Binance Coin",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=Y3LWrtgT4Tc",
+      "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Impersonating: binance"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 38,
+      "channel_title": "Bitcoin LIVE",
+      "video_title": "\ud83d\udd34 Bitcoin LIVE Chart & Liquidation Watch",
+      "risk_score": 100.0,
+      "video_url": "https://youtube.com/watch?v=SpsoOVC56xc",
+      "channel_url": "https://youtube.com/channel/UCObE3J0qQ0DzcouV1w4DlGg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 41,
+      "channel_title": "Forex & Crypto Live",
+      "video_title": "\ud83d\udd34Live Ethereum (ETH) 5 Minute Live Signals -Trading Signals- Scalping Strategy-Diamond Algo-",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=N7QGH-Bpp54",
+      "channel_url": "https://youtube.com/channel/UC1t1Y2T2jZKnVSsE4D5jQPw",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 42,
+      "channel_title": "Cryptology",
+      "video_title": "\ud83d\udd34  #Cardano Live Chart #ADA \ud83d\udcc8 15min",
+      "risk_score": 100.0,
+      "video_url": "https://youtube.com/watch?v=LwV1Hv0wP8k",
+      "channel_url": "https://youtube.com/channel/UC36ns71aK7mh3s0hmRHSqFQ",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    },
+    {
+      "id": 46,
+      "channel_title": "Forex Education Live",
+      "video_title": "LIVE \ud83d\udfe0 BITCOIN BTC ( M1 ) & \ud83d\udd35 ETHEREUM ETH ( M1 ) Educational Chart",
+      "risk_score": 100.0,
+      "video_url": "https://youtube.com/watch?v=HB2Bd1zGND8",
+      "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "high",
+      "suggested_label": "true_positive"
+    }
+  ],
+  "needs_careful_review": [
+    {
+      "id": 3,
+      "channel_title": "Forex & Crypto Live Signals",
+      "video_title": "\ud83d\udd34 Live 24/7 Binance (BNB) | 5-Min Signals & Real-Time Trading",
+      "risk_score": 50.0,
+      "video_url": "https://youtube.com/watch?v=4hVds371gdA",
+      "channel_url": "https://youtube.com/channel/UCh7vfw6YpOtSJYW5c5EG8dQ",
+      "reasoning": [
+        "Has impersonation signals"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 5,
+      "channel_title": "Bulldog Trading",
+      "video_title": "Stock Market Live - AI Trading Alerts and Scanners",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=96zuSghIQEI",
+      "channel_url": "https://youtube.com/channel/UC5ycCx8wLCM21YfSgNuuAFA",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 7,
+      "channel_title": "FF GAMERZ",
+      "video_title": "Elon Musk and Cathie Wood Live | ARK Invest Discussion 2025",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=6ErUKqUchxI",
+      "channel_url": "https://youtube.com/channel/UCy-juNP3n5QrnbVCopqwmxg",
+      "reasoning": [
+        "Has impersonation signals"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 9,
+      "channel_title": "FF GAMERZ",
+      "video_title": "Elon Musk and Cathie Wood Live | ARK Invest Discussion 2025",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=6ErUKqUchxI",
+      "channel_url": "https://youtube.com/channel/UCy-juNP3n5QrnbVCopqwmxg",
+      "reasoning": [
+        "Has impersonation signals"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 10,
+      "channel_title": "SaiGon Life TV",
+      "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=xSvoSShWJGQ",
+      "channel_url": "https://youtube.com/channel/UCWaWnLS46PQv1gYQUv9uYjQ",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 11,
+      "channel_title": "What Its Like Adventures",
+      "video_title": "XRP Dips to $2.16, Rebounds to Break $2.20? Watch Live Chart & Earn Sana Coin!",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=6hCpOKc-tGI",
+      "channel_url": "https://youtube.com/channel/UCBQca3L5bEITRRWvuVAS0Cw",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 13,
+      "channel_title": "Forex Education Live",
+      "video_title": "\ud83d\udfe2 BITCOIN LIVE EDUCATIONAL TRADING CHART WITH SIGNALS , ZONES AND ORDER BOOK",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=jkP1Sw7M2iU",
+      "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 14,
+      "channel_title": "K1m6a",
+      "video_title": "HD Bitcoin Live BookMap + Liquidation HeatMap + KingFisher #bookmap #hyblock #liquidations #bitcoin",
+      "risk_score": 70.0,
+      "video_url": "https://youtube.com/watch?v=yHOvjzS5a8s",
+      "channel_url": "https://youtube.com/channel/UC2KGf4oWao2NMOnIA88ZwJQ",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 16,
+      "channel_title": "Ashutosh Kumar",
+      "video_title": "Crypto Live Trading | Bitcoin Live Trading | Bitcoin Analysis | 09 NOV 2025 #live #btc #crypto",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=YbfKF9Fyhcw",
+      "channel_url": "https://youtube.com/channel/UCLMx5Kt0pL3P3KWZbEqwoJg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 17,
+      "channel_title": "Dmax ad",
+      "video_title": "Michael Saylor: BITCOIN BULL RUN READY TO BE CONFIRMED! BTC PRICE PREDICTION",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=mXAX8KBUEOc",
+      "channel_url": "https://youtube.com/channel/UC9nNa4GCN4PikX13z1dKUWg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 21,
+      "channel_title": "Forex & Crypto Live Signals",
+      "video_title": "\ud83d\udd34 Live 24/7 Cardano | 5-Min Signals & Real-Time Trading",
+      "risk_score": 50.0,
+      "video_url": "https://youtube.com/watch?v=9yNLGttwTLo",
+      "channel_url": "https://youtube.com/channel/UCh7vfw6YpOtSJYW5c5EG8dQ",
+      "reasoning": [
+        "Has impersonation signals"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 24,
+      "channel_title": "Stock Accurate",
+      "video_title": "Live Signals & Trading Dow Jones Index | US30 | SP500 | Buy Sell Trading Strategy @LiveTrading",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=-kdZ1EjvO9c",
+      "channel_url": "https://youtube.com/channel/UCDk253D74MzdlBbCH1a-CLw",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 25,
+      "channel_title": "Chinese Drama Picks",
+      "video_title": "Michael Saylor: BITCOIN CRASH EXPLAINED! MASSIVE BTC DUMP & What's Next for Crypto?",
+      "risk_score": 70.0,
+      "video_url": "https://youtube.com/watch?v=7upYQ2EOk3o",
+      "channel_url": "https://youtube.com/channel/UCRubuti81pj-bPZSyxV3nhA",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 28,
+      "channel_title": "Million Moves",
+      "video_title": "\ud83d\udd34 LIVE Gold (XAUUSD) 1-Minute \u2014 Million Moves Algo V5 Indicator | Study Stream",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=-ps7V40GrA4",
+      "channel_url": "https://youtube.com/channel/UCLL4DXAVM8xxqxKN_YTnr5A",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 29,
+      "channel_title": "NanoCommunity",
+      "video_title": "Nano Crypto Giveaway (every 90 seconds) - 10 year anniversary",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=bWIiI-CRwIQ",
+      "channel_url": "https://youtube.com/channel/UCUP4kKVNv5suybK23LvUbCw",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords",
+        "Mentions giveaway"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 30,
+      "channel_title": "FF GAMERZ",
+      "video_title": "Elon Musk and Cathie Wood Live | ARK Invest Discussion 2025",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=6ErUKqUchxI",
+      "channel_url": "https://youtube.com/channel/UCy-juNP3n5QrnbVCopqwmxg",
+      "reasoning": [
+        "Has impersonation signals"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 31,
+      "channel_title": "Logan DeRosa",
+      "video_title": "Blooket Live Stream 24/7 | Viewers Can Join | Compete Against Others | Study Music And More!",
+      "risk_score": 45.0,
+      "video_url": "https://youtube.com/watch?v=IZYPKD4dg1o",
+      "channel_url": "https://youtube.com/channel/UCGCw1dDY-ECdIe34yc_qDTQ",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 32,
+      "channel_title": "Btc Xrp Live Charts",
+      "video_title": "Btc Live Charts 24/7",
+      "risk_score": 50.0,
+      "video_url": "https://youtube.com/watch?v=c96YQdC9ByY",
+      "channel_url": "https://youtube.com/channel/UCWYkedyz69vKICKChTT22Pw",
+      "reasoning": [
+        "Has impersonation signals"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 33,
+      "channel_title": "ChartPrime",
+      "video_title": "Live Bitcoin & Ethereum 15 Min Signals And Technical Analysis  ChartPrime",
+      "risk_score": 70.0,
+      "video_url": "https://youtube.com/watch?v=k6L3z81iVI8",
+      "channel_url": "https://youtube.com/channel/UCyG2T5QGRzJjQVVAr1o4qmw",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 34,
+      "channel_title": "Austin Hilton",
+      "video_title": "\ud83d\udea8 LIVE Bitcoin 24/7 | BTC Price, Chart & Signals Powered by X1 Algo",
+      "risk_score": 30.0,
+      "video_url": "https://youtube.com/watch?v=AiC7PhbRT3g",
+      "channel_url": "https://youtube.com/channel/UCM5oQBEF59122yTblKUzCHQ",
+      "reasoning": [
+        "Has impersonation signals"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 35,
+      "channel_title": "Forex Education Live",
+      "video_title": "\ud83d\udfe2 BITCOIN LIVE EDUCATIONAL TRADING CHART WITH SIGNALS , ZONES AND ORDER BOOK",
+      "risk_score": 85.0,
+      "video_url": "https://youtube.com/watch?v=jkP1Sw7M2iU",
+      "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+      "reasoning": [
+        "Has impersonation signals",
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 37,
+      "channel_title": "AIC Cryptos",
+      "video_title": "Shiba Inu Live",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=h2kdq6AeaKQ",
+      "channel_url": "https://youtube.com/channel/UCAgCTCW3pSWwsYjYtwvybaA",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    },
+    {
+      "id": 44,
+      "channel_title": "Forex Education Live",
+      "video_title": "XRP Live Trading Signals XRPUSDT Best Trading Crypto Strategy ( Supply and Demand zones )",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=fjgDFwW23v0",
+      "channel_url": "https://youtube.com/channel/UCsasPMe7Jaa8RM4B_j8Qhxg",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs"
+      ],
+      "confidence": "low",
+      "suggested_label": ""
+    },
+    {
+      "id": 45,
+      "channel_title": "AIC Cryptos",
+      "video_title": "Shiba Inu Live",
+      "risk_score": 60.0,
+      "video_url": "https://youtube.com/watch?v=h2kdq6AeaKQ",
+      "channel_url": "https://youtube.com/channel/UCAgCTCW3pSWwsYjYtwvybaA",
+      "reasoning": [
+        "Contains crypto addresses/suspicious URLs",
+        "Contains scam keywords"
+      ],
+      "confidence": "medium",
+      "suggested_label": ""
+    }
+  ],
+  "patterns": {}
+}
