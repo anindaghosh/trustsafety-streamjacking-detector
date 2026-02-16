@@ -1,0 +1,364 @@
+[1/358] ✓ b4EIXN-t9Vk: Active
+[2/358] ✓ sET2vD-_wRs: Active
+[3/358] ✓ pYFD2SoFD88: Active
+[4/358] ✗ wn48Y6PjqtE: Video not found
+[5/358] ✗ N8gv1kXIZJQ: Video not found
+[6/358] ✓ 7PsVZVWr2Ic: Active
+[7/358] ✓ cLDeMv8t7Bo: Active
+[8/358] ✗ 1b2ybphkg_E: Video not found
+[9/358] ✓ h4z6IGTiY2k: Active
+[10/358] ✓ QShV15D-khc: Active
+[11/358] ✓ pjLkTEQm8EU: Active
+[12/358] ✓ PDshSXluEQs: Active
+[13/358] ✗ 8JhJhDWOr6c: Video not found
+[14/358] ✗ Iw1qR6JSX-w: Video not found
+[15/358] ✓ H4d5zPnS4_0: Active
+[16/358] ✗ l4njqhAIfFY: Video not found
+[17/358] ✓ oPQD6qDYAYY: Active
+[18/358] ✓ mewVepvZy0c: Active
+[19/358] ✓ 7yO7chw91fQ: Active
+[20/358] ✓ ZgPE4FJzXSE: Active
+[21/358] ✓ Sazwd13-JW8: Active
+[22/358] ✓ NlFV2QtQm-w: Active
+[23/358] ✓ lT-UjCFq2iY: Active
+[24/358] ✓ lR1xoKghZS0: Active
+[25/358] ✗ yaz0FK93YsU: Video not found
+[26/358] ✓ YPQMqGJg8E0: Active
+[27/358] ✗ njVWY_yf0ws: Video not found
+[28/358] ✓ 7Jwv65Oh5k4: Active
+[29/358] ✓ 88URX0O9Y3w: Active
+[30/358] ✓ ziYwt0jF1p4: Active
+[31/358] ✗ 2zAD_zfF3Ik: Video not found
+[32/358] ✗ qxquJgqISV0: Video not found
+[33/358] ✓ 2RpTMRGq_og: Active
+[34/358] ✓ gdRaHk24FDo: Active
+[35/358] ✗ PhcFluAocO8: Video not found
+[36/358] ✓ 9e4Voxa4ekw: Active
+[37/358] ✓ uvt75PT0I2Y: Active
+[38/358] ✗ epaws6x83e4: Video not found
+[39/358] ✓ 49cJSuL-bYs: Active
+[40/358] ✓ THXTuC0QvD4: Active
+[41/358] ✓ 1_Ih0JYmkjI: Active
+[42/358] ✗ CrjHPnOXA0k: Video not found
+[43/358] ✓ azLUKFGycfY: Active
+[44/358] ✓ SpsoOVC56xc: Active
+[45/358] ✗ x_qUpVtUlxA: Video not found
+[46/358] ✗ D93daHcucfs: Video not found
+[47/358] ✗ Gsl09-PeKbM: Video not found
+[48/358] ✗ 9AnZHGlhb6E: Video not found
+[49/358] ✓ HZJ2RmxDnlw: Active
+[50/358] ✓ JZgQapdglAE: Active
+[51/358] ✗ IvDhYvFWE_U: Video not found
+[52/358] ✓ ZSxXqGsL7cA: Active
+[53/358] ✗ w52256kQRnA: Video not found
+[54/358] ✗ xw_Ye-wN2yc: Video not found
+[55/358] ✓ wD8PnDjzs64: Active
+[56/358] ✓ PA95bbRtwr4: Active
+[57/358] ✓ 96zuSghIQEI: Active
+[58/358] ✓ RBBPJ-VG9x4: Active
+[59/358] ✓ OMDbaadrdWA: Active
+[60/358] ✓ r7olE7X-oHE: Active
+[61/358] ✓ g0GliR9wnK8: Active
+[62/358] ✓ Nv5y9AthI-M: Active
+[63/358] ✓ Q6UyUKGofoI: Active
+[64/358] ✓ DMDE6d5xRME: Active
+[65/358] ✓ x64hhjVcPvE: Active
+[66/358] ✓ HiuvTh1UEVk: Active
+[67/358] ✓ NeYmOZXcf8k: Active
+[68/358] ✓ XKHcjM4BzhE: Active
+[69/358] ✓ 0KNifW3bFuc: Active
+[70/358] ✓ 9qS6_VmXmq8: Active
+[71/358] ✓ B8AQ_SdQpys: Active
+[72/358] ✓ 1Iazi-oY8uY: Active
+[73/358] ✓ pBwQy5uxBSU: Active
+[74/358] ✓ 4D_MXiqs5yg: Active
+[75/358] ✓ pykpO5kQJ98: Active
+[76/358] ✓ DxZziUUr6CY: Active
+[77/358] ✓ n-_jPm6K0H8: Active
+[78/358] ✓ fFrLWCCUY68: Active
+[79/358] ✓ AaZG-lyinE4: Active
+[80/358] ✓ olHNjCfHnz8: Active
+[81/358] ✓ yMShkb1KTfs: Active
+[82/358] ✓ YaJJM4HkdWs: Active
+[83/358] ✓ LxMlgfecu70: Active
+[84/358] ✓ 8KLbX_02D74: Active
+[85/358] ✗ K4QrRIafHBo: Video not found
+[86/358] ✓ hLBB8cmQK0I: Active
+[87/358] ✓ Z-EX7LaPvZA: Active
+[88/358] ✓ 6jULGs-OC7s: Active
+[89/358] ✗ iQh7fZNoprc: Video not found
+[90/358] ✓ Sp1r8EvbQ9A: Active
+[91/358] ✓ s-Ni3sIkNZc: Active
+[92/358] ✓ ydiWklMUhcQ: Active
+[93/358] ✓ Z2P93g8KPl4: Active
+[94/358] ✓ hHSmBJk6w0c: Active
+[95/358] ✓ tSZWqrOh9gU: Active
+[96/358] ✓ zmkrO7MyhNI: Active
+[97/358] ✓ 3JGgByJhA1U: Active
+[98/358] ✓ MDq0amHPlbk: Active
+[99/358] ✓ O62Weadm1yM: Active
+[100/358] ✓ O_kx_vxumpc: Active
+[101/358] ✓ vjrwrcYAOYE: Active
+[102/358] ✓ iO-h2pDPRvA: Active
+[103/358] ✗ h_oXDWnBygg: Video not found
+[104/358] ✓ kHkpKvd1R1U: Active
+[105/358] ✓ cHMy0HKA5Q0: Active
+[106/358] ✓ IolPC5NzCPM: Active
+[107/358] ✓ X1GxiKAyQds: Active
+[108/358] ✓ wEj96n687Uo: Active
+[109/358] ✗ P-PB_ilVsU8: Video not found
+[110/358] ✓ I16oiHCufUg: Active
+[111/358] ✓ VgFi0BEgeKI: Active
+[112/358] ✓ tcPcc877vCs: Active
+[113/358] ✓ mtXncQyTEMQ: Active
+[114/358] ✗ 7dCdyANALuE: Video not found
+[115/358] ✓ Cu92Rxh39GA: Active
+[116/358] ✓ kz9GopmLtns: Active
+[117/358] ✓ DKBBdTy-BS0: Active
+[118/358] ✗ VZSWW0kz0x4: Video not found
+[119/358] ✓ VYVOX0BLkRw: Active
+[120/358] ✓ E6KaDXEpFTw: Active
+[121/358] ✓ S_AWTtQx6dY: Active
+[122/358] ✓ ojuut3vqx6o: Active
+[123/358] ✓ 7eUaizduDpQ: Active
+[124/358] ✓ RKHx-jzkI4I: Active
+[125/358] ✗ jvXwD1dMvYM: Video not found
+[126/358] ✓ S0S8KxYF4IM: Active
+[127/358] ✓ sWVqw1-TQVA: Active
+[128/358] ✗ -TQDUaaRblg: Video not found
+[129/358] ✓ _bLX5WfDQfM: Active
+[130/358] ✓ rTcTVZBZtYs: Active
+[131/358] ✓ -WVNEcsVSj8: Active
+[132/358] ✓ dhSnrj4jXgQ: Active
+[133/358] ✗ qwOsRZM1wzk: Video not found
+[134/358] ✓ 8B26o0hfAF8: Active
+[135/358] ✓ w0_UWHhirJE: Active
+[136/358] ✗ McdxaDkOhtA: Video not found
+[137/358] ✓ 4zC6BbzTGqs: Active
+[138/358] ✓ WlgeUXlOMTc: Active
+[139/358] ✓ EKCQ38UvR3Q: Active
+[140/358] ✓ 4pKuC6JuRLg: Active
+[141/358] ✓ l3_x4ByS3RY: Active
+[142/358] ✓ 5Gwe5aiZMOM: Active
+[143/358] ✓ vI1jZh1TCdI: Active
+[144/358] ✓ mcYgCTDy0Vw: Active
+[145/358] ✓ Kn2t3iT_mdo: Active
+[146/358] ✓ GtJHXvpF8xA: Active
+[147/358] ✗ 0qjkKehVjWg: Video not found
+[148/358] ✓ CIsJG8s1CZw: Active
+[149/358] ✓ 36YnV9STBqc: Active
+[150/358] ✓ AgdFH67Ibxw: Active
+[151/358] ✓ IWG7_iJZP1Y: Active
+[152/358] ✓ vw5Ff0S-AJ8: Active
+[153/358] ✗ K2QP4p8NuWA: Video not found
+[154/358] ✓ sHHRm45NqK8: Active
+[155/358] ✓ lC4bJBj9OWI: Active
+[156/358] ✗ mI7PcbCEqNs: Video not found
+[157/358] ✗ K70m-MIwCUw: Video not found
+[158/358] ✓ UeercmYFmkI: Active
+[159/358] ✓ 5yx6BWlEVcY: Active
+[160/358] ✓ s87ObgX4A0E: Active
+[161/358] ✓ pTy6MGUfI7I: Active
+[162/358] ✓ f4mPLAdlF9M: Active
+[163/358] ✓ o09siXxJw9A: Active
+[164/358] ✓ 0Kh4eUvwGgU: Active
+[165/358] ✓ sFdf3HbUK3Y: Active
+[166/358] ✓ iuxB0947YAE: Active
+[167/358] ✓ xgBWmbO__1U: Active
+[168/358] ✗ zsKRk2XaBrU: Video not found
+[169/358] ✓ wilWaqvjWT8: Active
+[170/358] ✓ Fp-UdcCqRb0: Active
+[171/358] ✓ ZiQpD4IG9sg: Active
+[172/358] ✗ _IITWImkoF4: Video not found
+[173/358] ✓ pB5aadRxsMY: Active
+[174/358] ✗ djqHGBoCDXs: Video not found
+[175/358] ✓ 64OJvhj49eA: Active
+[176/358] ✓ OM9LJZXBcQM: Active
+[177/358] ✓ rQcmJGCjirE: Active
+[178/358] ✓ K_xb6VVNl2U: Active
+[179/358] ✗ W-EXOA9hYKc: Video not found
+[180/358] ✓ 6PU-Dgj403w: Active
+[181/358] ✗ 0IzSIaWQHIY: Video not found
+[182/358] ✓ S8J_wFxKkj8: Active
+[183/358] ✓ wbBpNs4B1Yk: Active
+[184/358] ✗ BfD9Gd26s9Q: Video not found
+[185/358] ✗ AEHzJ47Yggg: Video not found
+[186/358] ✗ CpBMB5njXuA: Video not found
+[187/358] ✗ JZ1B7DjBdt4: Video not found
+[188/358] ✗ j8p_D-6d1DU: Video not found
+[189/358] ✗ WdAI_swivsw: Video not found
+[190/358] ✗ P2xlZ5fl8X0: Video not found
+[191/358] ✓ quz66_MD4OM: Active
+[192/358] ✓ ZdoZK1rzueg: Active
+[193/358] ✓ VQQiEvTjpBk: Active
+[194/358] ✓ uR-_BDNBFbw: Active
+[195/358] ✓ z9gHEVD1wSM: Active
+[196/358] ✓ rp3L_8_YdA0: Active
+[197/358] ✓ d9GOTWr-Y34: Active
+[198/358] ✓ D2q7B70f-Sc: Active
+[199/358] ✓ VgrF7YMnQoo: Active
+[200/358] ✓ _scGCGDjgaU: Active
+[201/358] ✓ If347SY-5XE: Active
+[202/358] ✓ 0zExZZlSd2M: Active
+[203/358] ✓ s_zSsgOY10o: Active
+[204/358] ✓ 42M3esYyHdw: Active
+[205/358] ✓ F8FQB9Db_hU: Active
+[206/358] ✓ OphaJHDWcVQ: Active
+[207/358] ✓ xKCK4cCst8Q: Active
+[208/358] ✓ gf6SK0NObfI: Active
+[209/358] ✓ tgMHjf1Gynw: Active
+[210/358] ✗ gxN1q0oTXZ0: Video not found
+[211/358] ✓ 6GTAGQg-RmU: Active
+[212/358] ✗ XGFz0FqwA6s: Video not found
+[213/358] ✓ B4bwCCcv0Uw: Active
+[214/358] ✓ 6shWfvCAxNM: Active
+[215/358] ✓ JwaIyw6RPOk: Active
+[216/358] ✓ 1BJNX8K7cGs: Active
+[217/358] ✓ ArTVnpZ_OU8: Active
+[218/358] ✓ d8k8PEMwaNU: Active
+[219/358] ✓ I1mkOjrQwbw: Active
+[220/358] ✓ 7j6fR0T7X5E: Active
+[221/358] ✓ MhgIldBtLCo: Active
+[222/358] ✓ WvaAUeZ7jaY: Active
+[223/358] ✓ DBc0nKqWgb4: Active
+[224/358] ✓ EqpqeMM_kmU: Active
+[225/358] ✓ bb2aSB26-M0: Active
+[226/358] ✓ DE8xt325vTs: Active
+[227/358] ✓ gTEyxl3r_ME: Active
+[228/358] ✓ 0Sho4XewGEs: Active
+[229/358] ✗ ntDZlLBd8ig: Video not found
+[230/358] ✗ CxTcZkMh_hY: Video not found
+[231/358] ✗ 0NYAyYv8rF0: Video not found
+[232/358] ✗ -eMSg1bHPdw: Video not found
+[233/358] ✓ 74wIj12WGCQ: Active
+[234/358] ✓ I4Apnutcrd0: Active
+[235/358] ✓ TDisD_GdDJE: Active
+[236/358] ✓ pfdg14V43KU: Active
+[237/358] ✓ bDBUJbvUTSw: Active
+[238/358] ✓ fFFm0ys9pE0: Active
+[239/358] ✓ CSG1Ch--RYQ: Active
+[240/358] ✓ WROt1hMvNBw: Active
+[241/358] ✓ MLU7cbT7yXo: Active
+[242/358] ✓ aziF_orl9hQ: Active
+[243/358] ✗ HHpYQ-4p1rQ: Video not found
+[244/358] ✗ QzKWUhC6uYU: Video not found
+[245/358] ✓ u2P4paln9Sg: Active
+[246/358] ✗ Btj-APL4ZJA: Video not found
+[247/358] ✗ GRMbs1v4eB8: Video not found
+[248/358] ✗ Oxi4AS2rjls: Video not found
+[249/358] ✗ dxLkex_btIA: Video not found
+[250/358] ✗ AXwKCE3lwJo: Video not found
+[251/358] ✓ j7tRTKBoFgg: Active
+[252/358] ✓ BpOIrVLM2Xs: Active
+[253/358] ✗ xPEUZ18CuPA: Video not found
+[254/358] ✓ vABGZOCzfEs: Active
+[255/358] ✓ NLhxcyzXQxM: Active
+[256/358] ✓ E6wtQRPsQqs: Active
+[257/358] ✓ 2reVaqUIbnY: Active
+[258/358] ✓ 84LI4aIndhE: Active
+[259/358] ✓ mH0XVFzUx6s: Active
+[260/358] ✓ JsxzIi31YGY: Active
+[261/358] ✓ grRg8U6CwlY: Active
+[262/358] ✓ RmwBmXXWe2Y: Active
+[263/358] ✓ l0dfJZkJmHQ: Active
+[264/358] ✓ SQvHOojLmUw: Active
+[265/358] ✗ 3CjyXfyfOFg: Video not found
+[266/358] ✓ v6vJ4gVaPoU: Active
+[267/358] ✓ ggfWVFqlMTQ: Active
+[268/358] ✓ B3sOZOZVccQ: Active
+[269/358] ✓ fosqs6eYLMs: Active
+[270/358] ✓ fMLZLrJ8e2Q: Active
+[271/358] ✓ 3m2g0O5dPAQ: Active
+[272/358] ✓ APKgJNq6I_k: Active
+[273/358] ✓ qDHciBOWnnQ: Active
+[274/358] ✓ FNiyqOHievU: Active
+[275/358] ✗ -wDDSJJLl9Q: Video not found
+[276/358] ✓ cR0blNQYyZc: Active
+[277/358] ✓ nj0KwQKi-Ow: Active
+[278/358] ✗ cX0gbHjkBA8: Video not found
+[279/358] ✗ DMrvMAgyFrQ: Video not found
+[280/358] ✓ mmQ1o-r0gbY: Active
+[281/358] ✗ 7KrwHqi4Hg8: Video not found
+[282/358] ✗ yoYCyZ1N4vA: Video not found
+[283/358] ✗ oSUdbJX6f8s: Video not found
+[284/358] ✗ _Et2Gtm-Tt8: Video not found
+[285/358] ✓ 6878iCNiBbA: Active
+[286/358] ✗ pMn14F3Utw0: Video not found
+[287/358] ✓ XQa4B-YPzmc: Active
+[288/358] ✓ sQ8x5IJhCRU: Active
+[289/358] ✓ A2rFIdINSH8: Active
+[290/358] ✓ SUa2pIH7ZHE: Active
+[291/358] ✓ XuozPYYy2rk: Active
+[292/358] ✓ 1l92SC9wkpA: Active
+[293/358] ✓ qseqYbQfFVA: Active
+[294/358] ✓ 8D4g8J76yo8: Active
+[295/358] ✓ iqpXMhVbU5c: Active
+[296/358] ✗ uW7D-Q9oqLQ: Video not found
+[297/358] ✓ GZvFRdygRmI: Active
+[298/358] ✓ Vw8wpcIWEY4: Active
+[299/358] ✓ FvMqh9fu6mw: Active
+[300/358] ✓ miKqY5Mbhe4: Active
+[301/358] ✗ t6o3klB5AVY: Video not found
+[302/358] ✓ nR9fiVwvFSI: Active
+[303/358] ✓ WJJI_8qQ55o: Active
+[304/358] ✓ 3vCvC_xrVg8: Active
+[305/358] ✓ qwOiteH4VZA: Active
+[306/358] ✓ Kpg5lhC2EC4: Active
+[307/358] ✗ m8zcXLU6HFU: Video not found
+[308/358] ✓ Bt_WTynFVIY: Active
+[309/358] ✓ mAzn6il76c0: Active
+[310/358] ✓ UNKiXCLCzlQ: Active
+[311/358] ✗ vBVY07eLmfo: Video not found
+[312/358] ✗ HMTVUuIUL88: Video not found
+[313/358] ✓ 2dzSQdRNl3c: Active
+[314/358] ✓ -J7BCvnrQUI: Active
+[315/358] ✓ yYdbTnPbM9U: Active
+[316/358] ✓ 8tTBp1mtax4: Active
+[317/358] ✓ axM3eA3itR0: Active
+[318/358] ✓ SjqpwDU8mNg: Active
+[319/358] ✓ oiPgcE5LXa0: Active
+[320/358] ✗ J20oXGXjgoA: Video not found
+[321/358] ✗ rlpFJBAmUpo: Video not found
+[322/358] ✓ wCD8FY7N-pE: Active
+[323/358] ✓ 2Yt8eWEeCOI: Active
+[324/358] ✗ MWDOR1cAp-U: Video not found
+[325/358] ✓ EvvSUs16-2M: Active
+[326/358] ✓ YeJePFJTPBI: Active
+[327/358] ✓ Bf-P0JZLGcQ: Active
+[328/358] ✓ B7I1dyRjp4g: Active
+[329/358] ✓ NksckHzSprs: Active
+[330/358] ✓ ZAMz3XdeeN4: Active
+[331/358] ✓ t_6AmkV3MIY: Active
+[332/358] ✓ haA9ZN5LzJY: Active
+[333/358] ✓ _dGR3_Rgl4I: Active
+[334/358] ✓ KCbEsZc6aRk: Active
+[335/358] ✓ 8Tl4XjbY0ds: Active
+[336/358] ✓ KY2JICFh5XY: Active
+[337/358] ✓ G7XVBrXVXik: Active
+[338/358] ✓ fVa6-zCBR7A: Active
+[339/358] ✓ ORqEXSK0CVw: Active
+[340/358] ✗ wGevSKgxN0E: Video not found
+[341/358] ✗ 9A98uWQYVGk: Video not found
+[342/358] ✓ 6AiKzbpgs20: Active
+[343/358] ✓ JKaZ-Yg6BQs: Active
+[344/358] ✗ 1cIDZSzwAvU: Video not found
+[345/358] ✓ KQp-e_XQnDE: Active
+[346/358] ✓ sx-Q80NqLTY: Active
+[347/358] ✗ qf9zj0hCVqQ: Video not found
+[348/358] ✗ f4ChoYX0lCQ: Video not found
+[349/358] ✓ KXitAgbfSVo: Active
+[350/358] ✓ aW3Vas8Kt_g: Active
+[351/358] ✗ Lqo1qwHm95k: Video not found
+[352/358] ✓ ScKt6EiuY2k: Active
+[353/358] ✓ veu6VLtD6rI: Active
+[354/358] ✓ kFH0CsTZUyg: Active
+[355/358] ✓ _5Kf0qjRUQk: Active
+[356/358] ✓ Y0Xls_bK3MM: Active
+[357/358] ✗ H6N2doE04mY: Video not found
+[358/358] ✓ Cidl9JoRtGk: Active
+
+=== Verification Summary ===
+Total videos: 358
+Active: 274
+Inactive: 84
+Errors: 0
