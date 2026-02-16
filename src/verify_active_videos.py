@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime, timezone
 import time
 
 # Load environment variables
@@ -11,33 +11,16 @@ load_dotenv()
 
 # MongoDB connection
 MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/')
-print(f"Connecting to MongoDB at: {MONGO_URI}")
 client = MongoClient(MONGO_URI)
-
-# Debug: List available databases
-print("\nAvailable databases:", client.list_database_names())
-
-db = client['streamjacking']  # Changed from 'streamjacking_detector' to 'streamjacking'
-print(f"Using database: streamjacking")
-print(f"Available collections: {db.list_collection_names()}")
-
+db = client['streamjacking']
 collection = db['detection_results_latest']
-print(f"Using collection: detection_results_latest")
-
-# Debug: Check a sample document to see the structure
-sample_doc = collection.find_one()
-if sample_doc:
-    print(f"\nSample document keys: {list(sample_doc.keys())}")
-    print(f"Sample document (first 500 chars): {str(sample_doc)[:500]}")
-else:
-    print("\n⚠️  No documents found in collection!")
 
 # YouTube API setup
 YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
 youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY)
 
-def check_video_status(video_id):
-    """Check if a YouTube video is still active"""
+def check_video_status(video_id, channel_id=None):
+    """Check if a YouTube video is still active and determine why if not"""
     try:
         response = youtube.videos().list(
             part='status,snippet',
@@ -45,6 +28,11 @@ def check_video_status(video_id):
         ).execute()
         
         if not response['items']:
+            # Video not found - check if it's because the channel is terminated
+            if channel_id:
+                reason = check_channel_status(channel_id)
+                if reason:
+                    return False, reason
             return False, 'Video not found'
         
         video = response['items'][0]
@@ -68,6 +56,37 @@ def check_video_status(video_id):
     except Exception as e:
         return None, f'Exception: {str(e)}'
 
+def check_channel_status(channel_id):
+    """Check if a channel is terminated or unavailable"""
+    try:
+        response = youtube.channels().list(
+            part='status,snippet',
+            id=channel_id
+        ).execute()
+        
+        if not response['items']:
+            # Channel not found - likely terminated
+            return 'Channel terminated'
+        
+        channel = response['items'][0]
+        
+        # Check if channel is active
+        if channel.get('status', {}).get('isLinked') == False:
+            return 'Channel unlinked'
+        
+        # If we can fetch the channel, it exists
+        return None
+        
+    except HttpError as e:
+        if e.resp.status == 403:
+            return 'Channel terminated (403)'
+        elif e.resp.status == 404:
+            return 'Channel terminated (404)'
+        else:
+            return None
+    except Exception as e:
+        return None
+
 def verify_videos():
     """Verify all videos in the collection"""
     total_videos = collection.count_documents({})
@@ -76,20 +95,22 @@ def verify_videos():
     active_count = 0
     inactive_count = 0
     error_count = 0
+    reason_counts = {}  # Track different reasons for inactive videos
     
     # Process videos in batches
     for i, doc in enumerate(collection.find({}), 1):
         video_id = doc.get('video_id')
+        channel_id = doc.get('channel_id')
         
         if not video_id:
             print(f"[{i}/{total_videos}] Skipping document with no video_id")
             continue
         
-        is_active, reason = check_video_status(video_id)
+        is_active, reason = check_video_status(video_id, channel_id)
         
         # Update document with verification status
         update_data = {
-            'verification_date': datetime.now(datetime.UTC),
+            'verification_date': datetime.now(timezone.utc),
             'verification_status': reason
         }
         
@@ -100,7 +121,13 @@ def verify_videos():
         elif is_active is False:
             update_data['is_active'] = False
             inactive_count += 1
-            status_symbol = '✗'
+            # Track reason counts
+            reason_counts[reason] = reason_counts.get(reason, 0) + 1
+            # Use different symbol for channel termination
+            if 'Channel terminated' in reason:
+                status_symbol = '🚫'
+            else:
+                status_symbol = '✗'
         else:
             update_data['is_active'] = None
             error_count += 1
@@ -122,6 +149,17 @@ def verify_videos():
     print(f"Active: {active_count}")
     print(f"Inactive: {inactive_count}")
     print(f"Errors: {error_count}")
+    
+    if reason_counts:
+        print("\n=== Inactive Video Breakdown ===")
+        for reason, count in sorted(reason_counts.items(), key=lambda x: x[1], reverse=True):
+            print(f"  {reason}: {count}")
+            
+    # Calculate percentages
+    if total_videos > 0:
+        active_pct = (active_count / total_videos) * 100
+        inactive_pct = (inactive_count / total_videos) * 100
+        print(f"\n📊 Active: {active_pct:.1f}% | Inactive: {inactive_pct:.1f}%")
 
 if __name__ == '__main__':
     if not YOUTUBE_API_KEY:
