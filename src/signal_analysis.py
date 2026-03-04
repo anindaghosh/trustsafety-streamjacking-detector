@@ -125,6 +125,11 @@ class SignalAnalyzer:
         video_signals = sample.get('video_signals', []) or []
         channel_signals = sample.get('channel_signals', []) or []
         
+        # Exclude signals that were logged but explicitly NOT scored (conjunctive gate)
+        # These are tagged with "(unscored" to distinguish from active signals
+        video_signals = [s for s in video_signals if '(unscored' not in str(s).lower()]
+        channel_signals = [s for s in channel_signals if '(unscored' not in str(s).lower()]
+        
         # Convert to lowercase strings
         video_signals_text = ' '.join(str(s).lower() for s in video_signals)
         channel_signals_text = ' '.join(str(s).lower() for s in channel_signals)

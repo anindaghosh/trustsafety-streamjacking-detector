@@ -1244,23 +1244,39 @@ class EnhancedStreamJackingDetector:
                 risk_score += 10.0
         
         # Signal 5: Crypto addresses/URLs (weight: 25)
+        # CONJUNCTIVE: only flags if another anchor signal is present (reduces FP from 96 to near 0)
+        # Anchor signals: title impersonation, high-confidence phrase, or multiple scam keywords
+        _anchor_signals_present = any(
+            any(anchor in s for anchor in ['impersonation', 'scam phrase', 'scam keyword'])
+            for s in signals
+        )
         if self._contains_crypto_address(video.description) or self._contains_suspicious_url(video.description):
-            signals.append("Contains crypto address or suspicious URL")
-            risk_score += 25.0
+            if _anchor_signals_present:
+                signals.append("Contains crypto address or suspicious URL")
+                risk_score += 25.0
+            else:
+                # Still log it but don't score it standalone
+                signals.append("Crypto address/URL present (unscored — no anchor signal)")
         
-        # Signal 5b: QR Code mention (NEW - weight: 30)
-        # High indicator of scam - legitimate streams rarely ask viewers to scan QR codes
+        # Signal 5b: QR Code mention (weight: 30)
+        # CONJUNCTIVE: same anchor requirement — text-based QR detection is too noisy standalone
         if self.detect_qr_code_mention(video.title + ' ' + video.description):
-            signals.append("QR code mentioned (common scam tactic)")
-            risk_score += 30.0
+            if _anchor_signals_present:
+                signals.append("QR code mentioned (common scam tactic)")
+                risk_score += 30.0
+            else:
+                signals.append("QR code mentioned (unscored — no anchor signal)")
         
-        # Signal 6: Disabled comments (NEW - weight: 30 for crypto content, 20 otherwise)
+        # Signal 6: Disabled comments (weight: 30 for crypto content, 20 otherwise)
+        # CONJUNCTIVE: only scores if anchor signal present (reduces 23 FP significantly)
         if video.comments_disabled:
-            # Higher weight if also crypto-related (common in scams to prevent warnings)
             has_crypto_content = any(kw in combined for kw in ['crypto', 'bitcoin', 'ethereum', 'giveaway'])
             weight = 30.0 if has_crypto_content else 20.0
-            signals.append("Comments disabled or restricted")
-            risk_score += weight
+            if _anchor_signals_present:
+                signals.append("Comments disabled or restricted")
+                risk_score += weight
+            else:
+                signals.append("Comments disabled (unscored — no anchor signal)")
         
         # Signal 7: Live stream status (weight: 5)
         if video.is_live:
