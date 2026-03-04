@@ -277,6 +277,63 @@ class EnhancedYouTubeAPIClient:
         self.youtube = build('youtube', 'v3', developerKey=api_key)
         self.quota_used = 0
         
+    def get_channel_uploads_playlist_id(self, channel_id: str) -> Optional[str]:
+        """Get the uploads playlist ID for a channel (costs 1 quota unit)"""
+        try:
+            request = self.youtube.channels().list(
+                part="contentDetails",
+                id=channel_id
+            )
+            response = request.execute()
+            self.quota_used += 1
+            
+            if not response.get('items'):
+                return None
+                
+            return response['items'][0].get('contentDetails', {}).get('relatedPlaylists', {}).get('uploads')
+            
+        except HttpError as e:
+            print(f"API Error fetching uploads playlist: {e}")
+            return None
+            
+    def get_playlist_items(self, playlist_id: str, max_pages: int = 2) -> List[Dict]:
+        """Retrieve videos from a playlist using playlistItems.list (costs 1 quota/page vs 100 for search)."""
+        all_items = []
+        next_page_token = None
+        
+        for _ in range(max_pages):
+            try:
+                request = self.youtube.playlistItems().list(
+                    part="snippet,contentDetails",
+                    playlistId=playlist_id,
+                    maxResults=50,
+                    pageToken=next_page_token
+                )
+                response = request.execute()
+                self.quota_used += 1  # playlistItems.list costs 1 unit!
+                
+                all_items.extend(response.get('items', []))
+                next_page_token = response.get('nextPageToken')
+                if not next_page_token:
+                    break
+            except HttpError as e:
+                print(f"API Error fetching playlist items: {e}")
+                break
+                
+        return all_items
+        
+    def get_channel_history(self, channel_id: str) -> Tuple[List[Dict], Optional[str]]:
+        """Fetch a channel's historical video list via the uploads playlist (cheap: ~3 quota units total).
+        
+        Returns:
+            Tuple of (video_items, playlist_id)
+        """
+        playlist_id = self.get_channel_uploads_playlist_id(channel_id)
+        if not playlist_id:
+            return [], None
+        videos = self.get_playlist_items(playlist_id, max_pages=2)
+        return videos, playlist_id
+        
     def get_channel_metadata(self, channel_id: str) -> Optional[EnhancedChannelMetadata]:
         """Retrieve comprehensive channel metadata with enhanced fields"""
         try:
@@ -576,11 +633,148 @@ class EnhancedStreamJackingDetector:
         'Knowledge': 'Education'
     }
     
+    # NEW: Topic keyword buckets for historical content fingerprinting (Signal 13)
+    TOPIC_KEYWORD_BUCKETS = {
+        'cooking': [
+            'recipe', 'cook', 'cooking', 'kitchen', 'food', 'bake', 'baking',
+            'grilling', 'chef', 'meal', 'ingredients', 'dinner', 'lunch'
+        ],
+        'gaming': [
+            'gameplay', 'walkthrough', 'playthrough', 'gaming', 'game', 'pvp',
+            'fps', 'rpg', 'let\'s play', 'review', 'speedrun', 'esports', 'twitch'
+        ],
+        'travel': [
+            'vlog', 'travel', 'trip', 'destination', 'flying', 'hotel', 'explore',
+            'adventure', 'tour', 'country', 'city', 'abroad'
+        ],
+        'fitness': [
+            'workout', 'gym', 'fitness', 'cardio', 'yoga', 'exercise', 'training',
+            'muscle', 'weight loss', 'diet', 'health'
+        ],
+        'music': [
+            'song', 'music', 'cover', 'album', 'release', 'concert', 'piano',
+            'guitar', 'singing', 'beat', 'lyrics', 'track', 'artist'
+        ],
+        'news_politics': [
+            'breaking', 'election', 'president', 'government', 'politics', 'news',
+            'policy', 'senate', 'democracy', 'war', 'climate'
+        ],
+        'crypto': [
+            'bitcoin', 'btc', 'crypto', 'ethereum', 'eth', 'giveaway', 'wallet',
+            'nft', 'defi', 'blockchain', 'altcoin', 'hodl', 'airdrop'
+        ],
+        'comedy_lifestyle': [
+            'funny', 'comedy', 'vlog', 'challenge', 'prank', 'reaction', 'daily',
+            'life', 'story', 'experience', 'trend'
+        ],
+    }
+
     def __init__(self, api_client: EnhancedYouTubeAPIClient):
         self.api = api_client
         # Signal 12: lazy-loaded CryptoBERT inference module
         self.bert_signal = CryptoBERTSignal() if CRYPTOBERT_AVAILABLE else None
         
+    def build_topic_fingerprint(self, videos: List[Dict]) -> Dict[str, float]:
+        """Build a normalized topic vector from a list of video snippets."""
+        counts = {topic: 0 for topic in self.TOPIC_KEYWORD_BUCKETS}
+        total_scored = 0
+        
+        for video in videos:
+            snippet = video.get('snippet', {})
+            text = (snippet.get('title', '') + ' ' + snippet.get('description', '')).lower()
+            
+            best_topic = None
+            best_score = 0
+            for topic, keywords in self.TOPIC_KEYWORD_BUCKETS.items():
+                score = sum(1 for kw in keywords if kw in text)
+                if score > best_score:
+                    best_score = score
+                    best_topic = topic
+            
+            if best_topic and best_score > 0:
+                counts[best_topic] += 1
+                total_scored += 1
+        
+        if total_scored == 0:
+            return {topic: 0.0 for topic in counts}
+            
+        return {topic: count / total_scored for topic, count in counts.items()}
+    
+    def compute_cosine_similarity(self, vec_a: Dict[str, float], vec_b: Dict[str, float]) -> float:
+        """Compute cosine similarity between two topic fingerprint dictionaries."""
+        import math
+        all_keys = set(vec_a) | set(vec_b)
+        dot = sum(vec_a.get(k, 0) * vec_b.get(k, 0) for k in all_keys)
+        mag_a = math.sqrt(sum(v**2 for v in vec_a.values()))
+        mag_b = math.sqrt(sum(v**2 for v in vec_b.values()))
+        if mag_a == 0 or mag_b == 0:
+            return 0.0
+        return dot / (mag_a * mag_b)
+    
+    def detect_temporal_content_pivot(self, videos: List[Dict]) -> Tuple[bool, str, float]:
+        """Detect a sudden topic shift in a channel's history.
+        
+        Splits the video list in half (older vs. newer) and compares their topic fingerprints.
+        Returns:
+            Tuple of (is_pivot, description, cosine_similarity)
+        """
+        if len(videos) < 6:  # Need enough history to be meaningful
+            return False, "", 1.0
+        
+        midpoint = len(videos) // 2
+        # playlistItems returns newest first, so videos[:midpoint] = recent, videos[midpoint:] = older
+        recent_videos = videos[:midpoint]
+        historical_videos = videos[midpoint:]
+        
+        historical_fp = self.build_topic_fingerprint(historical_videos)
+        recent_fp = self.build_topic_fingerprint(recent_videos)
+        
+        similarity = self.compute_cosine_similarity(historical_fp, recent_fp)
+        
+        if similarity < 0.15:
+            # Find dominant historical topic and recent topic
+            hist_topic = max(historical_fp, key=historical_fp.get) if historical_fp else 'unknown'
+            recent_topic = max(recent_fp, key=recent_fp.get) if recent_fp else 'unknown'
+            # Find when the pivot roughly occurred
+            pivot_date = recent_videos[-1].get('snippet', {}).get('publishedAt', 'recently')[:10]
+            desc = (f"Content pivot detected: {hist_topic} → {recent_topic} channel "
+                    f"(similarity={similarity:.2f}, around {pivot_date})")
+            return True, desc, similarity
+        elif similarity < 0.30:
+            hist_topic = max(historical_fp, key=historical_fp.get) if historical_fp else 'unknown'
+            recent_topic = max(recent_fp, key=recent_fp.get) if recent_fp else 'unknown'
+            desc = (f"Moderate content drift: {hist_topic} → {recent_topic} "
+                    f"(similarity={similarity:.2f})")
+            return True, desc, similarity
+            
+        return False, "", similarity
+    
+    def detect_wiped_history(self, channel_meta: EnhancedChannelMetadata, retrieved_video_count: int) -> Tuple[bool, str]:
+        """Detect mass deletion/privatization by comparing statistics.videoCount vs. retrievable videos.
+        
+        Thresholds (tightened to reduce false positives):
+          - gap_ratio >= 0.70: at least 70% of declared videos are missing/private
+          - absolute gap >= 20: small channels (e.g. 2 declared, 1 retrieved) are excluded
+        """
+        declared_count = channel_meta.video_count
+        
+        if declared_count < 10:
+            # Not enough history to reliably flag
+            return False, ""
+        
+        gap = declared_count - retrieved_video_count
+        if gap <= 0:
+            return False, ""
+        
+        gap_ratio = gap / declared_count
+        # Require BOTH a high ratio AND a meaningful absolute gap
+        if gap_ratio >= 0.70 and gap >= 20:
+            desc = (f"Video count discrepancy: {declared_count} declared but only "
+                    f"{retrieved_video_count} retrievable ({gap} videos missing, {gap_ratio:.0%} gap)")
+            return True, desc
+            
+        return False, ""
+
     def detect_character_substitution(self, text: str, target_names: List[str]) -> List[str]:
         """Enhanced character substitution detection with whole-word matching for short terms"""
         detections = []
@@ -803,6 +997,83 @@ class EnhancedStreamJackingDetector:
         # Extract the last part of the URL
         topic = url.split('/')[-1]
         return self.TOPIC_MAPPING.get(topic, topic)
+        
+    def _compute_channel_age_days(self, published_at: str) -> int:
+        """Calculate channel age in days"""
+        if not published_at:
+            return 0
+        try:
+            published_date = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ")
+            return (datetime.now() - published_date).days
+        except Exception:
+            return 0
+
+    def _detect_crypto_keywords(self, text: str) -> bool:
+        """Binary detection of minimal, high-precision crypto keywords"""
+        keywords = ['bitcoin', 'btc', 'crypto', 'eth', 'giveaway', 'elon', 'tesla', 'saylor', 'official', 'live']
+        text_lower = text.lower()
+        
+        import re
+        for kw in keywords:
+            # Word boundaries for short terms
+            if kw in ['btc', 'eth']:
+                if re.search(r'\b' + re.escape(kw) + r'\b', text_lower):
+                    return True
+            elif kw in text_lower:
+                return True
+        return False
+        
+    def _compute_past_crypto_ratio(self, past_videos: List[Dict]) -> float:
+        """Calculate ratio of past videos that are crypto-related"""
+        if not past_videos:
+            return 0.0
+            
+        crypto_count = 0
+        for video in past_videos:
+            snippet = video.get('snippet', {})
+            text = (snippet.get('title', '') + ' ' + snippet.get('description', '')).lower()
+            if self._detect_crypto_keywords(text):
+                crypto_count += 1
+                
+        return crypto_count / len(past_videos)
+        
+    def classify_takeover(self, channel_meta: EnhancedChannelMetadata, past_videos: List[Dict], video_analyzed: EnhancedVideoMetadata, composite_risk: Dict) -> str:
+        """
+        Classifies the type of account takeover based on ATO heuristics.
+        Must be run *after* the total risk score is calculated and a hijack is suspected.
+        """
+        age = self._compute_channel_age_days(channel_meta.published_at)
+        total_videos = channel_meta.video_count
+        name_crypto = self._detect_crypto_keywords(channel_meta.channel_title)
+        
+        # Determine if livestream is crypto-related based on existing detector signals
+        live_crypto = False
+        crypto_signals = ['Character substitution', 'Crypto address', 'Scam link', 'Pinned scam', 'CryptoBERT', 
+                         'Name impersonation', 'Handle-name mismatch', 'Crypto-heavy description']
+        
+        for signal in video_analyzed.suspicious_signals:
+            if any(cs.lower() in signal.lower() for cs in crypto_signals):
+                live_crypto = True
+                break
+                
+        # If the livestream isn't detected as crypto/scam by our signals, it's not a hijack
+        if not live_crypto and composite_risk['risk_category'] not in ['CRITICAL', 'HIGH']:
+             return "NOT_STREAMJACKING"
+             
+        if age < 180:
+             return "IMPERSONATION_CHANNEL"
+             
+        if age > 365:
+            # COMPLETE TAKEOVER criteria
+            if total_videos <= 2 and name_crypto and live_crypto:
+                 return "COMPLETE_ATO"
+                 
+            # PARTIAL TAKEOVER criteria
+            past_crypto_ratio = self._compute_past_crypto_ratio(past_videos)
+            if total_videos >= 5 and past_crypto_ratio < 0.2 and not name_crypto:
+                 return "PARTIAL_ATO"
+                 
+        return "INDETERMINATE_HIJACK"
 
     def analyze_channel_enhanced(self, channel: EnhancedChannelMetadata) -> EnhancedChannelMetadata:
         """Enhanced channel analysis with composite scoring"""
@@ -867,7 +1138,7 @@ class EnhancedStreamJackingDetector:
             signals.append(f"Promotional domain with impersonation")
             risk_score += 10.0
             
-        # Signal 8: Topic Consistency / Hijack Detection (NEW - weight: 40)
+        # Signal 8: Topic Consistency from channel API topics (weight: 40)
         # Check if a non-tech/finance channel is posting crypto content WITH impersonation
         channel_topics = [self._map_topic_url(t) for t in channel.topic_categories]
         safe_topics = {'Gaming', 'Music', 'Entertainment', 'Lifestyle'}
@@ -876,8 +1147,34 @@ class EnhancedStreamJackingDetector:
         if channel_topics and any(t in safe_topics for t in channel_topics) and \
            not any(t in {'Tech', 'Society', 'Knowledge'} for t in channel_topics) and \
            impersonations:  # CRITICAL: Require impersonation to confirm hijack
-            signals.append(f"Topic Mismatch (Possible Hijack): {', '.join(channel_topics)} channel streaming crypto")
+            signals.append(f"YouTube topic mismatch (Possible Hijack): {', '.join(channel_topics)} channel streaming crypto")
             risk_score += 40.0
+        
+        # ---- Signals 13 & 14: Channel History Analysis ----
+        # Fetch historical content via the cheap uploads playlist (1-2 quota units)
+        try:
+            history_videos, _ = self.api.get_channel_history(channel.channel_id)
+            retrieved_count = len(history_videos)
+            
+            # Signal 13: Content Topic Pivot (weight: up to 45 pts)
+            if history_videos:
+                is_pivot, pivot_desc, similarity = self.detect_temporal_content_pivot(history_videos)
+                if is_pivot:
+                    weight = 45.0 if similarity < 0.15 else 20.0
+                    signals.append(f"Content topic pivot: {pivot_desc}")
+                    risk_score += weight
+            
+            # Signal 14: Wiped/Deleted History (weight: 35 pts)
+            # CONJUNCTIVE: only award points if another signal is already present
+            # (standalone video-count gap is too noisy on its own)
+            has_wipe, wipe_desc = self.detect_wiped_history(channel, retrieved_count)
+            if has_wipe and len(signals) > 0:
+                signals.append(f"Wiped/deleted history: {wipe_desc}")
+                risk_score += 35.0
+                
+        except Exception:
+            # Gracefully degrade if history fetch fails
+            pass
         
         channel.suspicious_signals = signals
         channel.risk_score = min(risk_score, 100.0)
@@ -1521,11 +1818,30 @@ def main():
                             'video_signals': analyzed_video.suspicious_signals,
                             'channel_signals': analyzed_channel.suspicious_signals if analyzed_channel else [],
                             'bert_scam_score': analyzed_video.bert_scam_score,  # Signal 12
+                            'takeover_type': 'UNKNOWN',  # Will be updated if classification runs
                             'detected_at': datetime.now().isoformat(),
                             'search_query': query,
                             'video_url': f"https://youtube.com/watch?v={video_id}",
                             'channel_url': f"https://youtube.com/channel/{video_meta.channel_id}"
                         }
+                        
+                        # Apply ATO classification if high risk
+                        if composite['risk_category'] in ['CRITICAL', 'HIGH'] and analyzed_channel:
+                            age = detector._compute_channel_age_days(analyzed_channel.published_at)
+                            
+                            # Only fetch past videos if age > 365 days to save quota
+                            past_videos = []
+                            if age > 365:
+                                try:
+                                    print(f"       Fetching past videos for ATO classification (costs 100 quota)...")
+                                    past_videos = api_client.get_channel_past_videos(analyzed_channel.channel_id)
+                                    time.sleep(0.5)
+                                except Exception as e:
+                                    print(f"       ⚠️  Failed to fetch past videos: {e}")
+                            
+                            takeover_type = detector.classify_takeover(analyzed_channel, past_videos, analyzed_video, composite)
+                            result['takeover_type'] = takeover_type
+                            print(f"       Takeover Type: {takeover_type}")
 
                         all_results.append(result)
                         
