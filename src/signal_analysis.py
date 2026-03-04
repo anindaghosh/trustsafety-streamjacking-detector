@@ -73,7 +73,9 @@ SIGNAL_DEFINITIONS = [
     SignalDefinition(10, "Channel Age/Content Ratio", "channel",
                      [r"old account", r"minimal content", r"content ratio", r"account age"]),
     SignalDefinition(11, "Live Chat Scams", "video",
-                     [r"live chat", r"pinned", r"super chat"])
+                     [r"live chat", r"pinned", r"super chat"]),
+    SignalDefinition(12, "CryptoBERT Semantic Score", "video",
+                     [r"cryptobert", r"semantic scam score"]),
 ]
 
 
@@ -447,10 +449,11 @@ def create_visualizations(signal_metrics: Dict, cooccurrence: np.ndarray,
             cooccurrence_norm[i, :] /= cooccurrence[i, i]
             cooccurrence_norm[:, i] /= cooccurrence[i, i]
     
+    n_signals = len(SIGNAL_DEFINITIONS)
     sns.heatmap(cooccurrence_norm, annot=True, fmt='.2f', cmap='Purples',
                 cbar_kws={'label': 'Co-occurrence Rate'},
-                xticklabels=[f"S{i+1}" for i in range(11)],
-                yticklabels=[f"S{i+1}" for i in range(11)],
+                xticklabels=[f"S{i+1}" for i in range(n_signals)],
+                yticklabels=[f"S{i+1}" for i in range(n_signals)],
                 ax=ax, square=True)
     
     ax.set_title('Signal Co-occurrence Matrix (Normalized)', fontweight='bold', pad=20)

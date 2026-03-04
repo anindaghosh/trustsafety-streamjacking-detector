@@ -25,6 +25,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 try:
+    from cryptobert_signal import CryptoBERTSignal
+    CRYPTOBERT_AVAILABLE = True
+except ImportError:
+    CRYPTOBERT_AVAILABLE = False
+
+try:
     from googleapiclient.discovery import build
     from googleapiclient.errors import HttpError
 except ImportError:
@@ -94,6 +100,7 @@ class EnhancedVideoMetadata:
     suspicious_signals: List[str] = field(default_factory=list)
     risk_score: float = 0.0
     confidence_score: float = 0.0
+    bert_scam_score: float = 0.0  # Signal 12: CryptoBERT semantic scam score
 
 
 class MongoDBManager:
@@ -571,6 +578,8 @@ class EnhancedStreamJackingDetector:
     
     def __init__(self, api_client: EnhancedYouTubeAPIClient):
         self.api = api_client
+        # Signal 12: lazy-loaded CryptoBERT inference module
+        self.bert_signal = CryptoBERTSignal() if CRYPTOBERT_AVAILABLE else None
         
     def detect_character_substitution(self, text: str, target_names: List[str]) -> List[str]:
         """Enhanced character substitution detection with whole-word matching for short terms"""
@@ -1003,7 +1012,26 @@ class EnhancedStreamJackingDetector:
                 else:
                     signals.append(f"Scam content in chat: {chat_description}")
                     risk_score += 35.0
-            
+
+        # Signal 12: CryptoBERT Semantic Scam Score (weight: up to 20, scaled by confidence)
+        # Gracefully skips if fine-tuned model is not present.
+        if self.bert_signal is not None and self.bert_signal.is_available():
+            bert_input_parts = [
+                video.description[:300],
+                video.title,
+                ' '.join(video.tags[:10]) if video.tags else '',
+            ]
+            bert_text = ' [SEP] '.join(p for p in bert_input_parts if p)
+            triggered, bert_score = self.bert_signal.is_triggered(bert_text)
+            video.bert_scam_score = bert_score
+            if triggered:
+                signals.append(
+                    f"CryptoBERT semantic scam score: {bert_score:.2f} "
+                    f"(threshold: {self.bert_signal.threshold:.2f})"
+                )
+                # Weight scales linearly with confidence: 0.65 → 13pts, 1.0 → 20pts
+                risk_score += 20.0 * bert_score
+
         # NEW: Educational Intent Bonus
         if is_educational:
             signals.append(f"Educational/News intent detected (Risk reduced)")
@@ -1492,6 +1520,7 @@ def main():
                             'confidence_score': composite['confidence_score'],
                             'video_signals': analyzed_video.suspicious_signals,
                             'channel_signals': analyzed_channel.suspicious_signals if analyzed_channel else [],
+                            'bert_scam_score': analyzed_video.bert_scam_score,  # Signal 12
                             'detected_at': datetime.now().isoformat(),
                             'search_query': query,
                             'video_url': f"https://youtube.com/watch?v={video_id}",

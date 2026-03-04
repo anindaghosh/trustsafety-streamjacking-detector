@@ -1,0 +1,21 @@
+{
+  "exported_at": "2026-02-25T09:16:57.529611",
+  "collection": "detection_results_latest",
+  "stats": {
+    "total_docs": 358,
+    "included": 358,
+    "excluded_unknown_label": 0,
+    "excluded_short_text": 0,
+    "label_counts": {
+      "scam": 46,
+      "legit": 312
+    },
+    "scam_type_counts": {
+      "impersonation": 12
+    }
+  },
+  "train_count": 285,
+  "eval_count": 73,
+  "train_ratio": 0.8,
+  "seed": 42
+}

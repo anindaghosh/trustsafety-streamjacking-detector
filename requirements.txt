@@ -4,3 +4,10 @@ google-auth-httplib2==0.1.1
 google-auth-oauthlib==1.1.0
 pymongo==4.6.1
 python-dotenv==1.0.0
+
+# CryptoBERT fine-tuning & Signal 12 inference (Phase 2 & 3)
+transformers>=4.38.0
+torch>=2.1.0
+datasets>=2.18.0
+scikit-learn>=1.4.0
+accelerate>=0.27.0
