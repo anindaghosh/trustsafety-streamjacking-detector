@@ -1824,8 +1824,11 @@ def main():
                         result = {
                             'video_id': video_id,
                             'video_title': analyzed_video.title,
+                            'video_description': (video_meta.description or '')[:500],
                             'channel_id': video_meta.channel_id,
                             'channel_title': video_meta.channel_title,
+                            'channel_description': (channel_meta.description if channel_meta and hasattr(channel_meta, 'description') else '') or '',
+                            'tags': video_meta.tags[:20] if video_meta.tags else [],
                             'is_live': analyzed_video.is_live,
                             'video_risk_score': analyzed_video.risk_score,
                             'channel_risk_score': analyzed_channel.risk_score if analyzed_channel else 0,
