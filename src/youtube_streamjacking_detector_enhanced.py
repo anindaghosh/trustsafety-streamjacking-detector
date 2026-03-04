@@ -1500,218 +1500,219 @@ def main():
     args = parser.parse_args()
     
     risk_threshold = args.risk_threshold
-    max_results_per_query = min(args.max_results, 50)  # YouTube API limit
+    max_results_per_query = min(args.max_results, 50)  # kept for CLI compat, overridden by tier config  # noqa: F841
     max_quota = args.max_quota
     
-    # Define search queries targeting diverse crypto content (150+ queries)
-    search_queries = [
-        # Elon Musk (6 queries)
-        "Elon Musk crypto live",
-        "Elon Musk Bitcoin giveaway",
-        "Elon Musk Bitcoin live",
-        "Elon Musk ETH giveaway",
-        "Elon Musk Dogecoin",
-        "Elon Musk cryptocurrency",
-        
-        # Tesla/SpaceX (5 queries)
-        "Tesla crypto live",
-        "Tesla Bitcoin giveaway",
-        "Tesla crypto event",
-        "SpaceX Bitcoin live",
-        "SpaceX crypto event",
-        
-        # Generic giveaways (7 queries)
-        "crypto giveaway live",
-        "Bitcoin giveaway live",
-        "Ethereum giveaway live",
-        "cryptocurrency giveaway",
-        "BTC giveaway live",
-        "ETH giveaway live",
-        "crypto live giveaway",
-        
-        # Bitcoin specific (6 queries)
-        "Bitcoin live",
-        "Bitcoin doubling",
-        "Bitcoin investment live",
-        "send BTC receive double",
-        "BTC live event",
-        "double your Bitcoin",
-        
-        # Ethereum (6 queries)
-        "Ethereum live",
-        "Ethereum giveaway",
-        "ETH doubling event",
-        "Vitalik Buterin ethereum",
-        "Vitalik ethereum giveaway",
-        "Vitalik Buterin live",
-        
-        # Crypto figures (10 queries)
-        "Michael Saylor Bitcoin",
-        "Michael Saylor crypto live",
-        "Cathie Wood Bitcoin",
-        "Cathie Wood crypto live",
-        "CZ Binance live",
-        "Changpeng Zhao crypto",
-        "Brad Garlinghouse XRP",
-        "Charles Hoskinson Cardano",
-        "Jack Dorsey Bitcoin",
-        "Do Kwon Terra",
-        
-        # Crypto exchanges (6 queries)
-        "Coinbase giveaway live",
-        "Binance live event",
-        "Kraken crypto giveaway",
-        "Crypto.com giveaway",
-        "Bybit giveaway live",
-        "Gemini crypto live",
-        
-        # Other cryptos (10 queries)
-        "Dogecoin live",
-        "Ripple XRP giveaway",
-        "Cardano ADA live",
-        "Solana SOL giveaway",
-        "Shiba Inu giveaway",
-        "Binance BNB live",
-        "Polygon MATIC giveaway",
-        "Avalanche AVAX giveaway",
-        "Chainlink LINK giveaway",
-        "Polkadot DOT giveaway",
-        
-        # DeFi/NFT/Web3 (5 queries)
-        "crypto airdrop live",
-        "NFT giveaway live",
-        "DeFi giveaway live",
-        "token airdrop live",
-        "Web3 giveaway",
-        
-        # News channels for FP testing (5 queries)
-        "Bloomberg crypto live",
-        "CNBC Bitcoin live",
-        "CoinDesk live",
-        "Cointelegraph live",
-        "Fox Business crypto",
-        
-        # Urgency patterns (5 queries)
-        "crypto ending soon",
-        "limited time crypto",
-        "exclusive crypto event",
-        "last chance Bitcoin",
-        "crypto presale live",
-        
-        # === NEW QUERIES FOR DATASET EXPANSION (75+ queries) ===
-        
-        # Legitimate crypto news/trading (15 queries)
-        "crypto news live",
-        "Bitcoin price analysis live",
-        "cryptocurrency market update",
-        "crypto trading live",
-        "Bitcoin technical analysis",
-        "altcoin discussion live",
-        "crypto portfolio review",
-        "blockchain news live",
-        "DeFi news live",
-        "NFT market update",
-        "crypto regulation news",
-        "Bitcoin ETF news",
-        "crypto market analysis",
-        "cryptocurrency trading signals",
-        "Bitcoin futures live",
-        
-        # More altcoins and Layer 2s (15 queries)
-        "Arbitrum ARB live",
-        "Optimism OP giveaway",
-        "Cosmos ATOM live",
-        "Algorand ALGO event",
-        "VeChain VET live",
-        "Tezos XTZ giveaway",
-        "NEAR Protocol live",
-        "Fantom FTM event",
-        "Hedera HBAR live",
-        "Aptos APT giveaway",
-        "Sui SUI live",
-        "Immutable IMX event",
-        "Sandbox SAND live",
-        "Decentraland MANA giveaway",
-        "Axie Infinity AXS live",
-        
-        # DeFi protocols (10 queries)
-        "Uniswap live",
-        "Aave protocol event",
-        "Compound Finance live",
-        "MakerDAO live",
-        "Curve Finance event",
-        "Yearn Finance live",
-        "SushiSwap event",
-        "PancakeSwap live",
-        "1inch Network live",
-        "dYdX trading live",
-        
-        # NFT projects (10 queries)
-        "Bored Ape live",
-        "CryptoPunks event",
-        "Azuki NFT live",
-        "Pudgy Penguins event",
-        "Moonbirds live",
-        "Doodles NFT event",
-        "Clone X live",
-        "Art Blocks live",
-        "NBA Top Shot event",
-        "OpenSea live",
-        
-        # Exchanges and platforms (10 queries)
-        "FTX live",  # Historical - may show old scams
-        "Bitfinex event",
-        "KuCoin live",
-        "Gate.io giveaway",
-        "Huobi live",
-        "OKX event",
-        "Bitget live",
-        "MEXC giveaway",
-        "Phemex live",
-        "BitMEX event",
-        
-        # Subtle scam patterns (10 queries)
-        "crypto promotion live",
-        "Bitcoin opportunity",
-        "crypto millionaire live",
-        "get rich crypto",
-        "crypto wealth live",
-        "Bitcoin success story",
-        "crypto passive income",
-        "Bitcoin mining live",
-        "crypto staking rewards",
-        "Bitcoin lending live",
-        
-        # Generic high-volume terms (15 queries)
-        "cryptocurrency live",
-        "Bitcoin live stream",
-        "Ethereum live stream",
-        "crypto live stream",
-        "Bitcoin today",
-        "crypto today",
-        "Bitcoin price live",
-        "Ethereum price live",
-        "crypto price live",
-        "Bitcoin news today",
-        "crypto news today",
-        "cryptocurrency today",
-        "Bitcoin update",
-        "crypto update",
-        "blockchain live"
+    # ---------------------------------------------------------------------------
+    # Tiered query config — each tier has its own max_results cap
+    # to control class imbalance.
+    #   Tier 1 (HIGH signal): explicit scam phrasing, impersonation + giveaway
+    #                         → max 50 results (harvest as many as possible)
+    #   Tier 2 (MEDIUM signal): specific figures/exchanges, altcoin giveaways
+    #                           → max 25 results
+    #   Tier 3 (LOW signal): generic crypto terms, news, legitimate content
+    #                         → max 10 results (just enough for FP baseline)
+    # ---------------------------------------------------------------------------
+    TIERED_QUERIES = [
+        # ── TIER 1: HIGH-SIGNAL (max_results=50) ─────────────────────────────
+        {
+            "tier": 1,
+            "label": "High-signal scam / impersonation",
+            "max_results": 50,
+            "queries": [
+                # Explicit giveaway / doubling phrasing
+                "crypto giveaway live",
+                "Bitcoin giveaway live",
+                "Ethereum giveaway live",
+                "BTC giveaway live",
+                "ETH giveaway live",
+                "crypto live giveaway",
+                "cryptocurrency giveaway",
+                "double your Bitcoin",
+                "send BTC receive double",
+                "Bitcoin doubling",
+                "ETH doubling event",
+                # Elon Musk impersonation
+                "Elon Musk Bitcoin giveaway",
+                "Elon Musk crypto live",
+                "Elon Musk Bitcoin live",
+                "Elon Musk ETH giveaway",
+                "Elon Musk Dogecoin",
+                # Tesla / SpaceX branded scams
+                "Tesla Bitcoin giveaway",
+                "Tesla crypto event",
+                "SpaceX Bitcoin live",
+                "SpaceX crypto event",
+                "Tesla crypto live",
+                # Vitalik impersonation
+                "Vitalik ethereum giveaway",
+                "Vitalik Buterin live",
+                "Vitalik Buterin ethereum",
+                # Exchange giveaway phrases
+                "Coinbase giveaway live",
+                "Binance live event",
+                "Kraken crypto giveaway",
+                "Crypto.com giveaway",
+                "Bybit giveaway live",
+                "Gate.io giveaway",
+                "MEXC giveaway",
+                # DeFi / NFT giveaway
+                "crypto airdrop live",
+                "NFT giveaway live",
+                "DeFi giveaway live",
+                "token airdrop live",
+                "Web3 giveaway",
+                # Altcoin giveaway phrases
+                "Solana SOL giveaway",
+                "Shiba Inu giveaway",
+                "Ripple XRP giveaway",
+                "Polygon MATIC giveaway",
+                "Avalanche AVAX giveaway",
+                "Chainlink LINK giveaway",
+                "Polkadot DOT giveaway",
+                "Cardano ADA live",
+                "Optimism OP giveaway",
+                "Aptos APT giveaway",
+                "Decentraland MANA giveaway",
+                "Tezos XTZ giveaway",
+                # Subtle scam phrasing
+                "crypto millionaire live",
+                "crypto wealth live",
+                "crypto passive income",
+                "Bitcoin lending live",
+                "crypto promotion live",
+                "Bitcoin investment live",
+                "get rich crypto",
+                "Bitcoin opportunity",
+                "crypto presale live",
+                "limited time crypto",
+                "crypto ending soon",
+                "last chance Bitcoin",
+                "exclusive crypto event",
+            ],
+        },
+        # ── TIER 2: MEDIUM-SIGNAL (max_results=25) ────────────────────────────
+        {
+            "tier": 2,
+            "label": "Medium-signal: figures, exchanges, altcoins",
+            "max_results": 25,
+            "queries": [
+                # Crypto figures (less explicit phrasing)
+                "Michael Saylor Bitcoin",
+                "Michael Saylor crypto live",
+                "Cathie Wood Bitcoin",
+                "CZ Binance live",
+                "Changpeng Zhao crypto",
+                "Brad Garlinghouse XRP",
+                "Charles Hoskinson Cardano",
+                "Jack Dorsey Bitcoin",
+                "Do Kwon Terra",
+                # Exchanges without 'giveaway'
+                "Gemini crypto live",
+                "KuCoin live",
+                "OKX event",
+                "Bitget live",
+                "Huobi live",
+                "Phemex live",
+                "BitMEX event",
+                "Bitfinex event",
+                "FTX live",
+                # Altcoins without 'giveaway'
+                "Dogecoin live",
+                "Binance BNB live",
+                "Arbitrum ARB live",
+                "Cosmos ATOM live",
+                "NEAR Protocol live",
+                "Hedera HBAR live",
+                "Sui SUI live",
+                "Sandbox SAND live",
+                "Immutable IMX event",
+                "Fantom FTM event",
+                "VeChain VET live",
+                "Algorand ALGO event",
+                # NFT projects
+                "Bored Ape live",
+                "CryptoPunks event",
+                "Azuki NFT live",
+                "Pudgy Penguins event",
+                "Moonbirds live",
+                "Doodles NFT event",
+                "NBA Top Shot event",
+                "OpenSea live",
+                # DeFi protocols
+                "Uniswap live",
+                "Aave protocol event",
+                "Compound Finance live",
+                "MakerDAO live",
+                "Curve Finance event",
+                "PancakeSwap live",
+                "dYdX trading live",
+                # Urgency (less explicit)
+                "Bitcoin success story",
+                "crypto staking rewards",
+                "Bitcoin mining live",
+                "Bitcoin futures live",
+                "NFT market update",
+                "crypto regulation news",
+                "Bitcoin ETF news",
+            ],
+        },
+        # ── TIER 3: LOW-SIGNAL generic (max_results=10) ───────────────────────
+        # Purpose: controlled FP/negative baseline — captures legitimate content
+        {
+            "tier": 3,
+            "label": "Low-signal generic (negative baseline)",
+            "max_results": 10,
+            "queries": [
+                "cryptocurrency live",
+                "Bitcoin live stream",
+                "Ethereum live stream",
+                "crypto live stream",
+                "Bitcoin price live",
+                "Ethereum price live",
+                "crypto price live",
+                "Bitcoin news today",
+                "crypto news today",
+                "blockchain live",
+                # Legitimate news sources (explicit FP targets)
+                "Bloomberg crypto live",
+                "CNBC Bitcoin live",
+                "CoinDesk live",
+                "Cointelegraph live",
+                "crypto news live",
+                "Bitcoin price analysis live",
+                "cryptocurrency market update",
+                "crypto trading live",
+                "Bitcoin technical analysis",
+                "crypto market analysis",
+            ],
+        },
     ]
-    
-    # Randomize query order for temporal diversity
-    random.shuffle(search_queries)
-    
-    print(f"\n📊 Monitoring {len(search_queries)} search queries (randomized order)...")
+
+    # Flatten into a single sorted list (Tier 1 first, then 2, then 3)
+    # Within each tier, shuffle for temporal diversity
+    ordered_queries: List[Tuple[str, int]] = []  # (query, max_results)
+    for tier_config in TIERED_QUERIES:
+        tier_queries = list(tier_config["queries"])
+        random.shuffle(tier_queries)
+        for q in tier_queries:
+            ordered_queries.append((q, tier_config["max_results"]))
+
+    total_queries = len(ordered_queries)
+    print(f"\n📊 Running {total_queries} search queries across 3 signal tiers:")
+    for tc in TIERED_QUERIES:
+        print(f"   Tier {tc['tier']} ({tc['label']}): {len(tc['queries'])} queries × max {tc['max_results']} results")
     print(f"   Risk threshold: {risk_threshold} (storing videos with risk >= {risk_threshold})")
-    print(f"   Max results per query: {max_results_per_query}")
     if max_quota:
         print(f"   Max API quota: {max_quota} units")
-    estimated_quota = len(search_queries) * 100 + (max_results_per_query * len(search_queries) * 10)
+    t1_count = len(TIERED_QUERIES[0]["queries"])
+    t2_count = len(TIERED_QUERIES[1]["queries"])
+    t3_count = len(TIERED_QUERIES[2]["queries"])
+    estimated_quota = (t1_count * 100 + t2_count * 100 + t3_count * 100 +
+                       t1_count * 50 * 10 + t2_count * 25 * 10 + t3_count * 10 * 10)
     print(f"⚠️  Estimated API quota usage: ~{estimated_quota:,} units")
-    print("⏱️  Estimated time: 30-60 minutes\n")
-    
+    print("⏱️  Estimated time: 30-90 minutes\n")
+
     # Collect all results
     all_results = []
     failed_queries = []
@@ -1719,20 +1720,20 @@ def main():
     failed_videos = 0
     skipped_existing = 0
 
-    for query_idx, query in enumerate(search_queries, 1):
+    for query_idx, (query, tier_max_results) in enumerate(ordered_queries, 1):
         try:
             # Check quota limit before searching
             if max_quota and api_client.quota_used >= max_quota:
                 print(f"\n⚠️  Reached max quota limit ({max_quota} units). Stopping search.")
-                print(f"   Processed {query_idx - 1}/{len(search_queries)} queries")
+                print(f"   Processed {query_idx - 1}/{total_queries} queries")
                 break
-            
-            print(f"\n🔍 [{query_idx}/{len(search_queries)}] Searching for: '{query}'")
+
+            print(f"\n🔍 [{query_idx}/{total_queries}] Searching for: '{query}' (max {tier_max_results} results)")
             print(f"   API quota used so far: {api_client.quota_used} units")
 
             # Search for live streams
             try:
-                livestreams = api_client.search_livestreams(query, max_results=max_results_per_query)
+                livestreams = api_client.search_livestreams(query, max_results=tier_max_results)
                 
                 print(f"   Found {len(livestreams)} live streams")
             except Exception as e:
@@ -1849,8 +1850,8 @@ def main():
                             past_videos = []
                             if age > 365:
                                 try:
-                                    print(f"       Fetching past videos for ATO classification (costs 100 quota)...")
-                                    past_videos = api_client.get_channel_past_videos(analyzed_channel.channel_id)
+                                    print("       Fetching past videos for ATO classification (~3 quota units)...")
+                                    past_videos, _ = api_client.get_channel_history(analyzed_channel.channel_id)
                                     time.sleep(0.5)
                                 except Exception as e:
                                     print(f"       ⚠️  Failed to fetch past videos: {e}")
@@ -1894,7 +1895,7 @@ def main():
             json.dump({
                 'results': all_results,
                 'metadata': {
-                    'total_queries': len(search_queries),
+                    'total_queries': total_queries,
                     'failed_queries': len(failed_queries),
                     'processed_videos': processed_videos,
                     'failed_videos': failed_videos,
@@ -1914,7 +1915,7 @@ def main():
                 json.dump({
                     'results': all_results,
                     'metadata': {
-                        'total_queries': len(search_queries),
+                        'total_queries': total_queries,
                         'failed_queries': len(failed_queries),
                         'processed_videos': processed_videos,
                         'failed_videos': failed_videos,
@@ -1933,7 +1934,7 @@ def main():
     print("\n" + "="*70)
     print("DETECTION SUMMARY")
     print("="*70)
-    print(f"Total queries attempted: {len(search_queries)}")
+    print(f"Total queries attempted: {total_queries}")
     print(f"Failed queries: {len(failed_queries)}")
     print(f"Videos skipped (already in DB): {skipped_existing}")
     print(f"Videos processed successfully: {processed_videos}")
@@ -1951,7 +1952,7 @@ def main():
         medium = sum(1 for r in all_results if r['risk_category'] == 'MEDIUM')
         low = sum(1 for r in all_results if r['risk_category'] == 'LOW')
         
-        print(f"\nRisk Distribution:")
+        print("\nRisk Distribution:")
         print(f"  🔴 CRITICAL: {critical}")
         print(f"  🔴 HIGH:     {high}")
         print(f"  🟡 MEDIUM:   {medium}")
@@ -1966,7 +1967,7 @@ def main():
         if all_signals:
             from collections import Counter
             signal_counts = Counter(all_signals)
-            print(f"\nMost Common Signals:")
+            print("\nMost Common Signals:")
             for signal, count in signal_counts.most_common(5):
                 print(f"  • {signal}: {count}")
         

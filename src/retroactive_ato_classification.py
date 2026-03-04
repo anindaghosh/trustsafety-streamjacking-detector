@@ -94,11 +94,11 @@ def retroactively_classify_takeovers(
             # 3. Simulate composite risk dict
             composite_risk = {'risk_category': doc.get('risk_category')}
             
-            # 4. Fetch past videos if age > 365 (100 quota)
+            # 4. Fetch past videos if age > 365 (~3 quota units via playlist API)
             past_videos = []
             if age_days > 365:
-                print("   Fetching past videos (costs 100 quota)...")
-                past_videos = api_client.get_channel_past_videos(channel_id)
+                print("   Fetching past videos (~3 quota units)...")
+                past_videos, _ = api_client.get_channel_history(channel_id)
             
             # 5. Classify
             takeover_type = detector.classify_takeover(
