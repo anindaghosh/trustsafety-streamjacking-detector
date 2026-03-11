@@ -76,24 +76,33 @@ LABEL_TO_INT = {
 # Text Construction
 # ---------------------------------------------------------------------------
 
-def build_text(doc: Dict, max_desc_chars: int = 300) -> str:
+def build_text(doc: Dict, max_desc_chars: int = 400) -> str:
     """
     Construct the input text for CryptoBERT from a detection document.
 
-    Uses channel description, video title, and tags — the fields most
-    semantically meaningful for scam classification.
+    Priority for description:
+      1. video_description  — contains wallet addresses, doubling promises, etc.
+      2. channel_description — about-page, may hint at content pivot
+      3. channel_title fallback — if no description stored (legacy docs)
+
+    Format matches inference input in analyze_video_enhanced:
+        {desc[:400]} [SEP] {video_title} [SEP] {tags[:10]}
     """
-    channel_desc = (doc.get("channel_description") or doc.get("channel_title") or "").strip()
+    # Prefer video_description (richest scam signal), then channel_description
+    video_desc = (doc.get("video_description") or "").strip()
+    channel_desc = (doc.get("channel_description") or "").strip()
+    desc = video_desc or channel_desc or (doc.get("channel_title") or "").strip()
+
     video_title = (doc.get("video_title") or "").strip()
     tags = doc.get("tags") or []
 
     # Truncate description so we don't blow past BERT's 512-token limit
-    if len(channel_desc) > max_desc_chars:
-        channel_desc = channel_desc[:max_desc_chars].rsplit(" ", 1)[0]
+    if len(desc) > max_desc_chars:
+        desc = desc[:max_desc_chars].rsplit(" ", 1)[0]
 
     tag_str = " ".join(str(t) for t in tags[:10]) if tags else ""
 
-    parts = [p for p in [channel_desc, video_title, tag_str] if p]
+    parts = [p for p in [desc, video_title, tag_str] if p]
     return " [SEP] ".join(parts)
 
 

@@ -76,6 +76,10 @@ SIGNAL_DEFINITIONS = [
                      [r"live chat", r"pinned", r"super chat"]),
     SignalDefinition(12, "CryptoBERT Semantic Score", "video",
                      [r"cryptobert", r"semantic scam score"]),
+    SignalDefinition(13, "Content Topic Pivot", "channel",
+                     [r"content pivot", r"topic pivot", r"content topic pivot", r"moderate content drift"]),
+    SignalDefinition(14, "Wiped/Deleted History", "channel",
+                     [r"wiped.*history", r"video count discrepancy", r"videos missing"]),
 ]
 
 
@@ -121,6 +125,11 @@ class SignalAnalyzer:
         video_signals = sample.get('video_signals', []) or []
         channel_signals = sample.get('channel_signals', []) or []
         
+        # Exclude signals that were logged but explicitly NOT scored (conjunctive gate)
+        # These are tagged with "(unscored" to distinguish from active signals
+        video_signals = [s for s in video_signals if '(unscored' not in str(s).lower()]
+        channel_signals = [s for s in channel_signals if '(unscored' not in str(s).lower()]
+        
         # Convert to lowercase strings
         video_signals_text = ' '.join(str(s).lower() for s in video_signals)
         channel_signals_text = ' '.join(str(s).lower() for s in channel_signals)
@@ -147,7 +156,7 @@ class SignalAnalyzer:
         return label in ['true_positive', 'false_negative']
     
     def calculate_signal_metrics(self) -> Dict:
-        """Calculate per-signal metrics"""
+        """Calculate per-signal metrics overall and by takeover type"""
         print("\n📊 Calculating per-signal metrics...")
         
         results = {}
@@ -156,12 +165,18 @@ class SignalAnalyzer:
             tp = fp = tn = fn = 0
             samples_with_signal = []
             
+            # Track metrics by takeover type
+            takeover_metrics = {
+                'COMPLETE_ATO': {'tp': 0, 'fp': 0, 'tn': 0, 'fn': 0},
+                'PARTIAL_ATO': {'tp': 0, 'fp': 0, 'tn': 0, 'fn': 0}
+            }
+            
             for sample in self.samples:
                 detected_signals = self.extract_signals_from_sample(sample)
                 actual_positive = self.get_actual_label(sample)
                 signal_present = signal_id in detected_signals
                 
-                # Confusion matrix
+                # Overall Confusion matrix
                 if signal_present and actual_positive:
                     tp += 1
                     samples_with_signal.append(sample['video_id'])
@@ -172,13 +187,29 @@ class SignalAnalyzer:
                     fn += 1
                 elif not signal_present and not actual_positive:
                     tn += 1
+                    
+                # Track takeover type
+                takeover_type = sample.get('takeover_type')
+                if takeover_type in ['COMPLETE_ATO', 'PARTIAL_ATO']:
+                    if signal_present and actual_positive:
+                        takeover_metrics[takeover_type]['tp'] += 1
+                    elif signal_present and not actual_positive:
+                        takeover_metrics[takeover_type]['fp'] += 1
+                    elif not signal_present and actual_positive:
+                        takeover_metrics[takeover_type]['fn'] += 1
+                    elif not signal_present and not actual_positive:
+                        takeover_metrics[takeover_type]['tn'] += 1
             
             # Calculate metrics
-            precision = tp / (tp + fp) if (tp + fp) > 0 else 0
-            recall = tp / (tp + fn) if (tp + fn) > 0 else 0
-            f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-            accuracy = (tp + tn) / (tp + fp + tn + fn) if (tp + fp + tn + fn) > 0 else 0
-            fpr = fp / (fp + tn) if (fp + tn) > 0 else 0
+            def calc_metrics(tp, fp, tn, fn):
+                prec = tp / (tp + fp) if (tp + fp) > 0 else 0
+                rec = tp / (tp + fn) if (tp + fn) > 0 else 0
+                f = 2 * (prec * rec) / (prec + rec) if (prec + rec) > 0 else 0
+                acc = (tp + tn) / (tp + fp + tn + fn) if (tp + fp + tn + fn) > 0 else 0
+                fpr_val = fp / (fp + tn) if (fp + tn) > 0 else 0
+                return prec, rec, f, acc, fpr_val
+
+            precision, recall, f1, accuracy, fpr = calc_metrics(tp, fp, tn, fn)
             support = tp + fp
             
             results[f"signal_{signal_id}"] = {
@@ -191,6 +222,16 @@ class SignalAnalyzer:
                     'f1': round(f1, 3),
                     'accuracy': round(accuracy, 3),
                     'false_positive_rate': round(fpr, 3)
+                },
+                'takeover_breakdown': {
+                    'COMPLETE_ATO': {
+                        'metrics': {k: round(v, 3) for k, v in zip(['precision', 'recall', 'f1', 'accuracy', 'false_positive_rate'], calc_metrics(**takeover_metrics['COMPLETE_ATO']))},
+                        'support': takeover_metrics['COMPLETE_ATO']['tp'] + takeover_metrics['COMPLETE_ATO']['fp']
+                    },
+                    'PARTIAL_ATO': {
+                        'metrics': {k: round(v, 3) for k, v in zip(['precision', 'recall', 'f1', 'accuracy', 'false_positive_rate'], calc_metrics(**takeover_metrics['PARTIAL_ATO']))},
+                        'support': takeover_metrics['PARTIAL_ATO']['tp'] + takeover_metrics['PARTIAL_ATO']['fp']
+                    }
                 },
                 'support': support,
                 'samples_with_signal': samples_with_signal[:5]  # First 5 for reference

@@ -384,8 +384,8 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Re-run enhanced detector on MongoDB collection')
-    parser.add_argument('--collection', default='detection_results_v3_labeling',
-                       help='MongoDB collection name (default: detection_results_v3_labeling)')
+    parser.add_argument('--collection', default='detection_results_latest',
+                       help='MongoDB collection name (default: detection_results_latest)')
     parser.add_argument('--max-quota', type=int, default=5000,
                        help='Maximum API quota to use (default: 5000)')
     parser.add_argument('--batch-size', type=int, default=50,

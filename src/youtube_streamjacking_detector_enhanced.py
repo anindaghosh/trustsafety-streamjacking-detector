@@ -272,158 +272,279 @@ class MongoDBManager:
 class EnhancedYouTubeAPIClient:
     """Enhanced API client with additional metadata fields"""
     
-    def __init__(self, api_key: str):
-        self.api_key = api_key
-        self.youtube = build('youtube', 'v3', developerKey=api_key)
+    def __init__(self, api_keys):
+        """Accept a single key string or a list of keys for automatic rotation."""
+        if isinstance(api_keys, str):
+            api_keys = [api_keys]
+        self._keys: List[str] = [k.strip() for k in api_keys if k.strip()]
+        if not self._keys:
+            raise ValueError("At least one API key is required.")
+        self._key_idx: int = 0
+        self._exhausted: Set[str] = set()
+        self._per_key_quota: Dict[str, int] = {k: 0 for k in self._keys}
+        self.youtube = build('youtube', 'v3', developerKey=self._keys[0])
         self.quota_used = 0
+
+    # ------------------------------------------------------------------
+    # Key rotation
+    # ------------------------------------------------------------------
+
+    @property
+    def _active_key(self) -> str:
+        return self._keys[self._key_idx]
+
+    def _rotate_key(self) -> bool:
+        """Mark the current key as exhausted and switch to the next available one.
+        Returns True if a new key is available, False if all keys are exhausted."""
+        self._exhausted.add(self._active_key)
+        remaining = [k for k in self._keys if k not in self._exhausted]
+        if not remaining:
+            print("\n⛔ All API keys exhausted for today. Stopping further requests.")
+            return False
+        self._key_idx = self._keys.index(remaining[0])
+        self.youtube = build('youtube', 'v3', developerKey=self._active_key)
+        print(f"\n🔄 API key rotated → key {self._key_idx + 1}/{len(self._keys)} "
+              f"({len(self._exhausted)} exhausted, {len(remaining) - 1} remaining after this)")
+        return True
+
+    def _is_quota_error(self, e: HttpError) -> bool:
+        return e.resp.status == 403 and 'quotaExceeded' in str(e)
+
+    def quota_summary(self) -> str:
+        """Return a formatted per-key quota usage summary."""
+        lines = [f"\n🔑 API Key Quota Summary ({len(self._keys)} key(s)):"]
+        for i, key in enumerate(self._keys):
+            used = self._per_key_quota.get(key, 0)
+            status = " ⛔ exhausted" if key in self._exhausted else (" ← active" if key == self._active_key else "")
+            lines.append(f"   Key {i+1}: {used:,} units{status}")
+        lines.append(f"   Total: {self.quota_used:,} units across {len(self._keys)} key(s)")
+        return "\n".join(lines)
+        
+    def get_channel_uploads_playlist_id(self, channel_id: str) -> Optional[str]:
+        """Get the uploads playlist ID for a channel (costs 1 quota unit)"""
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.channels().list(
+                    part="contentDetails",
+                    id=channel_id
+                )
+                response = request.execute()
+                self.quota_used += 1
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 1
+                if not response.get('items'):
+                    return None
+                return response['items'][0].get('contentDetails', {}).get('relatedPlaylists', {}).get('uploads')
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return None
+                    continue
+                print(f"API Error fetching uploads playlist: {e}")
+                return None
+        return None
+            
+    def get_playlist_items(self, playlist_id: str, max_pages: int = 2) -> List[Dict]:
+        """Retrieve videos from a playlist using playlistItems.list (costs 1 quota/page vs 100 for search)."""
+        all_items = []
+        next_page_token = None
+
+        for _ in range(max_pages):
+            fetched = False
+            for _ in range(len(self._keys)):
+                try:
+                    request = self.youtube.playlistItems().list(
+                        part="snippet,contentDetails",
+                        playlistId=playlist_id,
+                        maxResults=50,
+                        pageToken=next_page_token
+                    )
+                    response = request.execute()
+                    self.quota_used += 1
+                    self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 1
+                    all_items.extend(response.get('items', []))
+                    next_page_token = response.get('nextPageToken')
+                    fetched = True
+                    break
+                except HttpError as e:
+                    if self._is_quota_error(e):
+                        if not self._rotate_key():
+                            return all_items
+                        continue
+                    print(f"API Error fetching playlist items: {e}")
+                    return all_items
+            if not fetched or not next_page_token:
+                break
+
+        return all_items
+        
+    def get_channel_history(self, channel_id: str) -> Tuple[List[Dict], Optional[str]]:
+        """Fetch a channel's historical video list via the uploads playlist (cheap: ~3 quota units total).
+        
+        Returns:
+            Tuple of (video_items, playlist_id)
+        """
+        playlist_id = self.get_channel_uploads_playlist_id(channel_id)
+        if not playlist_id:
+            return [], None
+        videos = self.get_playlist_items(playlist_id, max_pages=2)
+        return videos, playlist_id
         
     def get_channel_metadata(self, channel_id: str) -> Optional[EnhancedChannelMetadata]:
         """Retrieve comprehensive channel metadata with enhanced fields"""
-        try:
-            request = self.youtube.channels().list(
-                part="snippet,statistics,contentDetails,topicDetails,brandingSettings,status",
-                id=channel_id
-            )
-            response = request.execute()
-            self.quota_used += 5
-            
-            if not response.get('items'):
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.channels().list(
+                    part="snippet,statistics,contentDetails,topicDetails,brandingSettings,status",
+                    id=channel_id
+                )
+                response = request.execute()
+                self.quota_used += 5
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 5
+                if not response.get('items'):
+                    return None
+                item = response['items'][0]
+                snippet = item.get('snippet', {})
+                statistics = item.get('statistics', {})
+                branding = item.get('brandingSettings', {})
+                topics = item.get('topicDetails', {})
+                return EnhancedChannelMetadata(
+                    channel_id=channel_id,
+                    channel_title=snippet.get('title', ''),
+                    custom_url=snippet.get('customUrl'),
+                    handle=branding.get('channel', {}).get('unsubscribedTrailer'),
+                    description=snippet.get('description', ''),
+                    subscriber_count=int(statistics.get('subscriberCount', 0)),
+                    video_count=int(statistics.get('videoCount', 0)),
+                    view_count=int(statistics.get('viewCount', 0)),
+                    published_at=snippet.get('publishedAt', ''),
+                    country=snippet.get('country'),
+                    thumbnail_url=snippet.get('thumbnails', {}).get('high', {}).get('url', ''),
+                    topic_categories=topics.get('topicCategories', []),
+                    branding_settings=branding,
+                    hidden_subscriber_count=statistics.get('hiddenSubscriberCount', False),
+                    default_language=snippet.get('defaultLanguage')
+                )
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return None
+                    continue
+                print(f"API Error: {e}")
                 return None
-                
-            item = response['items'][0]
-            snippet = item.get('snippet', {})
-            statistics = item.get('statistics', {})
-            branding = item.get('brandingSettings', {})
-            topics = item.get('topicDetails', {})
-            
-            return EnhancedChannelMetadata(
-                channel_id=channel_id,
-                channel_title=snippet.get('title', ''),
-                custom_url=snippet.get('customUrl'),
-                handle=branding.get('channel', {}).get('unsubscribedTrailer'),
-                description=snippet.get('description', ''),
-                subscriber_count=int(statistics.get('subscriberCount', 0)),
-                video_count=int(statistics.get('videoCount', 0)),
-                view_count=int(statistics.get('viewCount', 0)),
-                published_at=snippet.get('publishedAt', ''),
-                country=snippet.get('country'),
-                thumbnail_url=snippet.get('thumbnails', {}).get('high', {}).get('url', ''),
-                topic_categories=topics.get('topicCategories', []),
-                branding_settings=branding,
-                hidden_subscriber_count=statistics.get('hiddenSubscriberCount', False),
-                default_language=snippet.get('defaultLanguage')
-            )
-            
-        except HttpError as e:
-            print(f"API Error: {e}")
-            return None
+        return None
     
     def get_video_metadata(self, video_id: str) -> Optional[EnhancedVideoMetadata]:
         """Retrieve comprehensive video metadata with enhanced fields"""
-        try:
-            request = self.youtube.videos().list(
-                part="snippet,statistics,liveStreamingDetails,contentDetails,status",
-                id=video_id
-            )
-            response = request.execute()
-            self.quota_used += 5
-            
-            if not response.get('items'):
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.videos().list(
+                    part="snippet,statistics,liveStreamingDetails,contentDetails,status",
+                    id=video_id
+                )
+                response = request.execute()
+                self.quota_used += 5
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 5
+                if not response.get('items'):
+                    return None
+                item = response['items'][0]
+                snippet = item.get('snippet', {})
+                statistics = item.get('statistics', {})
+                live_details = item.get('liveStreamingDetails')
+                status = item.get('status', {})
+                is_live = live_details is not None and live_details.get('actualEndTime') is None
+                return EnhancedVideoMetadata(
+                    video_id=video_id,
+                    title=snippet.get('title', ''),
+                    description=snippet.get('description', ''),
+                    channel_id=snippet.get('channelId', ''),
+                    channel_title=snippet.get('channelTitle', ''),
+                    published_at=snippet.get('publishedAt', ''),
+                    is_live=is_live,
+                    live_streaming_details=live_details,
+                    view_count=int(statistics.get('viewCount', 0)),
+                    like_count=int(statistics.get('likeCount', 0)),
+                    comment_count=int(statistics.get('commentCount', 0)),
+                    tags=snippet.get('tags', []),
+                    comments_disabled=not status.get('publicStatsViewable', True),
+                    live_chat_id=live_details.get('activeLiveChatId') if live_details else None,
+                    default_language=snippet.get('defaultLanguage')
+                )
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return None
+                    continue
+                print(f"API Error: {e}")
                 return None
-                
-            item = response['items'][0]
-            snippet = item.get('snippet', {})
-            statistics = item.get('statistics', {})
-            live_details = item.get('liveStreamingDetails')
-            status = item.get('status', {})
-            
-            is_live = live_details is not None and live_details.get('actualEndTime') is None
-            
-            return EnhancedVideoMetadata(
-                video_id=video_id,
-                title=snippet.get('title', ''),
-                description=snippet.get('description', ''),
-                channel_id=snippet.get('channelId', ''),
-                channel_title=snippet.get('channelTitle', ''),
-                published_at=snippet.get('publishedAt', ''),
-                is_live=is_live,
-                live_streaming_details=live_details,
-                view_count=int(statistics.get('viewCount', 0)),
-                like_count=int(statistics.get('likeCount', 0)),
-                comment_count=int(statistics.get('commentCount', 0)),
-                tags=snippet.get('tags', []),
-                comments_disabled=not status.get('publicStatsViewable', True),
-                live_chat_id=live_details.get('activeLiveChatId') if live_details else None,
-                default_language=snippet.get('defaultLanguage')
-            )
-            
-        except HttpError as e:
-            print(f"API Error: {e}")
-            return None
+        return None
     
     def get_live_chat_messages(self, live_chat_id: str, max_messages: int = 20) -> List[Dict]:
         """Sample recent live chat messages (checks for pinned Super Chats and bot spam)"""
-        try:
-            request = self.youtube.liveChatMessages().list(
-                liveChatId=live_chat_id,
-                part="snippet,authorDetails",
-                maxResults=min(max_messages, 100)
-            )
-            response = request.execute()
-            self.quota_used += 5  # liveChatMessages.list costs 5 units
-            
-            messages = []
-            for item in response.get('items', []):
-                snippet = item.get('snippet', {})
-                author = item.get('authorDetails', {})
-                
-                msg = {
-                    'id': item.get('id'),
-                    'type': snippet.get('type'),
-                    'text': '',
-                    'author': author.get('displayName', ''),
-                    'author_channel_id': author.get('channelId', ''),
-                    'is_super_chat': False,
-                    'published_at': snippet.get('publishedAt')
-                }
-                
-                # Extract text based on message type
-                if snippet.get('type') == 'textMessageEvent':
-                    msg['text'] = snippet.get('textMessageDetails', {}).get('messageText', '')
-                elif snippet.get('type') == 'superChatEvent':
-                    msg['text'] = snippet.get('superChatDetails', {}).get('userComment', '')
-                    msg['is_super_chat'] = True  # Super Chats are pinned to top
-                elif snippet.get('type') == 'superStickerEvent':
-                    msg['is_super_chat'] = True
-                
-                messages.append(msg)
-            
-            return messages
-            
-        except HttpError as e:
-            # Chat may be disabled or ended
-            return []
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.liveChatMessages().list(
+                    liveChatId=live_chat_id,
+                    part="snippet,authorDetails",
+                    maxResults=min(max_messages, 100)
+                )
+                response = request.execute()
+                self.quota_used += 5
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 5
+                messages = []
+                for item in response.get('items', []):
+                    snippet = item.get('snippet', {})
+                    author = item.get('authorDetails', {})
+                    msg = {
+                        'id': item.get('id'),
+                        'type': snippet.get('type'),
+                        'text': '',
+                        'author': author.get('displayName', ''),
+                        'author_channel_id': author.get('channelId', ''),
+                        'is_super_chat': False,
+                        'published_at': snippet.get('publishedAt')
+                    }
+                    if snippet.get('type') == 'textMessageEvent':
+                        msg['text'] = snippet.get('textMessageDetails', {}).get('messageText', '')
+                    elif snippet.get('type') == 'superChatEvent':
+                        msg['text'] = snippet.get('superChatDetails', {}).get('userComment', '')
+                        msg['is_super_chat'] = True
+                    elif snippet.get('type') == 'superStickerEvent':
+                        msg['is_super_chat'] = True
+                    messages.append(msg)
+                return messages
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return []
+                    continue
+                return []  # Chat may be disabled or ended
+        return []
     
     def search_livestreams(self, query: str, max_results: int = 50) -> List[Dict]:
         """Search for active livestreams"""
-        try:
-            request = self.youtube.search().list(
-                part="snippet",
-                q=query,
-                type="video",
-                eventType="live",
-                maxResults=min(max_results, 50),
-                relevanceLanguage="en",
-                safeSearch="none"
-            )
-            response = request.execute()
-            self.quota_used += 100
-            
-            return response.get('items', [])
-            
-        except HttpError as e:
-            print(f"API Error: {e}")
-            return []
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.search().list(
+                    part="snippet",
+                    q=query,
+                    type="video",
+                    eventType="live",
+                    maxResults=min(max_results, 50),
+                    relevanceLanguage="en",
+                    safeSearch="none"
+                )
+                response = request.execute()
+                self.quota_used += 100
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 100
+                return response.get('items', [])
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return []
+                    continue
+                print(f"API Error: {e}")
+                return []
+        return []
 
 
 class EnhancedStreamJackingDetector:
@@ -524,6 +645,14 @@ class EnhancedStreamJackingDetector:
     # Generic promotional domains - only flag if combined with impersonation
     PROMO_DOMAINS = ['gift', 'bonus', 'promo']
 
+    # Legitimate crypto exchange domains whose referral/affiliate URLs should not
+    # trigger PROMO_DOMAINS signals (e.g. promote.mexc.com, bitget.com/referral)
+    TRUSTED_EXCHANGE_DOMAINS = [
+        'mexc.com', 'bitget.com', 'binance.com', 'coinbase.com', 'kraken.com',
+        'bybit.com', 'gate.io', 'okx.com', 'kucoin.com', 'huobi.com',
+        'crypto.com', 'gemini.com', 'bitmex.com', 'phemex.com', 'deribit.com',
+    ]
+
     # NEW: Trusted channels (whitelist) to prevent false positives
     TRUSTED_CHANNELS = [
         'UCUMZ7gohGI9pU35BDk8lfVA', # Bloomberg Markets and Finance
@@ -576,11 +705,148 @@ class EnhancedStreamJackingDetector:
         'Knowledge': 'Education'
     }
     
+    # NEW: Topic keyword buckets for historical content fingerprinting (Signal 13)
+    TOPIC_KEYWORD_BUCKETS = {
+        'cooking': [
+            'recipe', 'cook', 'cooking', 'kitchen', 'food', 'bake', 'baking',
+            'grilling', 'chef', 'meal', 'ingredients', 'dinner', 'lunch'
+        ],
+        'gaming': [
+            'gameplay', 'walkthrough', 'playthrough', 'gaming', 'game', 'pvp',
+            'fps', 'rpg', 'let\'s play', 'review', 'speedrun', 'esports', 'twitch'
+        ],
+        'travel': [
+            'vlog', 'travel', 'trip', 'destination', 'flying', 'hotel', 'explore',
+            'adventure', 'tour', 'country', 'city', 'abroad'
+        ],
+        'fitness': [
+            'workout', 'gym', 'fitness', 'cardio', 'yoga', 'exercise', 'training',
+            'muscle', 'weight loss', 'diet', 'health'
+        ],
+        'music': [
+            'song', 'music', 'cover', 'album', 'release', 'concert', 'piano',
+            'guitar', 'singing', 'beat', 'lyrics', 'track', 'artist'
+        ],
+        'news_politics': [
+            'breaking', 'election', 'president', 'government', 'politics', 'news',
+            'policy', 'senate', 'democracy', 'war', 'climate'
+        ],
+        'crypto': [
+            'bitcoin', 'btc', 'crypto', 'ethereum', 'eth', 'giveaway', 'wallet',
+            'nft', 'defi', 'blockchain', 'altcoin', 'hodl', 'airdrop'
+        ],
+        'comedy_lifestyle': [
+            'funny', 'comedy', 'vlog', 'challenge', 'prank', 'reaction', 'daily',
+            'life', 'story', 'experience', 'trend'
+        ],
+    }
+
     def __init__(self, api_client: EnhancedYouTubeAPIClient):
         self.api = api_client
         # Signal 12: lazy-loaded CryptoBERT inference module
         self.bert_signal = CryptoBERTSignal() if CRYPTOBERT_AVAILABLE else None
         
+    def build_topic_fingerprint(self, videos: List[Dict]) -> Dict[str, float]:
+        """Build a normalized topic vector from a list of video snippets."""
+        counts = {topic: 0 for topic in self.TOPIC_KEYWORD_BUCKETS}
+        total_scored = 0
+        
+        for video in videos:
+            snippet = video.get('snippet', {})
+            text = (snippet.get('title', '') + ' ' + snippet.get('description', '')).lower()
+            
+            best_topic = None
+            best_score = 0
+            for topic, keywords in self.TOPIC_KEYWORD_BUCKETS.items():
+                score = sum(1 for kw in keywords if kw in text)
+                if score > best_score:
+                    best_score = score
+                    best_topic = topic
+            
+            if best_topic and best_score > 0:
+                counts[best_topic] += 1
+                total_scored += 1
+        
+        if total_scored == 0:
+            return {topic: 0.0 for topic in counts}
+            
+        return {topic: count / total_scored for topic, count in counts.items()}
+    
+    def compute_cosine_similarity(self, vec_a: Dict[str, float], vec_b: Dict[str, float]) -> float:
+        """Compute cosine similarity between two topic fingerprint dictionaries."""
+        import math
+        all_keys = set(vec_a) | set(vec_b)
+        dot = sum(vec_a.get(k, 0) * vec_b.get(k, 0) for k in all_keys)
+        mag_a = math.sqrt(sum(v**2 for v in vec_a.values()))
+        mag_b = math.sqrt(sum(v**2 for v in vec_b.values()))
+        if mag_a == 0 or mag_b == 0:
+            return 0.0
+        return dot / (mag_a * mag_b)
+    
+    def detect_temporal_content_pivot(self, videos: List[Dict]) -> Tuple[bool, str, float]:
+        """Detect a sudden topic shift in a channel's history.
+        
+        Splits the video list in half (older vs. newer) and compares their topic fingerprints.
+        Returns:
+            Tuple of (is_pivot, description, cosine_similarity)
+        """
+        if len(videos) < 6:  # Need enough history to be meaningful
+            return False, "", 1.0
+        
+        midpoint = len(videos) // 2
+        # playlistItems returns newest first, so videos[:midpoint] = recent, videos[midpoint:] = older
+        recent_videos = videos[:midpoint]
+        historical_videos = videos[midpoint:]
+        
+        historical_fp = self.build_topic_fingerprint(historical_videos)
+        recent_fp = self.build_topic_fingerprint(recent_videos)
+        
+        similarity = self.compute_cosine_similarity(historical_fp, recent_fp)
+        
+        if similarity < 0.15:
+            # Find dominant historical topic and recent topic
+            hist_topic = max(historical_fp, key=historical_fp.get) if historical_fp else 'unknown'
+            recent_topic = max(recent_fp, key=recent_fp.get) if recent_fp else 'unknown'
+            # Find when the pivot roughly occurred
+            pivot_date = recent_videos[-1].get('snippet', {}).get('publishedAt', 'recently')[:10]
+            desc = (f"Content pivot detected: {hist_topic} → {recent_topic} channel "
+                    f"(similarity={similarity:.2f}, around {pivot_date})")
+            return True, desc, similarity
+        elif similarity < 0.30:
+            hist_topic = max(historical_fp, key=historical_fp.get) if historical_fp else 'unknown'
+            recent_topic = max(recent_fp, key=recent_fp.get) if recent_fp else 'unknown'
+            desc = (f"Moderate content drift: {hist_topic} → {recent_topic} "
+                    f"(similarity={similarity:.2f})")
+            return True, desc, similarity
+            
+        return False, "", similarity
+    
+    def detect_wiped_history(self, channel_meta: EnhancedChannelMetadata, retrieved_video_count: int) -> Tuple[bool, str]:
+        """Detect mass deletion/privatization by comparing statistics.videoCount vs. retrievable videos.
+        
+        Thresholds (tightened to reduce false positives):
+          - gap_ratio >= 0.70: at least 70% of declared videos are missing/private
+          - absolute gap >= 20: small channels (e.g. 2 declared, 1 retrieved) are excluded
+        """
+        declared_count = channel_meta.video_count
+        
+        if declared_count < 10:
+            # Not enough history to reliably flag
+            return False, ""
+        
+        gap = declared_count - retrieved_video_count
+        if gap <= 0:
+            return False, ""
+        
+        gap_ratio = gap / declared_count
+        # Require BOTH a high ratio AND a meaningful absolute gap
+        if gap_ratio >= 0.70 and gap >= 20:
+            desc = (f"Video count discrepancy: {declared_count} declared but only "
+                    f"{retrieved_video_count} retrievable ({gap} videos missing, {gap_ratio:.0%} gap)")
+            return True, desc
+            
+        return False, ""
+
     def detect_character_substitution(self, text: str, target_names: List[str]) -> List[str]:
         """Enhanced character substitution detection with whole-word matching for short terms"""
         detections = []
@@ -803,6 +1069,83 @@ class EnhancedStreamJackingDetector:
         # Extract the last part of the URL
         topic = url.split('/')[-1]
         return self.TOPIC_MAPPING.get(topic, topic)
+        
+    def _compute_channel_age_days(self, published_at: str) -> int:
+        """Calculate channel age in days"""
+        if not published_at:
+            return 0
+        try:
+            published_date = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ")
+            return (datetime.now() - published_date).days
+        except Exception:
+            return 0
+
+    def _detect_crypto_keywords(self, text: str) -> bool:
+        """Binary detection of minimal, high-precision crypto keywords"""
+        keywords = ['bitcoin', 'btc', 'crypto', 'eth', 'giveaway', 'elon', 'tesla', 'saylor', 'official', 'live']
+        text_lower = text.lower()
+        
+        import re
+        for kw in keywords:
+            # Word boundaries for short terms
+            if kw in ['btc', 'eth']:
+                if re.search(r'\b' + re.escape(kw) + r'\b', text_lower):
+                    return True
+            elif kw in text_lower:
+                return True
+        return False
+        
+    def _compute_past_crypto_ratio(self, past_videos: List[Dict]) -> float:
+        """Calculate ratio of past videos that are crypto-related"""
+        if not past_videos:
+            return 0.0
+            
+        crypto_count = 0
+        for video in past_videos:
+            snippet = video.get('snippet', {})
+            text = (snippet.get('title', '') + ' ' + snippet.get('description', '')).lower()
+            if self._detect_crypto_keywords(text):
+                crypto_count += 1
+                
+        return crypto_count / len(past_videos)
+        
+    def classify_takeover(self, channel_meta: EnhancedChannelMetadata, past_videos: List[Dict], video_analyzed: EnhancedVideoMetadata, composite_risk: Dict) -> str:
+        """
+        Classifies the type of account takeover based on ATO heuristics.
+        Must be run *after* the total risk score is calculated and a hijack is suspected.
+        """
+        age = self._compute_channel_age_days(channel_meta.published_at)
+        total_videos = channel_meta.video_count
+        name_crypto = self._detect_crypto_keywords(channel_meta.channel_title)
+        
+        # Determine if livestream is crypto-related based on existing detector signals
+        live_crypto = False
+        crypto_signals = ['Character substitution', 'Crypto address', 'Scam link', 'Pinned scam', 'CryptoBERT', 
+                         'Name impersonation', 'Handle-name mismatch', 'Crypto-heavy description']
+        
+        for signal in video_analyzed.suspicious_signals:
+            if any(cs.lower() in signal.lower() for cs in crypto_signals):
+                live_crypto = True
+                break
+                
+        # If the livestream isn't detected as crypto/scam by our signals, it's not a hijack
+        if not live_crypto and composite_risk['risk_category'] not in ['CRITICAL', 'HIGH']:
+             return "NOT_STREAMJACKING"
+             
+        if age < 180:
+             return "IMPERSONATION_CHANNEL"
+             
+        if age > 365:
+            # COMPLETE TAKEOVER criteria
+            if total_videos <= 2 and name_crypto and live_crypto:
+                 return "COMPLETE_ATO"
+                 
+            # PARTIAL TAKEOVER criteria
+            past_crypto_ratio = self._compute_past_crypto_ratio(past_videos)
+            if total_videos >= 5 and past_crypto_ratio < 0.2 and not name_crypto:
+                 return "PARTIAL_ATO"
+                 
+        return "INDETERMINATE_HIJACK"
 
     def analyze_channel_enhanced(self, channel: EnhancedChannelMetadata) -> EnhancedChannelMetadata:
         """Enhanced channel analysis with composite scoring"""
@@ -864,10 +1207,12 @@ class EnhancedStreamJackingDetector:
             signals.append(f"Known scam domain(s): {', '.join(domains)}")
             risk_score += 15.0
         elif has_promo_domain and impersonations:  # Only flag promo if also impersonating
-            signals.append(f"Promotional domain with impersonation")
-            risk_score += 10.0
+            # Skip if the 'promo' match is inside a trusted exchange referral URL
+            if not self._is_exchange_referral_url(channel.description):
+                signals.append(f"Promotional domain with impersonation")
+                risk_score += 10.0
             
-        # Signal 8: Topic Consistency / Hijack Detection (NEW - weight: 40)
+        # Signal 8: Topic Consistency from channel API topics (weight: 40)
         # Check if a non-tech/finance channel is posting crypto content WITH impersonation
         channel_topics = [self._map_topic_url(t) for t in channel.topic_categories]
         safe_topics = {'Gaming', 'Music', 'Entertainment', 'Lifestyle'}
@@ -876,8 +1221,34 @@ class EnhancedStreamJackingDetector:
         if channel_topics and any(t in safe_topics for t in channel_topics) and \
            not any(t in {'Tech', 'Society', 'Knowledge'} for t in channel_topics) and \
            impersonations:  # CRITICAL: Require impersonation to confirm hijack
-            signals.append(f"Topic Mismatch (Possible Hijack): {', '.join(channel_topics)} channel streaming crypto")
+            signals.append(f"YouTube topic mismatch (Possible Hijack): {', '.join(channel_topics)} channel streaming crypto")
             risk_score += 40.0
+        
+        # ---- Signals 13 & 14: Channel History Analysis ----
+        # Fetch historical content via the cheap uploads playlist (1-2 quota units)
+        try:
+            history_videos, _ = self.api.get_channel_history(channel.channel_id)
+            retrieved_count = len(history_videos)
+            
+            # Signal 13: Content Topic Pivot (weight: up to 45 pts)
+            if history_videos:
+                is_pivot, pivot_desc, similarity = self.detect_temporal_content_pivot(history_videos)
+                if is_pivot:
+                    weight = 45.0 if similarity < 0.15 else 20.0
+                    signals.append(f"Content topic pivot: {pivot_desc}")
+                    risk_score += weight
+            
+            # Signal 14: Wiped/Deleted History (weight: 35 pts)
+            # CONJUNCTIVE: only award points if another signal is already present
+            # (standalone video-count gap is too noisy on its own)
+            has_wipe, wipe_desc = self.detect_wiped_history(channel, retrieved_count)
+            if has_wipe and len(signals) > 0:
+                signals.append(f"Wiped/deleted history: {wipe_desc}")
+                risk_score += 35.0
+                
+        except Exception:
+            # Gracefully degrade if history fetch fails
+            pass
         
         channel.suspicious_signals = signals
         channel.risk_score = min(risk_score, 100.0)
@@ -947,23 +1318,39 @@ class EnhancedStreamJackingDetector:
                 risk_score += 10.0
         
         # Signal 5: Crypto addresses/URLs (weight: 25)
+        # CONJUNCTIVE: only flags if another anchor signal is present (reduces FP from 96 to near 0)
+        # Anchor signals: title impersonation, high-confidence phrase, or multiple scam keywords
+        _anchor_signals_present = any(
+            any(anchor in s for anchor in ['impersonation', 'scam phrase', 'scam keyword'])
+            for s in signals
+        )
         if self._contains_crypto_address(video.description) or self._contains_suspicious_url(video.description):
-            signals.append("Contains crypto address or suspicious URL")
-            risk_score += 25.0
+            if _anchor_signals_present:
+                signals.append("Contains crypto address or suspicious URL")
+                risk_score += 25.0
+            else:
+                # Still log it but don't score it standalone
+                signals.append("Crypto address/URL present (unscored — no anchor signal)")
         
-        # Signal 5b: QR Code mention (NEW - weight: 30)
-        # High indicator of scam - legitimate streams rarely ask viewers to scan QR codes
+        # Signal 5b: QR Code mention (weight: 30)
+        # CONJUNCTIVE: same anchor requirement — text-based QR detection is too noisy standalone
         if self.detect_qr_code_mention(video.title + ' ' + video.description):
-            signals.append("QR code mentioned (common scam tactic)")
-            risk_score += 30.0
+            if _anchor_signals_present:
+                signals.append("QR code mentioned (common scam tactic)")
+                risk_score += 30.0
+            else:
+                signals.append("QR code mentioned (unscored — no anchor signal)")
         
-        # Signal 6: Disabled comments (NEW - weight: 30 for crypto content, 20 otherwise)
+        # Signal 6: Disabled comments (weight: 30 for crypto content, 20 otherwise)
+        # CONJUNCTIVE: only scores if anchor signal present (reduces 23 FP significantly)
         if video.comments_disabled:
-            # Higher weight if also crypto-related (common in scams to prevent warnings)
             has_crypto_content = any(kw in combined for kw in ['crypto', 'bitcoin', 'ethereum', 'giveaway'])
             weight = 30.0 if has_crypto_content else 20.0
-            signals.append("Comments disabled or restricted")
-            risk_score += weight
+            if _anchor_signals_present:
+                signals.append("Comments disabled or restricted")
+                risk_score += weight
+            else:
+                signals.append("Comments disabled (unscored — no anchor signal)")
         
         # Signal 7: Live stream status (weight: 5)
         if video.is_live:
@@ -988,8 +1375,10 @@ class EnhancedStreamJackingDetector:
             signals.append(f"Scam domain pattern: {', '.join(domains[:2])}")
             risk_score += weight
         elif has_promo_domain and not is_crypto_native:  # Only flag promo for non-crypto channels
-            signals.append(f"Promotional domain (unusual for channel type)")
-            risk_score += 10.0
+            # Skip if the 'promo' match is inside a trusted exchange referral URL
+            if not self._is_exchange_referral_url(video.description):
+                signals.append(f"Promotional domain (unusual for channel type)")
+                risk_score += 10.0
         
         # Signal 10: Suspicious tag combinations (NEW - weight: 35)
         # Political figure/celebrity + crypto tags = likely hijacked channel
@@ -1031,6 +1420,15 @@ class EnhancedStreamJackingDetector:
                 )
                 # Weight scales linearly with confidence: 0.65 → 13pts, 1.0 → 20pts
                 risk_score += 20.0 * bert_score
+            else:
+                # Low BERT score actively signals non-scam content; reduce risk
+                # symmetrically: score=0.0 → -20pts, score≈threshold → ~0pts
+                reduction = 20.0 * (1.0 - bert_score)
+                risk_score = max(0.0, risk_score - reduction)
+                signals.append(
+                    f"CryptoBERT low scam score: {bert_score:.2f} "
+                    f"(risk reduced by {reduction:.1f} pts)"
+                )
 
         # NEW: Educational Intent Bonus
         if is_educational:
@@ -1111,6 +1509,31 @@ class EnhancedStreamJackingDetector:
         except:
             return 0
     
+    def _is_exchange_referral_url(self, text: str) -> bool:
+        """Return True if every PROMO_DOMAINS hit in *text* occurs inside a URL
+        whose domain belongs to TRUSTED_EXCHANGE_DOMAINS (e.g. promote.mexc.com,
+        bitget.com/referral).  A lone 'promo' or 'bonus' word outside such a URL
+        still returns False so normal detection logic fires."""
+        url_pattern = re.compile(r'https?://[^\s)>"\']+')
+        urls_in_text = url_pattern.findall(text)
+        for promo_word in self.PROMO_DOMAINS:
+            if promo_word not in text.lower():
+                continue
+            # Check whether every occurrence of this promo word lives inside a
+            # trusted-exchange URL.
+            in_trusted_url = False
+            for url in urls_in_text:
+                if promo_word in url.lower():
+                    if any(domain in url.lower() for domain in self.TRUSTED_EXCHANGE_DOMAINS):
+                        in_trusted_url = True
+                        break
+            # If the word occurs outside all known-exchange URLs, don't suppress.
+            if promo_word in text.lower() and not in_trusted_url:
+                return False
+            if in_trusted_url:
+                return True
+        return False
+
     def _contains_crypto_address(self, text: str) -> bool:
         """Check for cryptocurrency addresses"""
         # BTC, ETH, and other common patterns
@@ -1153,15 +1576,22 @@ def main():
     print("With Composite Rules & Additional Signals")
     print("="*70)
     
-    api_key = os.environ.get('YOUTUBE_API_KEY')
-    if not api_key:
-        print("\n❌ Error: YOUTUBE_API_KEY environment variable not set")
-        print("Please set your API key: export YOUTUBE_API_KEY='your-key-here'")
-        print("\nGet your key from: https://console.cloud.google.com")
-        return
-    
+    # Load API keys — YOUTUBE_API_KEYS (plural) takes priority; fallback to single key
+    raw_keys = os.environ.get('YOUTUBE_API_KEYS', '')
+    api_keys = [k.strip() for k in raw_keys.split(',') if k.strip()]
+    if not api_keys:
+        single_key = os.environ.get('YOUTUBE_API_KEY')
+        if not single_key:
+            print("\n❌ Error: Set YOUTUBE_API_KEYS or YOUTUBE_API_KEY in your .env file.")
+            print("   YOUTUBE_API_KEYS=\"key1,key2,...\"  (for rotation)")
+            print("   YOUTUBE_API_KEY=\"key\"             (single key fallback)")
+            return
+        api_keys = [single_key]
+
+    print(f"\n🔑 Loaded {len(api_keys)} API key(s) — rotation {'enabled' if len(api_keys) > 1 else 'disabled (single key)'}")
+
     # Initialize enhanced system
-    api_client = EnhancedYouTubeAPIClient(api_key)
+    api_client = EnhancedYouTubeAPIClient(api_keys)
     detector = EnhancedStreamJackingDetector(api_client)
     
     # Initialize MongoDB (optional - will gracefully degrade if unavailable)
@@ -1187,218 +1617,219 @@ def main():
     args = parser.parse_args()
     
     risk_threshold = args.risk_threshold
-    max_results_per_query = min(args.max_results, 50)  # YouTube API limit
+    max_results_per_query = min(args.max_results, 50)  # kept for CLI compat, overridden by tier config  # noqa: F841
     max_quota = args.max_quota
     
-    # Define search queries targeting diverse crypto content (150+ queries)
-    search_queries = [
-        # Elon Musk (6 queries)
-        "Elon Musk crypto live",
-        "Elon Musk Bitcoin giveaway",
-        "Elon Musk Bitcoin live",
-        "Elon Musk ETH giveaway",
-        "Elon Musk Dogecoin",
-        "Elon Musk cryptocurrency",
-        
-        # Tesla/SpaceX (5 queries)
-        "Tesla crypto live",
-        "Tesla Bitcoin giveaway",
-        "Tesla crypto event",
-        "SpaceX Bitcoin live",
-        "SpaceX crypto event",
-        
-        # Generic giveaways (7 queries)
-        "crypto giveaway live",
-        "Bitcoin giveaway live",
-        "Ethereum giveaway live",
-        "cryptocurrency giveaway",
-        "BTC giveaway live",
-        "ETH giveaway live",
-        "crypto live giveaway",
-        
-        # Bitcoin specific (6 queries)
-        "Bitcoin live",
-        "Bitcoin doubling",
-        "Bitcoin investment live",
-        "send BTC receive double",
-        "BTC live event",
-        "double your Bitcoin",
-        
-        # Ethereum (6 queries)
-        "Ethereum live",
-        "Ethereum giveaway",
-        "ETH doubling event",
-        "Vitalik Buterin ethereum",
-        "Vitalik ethereum giveaway",
-        "Vitalik Buterin live",
-        
-        # Crypto figures (10 queries)
-        "Michael Saylor Bitcoin",
-        "Michael Saylor crypto live",
-        "Cathie Wood Bitcoin",
-        "Cathie Wood crypto live",
-        "CZ Binance live",
-        "Changpeng Zhao crypto",
-        "Brad Garlinghouse XRP",
-        "Charles Hoskinson Cardano",
-        "Jack Dorsey Bitcoin",
-        "Do Kwon Terra",
-        
-        # Crypto exchanges (6 queries)
-        "Coinbase giveaway live",
-        "Binance live event",
-        "Kraken crypto giveaway",
-        "Crypto.com giveaway",
-        "Bybit giveaway live",
-        "Gemini crypto live",
-        
-        # Other cryptos (10 queries)
-        "Dogecoin live",
-        "Ripple XRP giveaway",
-        "Cardano ADA live",
-        "Solana SOL giveaway",
-        "Shiba Inu giveaway",
-        "Binance BNB live",
-        "Polygon MATIC giveaway",
-        "Avalanche AVAX giveaway",
-        "Chainlink LINK giveaway",
-        "Polkadot DOT giveaway",
-        
-        # DeFi/NFT/Web3 (5 queries)
-        "crypto airdrop live",
-        "NFT giveaway live",
-        "DeFi giveaway live",
-        "token airdrop live",
-        "Web3 giveaway",
-        
-        # News channels for FP testing (5 queries)
-        "Bloomberg crypto live",
-        "CNBC Bitcoin live",
-        "CoinDesk live",
-        "Cointelegraph live",
-        "Fox Business crypto",
-        
-        # Urgency patterns (5 queries)
-        "crypto ending soon",
-        "limited time crypto",
-        "exclusive crypto event",
-        "last chance Bitcoin",
-        "crypto presale live",
-        
-        # === NEW QUERIES FOR DATASET EXPANSION (75+ queries) ===
-        
-        # Legitimate crypto news/trading (15 queries)
-        "crypto news live",
-        "Bitcoin price analysis live",
-        "cryptocurrency market update",
-        "crypto trading live",
-        "Bitcoin technical analysis",
-        "altcoin discussion live",
-        "crypto portfolio review",
-        "blockchain news live",
-        "DeFi news live",
-        "NFT market update",
-        "crypto regulation news",
-        "Bitcoin ETF news",
-        "crypto market analysis",
-        "cryptocurrency trading signals",
-        "Bitcoin futures live",
-        
-        # More altcoins and Layer 2s (15 queries)
-        "Arbitrum ARB live",
-        "Optimism OP giveaway",
-        "Cosmos ATOM live",
-        "Algorand ALGO event",
-        "VeChain VET live",
-        "Tezos XTZ giveaway",
-        "NEAR Protocol live",
-        "Fantom FTM event",
-        "Hedera HBAR live",
-        "Aptos APT giveaway",
-        "Sui SUI live",
-        "Immutable IMX event",
-        "Sandbox SAND live",
-        "Decentraland MANA giveaway",
-        "Axie Infinity AXS live",
-        
-        # DeFi protocols (10 queries)
-        "Uniswap live",
-        "Aave protocol event",
-        "Compound Finance live",
-        "MakerDAO live",
-        "Curve Finance event",
-        "Yearn Finance live",
-        "SushiSwap event",
-        "PancakeSwap live",
-        "1inch Network live",
-        "dYdX trading live",
-        
-        # NFT projects (10 queries)
-        "Bored Ape live",
-        "CryptoPunks event",
-        "Azuki NFT live",
-        "Pudgy Penguins event",
-        "Moonbirds live",
-        "Doodles NFT event",
-        "Clone X live",
-        "Art Blocks live",
-        "NBA Top Shot event",
-        "OpenSea live",
-        
-        # Exchanges and platforms (10 queries)
-        "FTX live",  # Historical - may show old scams
-        "Bitfinex event",
-        "KuCoin live",
-        "Gate.io giveaway",
-        "Huobi live",
-        "OKX event",
-        "Bitget live",
-        "MEXC giveaway",
-        "Phemex live",
-        "BitMEX event",
-        
-        # Subtle scam patterns (10 queries)
-        "crypto promotion live",
-        "Bitcoin opportunity",
-        "crypto millionaire live",
-        "get rich crypto",
-        "crypto wealth live",
-        "Bitcoin success story",
-        "crypto passive income",
-        "Bitcoin mining live",
-        "crypto staking rewards",
-        "Bitcoin lending live",
-        
-        # Generic high-volume terms (15 queries)
-        "cryptocurrency live",
-        "Bitcoin live stream",
-        "Ethereum live stream",
-        "crypto live stream",
-        "Bitcoin today",
-        "crypto today",
-        "Bitcoin price live",
-        "Ethereum price live",
-        "crypto price live",
-        "Bitcoin news today",
-        "crypto news today",
-        "cryptocurrency today",
-        "Bitcoin update",
-        "crypto update",
-        "blockchain live"
+    # ---------------------------------------------------------------------------
+    # Tiered query config — each tier has its own max_results cap
+    # to control class imbalance.
+    #   Tier 1 (HIGH signal): explicit scam phrasing, impersonation + giveaway
+    #                         → max 50 results (harvest as many as possible)
+    #   Tier 2 (MEDIUM signal): specific figures/exchanges, altcoin giveaways
+    #                           → max 25 results
+    #   Tier 3 (LOW signal): generic crypto terms, news, legitimate content
+    #                         → max 10 results (just enough for FP baseline)
+    # ---------------------------------------------------------------------------
+    TIERED_QUERIES = [
+        # ── TIER 1: HIGH-SIGNAL (max_results=50) ─────────────────────────────
+        {
+            "tier": 1,
+            "label": "High-signal scam / impersonation",
+            "max_results": 50,
+            "queries": [
+                # Explicit giveaway / doubling phrasing
+                "crypto giveaway live",
+                "Bitcoin giveaway live",
+                "Ethereum giveaway live",
+                "BTC giveaway live",
+                "ETH giveaway live",
+                "crypto live giveaway",
+                "cryptocurrency giveaway",
+                "double your Bitcoin",
+                "send BTC receive double",
+                "Bitcoin doubling",
+                "ETH doubling event",
+                # Elon Musk impersonation
+                "Elon Musk Bitcoin giveaway",
+                "Elon Musk crypto live",
+                "Elon Musk Bitcoin live",
+                "Elon Musk ETH giveaway",
+                "Elon Musk Dogecoin",
+                # Tesla / SpaceX branded scams
+                "Tesla Bitcoin giveaway",
+                "Tesla crypto event",
+                "SpaceX Bitcoin live",
+                "SpaceX crypto event",
+                "Tesla crypto live",
+                # Vitalik impersonation
+                "Vitalik ethereum giveaway",
+                "Vitalik Buterin live",
+                "Vitalik Buterin ethereum",
+                # Exchange giveaway phrases
+                "Coinbase giveaway live",
+                "Binance live event",
+                "Kraken crypto giveaway",
+                "Crypto.com giveaway",
+                "Bybit giveaway live",
+                "Gate.io giveaway",
+                "MEXC giveaway",
+                # DeFi / NFT giveaway
+                "crypto airdrop live",
+                "NFT giveaway live",
+                "DeFi giveaway live",
+                "token airdrop live",
+                "Web3 giveaway",
+                # Altcoin giveaway phrases
+                "Solana SOL giveaway",
+                "Shiba Inu giveaway",
+                "Ripple XRP giveaway",
+                "Polygon MATIC giveaway",
+                "Avalanche AVAX giveaway",
+                "Chainlink LINK giveaway",
+                "Polkadot DOT giveaway",
+                "Cardano ADA live",
+                "Optimism OP giveaway",
+                "Aptos APT giveaway",
+                "Decentraland MANA giveaway",
+                "Tezos XTZ giveaway",
+                # Subtle scam phrasing
+                "crypto millionaire live",
+                "crypto wealth live",
+                "crypto passive income",
+                "Bitcoin lending live",
+                "crypto promotion live",
+                "Bitcoin investment live",
+                "get rich crypto",
+                "Bitcoin opportunity",
+                "crypto presale live",
+                "limited time crypto",
+                "crypto ending soon",
+                "last chance Bitcoin",
+                "exclusive crypto event",
+            ],
+        },
+        # ── TIER 2: MEDIUM-SIGNAL (max_results=25) ────────────────────────────
+        {
+            "tier": 2,
+            "label": "Medium-signal: figures, exchanges, altcoins",
+            "max_results": 25,
+            "queries": [
+                # Crypto figures (less explicit phrasing)
+                "Michael Saylor Bitcoin",
+                "Michael Saylor crypto live",
+                "Cathie Wood Bitcoin",
+                "CZ Binance live",
+                "Changpeng Zhao crypto",
+                "Brad Garlinghouse XRP",
+                "Charles Hoskinson Cardano",
+                "Jack Dorsey Bitcoin",
+                "Do Kwon Terra",
+                # Exchanges without 'giveaway'
+                "Gemini crypto live",
+                "KuCoin live",
+                "OKX event",
+                "Bitget live",
+                "Huobi live",
+                "Phemex live",
+                "BitMEX event",
+                "Bitfinex event",
+                "FTX live",
+                # Altcoins without 'giveaway'
+                "Dogecoin live",
+                "Binance BNB live",
+                "Arbitrum ARB live",
+                "Cosmos ATOM live",
+                "NEAR Protocol live",
+                "Hedera HBAR live",
+                "Sui SUI live",
+                "Sandbox SAND live",
+                "Immutable IMX event",
+                "Fantom FTM event",
+                "VeChain VET live",
+                "Algorand ALGO event",
+                # NFT projects
+                "Bored Ape live",
+                "CryptoPunks event",
+                "Azuki NFT live",
+                "Pudgy Penguins event",
+                "Moonbirds live",
+                "Doodles NFT event",
+                "NBA Top Shot event",
+                "OpenSea live",
+                # DeFi protocols
+                "Uniswap live",
+                "Aave protocol event",
+                "Compound Finance live",
+                "MakerDAO live",
+                "Curve Finance event",
+                "PancakeSwap live",
+                "dYdX trading live",
+                # Urgency (less explicit)
+                "Bitcoin success story",
+                "crypto staking rewards",
+                "Bitcoin mining live",
+                "Bitcoin futures live",
+                "NFT market update",
+                "crypto regulation news",
+                "Bitcoin ETF news",
+            ],
+        },
+        # ── TIER 3: LOW-SIGNAL generic (max_results=10) ───────────────────────
+        # Purpose: controlled FP/negative baseline — captures legitimate content
+        {
+            "tier": 3,
+            "label": "Low-signal generic (negative baseline)",
+            "max_results": 10,
+            "queries": [
+                "cryptocurrency live",
+                "Bitcoin live stream",
+                "Ethereum live stream",
+                "crypto live stream",
+                "Bitcoin price live",
+                "Ethereum price live",
+                "crypto price live",
+                "Bitcoin news today",
+                "crypto news today",
+                "blockchain live",
+                # Legitimate news sources (explicit FP targets)
+                "Bloomberg crypto live",
+                "CNBC Bitcoin live",
+                "CoinDesk live",
+                "Cointelegraph live",
+                "crypto news live",
+                "Bitcoin price analysis live",
+                "cryptocurrency market update",
+                "crypto trading live",
+                "Bitcoin technical analysis",
+                "crypto market analysis",
+            ],
+        },
     ]
-    
-    # Randomize query order for temporal diversity
-    random.shuffle(search_queries)
-    
-    print(f"\n📊 Monitoring {len(search_queries)} search queries (randomized order)...")
+
+    # Flatten into a single sorted list (Tier 1 first, then 2, then 3)
+    # Within each tier, shuffle for temporal diversity
+    ordered_queries: List[Tuple[str, int]] = []  # (query, max_results)
+    for tier_config in TIERED_QUERIES:
+        tier_queries = list(tier_config["queries"])
+        random.shuffle(tier_queries)
+        for q in tier_queries:
+            ordered_queries.append((q, tier_config["max_results"]))
+
+    total_queries = len(ordered_queries)
+    print(f"\n📊 Running {total_queries} search queries across 3 signal tiers:")
+    for tc in TIERED_QUERIES:
+        print(f"   Tier {tc['tier']} ({tc['label']}): {len(tc['queries'])} queries × max {tc['max_results']} results")
     print(f"   Risk threshold: {risk_threshold} (storing videos with risk >= {risk_threshold})")
-    print(f"   Max results per query: {max_results_per_query}")
     if max_quota:
         print(f"   Max API quota: {max_quota} units")
-    estimated_quota = len(search_queries) * 100 + (max_results_per_query * len(search_queries) * 10)
+    t1_count = len(TIERED_QUERIES[0]["queries"])
+    t2_count = len(TIERED_QUERIES[1]["queries"])
+    t3_count = len(TIERED_QUERIES[2]["queries"])
+    estimated_quota = (t1_count * 100 + t2_count * 100 + t3_count * 100 +
+                       t1_count * 50 * 10 + t2_count * 25 * 10 + t3_count * 10 * 10)
     print(f"⚠️  Estimated API quota usage: ~{estimated_quota:,} units")
-    print("⏱️  Estimated time: 30-60 minutes\n")
-    
+    print("⏱️  Estimated time: 30-90 minutes\n")
+
     # Collect all results
     all_results = []
     failed_queries = []
@@ -1406,20 +1837,20 @@ def main():
     failed_videos = 0
     skipped_existing = 0
 
-    for query_idx, query in enumerate(search_queries, 1):
+    for query_idx, (query, tier_max_results) in enumerate(ordered_queries, 1):
         try:
             # Check quota limit before searching
             if max_quota and api_client.quota_used >= max_quota:
                 print(f"\n⚠️  Reached max quota limit ({max_quota} units). Stopping search.")
-                print(f"   Processed {query_idx - 1}/{len(search_queries)} queries")
+                print(f"   Processed {query_idx - 1}/{total_queries} queries")
                 break
-            
-            print(f"\n🔍 [{query_idx}/{len(search_queries)}] Searching for: '{query}'")
+
+            print(f"\n🔍 [{query_idx}/{total_queries}] Searching for: '{query}' (max {tier_max_results} results)")
             print(f"   API quota used so far: {api_client.quota_used} units")
 
             # Search for live streams
             try:
-                livestreams = api_client.search_livestreams(query, max_results=max_results_per_query)
+                livestreams = api_client.search_livestreams(query, max_results=tier_max_results)
                 
                 print(f"   Found {len(livestreams)} live streams")
             except Exception as e:
@@ -1510,8 +1941,11 @@ def main():
                         result = {
                             'video_id': video_id,
                             'video_title': analyzed_video.title,
+                            'video_description': (video_meta.description or '')[:500],
                             'channel_id': video_meta.channel_id,
                             'channel_title': video_meta.channel_title,
+                            'channel_description': (channel_meta.description if channel_meta and hasattr(channel_meta, 'description') else '') or '',
+                            'tags': video_meta.tags[:20] if video_meta.tags else [],
                             'is_live': analyzed_video.is_live,
                             'video_risk_score': analyzed_video.risk_score,
                             'channel_risk_score': analyzed_channel.risk_score if analyzed_channel else 0,
@@ -1521,11 +1955,30 @@ def main():
                             'video_signals': analyzed_video.suspicious_signals,
                             'channel_signals': analyzed_channel.suspicious_signals if analyzed_channel else [],
                             'bert_scam_score': analyzed_video.bert_scam_score,  # Signal 12
+                            'takeover_type': 'UNKNOWN',  # Will be updated if classification runs
                             'detected_at': datetime.now().isoformat(),
                             'search_query': query,
                             'video_url': f"https://youtube.com/watch?v={video_id}",
                             'channel_url': f"https://youtube.com/channel/{video_meta.channel_id}"
                         }
+                        
+                        # Apply ATO classification if high risk
+                        if composite['risk_category'] in ['CRITICAL', 'HIGH'] and analyzed_channel:
+                            age = detector._compute_channel_age_days(analyzed_channel.published_at)
+                            
+                            # Only fetch past videos if age > 365 days to save quota
+                            past_videos = []
+                            if age > 365:
+                                try:
+                                    print("       Fetching past videos for ATO classification (~3 quota units)...")
+                                    past_videos, _ = api_client.get_channel_history(analyzed_channel.channel_id)
+                                    time.sleep(0.5)
+                                except Exception as e:
+                                    print(f"       ⚠️  Failed to fetch past videos: {e}")
+                            
+                            takeover_type = detector.classify_takeover(analyzed_channel, past_videos, analyzed_video, composite)
+                            result['takeover_type'] = takeover_type
+                            print(f"       Takeover Type: {takeover_type}")
 
                         all_results.append(result)
                         
@@ -1562,7 +2015,7 @@ def main():
             json.dump({
                 'results': all_results,
                 'metadata': {
-                    'total_queries': len(search_queries),
+                    'total_queries': total_queries,
                     'failed_queries': len(failed_queries),
                     'processed_videos': processed_videos,
                     'failed_videos': failed_videos,
@@ -1582,7 +2035,7 @@ def main():
                 json.dump({
                     'results': all_results,
                     'metadata': {
-                        'total_queries': len(search_queries),
+                        'total_queries': total_queries,
                         'failed_queries': len(failed_queries),
                         'processed_videos': processed_videos,
                         'failed_videos': failed_videos,
@@ -1601,13 +2054,13 @@ def main():
     print("\n" + "="*70)
     print("DETECTION SUMMARY")
     print("="*70)
-    print(f"Total queries attempted: {len(search_queries)}")
+    print(f"Total queries attempted: {total_queries}")
     print(f"Failed queries: {len(failed_queries)}")
     print(f"Videos skipped (already in DB): {skipped_existing}")
     print(f"Videos processed successfully: {processed_videos}")
     print(f"Videos failed to process: {failed_videos}")
     print(f"Total suspicious detections: {len(all_results)}")
-    print(f"API quota used: {api_client.quota_used} units")
+    print(api_client.quota_summary())
     if skipped_existing > 0:
         estimated_saved = skipped_existing * 10  # ~10 units per video (5 for video + 5 for channel)
         print(f"API quota saved by skipping: ~{estimated_saved} units")
@@ -1619,7 +2072,7 @@ def main():
         medium = sum(1 for r in all_results if r['risk_category'] == 'MEDIUM')
         low = sum(1 for r in all_results if r['risk_category'] == 'LOW')
         
-        print(f"\nRisk Distribution:")
+        print("\nRisk Distribution:")
         print(f"  🔴 CRITICAL: {critical}")
         print(f"  🔴 HIGH:     {high}")
         print(f"  🟡 MEDIUM:   {medium}")
@@ -1634,7 +2087,7 @@ def main():
         if all_signals:
             from collections import Counter
             signal_counts = Counter(all_signals)
-            print(f"\nMost Common Signals:")
+            print("\nMost Common Signals:")
             for signal, count in signal_counts.most_common(5):
                 print(f"  • {signal}: {count}")
         
