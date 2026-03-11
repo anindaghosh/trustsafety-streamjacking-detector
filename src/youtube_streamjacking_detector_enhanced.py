@@ -272,54 +272,109 @@ class MongoDBManager:
 class EnhancedYouTubeAPIClient:
     """Enhanced API client with additional metadata fields"""
     
-    def __init__(self, api_key: str):
-        self.api_key = api_key
-        self.youtube = build('youtube', 'v3', developerKey=api_key)
+    def __init__(self, api_keys):
+        """Accept a single key string or a list of keys for automatic rotation."""
+        if isinstance(api_keys, str):
+            api_keys = [api_keys]
+        self._keys: List[str] = [k.strip() for k in api_keys if k.strip()]
+        if not self._keys:
+            raise ValueError("At least one API key is required.")
+        self._key_idx: int = 0
+        self._exhausted: Set[str] = set()
+        self._per_key_quota: Dict[str, int] = {k: 0 for k in self._keys}
+        self.youtube = build('youtube', 'v3', developerKey=self._keys[0])
         self.quota_used = 0
+
+    # ------------------------------------------------------------------
+    # Key rotation
+    # ------------------------------------------------------------------
+
+    @property
+    def _active_key(self) -> str:
+        return self._keys[self._key_idx]
+
+    def _rotate_key(self) -> bool:
+        """Mark the current key as exhausted and switch to the next available one.
+        Returns True if a new key is available, False if all keys are exhausted."""
+        self._exhausted.add(self._active_key)
+        remaining = [k for k in self._keys if k not in self._exhausted]
+        if not remaining:
+            print("\n⛔ All API keys exhausted for today. Stopping further requests.")
+            return False
+        self._key_idx = self._keys.index(remaining[0])
+        self.youtube = build('youtube', 'v3', developerKey=self._active_key)
+        print(f"\n🔄 API key rotated → key {self._key_idx + 1}/{len(self._keys)} "
+              f"({len(self._exhausted)} exhausted, {len(remaining) - 1} remaining after this)")
+        return True
+
+    def _is_quota_error(self, e: HttpError) -> bool:
+        return e.resp.status == 403 and 'quotaExceeded' in str(e)
+
+    def quota_summary(self) -> str:
+        """Return a formatted per-key quota usage summary."""
+        lines = [f"\n🔑 API Key Quota Summary ({len(self._keys)} key(s)):"]
+        for i, key in enumerate(self._keys):
+            used = self._per_key_quota.get(key, 0)
+            status = " ⛔ exhausted" if key in self._exhausted else (" ← active" if key == self._active_key else "")
+            lines.append(f"   Key {i+1}: {used:,} units{status}")
+        lines.append(f"   Total: {self.quota_used:,} units across {len(self._keys)} key(s)")
+        return "\n".join(lines)
         
     def get_channel_uploads_playlist_id(self, channel_id: str) -> Optional[str]:
         """Get the uploads playlist ID for a channel (costs 1 quota unit)"""
-        try:
-            request = self.youtube.channels().list(
-                part="contentDetails",
-                id=channel_id
-            )
-            response = request.execute()
-            self.quota_used += 1
-            
-            if not response.get('items'):
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.channels().list(
+                    part="contentDetails",
+                    id=channel_id
+                )
+                response = request.execute()
+                self.quota_used += 1
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 1
+                if not response.get('items'):
+                    return None
+                return response['items'][0].get('contentDetails', {}).get('relatedPlaylists', {}).get('uploads')
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return None
+                    continue
+                print(f"API Error fetching uploads playlist: {e}")
                 return None
-                
-            return response['items'][0].get('contentDetails', {}).get('relatedPlaylists', {}).get('uploads')
-            
-        except HttpError as e:
-            print(f"API Error fetching uploads playlist: {e}")
-            return None
+        return None
             
     def get_playlist_items(self, playlist_id: str, max_pages: int = 2) -> List[Dict]:
         """Retrieve videos from a playlist using playlistItems.list (costs 1 quota/page vs 100 for search)."""
         all_items = []
         next_page_token = None
-        
+
         for _ in range(max_pages):
-            try:
-                request = self.youtube.playlistItems().list(
-                    part="snippet,contentDetails",
-                    playlistId=playlist_id,
-                    maxResults=50,
-                    pageToken=next_page_token
-                )
-                response = request.execute()
-                self.quota_used += 1  # playlistItems.list costs 1 unit!
-                
-                all_items.extend(response.get('items', []))
-                next_page_token = response.get('nextPageToken')
-                if not next_page_token:
+            fetched = False
+            for _ in range(len(self._keys)):
+                try:
+                    request = self.youtube.playlistItems().list(
+                        part="snippet,contentDetails",
+                        playlistId=playlist_id,
+                        maxResults=50,
+                        pageToken=next_page_token
+                    )
+                    response = request.execute()
+                    self.quota_used += 1
+                    self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 1
+                    all_items.extend(response.get('items', []))
+                    next_page_token = response.get('nextPageToken')
+                    fetched = True
                     break
-            except HttpError as e:
-                print(f"API Error fetching playlist items: {e}")
+                except HttpError as e:
+                    if self._is_quota_error(e):
+                        if not self._rotate_key():
+                            return all_items
+                        continue
+                    print(f"API Error fetching playlist items: {e}")
+                    return all_items
+            if not fetched or not next_page_token:
                 break
-                
+
         return all_items
         
     def get_channel_history(self, channel_id: str) -> Tuple[List[Dict], Optional[str]]:
@@ -336,151 +391,160 @@ class EnhancedYouTubeAPIClient:
         
     def get_channel_metadata(self, channel_id: str) -> Optional[EnhancedChannelMetadata]:
         """Retrieve comprehensive channel metadata with enhanced fields"""
-        try:
-            request = self.youtube.channels().list(
-                part="snippet,statistics,contentDetails,topicDetails,brandingSettings,status",
-                id=channel_id
-            )
-            response = request.execute()
-            self.quota_used += 5
-            
-            if not response.get('items'):
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.channels().list(
+                    part="snippet,statistics,contentDetails,topicDetails,brandingSettings,status",
+                    id=channel_id
+                )
+                response = request.execute()
+                self.quota_used += 5
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 5
+                if not response.get('items'):
+                    return None
+                item = response['items'][0]
+                snippet = item.get('snippet', {})
+                statistics = item.get('statistics', {})
+                branding = item.get('brandingSettings', {})
+                topics = item.get('topicDetails', {})
+                return EnhancedChannelMetadata(
+                    channel_id=channel_id,
+                    channel_title=snippet.get('title', ''),
+                    custom_url=snippet.get('customUrl'),
+                    handle=branding.get('channel', {}).get('unsubscribedTrailer'),
+                    description=snippet.get('description', ''),
+                    subscriber_count=int(statistics.get('subscriberCount', 0)),
+                    video_count=int(statistics.get('videoCount', 0)),
+                    view_count=int(statistics.get('viewCount', 0)),
+                    published_at=snippet.get('publishedAt', ''),
+                    country=snippet.get('country'),
+                    thumbnail_url=snippet.get('thumbnails', {}).get('high', {}).get('url', ''),
+                    topic_categories=topics.get('topicCategories', []),
+                    branding_settings=branding,
+                    hidden_subscriber_count=statistics.get('hiddenSubscriberCount', False),
+                    default_language=snippet.get('defaultLanguage')
+                )
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return None
+                    continue
+                print(f"API Error: {e}")
                 return None
-                
-            item = response['items'][0]
-            snippet = item.get('snippet', {})
-            statistics = item.get('statistics', {})
-            branding = item.get('brandingSettings', {})
-            topics = item.get('topicDetails', {})
-            
-            return EnhancedChannelMetadata(
-                channel_id=channel_id,
-                channel_title=snippet.get('title', ''),
-                custom_url=snippet.get('customUrl'),
-                handle=branding.get('channel', {}).get('unsubscribedTrailer'),
-                description=snippet.get('description', ''),
-                subscriber_count=int(statistics.get('subscriberCount', 0)),
-                video_count=int(statistics.get('videoCount', 0)),
-                view_count=int(statistics.get('viewCount', 0)),
-                published_at=snippet.get('publishedAt', ''),
-                country=snippet.get('country'),
-                thumbnail_url=snippet.get('thumbnails', {}).get('high', {}).get('url', ''),
-                topic_categories=topics.get('topicCategories', []),
-                branding_settings=branding,
-                hidden_subscriber_count=statistics.get('hiddenSubscriberCount', False),
-                default_language=snippet.get('defaultLanguage')
-            )
-            
-        except HttpError as e:
-            print(f"API Error: {e}")
-            return None
+        return None
     
     def get_video_metadata(self, video_id: str) -> Optional[EnhancedVideoMetadata]:
         """Retrieve comprehensive video metadata with enhanced fields"""
-        try:
-            request = self.youtube.videos().list(
-                part="snippet,statistics,liveStreamingDetails,contentDetails,status",
-                id=video_id
-            )
-            response = request.execute()
-            self.quota_used += 5
-            
-            if not response.get('items'):
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.videos().list(
+                    part="snippet,statistics,liveStreamingDetails,contentDetails,status",
+                    id=video_id
+                )
+                response = request.execute()
+                self.quota_used += 5
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 5
+                if not response.get('items'):
+                    return None
+                item = response['items'][0]
+                snippet = item.get('snippet', {})
+                statistics = item.get('statistics', {})
+                live_details = item.get('liveStreamingDetails')
+                status = item.get('status', {})
+                is_live = live_details is not None and live_details.get('actualEndTime') is None
+                return EnhancedVideoMetadata(
+                    video_id=video_id,
+                    title=snippet.get('title', ''),
+                    description=snippet.get('description', ''),
+                    channel_id=snippet.get('channelId', ''),
+                    channel_title=snippet.get('channelTitle', ''),
+                    published_at=snippet.get('publishedAt', ''),
+                    is_live=is_live,
+                    live_streaming_details=live_details,
+                    view_count=int(statistics.get('viewCount', 0)),
+                    like_count=int(statistics.get('likeCount', 0)),
+                    comment_count=int(statistics.get('commentCount', 0)),
+                    tags=snippet.get('tags', []),
+                    comments_disabled=not status.get('publicStatsViewable', True),
+                    live_chat_id=live_details.get('activeLiveChatId') if live_details else None,
+                    default_language=snippet.get('defaultLanguage')
+                )
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return None
+                    continue
+                print(f"API Error: {e}")
                 return None
-                
-            item = response['items'][0]
-            snippet = item.get('snippet', {})
-            statistics = item.get('statistics', {})
-            live_details = item.get('liveStreamingDetails')
-            status = item.get('status', {})
-            
-            is_live = live_details is not None and live_details.get('actualEndTime') is None
-            
-            return EnhancedVideoMetadata(
-                video_id=video_id,
-                title=snippet.get('title', ''),
-                description=snippet.get('description', ''),
-                channel_id=snippet.get('channelId', ''),
-                channel_title=snippet.get('channelTitle', ''),
-                published_at=snippet.get('publishedAt', ''),
-                is_live=is_live,
-                live_streaming_details=live_details,
-                view_count=int(statistics.get('viewCount', 0)),
-                like_count=int(statistics.get('likeCount', 0)),
-                comment_count=int(statistics.get('commentCount', 0)),
-                tags=snippet.get('tags', []),
-                comments_disabled=not status.get('publicStatsViewable', True),
-                live_chat_id=live_details.get('activeLiveChatId') if live_details else None,
-                default_language=snippet.get('defaultLanguage')
-            )
-            
-        except HttpError as e:
-            print(f"API Error: {e}")
-            return None
+        return None
     
     def get_live_chat_messages(self, live_chat_id: str, max_messages: int = 20) -> List[Dict]:
         """Sample recent live chat messages (checks for pinned Super Chats and bot spam)"""
-        try:
-            request = self.youtube.liveChatMessages().list(
-                liveChatId=live_chat_id,
-                part="snippet,authorDetails",
-                maxResults=min(max_messages, 100)
-            )
-            response = request.execute()
-            self.quota_used += 5  # liveChatMessages.list costs 5 units
-            
-            messages = []
-            for item in response.get('items', []):
-                snippet = item.get('snippet', {})
-                author = item.get('authorDetails', {})
-                
-                msg = {
-                    'id': item.get('id'),
-                    'type': snippet.get('type'),
-                    'text': '',
-                    'author': author.get('displayName', ''),
-                    'author_channel_id': author.get('channelId', ''),
-                    'is_super_chat': False,
-                    'published_at': snippet.get('publishedAt')
-                }
-                
-                # Extract text based on message type
-                if snippet.get('type') == 'textMessageEvent':
-                    msg['text'] = snippet.get('textMessageDetails', {}).get('messageText', '')
-                elif snippet.get('type') == 'superChatEvent':
-                    msg['text'] = snippet.get('superChatDetails', {}).get('userComment', '')
-                    msg['is_super_chat'] = True  # Super Chats are pinned to top
-                elif snippet.get('type') == 'superStickerEvent':
-                    msg['is_super_chat'] = True
-                
-                messages.append(msg)
-            
-            return messages
-            
-        except HttpError as e:
-            # Chat may be disabled or ended
-            return []
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.liveChatMessages().list(
+                    liveChatId=live_chat_id,
+                    part="snippet,authorDetails",
+                    maxResults=min(max_messages, 100)
+                )
+                response = request.execute()
+                self.quota_used += 5
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 5
+                messages = []
+                for item in response.get('items', []):
+                    snippet = item.get('snippet', {})
+                    author = item.get('authorDetails', {})
+                    msg = {
+                        'id': item.get('id'),
+                        'type': snippet.get('type'),
+                        'text': '',
+                        'author': author.get('displayName', ''),
+                        'author_channel_id': author.get('channelId', ''),
+                        'is_super_chat': False,
+                        'published_at': snippet.get('publishedAt')
+                    }
+                    if snippet.get('type') == 'textMessageEvent':
+                        msg['text'] = snippet.get('textMessageDetails', {}).get('messageText', '')
+                    elif snippet.get('type') == 'superChatEvent':
+                        msg['text'] = snippet.get('superChatDetails', {}).get('userComment', '')
+                        msg['is_super_chat'] = True
+                    elif snippet.get('type') == 'superStickerEvent':
+                        msg['is_super_chat'] = True
+                    messages.append(msg)
+                return messages
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return []
+                    continue
+                return []  # Chat may be disabled or ended
+        return []
     
     def search_livestreams(self, query: str, max_results: int = 50) -> List[Dict]:
         """Search for active livestreams"""
-        try:
-            request = self.youtube.search().list(
-                part="snippet",
-                q=query,
-                type="video",
-                eventType="live",
-                maxResults=min(max_results, 50),
-                relevanceLanguage="en",
-                safeSearch="none"
-            )
-            response = request.execute()
-            self.quota_used += 100
-            
-            return response.get('items', [])
-            
-        except HttpError as e:
-            print(f"API Error: {e}")
-            return []
+        for _ in range(len(self._keys)):
+            try:
+                request = self.youtube.search().list(
+                    part="snippet",
+                    q=query,
+                    type="video",
+                    eventType="live",
+                    maxResults=min(max_results, 50),
+                    relevanceLanguage="en",
+                    safeSearch="none"
+                )
+                response = request.execute()
+                self.quota_used += 100
+                self._per_key_quota[self._active_key] = self._per_key_quota.get(self._active_key, 0) + 100
+                return response.get('items', [])
+            except HttpError as e:
+                if self._is_quota_error(e):
+                    if not self._rotate_key():
+                        return []
+                    continue
+                print(f"API Error: {e}")
+                return []
+        return []
 
 
 class EnhancedStreamJackingDetector:
@@ -580,6 +644,14 @@ class EnhancedStreamJackingDetector:
     
     # Generic promotional domains - only flag if combined with impersonation
     PROMO_DOMAINS = ['gift', 'bonus', 'promo']
+
+    # Legitimate crypto exchange domains whose referral/affiliate URLs should not
+    # trigger PROMO_DOMAINS signals (e.g. promote.mexc.com, bitget.com/referral)
+    TRUSTED_EXCHANGE_DOMAINS = [
+        'mexc.com', 'bitget.com', 'binance.com', 'coinbase.com', 'kraken.com',
+        'bybit.com', 'gate.io', 'okx.com', 'kucoin.com', 'huobi.com',
+        'crypto.com', 'gemini.com', 'bitmex.com', 'phemex.com', 'deribit.com',
+    ]
 
     # NEW: Trusted channels (whitelist) to prevent false positives
     TRUSTED_CHANNELS = [
@@ -1135,8 +1207,10 @@ class EnhancedStreamJackingDetector:
             signals.append(f"Known scam domain(s): {', '.join(domains)}")
             risk_score += 15.0
         elif has_promo_domain and impersonations:  # Only flag promo if also impersonating
-            signals.append(f"Promotional domain with impersonation")
-            risk_score += 10.0
+            # Skip if the 'promo' match is inside a trusted exchange referral URL
+            if not self._is_exchange_referral_url(channel.description):
+                signals.append(f"Promotional domain with impersonation")
+                risk_score += 10.0
             
         # Signal 8: Topic Consistency from channel API topics (weight: 40)
         # Check if a non-tech/finance channel is posting crypto content WITH impersonation
@@ -1301,8 +1375,10 @@ class EnhancedStreamJackingDetector:
             signals.append(f"Scam domain pattern: {', '.join(domains[:2])}")
             risk_score += weight
         elif has_promo_domain and not is_crypto_native:  # Only flag promo for non-crypto channels
-            signals.append(f"Promotional domain (unusual for channel type)")
-            risk_score += 10.0
+            # Skip if the 'promo' match is inside a trusted exchange referral URL
+            if not self._is_exchange_referral_url(video.description):
+                signals.append(f"Promotional domain (unusual for channel type)")
+                risk_score += 10.0
         
         # Signal 10: Suspicious tag combinations (NEW - weight: 35)
         # Political figure/celebrity + crypto tags = likely hijacked channel
@@ -1344,6 +1420,15 @@ class EnhancedStreamJackingDetector:
                 )
                 # Weight scales linearly with confidence: 0.65 → 13pts, 1.0 → 20pts
                 risk_score += 20.0 * bert_score
+            else:
+                # Low BERT score actively signals non-scam content; reduce risk
+                # symmetrically: score=0.0 → -20pts, score≈threshold → ~0pts
+                reduction = 20.0 * (1.0 - bert_score)
+                risk_score = max(0.0, risk_score - reduction)
+                signals.append(
+                    f"CryptoBERT low scam score: {bert_score:.2f} "
+                    f"(risk reduced by {reduction:.1f} pts)"
+                )
 
         # NEW: Educational Intent Bonus
         if is_educational:
@@ -1424,6 +1509,31 @@ class EnhancedStreamJackingDetector:
         except:
             return 0
     
+    def _is_exchange_referral_url(self, text: str) -> bool:
+        """Return True if every PROMO_DOMAINS hit in *text* occurs inside a URL
+        whose domain belongs to TRUSTED_EXCHANGE_DOMAINS (e.g. promote.mexc.com,
+        bitget.com/referral).  A lone 'promo' or 'bonus' word outside such a URL
+        still returns False so normal detection logic fires."""
+        url_pattern = re.compile(r'https?://[^\s)>"\']+')
+        urls_in_text = url_pattern.findall(text)
+        for promo_word in self.PROMO_DOMAINS:
+            if promo_word not in text.lower():
+                continue
+            # Check whether every occurrence of this promo word lives inside a
+            # trusted-exchange URL.
+            in_trusted_url = False
+            for url in urls_in_text:
+                if promo_word in url.lower():
+                    if any(domain in url.lower() for domain in self.TRUSTED_EXCHANGE_DOMAINS):
+                        in_trusted_url = True
+                        break
+            # If the word occurs outside all known-exchange URLs, don't suppress.
+            if promo_word in text.lower() and not in_trusted_url:
+                return False
+            if in_trusted_url:
+                return True
+        return False
+
     def _contains_crypto_address(self, text: str) -> bool:
         """Check for cryptocurrency addresses"""
         # BTC, ETH, and other common patterns
@@ -1466,15 +1576,22 @@ def main():
     print("With Composite Rules & Additional Signals")
     print("="*70)
     
-    api_key = os.environ.get('YOUTUBE_API_KEY')
-    if not api_key:
-        print("\n❌ Error: YOUTUBE_API_KEY environment variable not set")
-        print("Please set your API key: export YOUTUBE_API_KEY='your-key-here'")
-        print("\nGet your key from: https://console.cloud.google.com")
-        return
-    
+    # Load API keys — YOUTUBE_API_KEYS (plural) takes priority; fallback to single key
+    raw_keys = os.environ.get('YOUTUBE_API_KEYS', '')
+    api_keys = [k.strip() for k in raw_keys.split(',') if k.strip()]
+    if not api_keys:
+        single_key = os.environ.get('YOUTUBE_API_KEY')
+        if not single_key:
+            print("\n❌ Error: Set YOUTUBE_API_KEYS or YOUTUBE_API_KEY in your .env file.")
+            print("   YOUTUBE_API_KEYS=\"key1,key2,...\"  (for rotation)")
+            print("   YOUTUBE_API_KEY=\"key\"             (single key fallback)")
+            return
+        api_keys = [single_key]
+
+    print(f"\n🔑 Loaded {len(api_keys)} API key(s) — rotation {'enabled' if len(api_keys) > 1 else 'disabled (single key)'}")
+
     # Initialize enhanced system
-    api_client = EnhancedYouTubeAPIClient(api_key)
+    api_client = EnhancedYouTubeAPIClient(api_keys)
     detector = EnhancedStreamJackingDetector(api_client)
     
     # Initialize MongoDB (optional - will gracefully degrade if unavailable)
@@ -1943,7 +2060,7 @@ def main():
     print(f"Videos processed successfully: {processed_videos}")
     print(f"Videos failed to process: {failed_videos}")
     print(f"Total suspicious detections: {len(all_results)}")
-    print(f"API quota used: {api_client.quota_used} units")
+    print(api_client.quota_summary())
     if skipped_existing > 0:
         estimated_saved = skipped_existing * 10  # ~10 units per video (5 for video + 5 for channel)
         print(f"API quota saved by skipping: ~{estimated_saved} units")
