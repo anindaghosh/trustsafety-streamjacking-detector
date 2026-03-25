@@ -2123,4 +2123,12 @@ def main():
 
 
 if __name__ == "__main__":
+
+    start_time = time.time()
+
     main()
+
+    end_time = time.time()
+
+    elapsed = end_time - start_time
+    print(f"\n⏱️  Total execution time: {elapsed // 60:.2f} minutes")

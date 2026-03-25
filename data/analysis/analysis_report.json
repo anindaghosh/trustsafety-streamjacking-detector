@@ -1,118 +1,88 @@
 {
-  "analysis_date": "2025-12-02T16:00:08.534749",
-  "dataset_size": 149,
+  "analysis_date": "2026-03-23T20:31:57.403412",
+  "dataset_size": 18,
   "metrics": {
-    "total_detections": 149,
-    "unique_channels": 49,
-    "live_streams": 149,
+    "total_detections": 18,
+    "unique_channels": 18,
+    "live_streams": 18,
     "recorded_videos": 0,
     "risk_distribution": {
-      "high": 73,
-      "medium": 75,
-      "low": 1
+      "high": 3,
+      "medium": 3,
+      "low": 12
     },
     "risk_score_stats": {
-      "mean": 69.54697986577182,
-      "median": 65.0,
-      "stdev": 18.921632682850785,
-      "min": 30.0,
+      "mean": 38.37777777777778,
+      "median": 31.65,
+      "stdev": 25.172056298615207,
+      "min": 11.9,
       "max": 100.0
     },
     "video_score_stats": {
-      "mean": 67.75167785234899,
-      "median": 60.0
+      "mean": 32.54922222222223,
+      "median": 29.701
     },
     "channel_score_stats": {
-      "mean": 3.5906040268456376,
+      "mean": 11.666666666666666,
       "median": 0.0
     }
   },
   "signal_analysis": {
     "video_signals": {
-      "Currently live streaming": 149,
-      "Contains crypto address or suspicious URL": 119,
-      "Suspicious domain(s): t.co": 32,
-      "Suspicious domain(s): bit.ly": 15,
-      "Title impersonation: Exact match: bitcoin": 14,
-      "Multiple scam keywords: eth, investment": 13,
-      "Multiple scam keywords: btc, cryptocurrency": 13,
-      "Title impersonation: Exact match: bitcoin, Exact match: btc": 12,
-      "Title impersonation: Exact match: ethereum, Exact match: eth": 12,
-      "Multiple scam keywords: btc, eth, investment": 11
+      "Currently live streaming": 18,
+      "Educational/News intent detected (Risk reduced)": 10,
+      "Promotional domain (unusual for channel type)": 9,
+      "Contains crypto address or suspicious URL": 7,
+      "Comments disabled or restricted": 5,
+      "Celebrity + crypto tags (likely hijacked channel)": 3,
+      "Multiple scam keywords: btc, eth, cryptocurrency": 3,
+      "CryptoBERT low scam score: 0.21 (risk reduced by 15.9 pts)": 2,
+      "Multiple scam keywords: send, btc": 2,
+      "Political figure + crypto tags (likely hijacked channel)": 2
     },
     "channel_signals": {
-      "Crypto-heavy description (5 keywords)": 7,
-      "Name impersonation: Exact match: bitcoin": 5,
-      "Name impersonation: Exact match: btc": 3,
-      "Crypto-heavy description (3 keywords)": 3,
-      "Name impersonation: Exact match: eth": 2,
-      "Handle-name mismatch (possible hijack)": 2,
-      "Old account (6480 days) with minimal content": 2,
-      "Known scam domain(s): t.co": 1,
-      "Name impersonation: Exact match: meta": 1
+      "Content topic pivot: Content pivot detected: music \u2192 crypto channel (similarity=0.00, around 2026-03-21)": 1,
+      "Old account (3737 days) with minimal content": 1,
+      "Crypto-heavy description (4 keywords)": 1,
+      "Crypto-heavy description (5 keywords)": 1,
+      "Wiped/deleted history: Video count discrepancy: 385 declared but only 100 retrievable (285 videos missing, 74% gap)": 1,
+      "Name impersonation: Exact match: bitcoin": 1,
+      "Handle-name mismatch (possible hijack)": 1,
+      "Wiped/deleted history: Video count discrepancy: 4607 declared but only 100 retrievable (4507 videos missing, 98% gap)": 1
     },
     "signal_categories": {
-      "impersonation": 111,
-      "live_streaming": 149,
-      "malicious_links": 121,
-      "scam_keywords": 80,
-      "restricted_comments": 2,
-      "crypto_indicators": 10,
-      "account_hijacking": 2
+      "scam_keywords": 14,
+      "live_streaming": 18,
+      "malicious_links": 7,
+      "restricted_comments": 6,
+      "crypto_indicators": 3,
+      "impersonation": 1,
+      "account_hijacking": 1
     },
-    "total_video_signals": 626,
-    "total_channel_signals": 26
+    "total_video_signals": 93,
+    "total_channel_signals": 8
   },
   "patterns": {
     "by_query": {
-      "Elon Musk crypto live": 4,
-      "Elon Musk Bitcoin live": 4,
-      "Elon Musk Dogecoin": 1,
-      "Elon Musk cryptocurrency": 4,
-      "Tesla crypto live": 10,
-      "Tesla crypto event": 4,
-      "SpaceX Bitcoin live": 10,
-      "SpaceX crypto event": 1,
-      "crypto giveaway live": 5,
-      "Bitcoin giveaway live": 2,
-      "Ethereum giveaway live": 3,
-      "cryptocurrency giveaway": 3,
-      "BTC giveaway live": 3,
-      "ETH giveaway live": 3,
-      "crypto live giveaway": 5,
-      "Bitcoin live": 10,
+      "crypto promotion live": 4,
+      "send BTC receive double": 2,
       "Bitcoin doubling": 1,
-      "Bitcoin investment live": 10,
-      "send BTC receive double": 3,
-      "BTC live event": 10,
-      "double your Bitcoin": 1,
-      "Ethereum live": 10,
-      "Ethereum giveaway": 2,
-      "Vitalik Buterin ethereum": 1,
-      "Vitalik Buterin live": 1,
-      "Michael Saylor Bitcoin": 8,
-      "CZ Binance live": 1,
+      "crypto live giveaway": 2,
+      "Bitcoin opportunity": 1,
+      "crypto ending soon": 1,
+      "Sui SUI live": 1,
+      "Bitget live": 3,
       "Brad Garlinghouse XRP": 1,
-      "Dogecoin live": 8,
-      "Cardano ADA live": 10,
-      "Solana SOL giveaway": 1,
-      "Binance BNB live": 9
+      "crypto news today": 1,
+      "cryptocurrency market update": 1
     },
     "by_risk_level": {
-      "high": 73,
-      "medium": 75,
-      "low": 1
+      "high": 3,
+      "medium": 3,
+      "low": 12
     },
     "impersonation_targets": {
-      "cathie wood": 6,
-      "btc": 46,
-      "spacex": 10,
-      "bitcoin": 19,
-      "eth": 19,
-      "ripple": 1,
-      "cardano": 5,
-      "binance": 4,
-      "meta": 1
+      "bitcoin": 1
     }
   }
 }
